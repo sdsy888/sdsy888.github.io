@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, there!" />
+  <meta name="keywords" content="Linux.Ubuntu," />
 
 
 
@@ -94,17 +94,18 @@
 
 
 
-<meta name="description" content="博客的内容 技术/科研 分享 杂记/感悟">
+<meta name="description" content="lsof命令lsof: list open files, 即列出当前系统打开的文件  在linux环境下，任何事物都以文件的形式存在，通过文件不仅仅可以访问常规数据，还可以访问网络连接和硬件。所以如传输控制协议 (TCP) 和用户数据报协议 (UDP) 套接字等，系统在后台都为该应用程序分配了一个文件描述符，无论这个文件的本质如何，该文件描述符为应用程序与基础操作系统之间的交互提供了通用接口  格">
+<meta name="keywords" content="Linux.Ubuntu">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Blogging on independent pages.">
-<meta property="og:url" content="http://yoursite.com/2016/08/19/2016/First-Post/index.html">
+<meta property="og:title" content="Ubuntu常用命令">
+<meta property="og:url" content="http://yoursite.com/2017/09/07/2017/Ubuntu常用命令/index.html">
 <meta property="og:site_name" content="Neo Song">
-<meta property="og:description" content="博客的内容 技术/科研 分享 杂记/感悟">
+<meta property="og:description" content="lsof命令lsof: list open files, 即列出当前系统打开的文件  在linux环境下，任何事物都以文件的形式存在，通过文件不仅仅可以访问常规数据，还可以访问网络连接和硬件。所以如传输控制协议 (TCP) 和用户数据报协议 (UDP) 套接字等，系统在后台都为该应用程序分配了一个文件描述符，无论这个文件的本质如何，该文件描述符为应用程序与基础操作系统之间的交互提供了通用接口  格">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-06T02:20:45.000Z">
+<meta property="og:updated_time" content="2017-09-07T13:16:13.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Blogging on independent pages.">
-<meta name="twitter:description" content="博客的内容 技术/科研 分享 杂记/感悟">
+<meta name="twitter:title" content="Ubuntu常用命令">
+<meta name="twitter:description" content="lsof命令lsof: list open files, 即列出当前系统打开的文件  在linux环境下，任何事物都以文件的形式存在，通过文件不仅仅可以访问常规数据，还可以访问网络连接和硬件。所以如传输控制协议 (TCP) 和用户数据报协议 (UDP) 套接字等，系统在后台都为该应用程序分配了一个文件描述符，无论这个文件的本质如何，该文件描述符为应用程序与基础操作系统之间的交互提供了通用接口  格">
 
 
 
@@ -133,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/08/19/2016/First-Post/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/09/07/2017/Ubuntu常用命令/"/>
 
 
 
 
 
-  <title>Blogging on independent pages. | Neo Song</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Ubuntu常用命令 | Neo Song</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -276,7 +277,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/08/19/2016/First-Post/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/07/2017/Ubuntu常用命令/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="江前云后">
@@ -293,7 +294,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Blogging on independent pages.</h1>
+          <h1 class="post-title" itemprop="name headline">Ubuntu常用命令</h1>
         
 
         <div class="post-meta">
@@ -305,8 +306,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-08-19T10:37:05+08:00">
-                2016-08-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-07T20:44:10+08:00">
+                2017-09-07
               </time>
             
 
@@ -328,8 +329,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/随笔-Writing/" itemprop="url" rel="index">
-                    <span itemprop="name">随笔 / Writing</span>
+                  <a href="/categories/系统-System/" itemprop="url" rel="index">
+                    <span itemprop="name">系统 / System</span>
                   </a>
                 </span>
 
@@ -365,12 +366,20 @@
       
 
       
-        <h2 id="博客的内容"><a href="#博客的内容" class="headerlink" title="博客的内容"></a>博客的内容</h2><ul>
-<li>技术/科研</li>
-<li>分享</li>
-<li>杂记/感悟</li>
-</ul>
-<!-- [link](this is a link) -->
+        <h2 id="lsof命令"><a href="#lsof命令" class="headerlink" title="lsof命令"></a><code>lsof</code>命令</h2><p>lsof: list open files, 即列出当前系统打开的文件</p>
+<blockquote>
+<p>在linux环境下，任何事物都以文件的形式存在，通过文件不仅仅可以访问常规数据，还可以访问网络连接和硬件。所以如传输控制协议 (TCP) 和用户数据报协议 (UDP) 套接字等，系统在后台都为该应用程序分配了一个文件描述符，无论这个文件的本质如何，该文件描述符为应用程序与基础操作系统之间的交互提供了通用接口</p>
+</blockquote>
+<h3 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">lsof [参数][文件]</div></pre></td></tr></table></figure>
+<h3 id="使用说明"><a href="#使用说明" class="headerlink" title="使用说明"></a>使用说明</h3><p>可以使用该命令查看你进程开打的文件，打开文件的进程，进程打开的端口(TCP、UDP).</p>
+<p>命令输出的信息意义:</p>
+<blockquote>
+<p>COMMAND：进程的名称</p>
+<p>PID：进程标识符</p>
+<p>PPID：父进程标识符（需要指定-R参数）</p>
+<p>USER：进程所有者</p>
+<p>PGID：进程所属组</p>
+</blockquote>
 
       
     </div>
@@ -386,6 +395,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Linux-Ubuntu/" rel="tag"># Linux.Ubuntu</a>
+          
+        </div>
+      
 
       
       
@@ -395,14 +410,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/09/06/2017/Atom备份-同步神器/" rel="next" title="Atom备份/同步神器">
+                <i class="fa fa-chevron-left"></i> Atom备份/同步神器
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/10/20/2016/Sublime的使用与插件/" rel="prev" title="Sublime使用与插件">
-                Sublime使用与插件 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/09/08/TensorFlow使用中的常见错误/" rel="prev" title="TensorFlow使用中的常见错误">
+                TensorFlow使用中的常见错误 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -537,7 +556,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#博客的内容"><span class="nav-number">1.</span> <span class="nav-text">博客的内容</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#lsof命令"><span class="nav-number">1.</span> <span class="nav-text">lsof命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#格式"><span class="nav-number">1.1.</span> <span class="nav-text">格式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用说明"><span class="nav-number">1.2.</span> <span class="nav-text">使用说明</span></a></li></ol></li></ol></div>
             
 
           </div>

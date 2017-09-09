@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, there!" />
+  <meta name="keywords" content="TensorFlow," />
 
 
 
@@ -94,17 +94,18 @@
 
 
 
-<meta name="description" content="博客的内容 技术/科研 分享 杂记/感悟">
+<meta name="description" content="找不到模型文件 / 用于初始化的预训练文件 perhaps your file is in a different file format and you need to use a different restore operator?  解决方法类似这里, 即设置的目录不是checkpoint文件所在目录, 还需要把Checkpoint的前缀(prefix)作为目录名的一部分. 例如名为myM">
+<meta name="keywords" content="TensorFlow">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Blogging on independent pages.">
-<meta property="og:url" content="http://yoursite.com/2016/08/19/2016/First-Post/index.html">
+<meta property="og:title" content="TensorFlow使用中的常见错误">
+<meta property="og:url" content="http://yoursite.com/2017/09/08/TensorFlow使用中的常见错误/index.html">
 <meta property="og:site_name" content="Neo Song">
-<meta property="og:description" content="博客的内容 技术/科研 分享 杂记/感悟">
+<meta property="og:description" content="找不到模型文件 / 用于初始化的预训练文件 perhaps your file is in a different file format and you need to use a different restore operator?  解决方法类似这里, 即设置的目录不是checkpoint文件所在目录, 还需要把Checkpoint的前缀(prefix)作为目录名的一部分. 例如名为myM">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-06T02:20:45.000Z">
+<meta property="og:updated_time" content="2017-09-08T02:51:34.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Blogging on independent pages.">
-<meta name="twitter:description" content="博客的内容 技术/科研 分享 杂记/感悟">
+<meta name="twitter:title" content="TensorFlow使用中的常见错误">
+<meta name="twitter:description" content="找不到模型文件 / 用于初始化的预训练文件 perhaps your file is in a different file format and you need to use a different restore operator?  解决方法类似这里, 即设置的目录不是checkpoint文件所在目录, 还需要把Checkpoint的前缀(prefix)作为目录名的一部分. 例如名为myM">
 
 
 
@@ -133,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/08/19/2016/First-Post/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/09/08/TensorFlow使用中的常见错误/"/>
 
 
 
 
 
-  <title>Blogging on independent pages. | Neo Song</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>TensorFlow使用中的常见错误 | Neo Song</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -276,7 +277,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/08/19/2016/First-Post/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/08/TensorFlow使用中的常见错误/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="江前云后">
@@ -293,7 +294,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Blogging on independent pages.</h1>
+          <h1 class="post-title" itemprop="name headline">TensorFlow使用中的常见错误</h1>
         
 
         <div class="post-meta">
@@ -305,8 +306,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-08-19T10:37:05+08:00">
-                2016-08-19
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-08T10:42:27+08:00">
+                2017-09-08
               </time>
             
 
@@ -328,8 +329,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/随笔-Writing/" itemprop="url" rel="index">
-                    <span itemprop="name">随笔 / Writing</span>
+                  <a href="/categories/框架-Framework/" itemprop="url" rel="index">
+                    <span itemprop="name">框架 / Framework</span>
                   </a>
                 </span>
 
@@ -365,12 +366,11 @@
       
 
       
-        <h2 id="博客的内容"><a href="#博客的内容" class="headerlink" title="博客的内容"></a>博客的内容</h2><ul>
-<li>技术/科研</li>
-<li>分享</li>
-<li>杂记/感悟</li>
-</ul>
-<!-- [link](this is a link) -->
+        <h3 id="找不到模型文件-用于初始化的预训练文件"><a href="#找不到模型文件-用于初始化的预训练文件" class="headerlink" title="找不到模型文件 / 用于初始化的预训练文件"></a>找不到模型文件 / 用于初始化的预训练文件</h3><blockquote>
+<p>perhaps your file is in a different file format and you need to use a different restore operator?</p>
+</blockquote>
+<p>解决方法类似<a href="https://github.com/tensorflow/tensorflow/issues/7696" target="_blank" rel="external">这里</a>, 即设置的目录不是checkpoint文件所在目录, 还需要把Checkpoint的前缀(prefix)作为目录名的一部分.</p>
+<p>例如名为<code>myModel.ckpt.data-00000-of-00001</code>和其相关的index等checkpoint文件一起放在<code>~/model/</code>文件夹下, 则传入的TensorFlow的参数需要设置为<strong><code>~/model/myModel.ckpt</code></strong>, 而不是<del><code>/model/</code></del></p>
 
       
     </div>
@@ -386,6 +386,12 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/TensorFlow/" rel="tag"># TensorFlow</a>
+          
+        </div>
+      
 
       
       
@@ -395,15 +401,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/09/07/2017/Ubuntu常用命令/" rel="next" title="Ubuntu常用命令">
+                <i class="fa fa-chevron-left"></i> Ubuntu常用命令
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/10/20/2016/Sublime的使用与插件/" rel="prev" title="Sublime使用与插件">
-                Sublime使用与插件 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -537,7 +543,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#博客的内容"><span class="nav-number">1.</span> <span class="nav-text">博客的内容</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#找不到模型文件-用于初始化的预训练文件"><span class="nav-number">1.</span> <span class="nav-text">找不到模型文件 / 用于初始化的预训练文件</span></a></li></ol></div>
             
 
           </div>
