@@ -375,6 +375,10 @@
 </blockquote>
 <p>解决方法类似<a href="https://github.com/tensorflow/tensorflow/issues/7696" target="_blank" rel="external">这里</a>, 即设置的目录不是checkpoint文件所在目录, 还需要把Checkpoint的前缀(prefix)作为目录名的一部分.</p>
 <p>例如名为<code>myModel.ckpt.data-00000-of-00001</code>和其相关的index等checkpoint文件一起放在<code>~/model/</code>文件夹下, 则传入的TensorFlow的参数需要设置为<strong><code>~/model/myModel.ckpt</code></strong>, 而不是<del><code>/model/</code></del></p>
+<h3 id="AttributeError-‘module’-object-has-no-attribute-‘computation’"><a href="#AttributeError-‘module’-object-has-no-attribute-‘computation’" class="headerlink" title="AttributeError: ‘module’ object has no attribute ‘computation’"></a>AttributeError: ‘module’ object has no attribute ‘computation’</h3><blockquote>
+<p>pd.computation.expressions.set_use_numexpr(False)</p>
+</blockquote>
+<h4 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h4><p>很可能是当前包为0.13.0,需要更新到0.15.0+,更新<code>dask</code>包到最新,<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install dask</div></pre></td></tr></table></figure></p>
 
           
         
