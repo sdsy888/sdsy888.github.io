@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="Neo Song">
 <meta property="og:description" content="git项目中的.gitignore文件的作用是:  忽略项目中的某些文件/文件夹，不把某些本地仓库的文件/文件夹提交到远程的版本库中通过git init建立的项目或者git clone下来的项目一般都会有这个文件; 其他情况下需自己手工建立此文件">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-11T01:40:03.000Z">
+<meta property="og:updated_time" content="2017-09-15T11:11:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git中的 .gitignore 的忽略规则">
 <meta name="twitter:description" content="git项目中的.gitignore文件的作用是:  忽略项目中的某些文件/文件夹，不把某些本地仓库的文件/文件夹提交到远程的版本库中通过git init建立的项目或者git clone下来的项目一般都会有这个文件; 其他情况下需自己手工建立此文件">
@@ -379,6 +379,15 @@
 <p><code>test/</code>    # 忽略 根目录下的 <code>test/</code> 目录下的所有文件</p>
 <p><code>examples/*.txt</code> # 只忽略 <code>examples/*.txt</code> 但不忽略<code>examples/</code>目录下子目录中的<code>*.txt</code>文件</p>
 </blockquote>
+<p>另外的一些细节情况:</p>
+<blockquote>
+<p>忽略一个特定的文件：/filename.extension</p>
+<p>1.忽略所有同名的文件：filename.extension</p>
+<p>2.忽略一个特定的目录：folder/ （这会连同其下所有子目录及文件都被忽略）<br>3.但是排除一个特定的模式：（在 3 的基础上）!folder/some/important/filename.extension</p>
+<p>4.忽略指定目录下所有子目录下的特定文件：folder/**/filename.extension</p>
+<p>5.同上，但是只匹配文件扩展名：folder/<em>*/</em>.extension</p>
+<p>6.同上，但是只匹配特定的目录：folder/**/tmp/</p>
+</blockquote>
 <h2 id="特殊情况"><a href="#特殊情况" class="headerlink" title="特殊情况"></a>特殊情况</h2><p>上述情况是项目刚刚建立时使用. 如果一个项目已经建立好, 并且已经push过文件了, 那么此时想把某些目录或文件加入忽略规则，需要将当前目录的git缓存情况才能生效，否则新忽略的文件还是会被上传上去. 原因是:</p>
 <blockquote>
 <p><code>.gitignore</code>只能忽略那些原来没有被track的文件，如果某些文件已经被纳入了版本管理中，则修改<code>.gitignore</code>是无效的。</p>
@@ -506,7 +515,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -528,7 +537,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
