@@ -526,6 +526,9 @@
 <p>pd.computation.expressions.set_use_numexpr(False)</p>
 </blockquote>
 <h4 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h4><p>很可能是当前包为0.13.0,需要更新到0.15.0+,更新<code>dask</code>包到最新,<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install dask</div></pre></td></tr></table></figure></p>
+<h3 id="Couldn’t-open-CUDA-library-libcupti-so-8-0"><a href="#Couldn’t-open-CUDA-library-libcupti-so-8-0" class="headerlink" title="Couldn’t open CUDA library libcupti.so.8.0"></a>Couldn’t open CUDA library libcupti.so.8.0</h3><h4 id="解决办法-1"><a href="#解决办法-1" class="headerlink" title="解决办法"></a>解决办法</h4><blockquote>
+<p>export LD_LIBRARY_PATH=/usr/local/cuda/extras/CUPTI/lib64:$LD_LIBRARY_PATH</p>
+</blockquote>
 
           
         
