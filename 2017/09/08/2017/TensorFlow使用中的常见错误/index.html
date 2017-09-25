@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="Neo Song&#39;s Blog">
 <meta property="og:description" content="找不到模型文件 / 用于初始化的预训练文件 perhaps your file is in a different file format and you need to use a different restore operator?  解决方法类似这里, 即设置的目录不是checkpoint文件所在目录, 还需要把Checkpoint的前缀(prefix)作为目录名的一部分. 例如名为myM">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-21T01:43:55.000Z">
+<meta property="og:updated_time" content="2017-09-25T08:01:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TensorFlow使用中的常见错误">
 <meta name="twitter:description" content="找不到模型文件 / 用于初始化的预训练文件 perhaps your file is in a different file format and you need to use a different restore operator?  解决方法类似这里, 即设置的目录不是checkpoint文件所在目录, 还需要把Checkpoint的前缀(prefix)作为目录名的一部分. 例如名为myM">
@@ -379,10 +379,12 @@
 <h3 id="AttributeError-‘module’-object-has-no-attribute-‘computation’"><a href="#AttributeError-‘module’-object-has-no-attribute-‘computation’" class="headerlink" title="AttributeError: ‘module’ object has no attribute ‘computation’"></a>AttributeError: ‘module’ object has no attribute ‘computation’</h3><blockquote>
 <p>pd.computation.expressions.set_use_numexpr(False)</p>
 </blockquote>
-<h4 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h4><p>很可能是当前包为0.13.0,需要更新到0.15.0+,更新<code>dask</code>包到最新,<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install dask</div></pre></td></tr></table></figure></p>
-<h3 id="Couldn’t-open-CUDA-library-libcupti-so-8-0"><a href="#Couldn’t-open-CUDA-library-libcupti-so-8-0" class="headerlink" title="Couldn’t open CUDA library libcupti.so.8.0"></a>Couldn’t open CUDA library libcupti.so.8.0</h3><h4 id="解决办法-1"><a href="#解决办法-1" class="headerlink" title="解决办法"></a>解决办法</h4><blockquote>
+<p>很可能是当前包为0.13.0,需要更新到0.15.0+,更新<code>dask</code>包到最新,</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install dask</div></pre></td></tr></table></figure>
+<h3 id="Couldn’t-open-CUDA-library-libcupti-so-8-0"><a href="#Couldn’t-open-CUDA-library-libcupti-so-8-0" class="headerlink" title="Couldn’t open CUDA library libcupti.so.8.0"></a>Couldn’t open CUDA library libcupti.so.8.0</h3><h4 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h4><blockquote>
 <p>export LD_LIBRARY_PATH=/usr/local/cuda/extras/CUPTI/lib64:$LD_LIBRARY_PATH</p>
 </blockquote>
+<h3 id="Dst-tensor-is-not-initialized"><a href="#Dst-tensor-is-not-initialized" class="headerlink" title="Dst tensor is not initialized"></a>Dst tensor is not initialized</h3><p>一般是由于 GPU 显存已满, tensor 无法初始化造成的.</p>
 
       
     </div>
@@ -502,7 +504,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -524,7 +526,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -594,7 +596,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#找不到模型文件-用于初始化的预训练文件"><span class="nav-number">1.</span> <span class="nav-text">找不到模型文件 / 用于初始化的预训练文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AttributeError-‘module’-object-has-no-attribute-‘computation’"><span class="nav-number">2.</span> <span class="nav-text">AttributeError: ‘module’ object has no attribute ‘computation’</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解决办法"><span class="nav-number">2.1.</span> <span class="nav-text">解决办法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Couldn’t-open-CUDA-library-libcupti-so-8-0"><span class="nav-number">3.</span> <span class="nav-text">Couldn’t open CUDA library libcupti.so.8.0</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解决办法-1"><span class="nav-number">3.1.</span> <span class="nav-text">解决办法</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#找不到模型文件-用于初始化的预训练文件"><span class="nav-number">1.</span> <span class="nav-text">找不到模型文件 / 用于初始化的预训练文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AttributeError-‘module’-object-has-no-attribute-‘computation’"><span class="nav-number">2.</span> <span class="nav-text">AttributeError: ‘module’ object has no attribute ‘computation’</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Couldn’t-open-CUDA-library-libcupti-so-8-0"><span class="nav-number">3.</span> <span class="nav-text">Couldn’t open CUDA library libcupti.so.8.0</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#解决办法"><span class="nav-number">3.1.</span> <span class="nav-text">解决办法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dst-tensor-is-not-initialized"><span class="nav-number">4.</span> <span class="nav-text">Dst tensor is not initialized</span></a></li></ol></div>
             
 
           </div>
