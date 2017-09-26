@@ -296,7 +296,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/09/26/Mac上使用pip安装包/" itemprop="url">Mac上使用pip安装包</a></h1>
+                <a class="post-title-link" href="/2017/09/26/Mac上使用pip安装包/" itemprop="url">Mac上使用pip安装jupyter</a></h1>
         
 
         <div class="post-meta">
@@ -371,7 +371,13 @@
         
           
             <p>在 EI captain 版本以及以上系统的 Mac 上使用<code>pip</code>安装 python 相关的包的时候, 由于<code>sip机制</code>(System Integrity Protection)的不允许命令行写入内容到系统目录, 因此一个比较”优雅”的解决方案就是针对当前用户安装包</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install something --user your_user_name</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install jupyter --user your_user_name</div></pre></td></tr></table></figure>
+<p>安装完成后, 直接在命令行里输入<code>jupyter notebook</code>可能会显示<code>jupyter command not found</code>, 这是由于 pip 安装完 jupyter 后并没有将其加入到 mac 当前运行环境中.</p>
+<ol>
+<li>先找到 jupyter 安装位置, 通常是在<code>/Users/neo(your_user_name)/Libraries/Python/2.7/bin</code></li>
+<li>将下面命令添加到<code>~/.bash_profile</code>中<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">export export PATH=/Users/neo/Library/Python/2.7/bin/:$PATH</div></pre></td></tr></table></figure>
+</li>
+</ol>
 
           
         
