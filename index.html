@@ -369,17 +369,14 @@
 
       
         
-          
-            <p>在 EI captain 版本以及以上系统的 Mac 上使用<code>pip</code>安装 python 相关的包的时候, 由于<code>sip机制</code>(System Integrity Protection)的不允许命令行写入内容到系统目录, 因此一个比较”优雅”的解决方案就是针对当前用户安装包</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install jupyter --user your_user_name</div></pre></td></tr></table></figure>
-<p>安装完成后, 直接在命令行里输入<code>jupyter notebook</code>可能会显示<code>jupyter command not found</code>, 这是由于 pip 安装完 jupyter 后并没有将其加入到 mac 当前运行环境中.</p>
-<ol>
-<li>先找到 jupyter 安装位置, 通常是在<code>/Users/neo(your_user_name)/Libraries/Python/2.7/bin</code></li>
-<li>将下面命令添加到<code>~/.bash_profile</code>中<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">export export PATH=/Users/neo/Library/Python/2.7/bin/:$PATH</div></pre></td></tr></table></figure>
-</li>
-</ol>
-
-          
+          <p>在 EI captain 版本以及以上系统的 Mac 上使用<code>pip</code>安装 python 相关的包的时候, 由于<code>sip机制</code>(System Integrity Protection)的不允许命令行写入内容到系统目录, 因此一个比较”优雅”的解决方案就是针对当前用户安装包<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/09/26/Mac上使用pip安装包/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -661,27 +658,18 @@
 
       
         
-          
-            <h2 id="复制-粘贴"><a href="#复制-粘贴" class="headerlink" title="复制/粘贴"></a>复制/粘贴</h2><ol>
+          <h2 id="复制-粘贴"><a href="#复制-粘贴" class="headerlink" title="复制/粘贴"></a>复制/粘贴</h2><ol>
 <li>按<kbd>v</kbd>键进入<code>可视化模式</code>, 然后按<kbd>h/j/k/l</kbd>进行右/下/上/左移动来选中要复制的内容/上/左移动来选中要复制的内容</li>
 <li>选中后按<kbd>y</kbd>键复制内容,或按<kbd>d</kbd>键剪切内容</li>
 <li>按<kbd>esc</kbd>键退出<code>可视化模式</code>后按<kbd>h/j/k/l</kbd>进行右/下/上/左移动确定要粘贴内容的位置</li>
-<li>再次按<kbd>v</kbd>键进入<code>可视化模式</code>,按<kbd>p</kbd>键粘贴</li>
-</ol>
-<h2 id="多行注释"><a href="#多行注释" class="headerlink" title="多行注释"></a>多行注释</h2><ol>
-<li>首先按esc进入命令行模式下，按下<kbd>Ctrl + v</kbd>，进入列（也叫区块）模式;</li>
-<li>在行首使用上下键选择需要注释的多行;</li>
-<li>按下键盘<kbd>I</kbd>键(大写或者<kbd>shift+i</kbd>)，进入插入模式；</li>
-<li>然后输入注释符（<kbd>//</kbd>、<kbd>#</kbd>等）;</li>
-<li>最后按下<kbd>Esc</kbd>键。<br>注：在按下esc键后，会稍等一会才会出现注释，不要着急~~时间很短的</li>
-</ol>
-<h2 id="删除多行注释："><a href="#删除多行注释：" class="headerlink" title="删除多行注释："></a>删除多行注释：</h2><ol>
-<li>按esc进入命令行模式下，按下<kbd>Ctrl + v</kbd>, 进入列模式;</li>
-<li>选定要取消注释的多行;</li>
-<li>按下<kbd>x</kbd>或者<kbd>d</kbd>.</li>
-</ol>
-
-          
+<li><p>再次按<kbd>v</kbd>键进入<code>可视化模式</code>,按<kbd>p</kbd>键粘贴</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/09/15/2017/vim常用命令/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -820,23 +808,18 @@
 
       
         
-          
-            <h3 id="找不到模型文件-用于初始化的预训练文件"><a href="#找不到模型文件-用于初始化的预训练文件" class="headerlink" title="找不到模型文件 / 用于初始化的预训练文件"></a>找不到模型文件 / 用于初始化的预训练文件</h3><blockquote>
+          <h3 id="找不到模型文件-用于初始化的预训练文件"><a href="#找不到模型文件-用于初始化的预训练文件" class="headerlink" title="找不到模型文件 / 用于初始化的预训练文件"></a>找不到模型文件 / 用于初始化的预训练文件</h3><blockquote>
 <p>perhaps your file is in a different file format and you need to use a different restore operator?</p>
 </blockquote>
 <p>解决方法类似<a href="https://github.com/tensorflow/tensorflow/issues/7696" target="_blank" rel="external">这里</a>, 即设置的目录不是checkpoint文件所在目录, 还需要把Checkpoint的前缀(prefix)作为目录名的一部分.</p>
-<p>例如名为<code>myModel.ckpt.data-00000-of-00001</code>和其相关的index等checkpoint文件一起放在<code>~/model/</code>文件夹下, 则传入的TensorFlow的参数需要设置为<strong><code>~/model/myModel.ckpt</code></strong>, 而不是<del><code>/model/</code></del></p>
-<h3 id="AttributeError-‘module’-object-has-no-attribute-‘computation’"><a href="#AttributeError-‘module’-object-has-no-attribute-‘computation’" class="headerlink" title="AttributeError: ‘module’ object has no attribute ‘computation’"></a>AttributeError: ‘module’ object has no attribute ‘computation’</h3><blockquote>
-<p>pd.computation.expressions.set_use_numexpr(False)</p>
-</blockquote>
-<p>很可能是当前包为0.13.0,需要更新到0.15.0+,更新<code>dask</code>包到最新,</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install dask</div></pre></td></tr></table></figure>
-<h3 id="Couldn’t-open-CUDA-library-libcupti-so-8-0"><a href="#Couldn’t-open-CUDA-library-libcupti-so-8-0" class="headerlink" title="Couldn’t open CUDA library libcupti.so.8.0"></a>Couldn’t open CUDA library libcupti.so.8.0</h3><h4 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h4><blockquote>
-<p>export LD_LIBRARY_PATH=/usr/local/cuda/extras/CUPTI/lib64:$LD_LIBRARY_PATH</p>
-</blockquote>
-<h3 id="Dst-tensor-is-not-initialized"><a href="#Dst-tensor-is-not-initialized" class="headerlink" title="Dst tensor is not initialized"></a>Dst tensor is not initialized</h3><p>一般是由于 GPU 显存已满, tensor 无法初始化造成的.</p>
-
-          
+<p>例如名为<code>myModel.ckpt.data-00000-of-00001</code>和其相关的index等checkpoint文件一起放在<code>~/model/</code>文件夹下, 则传入的TensorFlow的参数需要设置为<strong><code>~/model/myModel.ckpt</code></strong>, 而不是<del><code>/model/</code></del><br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/09/08/2017/TensorFlow使用中的常见错误/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
