@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="复制/粘贴 按v键进入可视化模式, 然后按h/j/k/l进行右/下/上/左移动来选中要复制的内容/上/左移动来选中要复制的内容 选中后按y键复制内容,或按d键剪切内容 按esc键退出可视化模式后按h/j/k/l进行右/下/上/左移动确定要粘贴内容的位置 再次按v键进入可视化模式,按p键粘贴  多行注释/反注释">
+<meta name="description" content="复制/粘贴 按v键进入可视化模式, 然后按h/j/k/l进行右/下/上/左移动来选中要复制的内容/上/左移动来选中要复制的内容 选中后按y键复制内容,或按d键剪切内容 按esc键退出可视化模式后按h/j/k/l进行右/下/上/左移动确定要粘贴内容的位置 再次按v键进入可视化模式,按p键粘贴  多行注释 首先按esc进入命令行模式下，按下Ctrl + v，进入列（也叫区块）模式; 在行首使用上下键选">
 <meta name="keywords" content="vim">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vim常用命令">
 <meta property="og:url" content="https://sdsy888.github.io/2017/09/15/2017/vim常用命令/index.html">
 <meta property="og:site_name" content="Neo Song&#39;s Blog">
-<meta property="og:description" content="复制/粘贴 按v键进入可视化模式, 然后按h/j/k/l进行右/下/上/左移动来选中要复制的内容/上/左移动来选中要复制的内容 选中后按y键复制内容,或按d键剪切内容 按esc键退出可视化模式后按h/j/k/l进行右/下/上/左移动确定要粘贴内容的位置 再次按v键进入可视化模式,按p键粘贴  多行注释/反注释">
+<meta property="og:description" content="复制/粘贴 按v键进入可视化模式, 然后按h/j/k/l进行右/下/上/左移动来选中要复制的内容/上/左移动来选中要复制的内容 选中后按y键复制内容,或按d键剪切内容 按esc键退出可视化模式后按h/j/k/l进行右/下/上/左移动确定要粘贴内容的位置 再次按v键进入可视化模式,按p键粘贴  多行注释 首先按esc进入命令行模式下，按下Ctrl + v，进入列（也叫区块）模式; 在行首使用上下键选">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-15T10:46:59.000Z">
+<meta property="og:updated_time" content="2017-09-27T01:23:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vim常用命令">
-<meta name="twitter:description" content="复制/粘贴 按v键进入可视化模式, 然后按h/j/k/l进行右/下/上/左移动来选中要复制的内容/上/左移动来选中要复制的内容 选中后按y键复制内容,或按d键剪切内容 按esc键退出可视化模式后按h/j/k/l进行右/下/上/左移动确定要粘贴内容的位置 再次按v键进入可视化模式,按p键粘贴  多行注释/反注释">
+<meta name="twitter:description" content="复制/粘贴 按v键进入可视化模式, 然后按h/j/k/l进行右/下/上/左移动来选中要复制的内容/上/左移动来选中要复制的内容 选中后按y键复制内容,或按d键剪切内容 按esc键退出可视化模式后按h/j/k/l进行右/下/上/左移动确定要粘贴内容的位置 再次按v键进入可视化模式,按p键粘贴  多行注释 首先按esc进入命令行模式下，按下Ctrl + v，进入列（也叫区块）模式; 在行首使用上下键选">
 
 
 
@@ -377,7 +377,19 @@
 <li>按<kbd>esc</kbd>键退出<code>可视化模式</code>后按<kbd>h/j/k/l</kbd>进行右/下/上/左移动确定要粘贴内容的位置</li>
 <li>再次按<kbd>v</kbd>键进入<code>可视化模式</code>,按<kbd>p</kbd>键粘贴</li>
 </ol>
-<h2 id="多行注释-反注释"><a href="#多行注释-反注释" class="headerlink" title="多行注释/反注释"></a>多行注释/反注释</h2>
+<h2 id="多行注释"><a href="#多行注释" class="headerlink" title="多行注释"></a>多行注释</h2><ol>
+<li>首先按esc进入命令行模式下，按下<kbd>Ctrl + v</kbd>，进入列（也叫区块）模式;</li>
+<li>在行首使用上下键选择需要注释的多行;</li>
+<li>按下键盘<kbd>I</kbd>键(大写或者<kbd>shift+i</kbd>)，进入插入模式；</li>
+<li>然后输入注释符（<kbd>//</kbd>、<kbd>#</kbd>等）;</li>
+<li>最后按下<kbd>Esc</kbd>键。<br>注：在按下esc键后，会稍等一会才会出现注释，不要着急~~时间很短的</li>
+</ol>
+<h2 id="删除多行注释："><a href="#删除多行注释：" class="headerlink" title="删除多行注释："></a>删除多行注释：</h2><ol>
+<li>按esc进入命令行模式下，按下<kbd>Ctrl + v</kbd>, 进入列模式;</li>
+<li>选定要取消注释的多行;</li>
+<li>按下<kbd>x</kbd>或者<kbd>d</kbd>.</li>
+</ol>
+
       
     </div>
     
@@ -588,7 +600,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#复制-粘贴"><span class="nav-number">1.</span> <span class="nav-text">复制/粘贴</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多行注释-反注释"><span class="nav-number">2.</span> <span class="nav-text">多行注释/反注释</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#复制-粘贴"><span class="nav-number">1.</span> <span class="nav-text">复制/粘贴</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多行注释"><span class="nav-number">2.</span> <span class="nav-text">多行注释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除多行注释："><span class="nav-number">3.</span> <span class="nav-text">删除多行注释：</span></a></li></ol></div>
             
 
           </div>
