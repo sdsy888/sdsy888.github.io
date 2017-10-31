@@ -369,8 +369,7 @@
 
       
         
-          
-            <blockquote>
+          <blockquote>
 <p>modified from <a href="https://gist.github.com/shagunsodhani/7e4e1c9817c46e3cb1932f62aac8806b" target="_blank" rel="external">gist</a> and <a href="https://www.quora.com/What-is-the-difference-between-transfer-learning-and-fine-tuning" target="_blank" rel="external">quora</a></p>
 </blockquote>
 <h1 id="1-Curriculum-Learning"><a href="#1-Curriculum-Learning" class="headerlink" title="1. Curriculum Learning"></a>1. Curriculum Learning</h1><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><ul>
@@ -378,65 +377,13 @@
 <li>Motivation comes from the observation that humans and animals seem to learn better when trained with a curriculum like a strategy.</li>
 <li><a href="http://ronan.collobert.com/pub/matos/2009_curriculum_icml.pdf" target="_blank" rel="external">Link</a> to the paper.</li>
 </ul>
-<h2 id="Contributions-of-the-paper"><a href="#Contributions-of-the-paper" class="headerlink" title="Contributions of the paper"></a>Contributions of the paper</h2><ul>
-<li>Explore cases that show that curriculum learning benefits machine learning.</li>
-<li>Offer hypothesis around when and why does it happen.</li>
-<li>Explore relation of curriculum learning with other machine learning approaches.</li>
-</ul>
-<h2 id="Experiments-with-convex-criteria"><a href="#Experiments-with-convex-criteria" class="headerlink" title="Experiments with convex criteria"></a>Experiments with convex criteria</h2><ul>
-<li>Training perceptron where some input data is irrelevant(not predictive of the target class).</li>
-<li>Difficulty can be defined in terms of the number of irrelevant samples or margin from the separating hyperplane.</li>
-<li>Curriculum learning model outperforms no-curriculum based approach.</li>
-<li>Surprisingly, in the case of difficulty defined in terms of the number of irrelevant examples, the anti-curriculum strategy also outperforms no-curriculum strategy.</li>
-</ul>
-<h2 id="Experiments-on-shape-recognition-with-datasets-having-different-variability-in-shapes"><a href="#Experiments-on-shape-recognition-with-datasets-having-different-variability-in-shapes" class="headerlink" title="Experiments on shape recognition with datasets having different variability in shapes"></a>Experiments on shape recognition with datasets having different variability in shapes</h2><ul>
-<li>Standard(target) dataset - Images of rectangles, ellipses, and triangles.</li>
-<li>Easy dataset - Images of squares, circles, and equilateral triangles.</li>
-<li>Start performing gradient descent on easy dataset and switch to target data set at a particular epoch (called <em>switch epoch</em>).</li>
-<li>For no-curriculum learning, the first epoch is the <em>switch epoch</em>.</li>
-<li>As <em>switch epoch</em> increases, the classification error comes down with the best performance when <em>switch epoch</em> is half the total number of epochs.</li>
-<li>Paper does not report results for higher values of <em>switch epoch</em>.</li>
-</ul>
-<h2 id="Experiments-on-language-modeling"><a href="#Experiments-on-language-modeling" class="headerlink" title="Experiments on language modeling"></a>Experiments on language modeling</h2><ul>
-<li>Standard data set is the set of all possible windows of the text of size 5 from Wikipedia where all words in the window appear in 20000 most frequent words.</li>
-<li>Easy dataset considers only those windows where all words appear in 5000 most frequent words in vocabulary.</li>
-<li>Each word from the vocabulary is embedded into a <em>d</em> dimensional feature space using a matrix <strong>W</strong> (to be learnt).</li>
-<li>The model predicts the score of next word, given a window of words.</li>
-<li>Expected value of ranking loss function is minimized to learn <strong>W</strong>.</li>
-<li>Curriculum Learning-based model overtakes the other model soon after switching to the target vocabulary, indicating that curriculum-based model quickly learns new words.</li>
-</ul>
-<h2 id="Curriculum-as-a-continuation-method"><a href="#Curriculum-as-a-continuation-method" class="headerlink" title="Curriculum as a continuation method"></a>Curriculum as a continuation method</h2><ul>
-<li>Continuation methods start with a smoothed objective function and gradually move to less smoothed function.</li>
-<li>Useful in the case where the objective function in non-convex.</li>
-<li>Consider a family of cost functions <em>C<sub>&lambda;</sub>(&theta;)</em> such that  <em>C<sub>0</sub>(&theta;)</em> can be easily optimized and <em>C<sub>1</sub>(&theta;)</em> is the actual objective function.</li>
-<li>Start with <em>C<sub>0</sub>(&theta;)</em> and increase &lambda;, keeping &theta; at a local minimum of <em>C<sub>&lambda;</sub>(&theta;)</em>.</li>
-<li>Idea is to move &theta; towards a dominant (if not global) minima of <em>C<sub>1</sub>(&theta;)</em>.</li>
-<li>Curriculum learning can be seen as a sequence of training criteria starting with an easy-to-optimise objective and moving all the way to the actual objective.</li>
-<li>The paper provides a mathematical formulation of curriculum learning in terms of a target training distribution and a weight function (to model the probability of selecting anyone training example at any step).</li>
-</ul>
-<h2 id="Advantages-of-Curriculum-Learning"><a href="#Advantages-of-Curriculum-Learning" class="headerlink" title="Advantages of Curriculum Learning"></a>Advantages of Curriculum Learning</h2><ul>
-<li>Faster training in the online setting as learner does not try to learn difficult examples when it is not ready.</li>
-<li>Guiding training towards better local minima in parameter space, specifically useful for non-convex methods.</li>
-</ul>
-<h2 id="Relation-to-other-machine-learning-approaches"><a href="#Relation-to-other-machine-learning-approaches" class="headerlink" title="Relation to other machine learning approaches"></a>Relation to other machine learning approaches</h2><ul>
-<li><strong>Unsupervised preprocessing</strong> - Both have a regularizing effect and lower the generalization error for the same training error.</li>
-<li><strong>Active learning</strong> - The learner would benefit most from the examples that are close to the learner’s frontier of knowledge and are neither too hard nor too easy.</li>
-<li><strong>Boosting Algorithms</strong> - Difficult examples are gradually emphasised though the curriculum starts with a focus on easier examples and the training criteria do not change.</li>
-<li><strong>Transfer learning</strong> and <strong>Life-long learning</strong> - Initial tasks are used to guide the optimisation problem.</li>
-</ul>
-<h2 id="Criticism"><a href="#Criticism" class="headerlink" title="Criticism"></a>Criticism</h2><ul>
-<li>Curriculum Learning is not well understood, making it difficult to define the curriculum.</li>
-<li>In one of the examples, anti-curriculum performs better than no-curriculum. Given that curriculum learning is modeled on the idea that learning benefits when examples are presented in order of increasing difficulty, one would expect anti-curriculum to perform worse.</li>
-</ul>
-<h1 id="2-一点理解"><a href="#2-一点理解" class="headerlink" title="2. 一点理解"></a>2. 一点理解</h1><p>网上关于transfer Learning和fine-tuning的区别有很多讨论，基本的区别就是，transfer Learning是一种理念（concept），而fine-tuning则是其实现的具体方法。</p>
-<p>而Curriculum learning和transfer learning的区别主要是在于要学习的domain的差异。</p>
-<ul>
-<li>Curriculum Learning关注如何将一个较难的任务根据有难到易的标准分为不同阶段来学习，即通过先学习简单课程为后续学习打下基础，以使模型不再那么难收敛。可以类比于，学生为了能理解高等数学，要先从初级的数学知识开始学起，难度逐步增加。</li>
-<li>而transfer learning侧重点则是在于如何将在一个domain上学习到的模型迁移（transfer）到新的domain上去。可以类比于，学生学习了数学知识，再想办法将其应用到物理学体系中。</li>
-</ul>
-<p>Reference:<br>[1] <a href="http://valser.org/thread-513-1-1.html" target="_blank" rel="external">http://valser.org/thread-513-1-1.html</a><br>[2] <a href="https://www.quora.com/What-is-the-difference-between-transfer-learning-and-fine-tuning" target="_blank" rel="external">https://www.quora.com/What-is-the-difference-between-transfer-learning-and-fine-tuning</a></p>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/10/31/2017/Curriculum-Learning/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
