@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="Neo Song&#39;s Blog">
 <meta property="og:description" content="介绍Sync-settings可以通过使用Gist建立一个atom的package的描述文件packages.json来在不同设备之间同步Atom的设置和插件.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-08T01:17:56.000Z">
+<meta property="og:updated_time" content="2017-10-25T03:27:06.410Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Atom备份&#x2F;同步神器">
 <meta name="twitter:description" content="介绍Sync-settings可以通过使用Gist建立一个atom的package的描述文件packages.json来在不同设备之间同步Atom的设置和插件.">
@@ -432,6 +432,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">apt-get install polipo</div><div class="line">service polipo stop</div><div class="line">polipo socksParentProxy=localhost:1080</div></pre></td></tr></table></figure>
 <p>还可以把其他相应的服务也设置为走http代理</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">http_proxy=http://localhost:8123 apt-get update</div><div class="line">http_proxy=http://localhost:8123 curl www.google.com</div><div class="line">http_proxy=http://localhost:8123 wget www.google.com</div><div class="line"></div><div class="line">git config --global http.proxy 127.0.0.1:8123</div><div class="line">git <span class="built_in">clone</span> https://github.com/xxx/xxx.git</div><div class="line">git xxx</div><div class="line">git xxx</div><div class="line">git config --global --<span class="built_in">unset</span>-all http.proxy</div></pre></td></tr></table></figure>
+<p>PS: <strong><br><code>popilo</code>也支持在浏览器界面中设置,在浏览器中输入<code>127.0.0.1:8123</code>即可进入设置和说面界面配置相关参数.</strong></p>
 
       
     </div>
@@ -551,7 +552,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">文章</span>
               </a>
             </div>
@@ -573,7 +574,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

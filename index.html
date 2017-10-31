@@ -277,6 +277,212 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/2017/10/31/2017/Curriculum-Learning/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="江前云后">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Neo Song's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/10/31/2017/Curriculum-Learning/" itemprop="url">Curriculum Learning</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-31T10:46:53+08:00">
+                2017-10-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习-Machine-Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习 / Machine Learning</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>modified from <a href="https://gist.github.com/shagunsodhani/7e4e1c9817c46e3cb1932f62aac8806b" target="_blank" rel="external">gist</a> and <a href="https://www.quora.com/What-is-the-difference-between-transfer-learning-and-fine-tuning" target="_blank" rel="external">quora</a></p>
+</blockquote>
+<h1 id="1-Curriculum-Learning"><a href="#1-Curriculum-Learning" class="headerlink" title="1. Curriculum Learning"></a>1. Curriculum Learning</h1><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><ul>
+<li><em>Curriculum Learning</em>  - When training machine learning models, start with easier subtasks and gradually increase the difficulty level of the tasks.</li>
+<li>Motivation comes from the observation that humans and animals seem to learn better when trained with a curriculum like a strategy.</li>
+<li><a href="http://ronan.collobert.com/pub/matos/2009_curriculum_icml.pdf" target="_blank" rel="external">Link</a> to the paper.</li>
+</ul>
+<h2 id="Contributions-of-the-paper"><a href="#Contributions-of-the-paper" class="headerlink" title="Contributions of the paper"></a>Contributions of the paper</h2><ul>
+<li>Explore cases that show that curriculum learning benefits machine learning.</li>
+<li>Offer hypothesis around when and why does it happen.</li>
+<li>Explore relation of curriculum learning with other machine learning approaches.</li>
+</ul>
+<h2 id="Experiments-with-convex-criteria"><a href="#Experiments-with-convex-criteria" class="headerlink" title="Experiments with convex criteria"></a>Experiments with convex criteria</h2><ul>
+<li>Training perceptron where some input data is irrelevant(not predictive of the target class).</li>
+<li>Difficulty can be defined in terms of the number of irrelevant samples or margin from the separating hyperplane.</li>
+<li>Curriculum learning model outperforms no-curriculum based approach.</li>
+<li>Surprisingly, in the case of difficulty defined in terms of the number of irrelevant examples, the anti-curriculum strategy also outperforms no-curriculum strategy.</li>
+</ul>
+<h2 id="Experiments-on-shape-recognition-with-datasets-having-different-variability-in-shapes"><a href="#Experiments-on-shape-recognition-with-datasets-having-different-variability-in-shapes" class="headerlink" title="Experiments on shape recognition with datasets having different variability in shapes"></a>Experiments on shape recognition with datasets having different variability in shapes</h2><ul>
+<li>Standard(target) dataset - Images of rectangles, ellipses, and triangles.</li>
+<li>Easy dataset - Images of squares, circles, and equilateral triangles.</li>
+<li>Start performing gradient descent on easy dataset and switch to target data set at a particular epoch (called <em>switch epoch</em>).</li>
+<li>For no-curriculum learning, the first epoch is the <em>switch epoch</em>.</li>
+<li>As <em>switch epoch</em> increases, the classification error comes down with the best performance when <em>switch epoch</em> is half the total number of epochs.</li>
+<li>Paper does not report results for higher values of <em>switch epoch</em>.</li>
+</ul>
+<h2 id="Experiments-on-language-modeling"><a href="#Experiments-on-language-modeling" class="headerlink" title="Experiments on language modeling"></a>Experiments on language modeling</h2><ul>
+<li>Standard data set is the set of all possible windows of the text of size 5 from Wikipedia where all words in the window appear in 20000 most frequent words.</li>
+<li>Easy dataset considers only those windows where all words appear in 5000 most frequent words in vocabulary.</li>
+<li>Each word from the vocabulary is embedded into a <em>d</em> dimensional feature space using a matrix <strong>W</strong> (to be learnt).</li>
+<li>The model predicts the score of next word, given a window of words.</li>
+<li>Expected value of ranking loss function is minimized to learn <strong>W</strong>.</li>
+<li>Curriculum Learning-based model overtakes the other model soon after switching to the target vocabulary, indicating that curriculum-based model quickly learns new words.</li>
+</ul>
+<h2 id="Curriculum-as-a-continuation-method"><a href="#Curriculum-as-a-continuation-method" class="headerlink" title="Curriculum as a continuation method"></a>Curriculum as a continuation method</h2><ul>
+<li>Continuation methods start with a smoothed objective function and gradually move to less smoothed function.</li>
+<li>Useful in the case where the objective function in non-convex.</li>
+<li>Consider a family of cost functions <em>C<sub>&lambda;</sub>(&theta;)</em> such that  <em>C<sub>0</sub>(&theta;)</em> can be easily optimized and <em>C<sub>1</sub>(&theta;)</em> is the actual objective function.</li>
+<li>Start with <em>C<sub>0</sub>(&theta;)</em> and increase &lambda;, keeping &theta; at a local minimum of <em>C<sub>&lambda;</sub>(&theta;)</em>.</li>
+<li>Idea is to move &theta; towards a dominant (if not global) minima of <em>C<sub>1</sub>(&theta;)</em>.</li>
+<li>Curriculum learning can be seen as a sequence of training criteria starting with an easy-to-optimise objective and moving all the way to the actual objective.</li>
+<li>The paper provides a mathematical formulation of curriculum learning in terms of a target training distribution and a weight function (to model the probability of selecting anyone training example at any step).</li>
+</ul>
+<h2 id="Advantages-of-Curriculum-Learning"><a href="#Advantages-of-Curriculum-Learning" class="headerlink" title="Advantages of Curriculum Learning"></a>Advantages of Curriculum Learning</h2><ul>
+<li>Faster training in the online setting as learner does not try to learn difficult examples when it is not ready.</li>
+<li>Guiding training towards better local minima in parameter space, specifically useful for non-convex methods.</li>
+</ul>
+<h2 id="Relation-to-other-machine-learning-approaches"><a href="#Relation-to-other-machine-learning-approaches" class="headerlink" title="Relation to other machine learning approaches"></a>Relation to other machine learning approaches</h2><ul>
+<li><strong>Unsupervised preprocessing</strong> - Both have a regularizing effect and lower the generalization error for the same training error.</li>
+<li><strong>Active learning</strong> - The learner would benefit most from the examples that are close to the learner’s frontier of knowledge and are neither too hard nor too easy.</li>
+<li><strong>Boosting Algorithms</strong> - Difficult examples are gradually emphasised though the curriculum starts with a focus on easier examples and the training criteria do not change.</li>
+<li><strong>Transfer learning</strong> and <strong>Life-long learning</strong> - Initial tasks are used to guide the optimisation problem.</li>
+</ul>
+<h2 id="Criticism"><a href="#Criticism" class="headerlink" title="Criticism"></a>Criticism</h2><ul>
+<li>Curriculum Learning is not well understood, making it difficult to define the curriculum.</li>
+<li>In one of the examples, anti-curriculum performs better than no-curriculum. Given that curriculum learning is modeled on the idea that learning benefits when examples are presented in order of increasing difficulty, one would expect anti-curriculum to perform worse.</li>
+</ul>
+<h1 id="2-一点理解"><a href="#2-一点理解" class="headerlink" title="2. 一点理解"></a>2. 一点理解</h1><p>网上关于transfer Learning和fine-tuning的区别有很多讨论，基本的区别就是，transfer Learning是一种理念（concept），而fine-tuning则是其实现的具体方法。</p>
+<p>而Curriculum learning和transfer learning的区别主要是在于要学习的domain的差异。</p>
+<ul>
+<li>Curriculum Learning关注如何将一个较难的任务根据有难到易的标准分为不同阶段来学习，即通过先学习简单课程为后续学习打下基础，以使模型不再那么难收敛。可以类比于，学生为了能理解高等数学，要先从初级的数学知识开始学起，难度逐步增加。</li>
+<li>而transfer learning侧重点则是在于如何将在一个domain上学习到的模型迁移（transfer）到新的domain上去。可以类比于，学生学习了数学知识，再想办法将其应用到物理学体系中。</li>
+</ul>
+<p>Reference:<br>[1] <a href="http://valser.org/thread-513-1-1.html" target="_blank" rel="external">http://valser.org/thread-513-1-1.html</a><br>[2] <a href="https://www.quora.com/What-is-the-difference-between-transfer-learning-and-fine-tuning" target="_blank" rel="external">https://www.quora.com/What-is-the-difference-between-transfer-learning-and-fine-tuning</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/2017/09/26/2017/Mac上使用pip安装包/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -442,7 +648,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/09/15/2017/vim常用命令/" itemprop="url">vim常用命令</a></h1>
+                <a class="post-title-link" href="/2017/09/15/2017/vim常用命令/" itemprop="url">vim常用设置与命令</a></h1>
         
 
         <div class="post-meta">
@@ -515,7 +721,22 @@
 
       
         
-          <h2 id="复制-粘贴"><a href="#复制-粘贴" class="headerlink" title="复制/粘贴"></a>复制/粘贴</h2><ol>
+          <h2 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h2><p>编辑当前用户的配置文件以配置vim:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim ~/.vimrc</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>1、显示行号</p>
+<p>在文件末端添加一新行，输入 set nu</p>
+<p>2、语法高亮</p>
+<p>在文件中找到 “syntax on   这一行，去掉前面的双引号”，双引号是注释的意思(vim安装后默认是自动开启语法高亮的)</p>
+<p>3、自动缩进</p>
+<p>在文件末尾添加一行，输入  set autoindent<br>在添加一行，输入         set cindent<br>其中 autoindent 是自动缩进； cindent是特别针对 C语言语法自动缩进</p>
+<p>4、可以为操作的一行添加下划线(功能类似sublime用浅灰色显示当前编辑行)</p>
+<p>set cursorline</p>
+<p>6、设置鼠标</p>
+<p>使用VI编辑文本时，如果想修文件中改离光标较远的位置，可以打开鼠标定位功能.</p>
+<p>set mouse=a</p>
+<p>7、设置tab的缩进量<br>设置TAB键缩进量的方法：set shiftwidth=4 代表Tab转换为4个空格</p>
+</blockquote>
+<h2 id="复制-粘贴"><a href="#复制-粘贴" class="headerlink" title="复制/粘贴"></a>复制/粘贴</h2><ol>
 <li>按<kbd>v</kbd>键进入<code>可视化模式</code>, 然后按<kbd>h/j/k/l</kbd>进行右/下/上/左移动来选中要复制的内容/上/左移动来选中要复制的内容</li>
 <li>选中后按<kbd>y</kbd>键复制内容,或按<kbd>d</kbd>键剪切内容</li>
 <li>按<kbd>esc</kbd>键退出<code>可视化模式</code>后按<kbd>h/j/k/l</kbd>进行右/下/上/左移动确定要粘贴内容的位置</li>
@@ -1261,12 +1482,9 @@
             <blockquote>
 <p>All links are chosen by following the flavor of mine :)</p>
 </blockquote>
-<h2 id="CRF-Conditional-random-field"><a href="#CRF-Conditional-random-field" class="headerlink" title="CRF: Conditional random field"></a>CRF: Conditional random field</h2><ul>
-<li><a href="https://en.wikipedia.org/wiki/Conditional_random_field" target="_blank" rel="external">条件随机场</a></li>
-</ul>
-<h2 id="Batch-Normalization"><a href="#Batch-Normalization" class="headerlink" title="Batch Normalization"></a>Batch Normalization</h2><ul>
-<li><a href="http://blog.csdn.net/hjimce/article/details/50866313" target="_blank" rel="external">批量规范化</a></li>
-</ul>
+<h2 id="CRF-Conditional-random-field"><a href="#CRF-Conditional-random-field" class="headerlink" title="CRF: Conditional random field"></a>CRF: Conditional random field</h2><p><a href="https://en.wikipedia.org/wiki/Conditional_random_field" target="_blank" rel="external">条件随机场</a></p>
+<h2 id="Batch-Normalization"><a href="#Batch-Normalization" class="headerlink" title="Batch Normalization"></a>Batch Normalization</h2><p><a href="http://blog.csdn.net/hjimce/article/details/50866313" target="_blank" rel="external">批量规范化</a></p>
+<h2 id="axis-aligned-bounding-box-AABB"><a href="#axis-aligned-bounding-box-AABB" class="headerlink" title="axis-aligned bounding box (AABB)"></a>axis-aligned bounding box (AABB)</h2><p>坐标对齐的标定框, 指的是图片中与图片的x/y坐标分别平行的框</p>
 
           
         
@@ -1592,152 +1810,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/2017/08/24/2017/Atom的使用和插件/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="江前云后">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Neo Song's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/08/24/2017/Atom的使用和插件/" itemprop="url">Atom的使用和插件</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-24T13:01:00+08:00">
-                2017-08-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/工具-Tools/" itemprop="url" rel="index">
-                    <span itemprop="name">工具 / Tools</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="Atom的使用"><a href="#Atom的使用" class="headerlink" title="Atom的使用"></a>Atom的使用</h1><p>在Atom中使用<code>cmd+,</code>来打开settings<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2017/08/24/2017/Atom的使用和插件/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1788,7 +1860,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">文章</span>
               </a>
             </div>
@@ -1810,7 +1882,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
