@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Mac," />
+  <meta name="keywords" content="Atom," />
 
 
 
@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="在 EI captain 版本以及以上系统的 Mac 上使用pip安装 python 相关的包的时候, 由于sip机制(System Integrity Protection)的不允许命令行写入内容到系统目录, 因此一个比较”优雅”的解决方案就是针对当前用户安装包">
-<meta name="keywords" content="Mac">
+<meta name="description" content="介绍Hydrogen是一款优秀的Atom插件，可以实现在Atom中交互式调试代码，详细介绍可以去项目主页查看。 在Mac版Atom中使用Hydrogen插件Hydrogen使用的是其他Kernal进行调试，常用的是Jupyter，如何安装参考官方的安装指南。安装好后可以直接选中要运行的代码使用cmd+enter运行。 常见问题：  正常情况下，在Atom中可以直接ctrl+，进入install安装">
+<meta name="keywords" content="Atom">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Mac上使用pip安装jupyter">
-<meta property="og:url" content="https://sdsy888.github.io/2017/09/26/2017/Mac上使用pip安装包/index.html">
+<meta property="og:title" content="Mac版Atom使用Hydrogen插件">
+<meta property="og:url" content="https://sdsy888.github.io/2017/11/02/2017/Mac版Atom使用Hydrogen插件/index.html">
 <meta property="og:site_name" content="Neo Song&#39;s Blog">
-<meta property="og:description" content="在 EI captain 版本以及以上系统的 Mac 上使用pip安装 python 相关的包的时候, 由于sip机制(System Integrity Protection)的不允许命令行写入内容到系统目录, 因此一个比较”优雅”的解决方案就是针对当前用户安装包">
+<meta property="og:description" content="介绍Hydrogen是一款优秀的Atom插件，可以实现在Atom中交互式调试代码，详细介绍可以去项目主页查看。 在Mac版Atom中使用Hydrogen插件Hydrogen使用的是其他Kernal进行调试，常用的是Jupyter，如何安装参考官方的安装指南。安装好后可以直接选中要运行的代码使用cmd+enter运行。 常见问题：  正常情况下，在Atom中可以直接ctrl+，进入install安装">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-02T13:39:48.144Z">
+<meta property="og:updated_time" content="2017-11-02T13:58:17.178Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Mac上使用pip安装jupyter">
-<meta name="twitter:description" content="在 EI captain 版本以及以上系统的 Mac 上使用pip安装 python 相关的包的时候, 由于sip机制(System Integrity Protection)的不允许命令行写入内容到系统目录, 因此一个比较”优雅”的解决方案就是针对当前用户安装包">
+<meta name="twitter:title" content="Mac版Atom使用Hydrogen插件">
+<meta name="twitter:description" content="介绍Hydrogen是一款优秀的Atom插件，可以实现在Atom中交互式调试代码，详细介绍可以去项目主页查看。 在Mac版Atom中使用Hydrogen插件Hydrogen使用的是其他Kernal进行调试，常用的是Jupyter，如何安装参考官方的安装指南。安装好后可以直接选中要运行的代码使用cmd+enter运行。 常见问题：  正常情况下，在Atom中可以直接ctrl+，进入install安装">
 
 
 
@@ -134,13 +134,13 @@
 
 
 
-  <link rel="canonical" href="https://sdsy888.github.io/2017/09/26/2017/Mac上使用pip安装包/"/>
+  <link rel="canonical" href="https://sdsy888.github.io/2017/11/02/2017/Mac版Atom使用Hydrogen插件/"/>
 
 
 
 
 
-  <title>Mac上使用pip安装jupyter | Neo Song's Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Mac版Atom使用Hydrogen插件 | Neo Song's Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -277,7 +277,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/2017/09/26/2017/Mac上使用pip安装包/">
+    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/2017/11/02/2017/Mac版Atom使用Hydrogen插件/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="江前云后">
@@ -294,7 +294,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Mac上使用pip安装jupyter</h1>
+          <h1 class="post-title" itemprop="name headline">Mac版Atom使用Hydrogen插件</h1>
         
 
         <div class="post-meta">
@@ -306,8 +306,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-26T22:53:06+08:00">
-                2017-09-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-02T21:41:21+08:00">
+                2017-11-02
               </time>
             
 
@@ -371,14 +371,15 @@
       
 
       
-        <p>在 EI captain 版本以及以上系统的 Mac 上使用<code>pip</code>安装 python 相关的包的时候, 由于<code>sip机制</code>(System Integrity Protection)的不允许命令行写入内容到系统目录, 因此一个比较”优雅”的解决方案就是针对当前用户安装包<br><a id="more"></a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install jupyter --user your_user_name</div></pre></td></tr></table></figure>
-<p>安装完成后, 直接在命令行里输入<code>jupyter notebook</code>可能会显示<code>jupyter command not found</code>, 这是由于 pip 安装完 jupyter 后并没有将其加入到 mac 当前运行环境中.</p>
-<ol>
-<li>先找到 jupyter 安装位置, 通常是在<code>/Users/neo(your_user_name)/Libraries/Python/2.7/bin</code></li>
-<li>将下面命令添加到<code>~/.bash_profile</code>中<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">export export PATH=/Users/neo/Library/Python/2.7/bin/:$PATH</div></pre></td></tr></table></figure>
-</li>
-</ol>
+        <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p><a href="https://atom.io/packages/Hydrogen" target="_blank" rel="external">Hydrogen</a>是一款优秀的Atom插件，可以实现在Atom中交互式调试代码，详细介绍可以去<a href="https://atom.io/packages/Hydrogen" target="_blank" rel="external">项目主页</a>查看。</p>
+<h1 id="在Mac版Atom中使用Hydrogen插件"><a href="#在Mac版Atom中使用Hydrogen插件" class="headerlink" title="在Mac版Atom中使用Hydrogen插件"></a>在Mac版Atom中使用Hydrogen插件</h1><p>Hydrogen使用的是其他Kernal进行调试，常用的是Jupyter，如何安装参考官方的<a href="https://nteract.gitbooks.io/hydrogen/docs/Installation.html" target="_blank" rel="external">安装指南</a>。安装好后可以直接选中要运行的代码使用<kbd>cmd+enter</kbd>运行。</p>
+<p>常见问题：</p>
+<ul>
+<li>正常情况下，在Atom中可以直接<kbd>ctrl+，</kbd>进入install安装插件，但是不排除个别情况需要翻墙。</li>
+<li>Mac安装Jupyter的问题请见<a href="./Mac上使用pip安装包">此文章</a></li>
+<li>运行时需要注意，如果只选中了最后的语句很可能报错（没有import相应的包），因为Hydrogen只是运行当前句，而不是运行整个文件。所以如果想要运行的某段代码用到了某个import的包则需要先运行对应的 <code>import *</code>语句</li>
+<li>报错“没有<em>*</em>kernel”。这是由于Jupyter没有在运行，需要先在终端中运行一下<code>Jupyter notebook</code></li>
+</ul>
 
       
     </div>
@@ -396,7 +397,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Mac/" rel="tag"># Mac</a>
+            <a href="/tags/Atom/" rel="tag"># Atom</a>
           
         </div>
       
@@ -409,8 +410,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/09/15/2017/vim常用命令/" rel="next" title="vim常用设置与命令">
-                <i class="fa fa-chevron-left"></i> vim常用设置与命令
+              <a href="/2017/10/31/2017/Curriculum-Learning/" rel="next" title="Curriculum Learning">
+                <i class="fa fa-chevron-left"></i> Curriculum Learning
               </a>
             
           </div>
@@ -418,10 +419,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/10/31/2017/Curriculum-Learning/" rel="prev" title="Curriculum Learning">
-                Curriculum Learning <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -473,8 +470,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpeg"
@@ -571,6 +577,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#介绍"><span class="nav-number">1.</span> <span class="nav-text">介绍</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在Mac版Atom中使用Hydrogen插件"><span class="nav-number">2.</span> <span class="nav-text">在Mac版Atom中使用Hydrogen插件</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
