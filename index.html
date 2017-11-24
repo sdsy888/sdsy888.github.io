@@ -277,7 +277,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/工具-Tools/使用alias和scp简化文件传输/">
+    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/工具-Tools/2017/使用alias和scp简化文件传输/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="江前云后">
@@ -296,7 +296,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/工具-Tools/使用alias和scp简化文件传输/" itemprop="url">使用alias和scp简化文件传输</a></h1>
+                <a class="post-title-link" href="/工具-Tools/2017/使用alias和scp简化文件传输/" itemprop="url">使用alias和scp简化文件传输</a></h1>
         
 
         <div class="post-meta">
@@ -349,9 +349,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/工具-Tools/使用alias和scp简化文件传输/#comments" itemprop="discussionUrl">
+                <a href="/工具-Tools/2017/使用alias和scp简化文件传输/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="工具-Tools/使用alias和scp简化文件传输/" itemprop="commentCount"></span>
+                        data-disqus-identifier="工具-Tools/2017/使用alias和scp简化文件传输/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -380,21 +380,17 @@
 
       
         
-          
-            <p>近期经常需要使用 <code>scp</code> 命令在本地和服务器之间传输数据，每次总免不了打上一长串远程服务器路径，很是枯燥。所以就想到是否能通过bash的 <code>alias</code>新建一个自己的命令来特定的 scp 需求写入到 <code>bashrc</code>中，这样就可以每次之间敲入自己的命令，然后再将需要传到服务器的文件拖到terminal中轻松完成了。</p>
+          <p>近期经常需要使用 <code>scp</code> 命令在本地和服务器之间传输数据，每次总免不了打上一长串远程服务器路径，很是枯燥。所以就想到是否能通过bash的 <code>alias</code>新建一个自己的命令来特定的 scp 需求写入到 <code>bashrc</code>中，这样就可以每次之间敲入自己的命令，然后再将需要传到服务器的文件拖到terminal中轻松完成了。</p>
 <p>本来是想通过如下形式实现，可是发现scp不能在 <code>alias</code> 命令中再从命令行直接接受参数</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">alias</span> 2server=<span class="string">'scp -r $1 neo@10.88.88.88:~/me'</span></div></pre></td></tr></table></figure>
 <p>于是曲线救国：在根目录下新建一个sh脚本文件，实现scp从命令行接收参数的功能，再将这个脚本设置为可执行文件，最后将这个脚本通过alias来添加到系统命令中。</p>
-<p>在根目录下新建如下脚本，保存为 <code>.copy2server.sh</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 注意这里的myfile一定要加双引号，将其转换为字符串的形式</span></div><div class="line">myfiles=<span class="variable">$1</span></div><div class="line">scp -r <span class="string">"<span class="variable">$myfiles</span>"</span> neo@10.88.88.88~/me</div></pre></td></tr></table></figure>
-<p>然后将其设置为可执行：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chmod 777 .copy2server.sh</div></pre></td></tr></table></figure>
-<p>最后使用alias添加到系统中：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">alias</span> 2server=<span class="string">"/home/neo/.copy2server.sh"</span></div></pre></td></tr></table></figure>
-<p>未来需要向服务器传输文件的时候就可以直接轻松实现了：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">2server “拖入的文件”</div></pre></td></tr></table></figure>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/工具-Tools/2017/使用alias和scp简化文件传输/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -441,7 +437,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/机器学习-Machine-Learning/深度学习资源汇总-Deep-Learning-Resource-Collections/">
+    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/机器学习-Machine-Learning/2017/深度学习资源汇总-Deep-Learning-Resource-Collections/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="江前云后">
@@ -460,7 +456,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/机器学习-Machine-Learning/深度学习资源汇总-Deep-Learning-Resource-Collections/" itemprop="url">深度学习资源汇总 | Deep Learning Resource Collections</a></h1>
+                <a class="post-title-link" href="/机器学习-Machine-Learning/2017/深度学习资源汇总-Deep-Learning-Resource-Collections/" itemprop="url">深度学习资源汇总 | Deep Learning Resource Collections</a></h1>
         
 
         <div class="post-meta">
@@ -513,9 +509,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/机器学习-Machine-Learning/深度学习资源汇总-Deep-Learning-Resource-Collections/#comments" itemprop="discussionUrl">
+                <a href="/机器学习-Machine-Learning/2017/深度学习资源汇总-Deep-Learning-Resource-Collections/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="机器学习-Machine-Learning/深度学习资源汇总-Deep-Learning-Resource-Collections/" itemprop="commentCount"></span>
+                        data-disqus-identifier="机器学习-Machine-Learning/2017/深度学习资源汇总-Deep-Learning-Resource-Collections/" itemprop="commentCount"></span>
                 </a>
               </span>
             
