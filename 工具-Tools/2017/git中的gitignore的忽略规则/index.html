@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="Neo Song&#39;s Blog">
 <meta property="og:description" content="git项目中的.gitignore文件的作用是:  忽略项目中的某些文件/文件夹，不把某些本地仓库的文件/文件夹提交到远程的版本库中通过git init建立的项目或者git clone下来的项目一般都会有这个文件; 其他情况下需自己手工建立此文件">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-01T08:13:44.000Z">
+<meta property="og:updated_time" content="2018-10-19T16:31:58.098Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git中的“.gitignore” 的忽略规则">
 <meta name="twitter:description" content="git项目中的.gitignore文件的作用是:  忽略项目中的某些文件/文件夹，不把某些本地仓库的文件/文件夹提交到远程的版本库中通过git init建立的项目或者git clone下来的项目一般都会有这个文件; 其他情况下需自己手工建立此文件">
@@ -408,7 +408,7 @@
 <blockquote>
 <p><code>.gitignore</code>只能忽略那些原来没有被track的文件，如果某些文件已经被纳入了版本管理中，则修改<code>.gitignore</code>是无效的。</p>
 </blockquote>
-<p>方法如下:</p>
+<p>方法如下:(cached前面是两个横线“-”)</p>
 <blockquote>
 <p>git rm -r —cached .<br>git add .<br>git commit -m ‘update .gitignore’</p>
 </blockquote>
