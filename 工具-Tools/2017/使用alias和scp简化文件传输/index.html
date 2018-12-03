@@ -102,7 +102,7 @@
 <meta property="og:site_name" content="Neo&#39;s Blog">
 <meta property="og:description" content="近期经常需要使用 scp 命令在本地和服务器之间传输数据，每次总免不了打上一长串远程服务器路径，很是枯燥。所以就想到是否能通过bash的 alias新建一个自己的命令来特定的 scp 需求写入到 bashrc中，这样就可以每次之间敲入自己的命令，然后再将需要传到服务器的文件拖到terminal中轻松完成了。 本来是想通过如下形式实现，可是发现scp不能在 alias 命令中再从命令行直接接受参数">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-11-24T09:49:33.000Z">
+<meta property="og:updated_time" content="2018-12-03T05:40:52.112Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用alias和scp简化文件传输">
 <meta name="twitter:description" content="近期经常需要使用 scp 命令在本地和服务器之间传输数据，每次总免不了打上一长串远程服务器路径，很是枯燥。所以就想到是否能通过bash的 alias新建一个自己的命令来特定的 scp 需求写入到 bashrc中，这样就可以每次之间敲入自己的命令，然后再将需要传到服务器的文件拖到terminal中轻松完成了。 本来是想通过如下形式实现，可是发现scp不能在 alias 命令中再从命令行直接接受参数">
@@ -388,7 +388,7 @@
 <p>于是曲线救国：在根目录下新建一个sh脚本文件，实现scp从命令行接收参数的功能，再将这个脚本设置为可执行文件，最后将这个脚本通过alias来添加到系统命令中。</p>
 <a id="more"></a>
 <p>在根目录下新建如下脚本，保存为 <code>.copy2server.sh</code></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 注意这里的myfile一定要加双引号，将其转换为字符串的形式</span></div><div class="line">myfiles=<span class="variable">$1</span></div><div class="line">scp -r <span class="string">"<span class="variable">$myfiles</span>"</span> neo@10.88.88.88~/me</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">myfiles=<span class="variable">$1</span></div><div class="line"><span class="comment"># 注意这里的myfile一定要加双引号，将其转换为字符串的形式</span></div><div class="line">scp -r <span class="string">"<span class="variable">$myfiles</span>"</span> neo@10.88.88.88~/me</div></pre></td></tr></table></figure>
 <p>然后将其设置为可执行：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">chmod 777 .copy2server.sh</div></pre></td></tr></table></figure>
 <p>最后使用alias添加到系统中：</p>
