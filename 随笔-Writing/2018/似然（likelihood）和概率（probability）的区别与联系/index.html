@@ -103,7 +103,7 @@
 <meta property="og:description" content="虽然经常在paper和教程中看到“似然（likelihood）”的概念，但是一直都没有仔细研究似然与概率的区别，今天查了一些资料，有些收获，在此总结一下。 似然与概率的区别简单来讲，似然与概率分别是针对不同内容的估计和近似。概率(密度)表达给定$\theta$下样本随机向量$\textbf{X} = \textbf{x}$的可能性，而似然表达了给定样本$\textbf{X} = \textbf{x">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://sdsy888.github.io/image/different_theta_value.jpg">
-<meta property="og:updated_time" content="2018-12-17T19:19:32.772Z">
+<meta property="og:updated_time" content="2018-12-17T19:21:19.074Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="似然（likelihood）和概率（probability）的区别与联系">
 <meta name="twitter:description" content="虽然经常在paper和教程中看到“似然（likelihood）”的概念，但是一直都没有仔细研究似然与概率的区别，今天查了一些资料，有些收获，在此总结一下。 似然与概率的区别简单来讲，似然与概率分别是针对不同内容的估计和近似。概率(密度)表达给定$\theta$下样本随机向量$\textbf{X} = \textbf{x}$的可能性，而似然表达了给定样本$\textbf{X} = \textbf{x">
@@ -385,8 +385,7 @@
 
       
         <p>虽然经常在paper和教程中看到“似然（likelihood）”的概念，但是一直都没有仔细研究似然与概率的区别，今天查了一些资料，有些收获，在此总结一下。</p>
-<h2 id="似然与概率的区别"><a href="#似然与概率的区别" class="headerlink" title="似然与概率的区别"></a>似然与概率的区别</h2><p>简单来讲，似然与概率分别是针对不同内容的估计和近似。概率(密度)表达给定$\theta$下样本随机向量$\textbf{X} = \textbf{x}$的可能性，而似然表达了给定样本$\textbf{X} = \textbf{x}$下参数$\theta=\theta_1$(相对于另外的参数取值$\theta_2$)为真实值的可能性.</p>
-<p>换言之, 似然函数的形式是$L(\theta|x)$,其中”|”代表的是条件概率或者条件分布,因此似然函数是在”已知”样本随机变量$X=x$的情况下,估计参数空间中的参数$\theta$的值. 因此似然函数是关于参数$\theta$的函数,即给定样本随机变量$x$后,估计能够使$X$的取值成为$x$的参数$\theta$的可能性; 而概率密度函数的定义形式是$f(x|\theta)$, 即概率密度函数是在”已知”$\theta$的情况下,去估计样本随机变量$x$出现的可能性.</p>
+<h2 id="似然与概率的区别"><a href="#似然与概率的区别" class="headerlink" title="似然与概率的区别"></a>似然与概率的区别</h2><p>简单来讲，似然与概率分别是针对不同内容的估计和近似。概率(密度)表达给定$\theta$下样本随机向量$\textbf{X} = \textbf{x}$的可能性，而似然表达了给定样本$\textbf{X} = \textbf{x}$下参数$\theta=\theta_1$(相对于另外的参数取值$\theta_2$)为真实值的可能性.<br><a id="more"></a><br>换言之, 似然函数的形式是$L(\theta|x)$,其中”|”代表的是条件概率或者条件分布,因此似然函数是在”已知”样本随机变量$X=x$的情况下,估计参数空间中的参数$\theta$的值. 因此似然函数是关于参数$\theta$的函数,即给定样本随机变量$x$后,估计能够使$X$的取值成为$x$的参数$\theta$的可能性; 而概率密度函数的定义形式是$f(x|\theta)$, 即概率密度函数是在”已知”$\theta$的情况下,去估计样本随机变量$x$出现的可能性.</p>
 <p>注意上面有一句中需要理清几个概念:</p>
 <blockquote>
 <p>估计能够使$X$的取值成为$x$的参数$\theta$的可能性</p>
