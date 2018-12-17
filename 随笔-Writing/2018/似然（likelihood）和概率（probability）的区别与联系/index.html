@@ -103,7 +103,7 @@
 <meta property="og:description" content="虽然经常在paper和教程中看到“似然（likelihood）”的概念，但是一直都没有仔细研究似然与概率的区别，今天查了一些资料，有些收获，在此总结一下。 似然与概率的区别简单来讲，似然与概率分别是针对不同内容的估计和近似。概率(密度)表达给定$\theta$下样本随机向量$\textbf{X} = \textbf{x}$的可能性，而似然表达了给定样本$\textbf{X} = \textbf{x">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://sdsy888.github.io/image/different_theta_value.jpg">
-<meta property="og:updated_time" content="2018-12-17T19:21:19.074Z">
+<meta property="og:updated_time" content="2018-12-17T21:12:24.826Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="似然（likelihood）和概率（probability）的区别与联系">
 <meta name="twitter:description" content="虽然经常在paper和教程中看到“似然（likelihood）”的概念，但是一直都没有仔细研究似然与概率的区别，今天查了一些资料，有些收获，在此总结一下。 似然与概率的区别简单来讲，似然与概率分别是针对不同内容的估计和近似。概率(密度)表达给定$\theta$下样本随机向量$\textbf{X} = \textbf{x}$的可能性，而似然表达了给定样本$\textbf{X} = \textbf{x">
@@ -409,6 +409,9 @@
 <p>如图所示，最有可能的假设是在θ=0.7的时候取到。但是，你无须得出最终的结论θ=0.7。事实上，根据贝叶斯法则，0.7是一个不太可能的取值（如果你知道几乎所有的硬币都是均质的，那么这个实验并没有提供足够的证据来说服你，它是均质的）。但是，0.7却是最大似然估计的取值。因为这里仅仅试验了一次，得到的样本太少，所以最终求出的最大似然值偏差较大，如果经过多次试验，扩充样本空间，则最终求得的最大似然估计将接近真实值0.5。</p>
 <p>作者：HighTao<br>链接：<a href="https://www.zhihu.com/question/54082000/answer/470252492" target="_blank" rel="external">https://www.zhihu.com/question/54082000/answer/470252492</a><br>来源：知乎</p>
 </blockquote>
+<h2 id="One-more-thing"><a href="#One-more-thing" class="headerlink" title="One more thing"></a>One more thing</h2><p>说到似然，就很自然的会想到机器学习。</p>
+<p>在机器学习中，之所以需要似然函数函数的概念，是因为我们往往是想要机器根据已有的数据(相当于$X$)学到相应的分布(即$\theta$),此概念对应training阶段, 即在训练阶段, 是根据已有的$X$来估计其真实的数据分布服从什么样的分布$\theta$.</p>
+<p>而我们构建模型的目的是, 在实际中应用. 例如根据已有的有限的人脸图像和人脸关键点的标注, 使机器学习到包含人脸的图像和其关键点的对应关系的分布; 然后在实际应用中,能够检测未在数据集中出现过的人脸图像的关键点. 因此在测试阶段, 就是已知参数$\theta$, 来估计该分布下, x应该是什么.</p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><blockquote>
 <p><a href="https://www.zhihu.com/question/54082000" target="_blank" rel="external">https://www.zhihu.com/question/54082000</a></p>
 <p><a href="https://www.quora.com/What-is-the-difference-between-probability-and-likelihood-1/answer/Jason-Eisner?share=cbfeda82&amp;srid=zDgIt" target="_blank" rel="external">https://www.quora.com/What-is-the-difference-between-probability-and-likelihood-1/answer/Jason-Eisner?share=cbfeda82&amp;srid=zDgIt</a></p>
@@ -627,7 +630,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#似然与概率的区别"><span class="nav-number">1.</span> <span class="nav-text">似然与概率的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#似然与概率的联系"><span class="nav-number">2.</span> <span class="nav-text">似然与概率的联系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#似然与概率的区别"><span class="nav-number">1.</span> <span class="nav-text">似然与概率的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#似然与概率的联系"><span class="nav-number">2.</span> <span class="nav-text">似然与概率的联系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#One-more-thing"><span class="nav-number">3.</span> <span class="nav-text">One more thing</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
