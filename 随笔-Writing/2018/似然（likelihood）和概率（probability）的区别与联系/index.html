@@ -103,7 +103,7 @@
 <meta property="og:description" content="虽然经常在paper和教程中看到“似然（likelihood）”的概念，但是一直都没有仔细研究似然与概率的区别，今天查了一些资料，有些收获，在此总结一下。 似然与概率的区别简单来讲，似然与概率分别是针对不同内容的估计和近似。概率(密度)表达给定$\theta$下样本随机向量$\textbf{X} = {x}$的可能性，而似然表达了给定样本$\textbf{X} = {x}$下参数$\theta=\">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://sdsy888.github.io/image/different_theta_value.jpg">
-<meta property="og:updated_time" content="2018-12-17T21:15:11.911Z">
+<meta property="og:updated_time" content="2018-12-17T21:19:54.723Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="似然（likelihood）和概率（probability）的区别与联系">
 <meta name="twitter:description" content="虽然经常在paper和教程中看到“似然（likelihood）”的概念，但是一直都没有仔细研究似然与概率的区别，今天查了一些资料，有些收获，在此总结一下。 似然与概率的区别简单来讲，似然与概率分别是针对不同内容的估计和近似。概率(密度)表达给定$\theta$下样本随机向量$\textbf{X} = {x}$的可能性，而似然表达了给定样本$\textbf{X} = {x}$下参数$\theta=\">
@@ -398,17 +398,14 @@
 <h2 id="似然与概率的联系"><a href="#似然与概率的联系" class="headerlink" title="似然与概率的联系"></a>似然与概率的联系</h2><p>似然函数可以看做是同一个函数形式下的不同视角.</p>
 <p>以函数$a^b$为例. 该函数包含了两个变量,a和b. 如果b已知为2, 那么函数就是变量a的二次函数,即$f(a)=a^2$; 如果a已知为2,那么该函数就是变量b的幂函数, 即$f(b)$ = 2^b$.</p>
 <p>同理，$\theta$和$x$也是两个不同的变量，如果$x$的分布是由已知的$\theta$刻画的, 要求估计$X$的实际取值, 那么$p(x|\theta)$就是x的概率密度函数; 如果已知随机变量$x$的取值, 而要估计使$X$取到已知$x$的参数分布,就是似然函数的目的.</p>
-<p>参考知乎上一个形象的例子:</p>
 <blockquote>
+<p>参考<a href="https://www.zhihu.com/question/54082000/answer/470252492" target="_blank" rel="external">知乎</a>上一个形象的例子:</p>
+</blockquote>
 <p>有一个硬币，它有$\theta$的概率会正面向上，有$1-\theta$的概率反面向上。$\theta$是存在的，但是你不知道它是多少。</p>
 <p>为了获得$\theta$的值，你做了一个实验：将硬币抛10次，得到了一个正反序列：$x=HHTTHTHHHH$。无论$\theta$的值是多少，这个序列的概率值为 $\theta⋅\theta⋅(1-\theta)⋅(1-\theta)⋅\theta⋅(1-\theta)⋅\theta⋅\theta⋅\theta⋅\theta = \theta^7 (1-\theta)^3$. 比如，如果$\theta$值为0，则得到这个序列的概率值为0。如果$\theta$值为1/2，概率值为1/1024。但是，我们应该得到一个更大的概率值，所以我们尝试了所有θ可取的值，画出了下图:</p>
-</blockquote>
-<p><img src="/image/different_theta_value.jpg" alt="不同\theta取值下的概率值"></p>
-<blockquote>
+<p><img src="/image/different_theta_value.jpg" alt="不同theta取值下的概率值"></p>
 <p>这个曲线就是θ的似然函数，通过了解在某一假设下，已知数据发生的可能性，来评价哪一个假设更接近θ的真实值。</p>
 <p>如图所示，最有可能的假设是在θ=0.7的时候取到。但是，你无须得出最终的结论θ=0.7。事实上，根据贝叶斯法则，0.7是一个不太可能的取值（如果你知道几乎所有的硬币都是均质的，那么这个实验并没有提供足够的证据来说服你，它是均质的）。但是，0.7却是最大似然估计的取值。因为这里仅仅试验了一次，得到的样本太少，所以最终求出的最大似然值偏差较大，如果经过多次试验，扩充样本空间，则最终求得的最大似然估计将接近真实值0.5。</p>
-<p>作者：HighTao<br>链接：<a href="https://www.zhihu.com/question/54082000/answer/470252492" target="_blank" rel="external">https://www.zhihu.com/question/54082000/answer/470252492</a><br>来源：知乎</p>
-</blockquote>
 <h2 id="One-more-thing"><a href="#One-more-thing" class="headerlink" title="One more thing"></a>One more thing</h2><p>说到似然，就很自然的会想到机器学习。</p>
 <p>在机器学习中，之所以需要似然函数函数的概念，是因为我们往往是想要机器根据已有的数据(相当于$\textbf{X}$)学到相应的分布(即$\theta$),此概念对应training阶段, 即在训练阶段, 是根据已有的$X$来估计其真实的数据分布服从什么样的分布$\theta$.</p>
 <p>而我们构建模型的目的是, 在实际中应用. 例如根据已有的有限的人脸图像和人脸关键点的标注, 使机器学习到包含人脸的图像和其关键点的对应关系的分布; 然后在实际应用中,能够检测未在数据集中出现过的人脸图像的关键点. 因此在测试阶段, 就是已知参数$\theta$, 来估计该分布下, $\textbf{X}$应该是什么.</p>
