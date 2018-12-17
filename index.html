@@ -277,6 +277,188 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/随笔-Writing/似然（likelihood）和概率（probability）的区别与联系/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="江前云后">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Neo's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/随笔-Writing/似然（likelihood）和概率（probability）的区别与联系/" itemprop="url">似然（likelihood）和概率（probability）的区别与联系</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-17T11:09:30-06:00">
+                2018-12-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/随笔-Writing/" itemprop="url" rel="index">
+                    <span itemprop="name">随笔 / Writing</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/随笔-Writing/似然（likelihood）和概率（probability）的区别与联系/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="随笔-Writing/似然（likelihood）和概率（probability）的区别与联系/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>虽然经常在paper和教程中看到“似然（likelihood）”的概念，但是一直都没有仔细研究似然与概率的区别，今天查了一些资料，有些收获，在此总结一下。</p>
+<h2 id="似然与概率的区别"><a href="#似然与概率的区别" class="headerlink" title="似然与概率的区别"></a>似然与概率的区别</h2><p>简单来讲，似然与概率分别是针对不同内容的估计和近似。概率(密度)表达给定$\theta$下样本随机向量$\textbf{X} = \textbf{x}$的可能性，而似然表达了给定样本$\textbf{X} = \textbf{x}$下参数$\theta=\theta_1$(相对于另外的参数取值$\theta_2$)为真实值的可能性.</p>
+<p>换言之, 似然函数的形式是$L(\theta|x)$,其中”|”代表的是条件概率或者条件分布,因此似然函数是在”已知”样本随机变量$X=x$的情况下,估计参数空间中的参数$\theta$的值. 因此似然函数是关于参数$\theta$的函数,即给定样本随机变量$x$后,估计能够使$X$的取值成为$x$的参数$\theta$的可能性; 而概率密度函数的定义形式是$f(x|\theta)$, 即概率密度函数是在”已知”$\theta$的情况下,去估计样本随机变量$x$出现的可能性.</p>
+<p>注意上面有一句中需要理清几个概念:</p>
+<blockquote>
+<p>估计能够使$X$的取值成为$x$的参数$\theta$的可能性</p>
+</blockquote>
+<ol>
+<li>统计学中, 样本随机变量的出现是基于某个分布的.例如$f(x|\theta)$代表x服从$f$分布,而$f$的分布是由参数$\theta$决定的.</li>
+<li>通常在概率统计学中$X$代表的是随机变量,而小写形式$x$通常代表其具体取值. 假定$X$服从二项分布(也可以是任何其他分布), 则可以写成$X~B(n,p), 而该二项分布情况下, 6次试验下x的取值可以是”010011”.</li>
+<li>而上面第一条中, 其实包含了一个前提假设,就是我们已知$X$服从二项分布, 这种假设的数学含义是什么呢? 对, 就是决定该分布的参数为$\theta$, 即参数$\theta$刻画了随机变量$X$在概率空间中服从什么分布. 更具体一点,假如$X$服从二项分布，那么其由$\theta$决定的形式为$f(x;n;k|\theta)=P(X=k)={n \choose k}p^k(1-p)^{n-k}$. 其中p可以代表二项分布中”1”出现的概率,即$\theta$的取值, 比如可以取值为”1/2”. 而在似然估计中$\theta$是怎么得到的呢? 还是以上面$x$的取值”010011”为例, 可以发现6次试验中,”1”出现了三次,那么这种情况下p取值为”1/2”是可能性最大的,即最接近$\theta$的真实分布.</li>
+</ol>
+<h2 id="似然与概率的联系"><a href="#似然与概率的联系" class="headerlink" title="似然与概率的联系"></a>似然与概率的联系</h2><p>似然函数可以看做是同一个函数形式下的不同视角.</p>
+<p>以函数$a^b$为例. 该函数包含了两个变量,a和b. 如果b已知为2, 那么函数就是变量a的二次函数,即$f(a)=a^2$; 如果a已知为2,那么该函数就是变量b的幂函数, 即$f(b)$ = 2^b$.</p>
+<p>同理，$\theta$和$x$也是两个不同的变量，如果$x$的分布是由已知的$\theta$刻画的, 要求估计$X$的实际取值, 那么$p(x|\theta)$就是x的概率密度函数; 如果已知随机变量$x$的取值, 而要估计使$X$取到已知$x$的参数分布,就是似然函数的目的.</p>
+<p>参考知乎上一个形象的例子:</p>
+<blockquote>
+<p>有一个硬币，它有$\theta$的概率会正面向上，有$1-\theta$的概率反面向上。$\theta$是存在的，但是你不知道它是多少。</p>
+<p>为了获得$\theta$的值，你做了一个实验：将硬币抛10次，得到了一个正反序列：$x=HHTTHTHHHH$。无论$\theta$的值是多少，这个序列的概率值为 $\theta⋅\theta⋅(1-\theta)⋅(1-\theta)⋅\theta⋅(1-\theta)⋅\theta⋅\theta⋅\theta⋅\theta = \theta^7 (1-\theta)^3$. 比如，如果$\theta$值为0，则得到这个序列的概率值为0。如果$\theta$值为1/2，概率值为1/1024。但是，我们应该得到一个更大的概率值，所以我们尝试了所有θ可取的值，画出了下图:</p>
+</blockquote>
+<p><img src="http://oykt942t6.bkt.clouddn.com/2018121715450722243316.jpg" alt="不同\theta取值下的概率值"></p>
+<blockquote>
+<p>这个曲线就是θ的似然函数，通过了解在某一假设下，已知数据发生的可能性，来评价哪一个假设更接近θ的真实值。</p>
+<p>如图所示，最有可能的假设是在θ=0.7的时候取到。但是，你无须得出最终的结论θ=0.7。事实上，根据贝叶斯法则，0.7是一个不太可能的取值（如果你知道几乎所有的硬币都是均质的，那么这个实验并没有提供足够的证据来说服你，它是均质的）。但是，0.7却是最大似然估计的取值。因为这里仅仅试验了一次，得到的样本太少，所以最终求出的最大似然值偏差较大，如果经过多次试验，扩充样本空间，则最终求得的最大似然估计将接近真实值0.5。</p>
+<p>作者：HighTao<br>链接：<a href="https://www.zhihu.com/question/54082000/answer/470252492" target="_blank" rel="external">https://www.zhihu.com/question/54082000/answer/470252492</a><br>来源：知乎</p>
+</blockquote>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><blockquote>
+<p><a href="https://www.zhihu.com/question/54082000" target="_blank" rel="external">https://www.zhihu.com/question/54082000</a></p>
+<p><a href="https://www.quora.com/What-is-the-difference-between-probability-and-likelihood-1/answer/Jason-Eisner?share=cbfeda82&amp;srid=zDgIt" target="_blank" rel="external">https://www.quora.com/What-is-the-difference-between-probability-and-likelihood-1/answer/Jason-Eisner?share=cbfeda82&amp;srid=zDgIt</a></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/随笔-Writing/2018/arXiv和CoRR的区别与关系/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1728,163 +1910,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/工具-Tools/2017/Atom备份-同步神器/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="江前云后">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Neo's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/工具-Tools/2017/Atom备份-同步神器/" itemprop="url">Atom备份/同步神器</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-06T10:21:19-05:00">
-                2017-09-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/工具-Tools/" itemprop="url" rel="index">
-                    <span itemprop="name">工具 / Tools</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/工具-Tools/2017/Atom备份-同步神器/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="工具-Tools/2017/Atom备份-同步神器/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p><a href="https://atom.io/packages/sync-settings" target="_blank" rel="external">Sync-settings</a>可以通过使用Gist建立一个atom的package的描述文件<code>packages.json</code>来在不同设备之间同步Atom的设置和插件.</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/工具-Tools/2017/Atom备份-同步神器/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1935,7 +1960,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">文章</span>
               </a>
             </div>
@@ -1957,7 +1982,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

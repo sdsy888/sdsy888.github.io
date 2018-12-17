@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="vim," />
+  <meta name="keywords" content="统计 / Statistics," />
 
 
 
@@ -94,18 +94,20 @@
 
 
 
-<meta name="description" content="设置编辑当前用户的配置文件以配置vim:1vim ~/.vimrc  1、显示行号 在文件末端添加一新行，输入 set nu 2、语法高亮 在文件中找到 “syntax on   这一行，去掉前面的双引号”，双引号是注释的意思(vim安装后默认是自动开启语法高亮的) 3、自动缩进 在文件末尾添加一行，输入  set autoindent在添加一行，输入         set cindent其中">
-<meta name="keywords" content="vim">
+<meta name="description" content="虽然经常在paper和教程中看到“似然（likelihood）”的概念，但是一直都没有仔细研究似然与概率的区别，今天查了一些资料，有些收获，在此总结一下。 似然与概率的区别简单来讲，似然与概率分别是针对不同内容的估计和近似。概率(密度)表达给定$\theta$下样本随机向量$\textbf{X} = \textbf{x}$的可能性，而似然表达了给定样本$\textbf{X} = \textbf{x">
+<meta name="keywords" content="统计 &#x2F; Statistics">
 <meta property="og:type" content="article">
-<meta property="og:title" content="vim常用设置与命令">
-<meta property="og:url" content="https://sdsy888.github.io/工具-Tools/2017/vim常用命令/index.html">
+<meta property="og:title" content="似然（likelihood）和概率（probability）的区别与联系">
+<meta property="og:url" content="https://sdsy888.github.io/随笔-Writing/似然（likelihood）和概率（probability）的区别与联系/index.html">
 <meta property="og:site_name" content="Neo&#39;s Blog">
-<meta property="og:description" content="设置编辑当前用户的配置文件以配置vim:1vim ~/.vimrc  1、显示行号 在文件末端添加一新行，输入 set nu 2、语法高亮 在文件中找到 “syntax on   这一行，去掉前面的双引号”，双引号是注释的意思(vim安装后默认是自动开启语法高亮的) 3、自动缩进 在文件末尾添加一行，输入  set autoindent在添加一行，输入         set cindent其中">
+<meta property="og:description" content="虽然经常在paper和教程中看到“似然（likelihood）”的概念，但是一直都没有仔细研究似然与概率的区别，今天查了一些资料，有些收获，在此总结一下。 似然与概率的区别简单来讲，似然与概率分别是针对不同内容的估计和近似。概率(密度)表达给定$\theta$下样本随机向量$\textbf{X} = \textbf{x}$的可能性，而似然表达了给定样本$\textbf{X} = \textbf{x">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-10-18T01:13:01.000Z">
+<meta property="og:image" content="http://oykt942t6.bkt.clouddn.com/2018121715450722243316.jpg">
+<meta property="og:updated_time" content="2018-12-17T18:47:38.268Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="vim常用设置与命令">
-<meta name="twitter:description" content="设置编辑当前用户的配置文件以配置vim:1vim ~/.vimrc  1、显示行号 在文件末端添加一新行，输入 set nu 2、语法高亮 在文件中找到 “syntax on   这一行，去掉前面的双引号”，双引号是注释的意思(vim安装后默认是自动开启语法高亮的) 3、自动缩进 在文件末尾添加一行，输入  set autoindent在添加一行，输入         set cindent其中">
+<meta name="twitter:title" content="似然（likelihood）和概率（probability）的区别与联系">
+<meta name="twitter:description" content="虽然经常在paper和教程中看到“似然（likelihood）”的概念，但是一直都没有仔细研究似然与概率的区别，今天查了一些资料，有些收获，在此总结一下。 似然与概率的区别简单来讲，似然与概率分别是针对不同内容的估计和近似。概率(密度)表达给定$\theta$下样本随机向量$\textbf{X} = \textbf{x}$的可能性，而似然表达了给定样本$\textbf{X} = \textbf{x">
+<meta name="twitter:image" content="http://oykt942t6.bkt.clouddn.com/2018121715450722243316.jpg">
 
 
 
@@ -134,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="https://sdsy888.github.io/工具-Tools/2017/vim常用命令/"/>
+  <link rel="canonical" href="https://sdsy888.github.io/随笔-Writing/似然（likelihood）和概率（probability）的区别与联系/"/>
 
 
 
 
 
-  <title>vim常用设置与命令 | Neo's Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>似然（likelihood）和概率（probability）的区别与联系 | Neo's Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -277,7 +279,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/工具-Tools/2017/vim常用命令/">
+    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/随笔-Writing/似然（likelihood）和概率（probability）的区别与联系/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="江前云后">
@@ -294,7 +296,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">vim常用设置与命令</h1>
+          <h1 class="post-title" itemprop="name headline">似然（likelihood）和概率（probability）的区别与联系</h1>
         
 
         <div class="post-meta">
@@ -306,8 +308,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-15T18:12:00-05:00">
-                2017-09-15
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-17T11:09:30-06:00">
+                2018-12-17
               </time>
             
 
@@ -329,8 +331,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/工具-Tools/" itemprop="url" rel="index">
-                    <span itemprop="name">工具 / Tools</span>
+                  <a href="/categories/随笔-Writing/" itemprop="url" rel="index">
+                    <span itemprop="name">随笔 / Writing</span>
                   </a>
                 </span>
 
@@ -347,9 +349,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/工具-Tools/2017/vim常用命令/#comments" itemprop="discussionUrl">
+                <a href="/随笔-Writing/似然（likelihood）和概率（probability）的区别与联系/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="工具-Tools/2017/vim常用命令/" itemprop="commentCount"></span>
+                        data-disqus-identifier="随笔-Writing/似然（likelihood）和概率（probability）的区别与联系/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -382,41 +384,36 @@
       
 
       
-        <h2 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h2><p>编辑当前用户的配置文件以配置vim:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim ~/.vimrc</div></pre></td></tr></table></figure></p>
+        <p>虽然经常在paper和教程中看到“似然（likelihood）”的概念，但是一直都没有仔细研究似然与概率的区别，今天查了一些资料，有些收获，在此总结一下。</p>
+<h2 id="似然与概率的区别"><a href="#似然与概率的区别" class="headerlink" title="似然与概率的区别"></a>似然与概率的区别</h2><p>简单来讲，似然与概率分别是针对不同内容的估计和近似。概率(密度)表达给定$\theta$下样本随机向量$\textbf{X} = \textbf{x}$的可能性，而似然表达了给定样本$\textbf{X} = \textbf{x}$下参数$\theta=\theta_1$(相对于另外的参数取值$\theta_2$)为真实值的可能性.</p>
+<p>换言之, 似然函数的形式是$L(\theta|x)$,其中”|”代表的是条件概率或者条件分布,因此似然函数是在”已知”样本随机变量$X=x$的情况下,估计参数空间中的参数$\theta$的值. 因此似然函数是关于参数$\theta$的函数,即给定样本随机变量$x$后,估计能够使$X$的取值成为$x$的参数$\theta$的可能性; 而概率密度函数的定义形式是$f(x|\theta)$, 即概率密度函数是在”已知”$\theta$的情况下,去估计样本随机变量$x$出现的可能性.</p>
+<p>注意上面有一句中需要理清几个概念:</p>
 <blockquote>
-<p>1、显示行号</p>
-<p>在文件末端添加一新行，输入 set nu</p>
-<p>2、语法高亮</p>
-<p>在文件中找到 “syntax on   这一行，去掉前面的双引号”，双引号是注释的意思(vim安装后默认是自动开启语法高亮的)</p>
-<p>3、自动缩进</p>
-<p>在文件末尾添加一行，输入  set autoindent<br>在添加一行，输入         set cindent<br>其中 autoindent 是自动缩进； cindent是特别针对 C语言语法自动缩进</p>
-<p>4、可以为操作的一行添加下划线(功能类似sublime用浅灰色显示当前编辑行)</p>
-<p>set cursorline</p>
-<p>6、设置鼠标</p>
-<p>使用VI编辑文本时，如果想修文件中改离光标较远的位置，可以打开鼠标定位功能.</p>
-<p>set mouse=a</p>
-<p>7、设置tab的缩进量<br>设置TAB键缩进量的方法：set shiftwidth=4 代表Tab转换为4个空格</p>
+<p>估计能够使$X$的取值成为$x$的参数$\theta$的可能性</p>
 </blockquote>
-<h2 id="复制-粘贴"><a href="#复制-粘贴" class="headerlink" title="复制/粘贴"></a>复制/粘贴</h2><ol>
-<li>按<kbd>v</kbd>键进入<code>可视化模式</code>, 然后按<kbd>h/j/k/l</kbd>进行右/下/上/左移动来选中要复制的内容/上/左移动来选中要复制的内容</li>
-<li>选中后按<kbd>y</kbd>键复制内容,或按<kbd>d</kbd>键剪切内容</li>
-<li>按<kbd>esc</kbd>键退出<code>可视化模式</code>后按<kbd>h/j/k/l</kbd>进行右/下/上/左移动确定要粘贴内容的位置</li>
-<li><p>再次按<kbd>v</kbd>键进入<code>可视化模式</code>,按<kbd>p</kbd>键粘贴</p>
-<a id="more"></a>
-<h2 id="多行注释"><a href="#多行注释" class="headerlink" title="多行注释"></a>多行注释</h2><ol>
-<li>首先按esc进入命令行模式下，按下<kbd>Ctrl + v</kbd>，进入列（也叫区块）模式;</li>
-<li>在行首使用上下键选择需要注释的多行;</li>
-<li>按下键盘<kbd>I</kbd>键(大写或者<kbd>shift+i</kbd>)，进入插入模式；</li>
-<li>然后输入注释符（<kbd>//</kbd>、<kbd>#</kbd>等）;</li>
-<li>最后按下<kbd>Esc</kbd>键。<br>注：在按下esc键后，会稍等一会才会出现注释，不要着急~~时间很短的</li>
+<ol>
+<li>统计学中, 样本随机变量的出现是基于某个分布的.例如$f(x|\theta)$代表x服从$f$分布,而$f$的分布是由参数$\theta$决定的.</li>
+<li>通常在概率统计学中$X$代表的是随机变量,而小写形式$x$通常代表其具体取值. 假定$X$服从二项分布(也可以是任何其他分布), 则可以写成$X~B(n,p), 而该二项分布情况下, 6次试验下x的取值可以是”010011”.</li>
+<li>而上面第一条中, 其实包含了一个前提假设,就是我们已知$X$服从二项分布, 这种假设的数学含义是什么呢? 对, 就是决定该分布的参数为$\theta$, 即参数$\theta$刻画了随机变量$X$在概率空间中服从什么分布. 更具体一点,假如$X$服从二项分布，那么其由$\theta$决定的形式为$f(x;n;k|\theta)=P(X=k)={n \choose k}p^k(1-p)^{n-k}$. 其中p可以代表二项分布中”1”出现的概率,即$\theta$的取值, 比如可以取值为”1/2”. 而在似然估计中$\theta$是怎么得到的呢? 还是以上面$x$的取值”010011”为例, 可以发现6次试验中,”1”出现了三次,那么这种情况下p取值为”1/2”是可能性最大的,即最接近$\theta$的真实分布.</li>
 </ol>
-</li>
-</ol>
-<h2 id="删除多行注释："><a href="#删除多行注释：" class="headerlink" title="删除多行注释："></a>删除多行注释：</h2><ol>
-<li>按esc进入命令行模式下，按下<kbd>Ctrl + v</kbd>, 进入列模式;</li>
-<li>选定要取消注释的多行;</li>
-<li>按下<kbd>x</kbd>或者<kbd>d</kbd>.</li>
-</ol>
+<h2 id="似然与概率的联系"><a href="#似然与概率的联系" class="headerlink" title="似然与概率的联系"></a>似然与概率的联系</h2><p>似然函数可以看做是同一个函数形式下的不同视角.</p>
+<p>以函数$a^b$为例. 该函数包含了两个变量,a和b. 如果b已知为2, 那么函数就是变量a的二次函数,即$f(a)=a^2$; 如果a已知为2,那么该函数就是变量b的幂函数, 即$f(b)$ = 2^b$.</p>
+<p>同理，$\theta$和$x$也是两个不同的变量，如果$x$的分布是由已知的$\theta$刻画的, 要求估计$X$的实际取值, 那么$p(x|\theta)$就是x的概率密度函数; 如果已知随机变量$x$的取值, 而要估计使$X$取到已知$x$的参数分布,就是似然函数的目的.</p>
+<p>参考知乎上一个形象的例子:</p>
+<blockquote>
+<p>有一个硬币，它有$\theta$的概率会正面向上，有$1-\theta$的概率反面向上。$\theta$是存在的，但是你不知道它是多少。</p>
+<p>为了获得$\theta$的值，你做了一个实验：将硬币抛10次，得到了一个正反序列：$x=HHTTHTHHHH$。无论$\theta$的值是多少，这个序列的概率值为 $\theta⋅\theta⋅(1-\theta)⋅(1-\theta)⋅\theta⋅(1-\theta)⋅\theta⋅\theta⋅\theta⋅\theta = \theta^7 (1-\theta)^3$. 比如，如果$\theta$值为0，则得到这个序列的概率值为0。如果$\theta$值为1/2，概率值为1/1024。但是，我们应该得到一个更大的概率值，所以我们尝试了所有θ可取的值，画出了下图:</p>
+</blockquote>
+<p><img src="http://oykt942t6.bkt.clouddn.com/2018121715450722243316.jpg" alt="不同\theta取值下的概率值"></p>
+<blockquote>
+<p>这个曲线就是θ的似然函数，通过了解在某一假设下，已知数据发生的可能性，来评价哪一个假设更接近θ的真实值。</p>
+<p>如图所示，最有可能的假设是在θ=0.7的时候取到。但是，你无须得出最终的结论θ=0.7。事实上，根据贝叶斯法则，0.7是一个不太可能的取值（如果你知道几乎所有的硬币都是均质的，那么这个实验并没有提供足够的证据来说服你，它是均质的）。但是，0.7却是最大似然估计的取值。因为这里仅仅试验了一次，得到的样本太少，所以最终求出的最大似然值偏差较大，如果经过多次试验，扩充样本空间，则最终求得的最大似然估计将接近真实值0.5。</p>
+<p>作者：HighTao<br>链接：<a href="https://www.zhihu.com/question/54082000/answer/470252492" target="_blank" rel="external">https://www.zhihu.com/question/54082000/answer/470252492</a><br>来源：知乎</p>
+</blockquote>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><blockquote>
+<p><a href="https://www.zhihu.com/question/54082000" target="_blank" rel="external">https://www.zhihu.com/question/54082000</a></p>
+<p><a href="https://www.quora.com/What-is-the-difference-between-probability-and-likelihood-1/answer/Jason-Eisner?share=cbfeda82&amp;srid=zDgIt" target="_blank" rel="external">https://www.quora.com/What-is-the-difference-between-probability-and-likelihood-1/answer/Jason-Eisner?share=cbfeda82&amp;srid=zDgIt</a></p>
+</blockquote>
 
       
     </div>
@@ -434,7 +431,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/vim/" rel="tag"># vim</a>
+            <a href="/tags/统计-Statistics/" rel="tag"># 统计 / Statistics</a>
           
         </div>
       
@@ -447,8 +444,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/框架-Framework/2017/TensorFlow使用中的常见错误/" rel="next" title="TensorFlow使用中的常见问题">
-                <i class="fa fa-chevron-left"></i> TensorFlow使用中的常见问题
+              <a href="/随笔-Writing/2018/arXiv和CoRR的区别与关系/" rel="next" title="arXiv和CoRR的区别与关系">
+                <i class="fa fa-chevron-left"></i> arXiv和CoRR的区别与关系
               </a>
             
           </div>
@@ -456,10 +453,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/工具-Tools/2017/Mac上使用pip安装包/" rel="prev" title="Mac上使用pip安装jupyter">
-                Mac上使用pip安装jupyter <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -635,7 +628,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#设置"><span class="nav-number">1.</span> <span class="nav-text">设置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#复制-粘贴"><span class="nav-number">2.</span> <span class="nav-text">复制/粘贴</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多行注释"><span class="nav-number">3.</span> <span class="nav-text">多行注释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除多行注释："><span class="nav-number">4.</span> <span class="nav-text">删除多行注释：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#似然与概率的区别"><span class="nav-number">1.</span> <span class="nav-text">似然与概率的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#似然与概率的联系"><span class="nav-number">2.</span> <span class="nav-text">似然与概率的联系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
@@ -816,9 +809,9 @@
     
       <script type="text/javascript">
         var disqus_config = function () {
-          this.page.url = 'https://sdsy888.github.io/工具-Tools/2017/vim常用命令/';
-          this.page.identifier = '工具-Tools/2017/vim常用命令/';
-          this.page.title = 'vim常用设置与命令';
+          this.page.url = 'https://sdsy888.github.io/随笔-Writing/似然（likelihood）和概率（probability）的区别与联系/';
+          this.page.identifier = '随笔-Writing/似然（likelihood）和概率（probability）的区别与联系/';
+          this.page.title = '似然（likelihood）和概率（probability）的区别与联系';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://sdsy888.disqus.com/embed.js';
