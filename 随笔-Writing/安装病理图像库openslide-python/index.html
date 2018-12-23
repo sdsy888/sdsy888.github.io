@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="使用python处理svs格式的图像需要特定库的支持,常见的可以选择openslide. Ubuntu上安装openslide可以参考此处,使用 1pip install openslide-python==1.1.1 其中,使用什么版本安装可以参考Openslide官网链接. 但是安装后如果直接在Python中import openslide可能会报以下错误： 1OSError: libopen">
+<meta name="description" content="使用python处理svs格式的医学图像需要特定库的支持,常见的选择有openslide和pyvips.">
 <meta name="keywords" content="Linux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Ubuntu安装svs病理图像处理库openslide-python">
+<meta property="og:title" content="Ubuntu安装医学图像处理库openslide-python和pyvips">
 <meta property="og:url" content="https://sdsy888.github.io/随笔-Writing/安装病理图像库openslide-python/index.html">
 <meta property="og:site_name" content="Neo&#39;s Blog">
-<meta property="og:description" content="使用python处理svs格式的图像需要特定库的支持,常见的可以选择openslide. Ubuntu上安装openslide可以参考此处,使用 1pip install openslide-python==1.1.1 其中,使用什么版本安装可以参考Openslide官网链接. 但是安装后如果直接在Python中import openslide可能会报以下错误： 1OSError: libopen">
+<meta property="og:description" content="使用python处理svs格式的医学图像需要特定库的支持,常见的选择有openslide和pyvips.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-18T22:09:35.950Z">
+<meta property="og:updated_time" content="2018-12-23T18:02:42.267Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ubuntu安装svs病理图像处理库openslide-python">
-<meta name="twitter:description" content="使用python处理svs格式的图像需要特定库的支持,常见的可以选择openslide. Ubuntu上安装openslide可以参考此处,使用 1pip install openslide-python==1.1.1 其中,使用什么版本安装可以参考Openslide官网链接. 但是安装后如果直接在Python中import openslide可能会报以下错误： 1OSError: libopen">
+<meta name="twitter:title" content="Ubuntu安装医学图像处理库openslide-python和pyvips">
+<meta name="twitter:description" content="使用python处理svs格式的医学图像需要特定库的支持,常见的选择有openslide和pyvips.">
 
 
 
@@ -140,7 +140,7 @@
 
 
 
-  <title>Ubuntu安装svs病理图像处理库openslide-python | Neo's Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>Ubuntu安装医学图像处理库openslide-python和pyvips | Neo's Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -294,7 +294,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Ubuntu安装svs病理图像处理库openslide-python</h1>
+          <h1 class="post-title" itemprop="name headline">Ubuntu安装医学图像处理库openslide-python和pyvips</h1>
         
 
         <div class="post-meta">
@@ -382,13 +382,16 @@
       
 
       
-        <p>使用python处理<code>svs</code>格式的图像需要特定库的支持,常见的可以选择<code>openslide</code>.</p>
-<p>Ubuntu上安装openslide可以参考<a href="https://pypi.org/project/openslide-python/1.1.1/#downloads" target="_blank" rel="external">此处</a>,使用</p>
+        <p>使用python处理<code>svs</code>格式的医学图像需要特定库的支持,常见的选择有<code>openslide</code>和<code>pyvips</code>.</p>
+<a id="more"></a>
+<h1 id="1-安装openslide"><a href="#1-安装openslide" class="headerlink" title="1. 安装openslide"></a>1. 安装openslide</h1><p>Ubuntu上安装openslide可以参考<a href="https://pypi.org/project/openslide-python/1.1.1/#downloads" target="_blank" rel="external">此处</a>,使用</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install openslide-python==1.1.1</div></pre></td></tr></table></figure>
 <p>其中,使用什么版本安装可以参考<code>Openslide</code><a href="https://openslide.org/download/" target="_blank" rel="external">官网链接</a>.</p>
 <p>但是安装后如果直接在Python中<code>import openslide</code>可能会报以下错误：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">OSError: libopenslide.so.0: cannot open shared object file: No such file or directory</div></pre></td></tr></table></figure>
 <p>此时可以使用安装缺失的库文件：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo apt install python-openslide</div></pre></td></tr></table></figure></p>
+<h1 id="2-安装pyvips"><a href="#2-安装pyvips" class="headerlink" title="2. 安装pyvips"></a>2. 安装pyvips</h1><p>同样，在linux上安装pyvips时也需要分别安装库文件和接口文件:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">pip install pyvips</div><div class="line">sudo apt install libvips</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -490,8 +493,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpeg"
@@ -506,7 +518,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">文章</span>
               </a>
             </div>
@@ -588,6 +600,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-安装openslide"><span class="nav-number">1.</span> <span class="nav-text">1. 安装openslide</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-安装pyvips"><span class="nav-number">2.</span> <span class="nav-text">2. 安装pyvips</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -765,7 +793,7 @@
         var disqus_config = function () {
           this.page.url = 'https://sdsy888.github.io/随笔-Writing/安装病理图像库openslide-python/';
           this.page.identifier = '随笔-Writing/安装病理图像库openslide-python/';
-          this.page.title = 'Ubuntu安装svs病理图像处理库openslide-python';
+          this.page.title = 'Ubuntu安装医学图像处理库openslide-python和pyvips';
         };
         var d = document, s = d.createElement('script');
         s.src = 'https://sdsy888.disqus.com/embed.js';
