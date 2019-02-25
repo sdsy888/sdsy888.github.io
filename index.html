@@ -277,7 +277,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/随笔-Writing/从Python2切换到Python3之后的UnicodeDecodeError/">
+    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/随笔-Writing/2019/使用PIL-crop图像的错误：AttributeError-idat-object-has-no-attribute-fileno/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="江前云后">
@@ -296,7 +296,167 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/随笔-Writing/从Python2切换到Python3之后的UnicodeDecodeError/" itemprop="url">从Python2切换到Python3之后的UnicodeDecodeError</a></h1>
+                <a class="post-title-link" href="/随笔-Writing/2019/使用PIL-crop图像的错误：AttributeError-idat-object-has-no-attribute-fileno/" itemprop="url">使用PIL crop图像的错误：AttributeError: '_idat' object has no attribute 'fileno' </a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-25T11:51:22-06:00">
+                2019-02-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/随笔-Writing/" itemprop="url" rel="index">
+                    <span itemprop="name">随笔 / Writing</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/随笔-Writing/2019/使用PIL-crop图像的错误：AttributeError-idat-object-has-no-attribute-fileno/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="随笔-Writing/2019/使用PIL-crop图像的错误：AttributeError-idat-object-has-no-attribute-fileno/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在使用PIL的<code>Image</code>类的<code>crop</code>方法切割图像时如果报如下错误:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">AttributeError: '_idat' object has no attribute 'fileno'</div><div class="line"></div><div class="line">During handling of the above exception, another exception occurred:</div><div class="line"></div><div class="line">File "/home/username/anaconda3/lib/python3.7/site-packages/PIL/ImageFile.py", line 489, in _save</div><div class="line">    e.setimage(im.im, b)</div><div class="line">SystemError: tile cannot extend outside image</div></pre></td></tr></table></figure>
+<p>则问题是因为传入crop的<code>box</code>参数超过了图像的边框. 上面第一个错误会让人误以为是图像本身的错误或者编码错误,解决该问题的过程中我尝试了在<code>save</code>函数中显示指定图像格式,如<code>&#39;PNG&#39;</code>等, 都不能解决问题.</p>
+<p>最后查看文档中crop方法的<code>box</code>参数解决了问题:</p>
+<blockquote>
+<p>box – The crop rectangle, as a (left, upper, right, lower)-tuple.</p>
+</blockquote>
+<p>说明传入的参数是给定的”左边位置,上边位置,右边位置,下边位置”的tuple数据类型,并且<strong>要注意<code>右边</code>和<code>下边</code>都要分别比左边和上边大</strong>,否则就会报上面的错误.</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/随笔-Writing/2019/从Python2切换到Python3之后的UnicodeDecodeError/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="江前云后">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Neo's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/随笔-Writing/2019/从Python2切换到Python3之后的UnicodeDecodeError/" itemprop="url">从Python2切换到Python3之后的UnicodeDecodeError</a></h1>
         
 
         <div class="post-meta">
@@ -349,9 +509,9 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/随笔-Writing/从Python2切换到Python3之后的UnicodeDecodeError/#comments" itemprop="discussionUrl">
+                <a href="/随笔-Writing/2019/从Python2切换到Python3之后的UnicodeDecodeError/#comments" itemprop="discussionUrl">
                   <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="随笔-Writing/从Python2切换到Python3之后的UnicodeDecodeError/" itemprop="commentCount"></span>
+                        data-disqus-identifier="随笔-Writing/2019/从Python2切换到Python3之后的UnicodeDecodeError/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -1699,165 +1859,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/机器学习-Machine-Learning/2017/深度学习资源汇总-Deep-Learning-Resource-Collections/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="江前云后">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Neo's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/机器学习-Machine-Learning/2017/深度学习资源汇总-Deep-Learning-Resource-Collections/" itemprop="url">深度学习/CV 网站、博客和书籍 |  Resource Collections</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-14T20:29:01-06:00">
-                2017-11-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/机器学习-Machine-Learning/" itemprop="url" rel="index">
-                    <span itemprop="name">机器学习 / Machine Learning</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/机器学习-Machine-Learning/2017/深度学习资源汇总-Deep-Learning-Resource-Collections/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="机器学习-Machine-Learning/2017/深度学习资源汇总-Deep-Learning-Resource-Collections/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="网站-Websites"><a href="#网站-Websites" class="headerlink" title="网站 / Websites"></a>网站 / Websites</h1><h3 id="Deep-Learning-Monitor"><a href="#Deep-Learning-Monitor" class="headerlink" title="Deep Learning Monitor"></a><a href="https://deeplearn.org" target="_blank" rel="external">Deep Learning Monitor</a></h3><p>会列出一些深度学习相关内容的趋势（Papers, articles, etc.s）</p>
-<h1 id="书籍-Books"><a href="#书籍-Books" class="headerlink" title="书籍 / Books"></a>书籍 / Books</h1><h3 id="Deep-Learning-An-MIT-Press-book"><a href="#Deep-Learning-An-MIT-Press-book" class="headerlink" title="Deep Learning (An MIT Press book)"></a><a href="http://www.deeplearningbook.org" target="_blank" rel="external">Deep Learning (An MIT Press book)</a></h3><p>经典的深度学习“花书”，由Ian Goodfellow， Yoshua Bengio， Aaron Courville编写的深度学习书</p>
-<h3 id="”花书“线代章节的笔记和代码"><a href="#”花书“线代章节的笔记和代码" class="headerlink" title="”花书“线代章节的笔记和代码"></a><a href="https://hadrienj.github.io/posts/" target="_blank" rel="external">”花书“线代章节的笔记和代码</a></h3><h1 id="博客-Blogs"><a href="#博客-Blogs" class="headerlink" title="博客 / Blogs"></a>博客 / Blogs</h1><h3 id="Christopher-Olah-colah"><a href="#Christopher-Olah-colah" class="headerlink" title="Christopher Olah (colah)"></a><a href="http://colah.github.io" target="_blank" rel="external">Christopher Olah (colah)</a></h3><p>C.Olah是Google Brain的Research Scientist，博客主要包含神经网络的基础知识和RNN (LSTM)相关内容。文章写的详细又不冗余，配图也都非常精确形象，用作者自己的话评价“explain them well”</p>
-<h1 id="个人主页-Homepage"><a href="#个人主页-Homepage" class="headerlink" title="个人主页 / Homepage"></a>个人主页 / Homepage</h1><h3 id="Yuandong-Tian"><a href="#Yuandong-Tian" class="headerlink" title="Yuandong Tian"></a><a href="http://yuandong-tian.com" target="_blank" rel="external">Yuandong Tian</a></h3><p>田渊栋的个人主页，是FAIR的Research **Scientist。近期跟踪RL和VQA相关工作。</p>
-<h3 id="Chelsea-Finn"><a href="#Chelsea-Finn" class="headerlink" title="Chelsea Finn"></a><a href="http://people.eecs.berkeley.edu/~cbfinn/" target="_blank" rel="external">Chelsea Finn</a></h3><p>UCB的Phd，做机器学习和机器人（machine learning and its intersection with robotic perception and control）</p>
-<h3 id="Max-Jaderberg"><a href="#Max-Jaderberg" class="headerlink" title="Max Jaderberg"></a><a href="http://www.maxjaderberg.com" target="_blank" rel="external">Max Jaderberg</a></h3><p> DeepMind的senior research scientist，PhD在VGG组，领域是DL和RL，有很多有趣有影响力的工作。</p>
-<h3 id="Wei-Liu"><a href="#Wei-Liu" class="headerlink" title="Wei Liu"></a><a href="http://www.cs.unc.edu/~wliu/" target="_blank" rel="external">Wei Liu</a></h3><p>SSD和GoogLeNet的作者，UNC的PhD</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1908,7 +1909,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">文章</span>
               </a>
             </div>
