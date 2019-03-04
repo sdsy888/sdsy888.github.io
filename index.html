@@ -277,6 +277,166 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/随笔-Writing/python中处理中文标点/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="江前云后">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Neo's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/随笔-Writing/python中处理中文标点/" itemprop="url">使用Python的translate函数处理字符串和中文标点处理方法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-04T14:52:22-06:00">
+                2019-03-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/随笔-Writing/" itemprop="url" rel="index">
+                    <span itemprop="name">随笔 / Writing</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/随笔-Writing/python中处理中文标点/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="随笔-Writing/python中处理中文标点/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="使用Translate函数"><a href="#使用Translate函数" class="headerlink" title="使用Translate函数"></a>使用Translate函数</h1><p>Python3中的translate函数与Python2中已经不同了,使用Python3的方法如下.</p>
+<p><code>translate(table,[deletion],[toNone])</code>函数是在处理字符串str的时候,将其中的某些指定的字符串映射成<code>None</code>或指定的其他字符. 例如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> string</div><div class="line"><span class="comment"># string.punctuation中包含了常用的英文标点符号</span></div><div class="line">translator = str.maketrans(dict.fromkeys(string.punctuation))</div><div class="line">s = <span class="string">'string with "punctuation" inside of it! Does this work? I hope so.'</span></div><div class="line">print(s.translate(translator))</div></pre></td></tr></table></figure></p>
+<p>输出结果应该为：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sdring widh puncduadion inside of id Does dhis work I hope so</div></pre></td></tr></table></figure></p>
+<p>以上输出结果表明,translate函数是将给定的table对应的字符替换为<code>deletion</code>中的字符;将toNone中的字符替换为<code>None</code>.</p>
+<p>而如果字符串中包含中文的时候，则需要对中文做一些特殊处理。</p>
+<h2 id="使用中文标点"><a href="#使用中文标点" class="headerlink" title="使用中文标点"></a>使用中文标点</h2><p>可以使用名为<code>zhon</code>的包来获取常用中文字符, 安装:<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip3 install zhon</div></pre></td></tr></table></figure></p>
+<h2 id="使用zhon包"><a href="#使用zhon包" class="headerlink" title="使用zhon包"></a>使用<code>zhon</code>包</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> zhon.hanzi <span class="keyword">import</span> punctuation <span class="keyword">as</span> ch_punctuation</div></pre></td></tr></table></figure>
+<p>只需将英文的<code>string.punctuation</code>替换为<code>ch_punctuation</code>即可，其他处理方法与英文相同。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/随笔-Writing/2019/使用PIL-crop图像的错误：AttributeError-idat-object-has-no-attribute-fileno/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1699,166 +1859,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/工具-Tools/2017/使用alias和scp简化文件传输/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="江前云后">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Neo's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/工具-Tools/2017/使用alias和scp简化文件传输/" itemprop="url">使用alias和scp简化文件传输</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-21T15:55:07-06:00">
-                2017-11-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/工具-Tools/" itemprop="url" rel="index">
-                    <span itemprop="name">工具 / Tools</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/工具-Tools/2017/使用alias和scp简化文件传输/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count"
-                        data-disqus-identifier="工具-Tools/2017/使用alias和scp简化文件传输/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>近期经常需要使用 <code>scp</code> 命令在本地和服务器之间传输数据，每次总免不了打上一长串远程服务器路径，很是枯燥。所以就想到是否能通过bash的 <code>alias</code>新建一个自己的命令来特定的 scp 需求写入到 <code>bashrc</code>中，这样就可以每次之间敲入自己的命令，然后再将需要传到服务器的文件拖到terminal中轻松完成了。</p>
-<p>本来是想通过如下形式实现，可是发现scp不能在 <code>alias</code> 命令中再从命令行直接接受参数</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">alias</span> 2server=<span class="string">'scp -r $1 neo@10.88.88.88:~/me'</span></div></pre></td></tr></table></figure>
-<p>于是曲线救国：在根目录下新建一个sh脚本文件，实现scp从命令行接收参数的功能，再将这个脚本设置为可执行文件，最后将这个脚本通过alias来添加到系统命令中。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/工具-Tools/2017/使用alias和scp简化文件传输/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1909,7 +1909,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-count">26</span>
                 <span class="site-state-item-name">文章</span>
               </a>
             </div>
