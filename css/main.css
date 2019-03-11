@@ -321,7 +321,7 @@ span.exturl {
   color: #555;
   text-decoration: none;
   outline: none;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #999;
   cursor: pointer;
 }
 a:hover,
@@ -494,12 +494,12 @@ body {
 }
 @media (min-width: 1200px) {
   .container .header-inner {
-    width: 900px;
+    width: 800px;
   }
 }
 @media (min-width: 1600px) {
   .container .header-inner {
-    width: $content-desktop-largest;
+    width: 900px;
   }
 }
 .main-inner {
@@ -508,12 +508,12 @@ body {
 }
 @media (min-width: 1200px) {
   .container .main-inner {
-    width: 900px;
+    width: 800px;
   }
 }
 @media (min-width: 1600px) {
   .container .main-inner {
-    width: $content-desktop-largest;
+    width: 900px;
   }
 }
 .footer {
@@ -526,12 +526,12 @@ body {
 }
 @media (min-width: 1200px) {
   .container .footer-inner {
-    width: 900px;
+    width: 800px;
   }
 }
 @media (min-width: 1600px) {
   .container .footer-inner {
-    width: $content-desktop-largest;
+    width: 900px;
   }
 }
 pre,
@@ -539,7 +539,7 @@ pre,
   overflow: auto;
   margin: 20px 0;
   padding: 0;
-  font-size: 13px;
+  font-size: 14px;
   color: #4d4d4c;
   background: #f7f7f7;
   line-height: 1.6;
@@ -555,7 +555,7 @@ code {
   color: #555;
   background: #eee;
   border-radius: 3px;
-  font-size: 13px;
+  font-size: 14px;
 }
 pre {
   padding: 10px;
@@ -1895,7 +1895,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #cbdfe9;
+  background: #8bb898;
 }
 .links-of-blogroll {
   font-size: 13px;
