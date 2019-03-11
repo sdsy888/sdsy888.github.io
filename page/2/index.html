@@ -2,23 +2,14 @@
 
 
 
-
-
-
-
-
-
-
-
-
   
 
 
-<html class="theme-next muse use-motion" lang="zh-Hans">
+<html class="theme-next pisces use-motion" lang="zh-Hans">
 <head><meta name="generator" content="Hexo 3.8.0">
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="theme-color" content="#222">
 
 
@@ -29,6 +20,8 @@
 
 
 
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
 
 
 
@@ -44,61 +37,64 @@
 
 
 
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
-
-<link rel="stylesheet" href="/css/main.css?v=7.0.1">
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.1">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.1">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=7.0.1" color="#222">
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
 
 
 
 
+  
+  
+  
+  
 
+  
+    
+    
+  
 
+  
 
-<script id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Muse',
-    version: '7.0.1',
-    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
-    back2top: true,
-    back2top_sidebar: false,
-    fancybox: false,
-    fastclick: false,
-    lazyload: false,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
+  
 
+  
 
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
 
 
-  <meta name="description" content="Interested inMachine Learning &amp; Computer Vision">
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css">
+
+
+  <meta name="keywords" content="Hexo, there!">
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2">
+
+
+
+
+
+
+<meta name="description" content="Interested inMachine Learning &amp; Computer Vision">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Neo&#39;s Blog">
 <meta property="og:url" content="https://sdsy888.github.io/page/2/index.html">
@@ -111,6 +107,28 @@
 
 
 
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"always","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
 
 
 
@@ -118,13 +136,9 @@
 
 
 
-<script id="page.configurations">
-  CONFIG.page = {
-    sidebar: "",
-  };
-</script>
 
-  <title>Neo's Blog</title>
+
+  <title>Neo's Blog</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -133,35 +147,6 @@
 
 
 
-
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .motion-element,
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-title { opacity: initial; }
-
-  .use-motion .logo,
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </head>
 
@@ -173,12 +158,13 @@
   
 
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left 
-  page-home">
+   page-home 
+ ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta">
+  <div class="site-meta ">
     
 
     <div class="custom-logo-site-title">
@@ -188,16 +174,13 @@
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-    
       
         <p class="site-subtitle">It always seems impossible <br>until it is done.&ensp;--Oscar Wilde</p>
       
-    
-    
   </div>
 
   <div class="site-nav-toggle">
-    <button aria-label="Toggle navigation bar">
+    <button>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -205,55 +188,65 @@
   </div>
 </div>
 
-
-
 <nav class="site-nav">
+  
+
   
     <ul id="menu" class="menu">
       
         
-        
-        
-          
-          <li class="menu-item menu-item-home">
-
-    
-    
-    
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页 / Home
+          </a>
+        </li>
       
-    
-
-    
-
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
-
-  </li>
         
-        
-        
-          
-          <li class="menu-item menu-item-archives">
-
-    
-    
-    
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于 / About
+          </a>
+        </li>
       
-    
-
-    
-
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
-
-  </li>
-
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档 / Archive
+          </a>
+        </li>
       
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类 / Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签 / Tags
+          </a>
+        </li>
+      
+
       
     </ul>
-  
-
-  
-    
-
   
 
   
@@ -261,20 +254,12 @@
 
 
 
-  
-
-
-
-</div>
+ </div>
     </header>
-
-    
-
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
-          
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
@@ -287,8 +272,6 @@
   
   
 
-  
-
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -298,8 +281,8 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="江前云后">
-      <meta itemprop="description" content="Interested in<br>Machine Learning & Computer Vision">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -313,39 +296,25 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                
-                <a href="/随笔-Writing/2018/arXiv和CoRR的区别与关系/" class="post-title-link" itemprop="url">arXiv和CoRR的区别与关系</a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/随笔-Writing/2018/arXiv和CoRR的区别与关系/" itemprop="url">arXiv和CoRR的区别与关系</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="Created: 2018-12-02 23:03:37 / Modified: 23:41:01" itemprop="dateCreated datePublished" datetime="2018-12-02T23:03:37-06:00">2018-12-02</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-02T23:03:37-06:00">
+                2018-12-02
+              </time>
             
 
             
-              
 
-              
             
           </span>
 
@@ -358,10 +327,14 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/随笔-Writing/" itemprop="url" rel="index"><span itemprop="name">随笔 / Writing</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/随笔-Writing/" itemprop="url" rel="index">
+                    <span itemprop="name">随笔 / Writing</span>
+                  </a>
+                </span>
 
                 
                 
@@ -371,6 +344,15 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/随笔-Writing/2018/arXiv和CoRR的区别与关系/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="随笔-Writing/2018/arXiv和CoRR的区别与关系/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -405,29 +387,21 @@
 </blockquote>
 <p>一言以蔽之，CoRR是arXiv电子服务的一部分，同时只关注与计算机领域的内容；同时CoRR和arXiv一样，都是Cornell大学运营的。<br>
           <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/随笔-Writing/2018/arXiv和CoRR的区别与关系/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
+          <div class="post-button text-center">
+            <a class="btn" href="/随笔-Writing/2018/arXiv和CoRR的区别与关系/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
           <!--/noindex-->
         
       
     </p></div>
-
-    
-
     
     
     
 
     
 
-    
-      
-    
     
 
     
@@ -460,8 +434,6 @@
   
   
 
-  
-
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -471,8 +443,8 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="江前云后">
-      <meta itemprop="description" content="Interested in<br>Machine Learning & Computer Vision">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -486,51 +458,25 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                
-                <a href="/工具-Tools/2017/使用alias和scp简化文件传输/" class="post-title-link" itemprop="url">使用alias和scp简化文件传输</a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/工具-Tools/2017/使用alias和scp简化文件传输/" itemprop="url">使用alias和scp简化文件传输</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="Created: 2017-11-21 15:55:07" itemprop="dateCreated datePublished" datetime="2017-11-21T15:55:07-06:00">2017-11-21</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-21T15:55:07-06:00">
+                2017-11-21
+              </time>
             
 
             
-              
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-12-02 23:40:52" itemprop="dateModified" datetime="2018-12-02T23:40:52-06:00">2018-12-02</time>
-              
             
           </span>
 
@@ -543,10 +489,14 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/工具-Tools/" itemprop="url" rel="index"><span itemprop="name">工具 / Tools</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/工具-Tools/" itemprop="url" rel="index">
+                    <span itemprop="name">工具 / Tools</span>
+                  </a>
+                </span>
 
                 
                 
@@ -556,6 +506,15 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/工具-Tools/2017/使用alias和scp简化文件传输/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="工具-Tools/2017/使用alias和scp简化文件传输/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -587,29 +546,21 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> 2server=<span class="string">'scp -r $1 neo@10.88.88.88:~/me'</span></span><br></pre></td></tr></table></figure>
 <p>于是曲线救国：在根目录下新建一个sh脚本文件，实现scp从命令行接收参数的功能，再将这个脚本设置为可执行文件，最后将这个脚本通过alias来添加到系统命令中。</p>
           <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/工具-Tools/2017/使用alias和scp简化文件传输/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
+          <div class="post-button text-center">
+            <a class="btn" href="/工具-Tools/2017/使用alias和scp简化文件传输/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
           <!--/noindex-->
         
       
     </div>
-
-    
-
     
     
     
 
     
 
-    
-      
-    
     
 
     
@@ -642,8 +593,6 @@
   
   
 
-  
-
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -653,8 +602,8 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="江前云后">
-      <meta itemprop="description" content="Interested in<br>Machine Learning & Computer Vision">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -668,51 +617,25 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                
-                <a href="/机器学习-Machine-Learning/2017/深度学习资源汇总-Deep-Learning-Resource-Collections/" class="post-title-link" itemprop="url">深度学习/CV 网站、博客和书籍 |  Resource Collections</a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/机器学习-Machine-Learning/2017/深度学习资源汇总-Deep-Learning-Resource-Collections/" itemprop="url">深度学习/CV 网站、博客和书籍 |  Resource Collections</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="Created: 2017-11-14 20:29:01" itemprop="dateCreated datePublished" datetime="2017-11-14T20:29:01-06:00">2017-11-14</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-14T20:29:01-06:00">
+                2017-11-14
+              </time>
             
 
             
-              
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-12-17 15:30:55" itemprop="dateModified" datetime="2018-12-17T15:30:55-06:00">2018-12-17</time>
-              
             
           </span>
 
@@ -725,10 +648,14 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/机器学习-Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">机器学习 / Machine Learning</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习-Machine-Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习 / Machine Learning</span>
+                  </a>
+                </span>
 
                 
                 
@@ -738,6 +665,15 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/机器学习-Machine-Learning/2017/深度学习资源汇总-Deep-Learning-Resource-Collections/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="机器学习-Machine-Learning/2017/深度学习资源汇总-Deep-Learning-Resource-Collections/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -777,18 +713,12 @@
         
       
     </div>
-
-    
-
     
     
     
 
     
 
-    
-      
-    
     
 
     
@@ -821,8 +751,6 @@
   
   
 
-  
-
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -832,8 +760,8 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="江前云后">
-      <meta itemprop="description" content="Interested in<br>Machine Learning & Computer Vision">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -847,39 +775,25 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                
-                <a href="/工具-Tools/2017/Mac版Atom使用Hydrogen插件/" class="post-title-link" itemprop="url">Mac版Atom使用Hydrogen插件</a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/工具-Tools/2017/Mac版Atom使用Hydrogen插件/" itemprop="url">Mac版Atom使用Hydrogen插件</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="Created: 2017-11-02 21:41:21 / Modified: 09:21:57" itemprop="dateCreated datePublished" datetime="2017-11-02T21:41:21-05:00">2017-11-02</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-02T21:41:21-05:00">
+                2017-11-02
+              </time>
             
 
             
-              
 
-              
             
           </span>
 
@@ -892,10 +806,14 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/工具-Tools/" itemprop="url" rel="index"><span itemprop="name">工具 / Tools</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/工具-Tools/" itemprop="url" rel="index">
+                    <span itemprop="name">工具 / Tools</span>
+                  </a>
+                </span>
 
                 
                 
@@ -905,6 +823,15 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/工具-Tools/2017/Mac版Atom使用Hydrogen插件/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="工具-Tools/2017/Mac版Atom使用Hydrogen插件/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -946,18 +873,12 @@
         
       
     </div>
-
-    
-
     
     
     
 
     
 
-    
-      
-    
     
 
     
@@ -990,8 +911,6 @@
   
   
 
-  
-
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -1001,8 +920,8 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="江前云后">
-      <meta itemprop="description" content="Interested in<br>Machine Learning & Computer Vision">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1016,39 +935,25 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                
-                <a href="/机器学习-Machine-Learning/2017/Curriculum-Learning/" class="post-title-link" itemprop="url">Curriculum Learning</a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/机器学习-Machine-Learning/2017/Curriculum-Learning/" itemprop="url">Curriculum Learning</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="Created: 2017-10-31 10:46:53 / Modified: 01:31:31" itemprop="dateCreated datePublished" datetime="2017-10-31T10:46:53-05:00">2017-10-31</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-31T10:46:53-05:00">
+                2017-10-31
+              </time>
             
 
             
-              
 
-              
             
           </span>
 
@@ -1061,10 +966,14 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/机器学习-Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">机器学习 / Machine Learning</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习-Machine-Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习 / Machine Learning</span>
+                  </a>
+                </span>
 
                 
                 
@@ -1074,6 +983,15 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/机器学习-Machine-Learning/2017/Curriculum-Learning/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="机器学习-Machine-Learning/2017/Curriculum-Learning/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -1109,29 +1027,21 @@
 <li><a href="http://ronan.collobert.com/pub/matos/2009_curriculum_icml.pdf" target="_blank" rel="noopener">Link</a> to the paper.</li>
 </ul>
           <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/机器学习-Machine-Learning/2017/Curriculum-Learning/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
+          <div class="post-button text-center">
+            <a class="btn" href="/机器学习-Machine-Learning/2017/Curriculum-Learning/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
           <!--/noindex-->
         
       
     </div>
-
-    
-
     
     
     
 
     
 
-    
-      
-    
     
 
     
@@ -1164,8 +1074,6 @@
   
   
 
-  
-
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -1175,8 +1083,8 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="江前云后">
-      <meta itemprop="description" content="Interested in<br>Machine Learning & Computer Vision">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1190,51 +1098,25 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                
-                <a href="/工具-Tools/2017/Mac上使用pip安装包/" class="post-title-link" itemprop="url">Mac上使用pip安装jupyter</a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/工具-Tools/2017/Mac上使用pip安装包/" itemprop="url">Mac上使用pip安装jupyter</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="Created: 2017-09-26 22:53:06" itemprop="dateCreated datePublished" datetime="2017-09-26T22:53:06-05:00">2017-09-26</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-26T22:53:06-05:00">
+                2017-09-26
+              </time>
             
 
             
-              
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2017-11-02 08:39:48" itemprop="dateModified" datetime="2017-11-02T08:39:48-05:00">2017-11-02</time>
-              
             
           </span>
 
@@ -1247,10 +1129,14 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/工具-Tools/" itemprop="url" rel="index"><span itemprop="name">工具 / Tools</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/工具-Tools/" itemprop="url" rel="index">
+                    <span itemprop="name">工具 / Tools</span>
+                  </a>
+                </span>
 
                 
                 
@@ -1260,6 +1146,15 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/工具-Tools/2017/Mac上使用pip安装包/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="工具-Tools/2017/Mac上使用pip安装包/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -1288,29 +1183,21 @@
         
           <p>在 EI captain 版本以及以上系统的 Mac 上使用<code>pip</code>安装 python 相关的包的时候, 由于<code>sip机制</code>(System Integrity Protection)的不允许命令行写入内容到系统目录, 因此一个比较”优雅”的解决方案就是针对当前用户安装包<br>
           <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/工具-Tools/2017/Mac上使用pip安装包/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
+          <div class="post-button text-center">
+            <a class="btn" href="/工具-Tools/2017/Mac上使用pip安装包/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
           <!--/noindex-->
         
       
     </p></div>
-
-    
-
     
     
     
 
     
 
-    
-      
-    
     
 
     
@@ -1343,8 +1230,6 @@
   
   
 
-  
-
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -1354,8 +1239,8 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="江前云后">
-      <meta itemprop="description" content="Interested in<br>Machine Learning & Computer Vision">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1369,51 +1254,25 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                
-                <a href="/工具-Tools/2017/vim常用命令/" class="post-title-link" itemprop="url">vim常用设置与命令</a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/工具-Tools/2017/vim常用命令/" itemprop="url">vim常用设置与命令</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="Created: 2017-09-15 18:12:00" itemprop="dateCreated datePublished" datetime="2017-09-15T18:12:00-05:00">2017-09-15</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-15T18:12:00-05:00">
+                2017-09-15
+              </time>
             
 
             
-              
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2017-10-17 20:13:01" itemprop="dateModified" datetime="2017-10-17T20:13:01-05:00">2017-10-17</time>
-              
             
           </span>
 
@@ -1426,10 +1285,14 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/工具-Tools/" itemprop="url" rel="index"><span itemprop="name">工具 / Tools</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/工具-Tools/" itemprop="url" rel="index">
+                    <span itemprop="name">工具 / Tools</span>
+                  </a>
+                </span>
 
                 
                 
@@ -1439,6 +1302,15 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/工具-Tools/2017/vim常用命令/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="工具-Tools/2017/vim常用命令/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -1486,29 +1358,21 @@
 <li>按<kbd>esc</kbd>键退出<code>可视化模式</code>后按<kbd>h/j/k/l</kbd>进行右/下/上/左移动确定要粘贴内容的位置</li>
 <li><p>再次按<kbd>v</kbd>键进入<code>可视化模式</code>,按<kbd>p</kbd>键粘贴</p>
           <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/工具-Tools/2017/vim常用命令/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
+          <div class="post-button text-center">
+            <a class="btn" href="/工具-Tools/2017/vim常用命令/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
           <!--/noindex-->
         
       
     </li></ol></div>
-
-    
-
     
     
     
 
     
 
-    
-      
-    
     
 
     
@@ -1541,8 +1405,6 @@
   
   
 
-  
-
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -1552,8 +1414,8 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="江前云后">
-      <meta itemprop="description" content="Interested in<br>Machine Learning & Computer Vision">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1567,51 +1429,25 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                
-                <a href="/框架-Framework/2017/TensorFlow使用中的常见错误/" class="post-title-link" itemprop="url">TensorFlow使用中的常见问题</a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/框架-Framework/2017/TensorFlow使用中的常见错误/" itemprop="url">TensorFlow使用中的常见问题</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="Created: 2017-09-08 10:42:27" itemprop="dateCreated datePublished" datetime="2017-09-08T10:42:27-05:00">2017-09-08</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-08T10:42:27-05:00">
+                2017-09-08
+              </time>
             
 
             
-              
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2017-11-08 01:31:36" itemprop="dateModified" datetime="2017-11-08T01:31:36-06:00">2017-11-08</time>
-              
             
           </span>
 
@@ -1624,10 +1460,14 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/框架-Framework/" itemprop="url" rel="index"><span itemprop="name">框架 / Framework</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/框架-Framework/" itemprop="url" rel="index">
+                    <span itemprop="name">框架 / Framework</span>
+                  </a>
+                </span>
 
                 
                 
@@ -1637,6 +1477,15 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/框架-Framework/2017/TensorFlow使用中的常见错误/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="框架-Framework/2017/TensorFlow使用中的常见错误/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -1670,29 +1519,21 @@
 <p>解决方法类似<a href="https://github.com/tensorflow/tensorflow/issues/7696" target="_blank" rel="noopener">这里</a>, 即设置的目录不是checkpoint文件所在目录, 还需要把Checkpoint的前缀(prefix)作为目录名的一部分.</p>
 <p>例如名为<code>myModel.ckpt.data-00000-of-00001</code>和其相关的index等checkpoint文件一起放在<code>~/model/</code>文件夹下, 则传入的TensorFlow的参数需要设置为<strong><code>~/model/myModel.ckpt</code></strong>, 而不是<del><code>/model/</code></del><br>
           <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/框架-Framework/2017/TensorFlow使用中的常见错误/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
+          <div class="post-button text-center">
+            <a class="btn" href="/框架-Framework/2017/TensorFlow使用中的常见错误/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
           <!--/noindex-->
         
       
     </p></div>
-
-    
-
     
     
     
 
     
 
-    
-      
-    
     
 
     
@@ -1725,8 +1566,6 @@
   
   
 
-  
-
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -1736,8 +1575,8 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="江前云后">
-      <meta itemprop="description" content="Interested in<br>Machine Learning & Computer Vision">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1751,51 +1590,25 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                
-                <a href="/系统-System/2017/Ubuntu常用命令/" class="post-title-link" itemprop="url">Shell 笔记</a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/系统-System/2017/Ubuntu常用命令/" itemprop="url">Shell 笔记</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="Created: 2017-09-07 20:44:10" itemprop="dateCreated datePublished" datetime="2017-09-07T20:44:10-05:00">2017-09-07</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-07T20:44:10-05:00">
+                2017-09-07
+              </time>
             
 
             
-              
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2017-11-30 21:54:47" itemprop="dateModified" datetime="2017-11-30T21:54:47-06:00">2017-11-30</time>
-              
             
           </span>
 
@@ -1808,10 +1621,14 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/系统-System/" itemprop="url" rel="index"><span itemprop="name">系统 / System</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/系统-System/" itemprop="url" rel="index">
+                    <span itemprop="name">系统 / System</span>
+                  </a>
+                </span>
 
                 
                 
@@ -1821,6 +1638,15 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/系统-System/2017/Ubuntu常用命令/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="系统-System/2017/Ubuntu常用命令/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -1854,29 +1680,21 @@
 <h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsof [参数][文件]</span><br></pre></td></tr></table></figure>
 <p>可以使用该命令查看你进程开打的文件，打开文件的进程，进程打开的端口(TCP、UDP).</p>
           <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/系统-System/2017/Ubuntu常用命令/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
+          <div class="post-button text-center">
+            <a class="btn" href="/系统-System/2017/Ubuntu常用命令/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
           <!--/noindex-->
         
       
     </div>
-
-    
-
     
     
     
 
     
 
-    
-      
-    
     
 
     
@@ -1909,8 +1727,6 @@
   
   
 
-  
-
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -1920,8 +1736,8 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="江前云后">
-      <meta itemprop="description" content="Interested in<br>Machine Learning & Computer Vision">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpeg">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -1935,51 +1751,25 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                
-                <a href="/工具-Tools/2017/Atom备份-同步神器/" class="post-title-link" itemprop="url">Atom备份/同步神器</a>
-              
-            
-          </h1>
+                <a class="post-title-link" href="/工具-Tools/2017/Atom备份-同步神器/" itemprop="url">Atom备份/同步神器</a></h1>
         
 
         <div class="post-meta">
           <span class="post-time">
-
-            
-            
-            
-
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-
-              
-                
-              
-
-              <time title="Created: 2017-09-06 10:21:19" itemprop="dateCreated datePublished" datetime="2017-09-06T10:21:19-05:00">2017-09-06</time>
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-06T10:21:19-05:00">
+                2017-09-06
+              </time>
             
 
             
-              
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2017-10-24 22:27:06" itemprop="dateModified" datetime="2017-10-24T22:27:06-05:00">2017-10-24</time>
-              
             
           </span>
 
@@ -1992,10 +1782,14 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/工具-Tools/" itemprop="url" rel="index"><span itemprop="name">工具 / Tools</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/工具-Tools/" itemprop="url" rel="index">
+                    <span itemprop="name">工具 / Tools</span>
+                  </a>
+                </span>
 
                 
                 
@@ -2005,6 +1799,15 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/工具-Tools/2017/Atom备份-同步神器/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="工具-Tools/2017/Atom备份-同步神器/" itemprop="commentCount"></span>
+                </a>
+              </span>
             
           
 
@@ -2033,29 +1836,21 @@
         
           <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><p><a href="https://atom.io/packages/sync-settings" target="_blank" rel="noopener">Sync-settings</a>可以通过使用Gist建立一个atom的package的描述文件<code>packages.json</code>来在不同设备之间同步Atom的设置和插件.</p>
           <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/工具-Tools/2017/Atom备份-同步神器/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
+          <div class="post-button text-center">
+            <a class="btn" href="/工具-Tools/2017/Atom备份-同步神器/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
           <!--/noindex-->
         
       
     </div>
-
-    
-
     
     
     
 
     
 
-    
-      
-    
     
 
     
@@ -2084,12 +1879,15 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
 
           </div>
+          
+
+
           
 
         </div>
@@ -2105,135 +1903,107 @@
   </div>
 
   <aside id="sidebar" class="sidebar">
+    
     <div class="sidebar-inner">
 
       
 
       
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
-        <div class="site-overview">
-          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-            
-              <p class="site-author-name" itemprop="name">江前云后</p>
-              <div class="site-description motion-element" itemprop="description">Interested in<br>Machine Learning & Computer Vision</div>
-          </div>
-
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image" src="/images/avatar.jpeg" alt="江前云后">
+          <p class="site-author-name" itemprop="name">江前云后</p>
+           
+              <p class="site-description motion-element" itemprop="description">Interested in<br>Machine Learning & Computer Vision</p>
           
-            <nav class="site-state motion-element">
-              
-                <div class="site-state-item site-state-posts">
-                
-                  <a href="/archives/">
-                
-                    <span class="site-state-item-count">27</span>
-                    <span class="site-state-item-name">posts</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-categories">
-                  
-                    
-                      <a href="/categories/">
-                    
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">8</span>
-                    <span class="site-state-item-name">categories</span>
-                  </a>
-                </div>
-              
-
-              
-                
-                
-                <div class="site-state-item site-state-tags">
-                  
-                    
-                      <a href="/tags/">
-                    
-                  
-                    
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                      
-                    
-                    <span class="site-state-item-count">17</span>
-                    <span class="site-state-item-name">tags</span>
-                  </a>
-                </div>
-              
-            </nav>
-          
-
-          
-
-          
-
-          
-
-          
-          
-
-          
-            
-          
-          
-
         </div>
-      </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">文章</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/sdsy888" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                    
+                      GitHub
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/jiang-qian-yun-hou" target="_blank" title="zhihu">
+                  
+                    <i class="fa fa-fw fa-heart-o"></i>
+                  
+                    
+                      zhihu
+                    
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/ghostleader" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                    
+                      Weibo
+                    
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
 
       
 
@@ -2241,7 +2011,6 @@
 
     </div>
   </aside>
-  
 
 
         
@@ -2250,32 +2019,54 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
+        <div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">江前云后</span>
-
-  
 
   
 </div>
 
 
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
-
-
+  <div class="powered-by">
+    由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+  </div>
 
   <span class="post-meta-divider">|</span>
 
+  <div class="theme-info">
+    主题 &mdash;
+    <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+      NexT.Pisces&nbsp&nbsp
+    </a>
+  </div>
 
 
-  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.0.1</div>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
 
 
 
 
         
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i> Totally visit
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      times
+    </span>
+  
+</div>
 
 
 
@@ -2295,16 +2086,11 @@
       </div>
     
 
-    
-
-    
-
-    
   </div>
 
   
 
-<script>
+<script type="text/javascript">
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
@@ -2318,11 +2104,7 @@
 
 
 
-
-
-
-
-
+  
 
 
 
@@ -2336,38 +2118,63 @@
 
 
   
-  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
 
   
-  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
 
   
-  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-
-
-  
-
-
-  <script src="/js/src/utils.js?v=7.0.1"></script>
-
-  <script src="/js/src/motion.js?v=7.0.1"></script>
-
-
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
 
   
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
   
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
-
-  <script src="/js/src/schemes/muse.js?v=7.0.1"></script>
-
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
 
 
   
 
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
   
 
 
-  <script src="/js/src/next-boot.js?v=7.0.1"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://sdsy888.disqus.com/count.js" async></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
 </script>
@@ -2385,34 +2192,29 @@
 </script>
 <!-- End: Injected MathJax -->
 <!-- hexo-inject:end -->
+    
 
-
-  
-
-  
-
-  
-
-  
-
-
+    
 
   
 
 
 
 
-  
+
+
+
+
+
+
+
+
 
   
 
-  
 
-  
 
-  
 
-  
 
   
 
