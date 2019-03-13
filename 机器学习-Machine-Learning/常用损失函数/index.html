@@ -98,27 +98,25 @@
 
 
 
-  <meta name="description" content="虽然经常在paper和教程中看到“似然（likelihood）”的概念，但是一直都没有仔细研究似然与概率的区别，今天查了一些资料，有些收获，在此总结一下。 似然与概率的区别简单来讲，似然与概率分别是针对不同内容的估计和近似。概率(密度)表达给定$\theta$下样本随机向量$\textbf{X} = {x}$的可能性，而似然表达了给定样本$\textbf{X} = {x}$下参数$\theta=\">
-<meta name="keywords" content="统计 &#x2F; Statistics">
+  <meta name="description" content="常用损失函数损失函数（loss function或cost function）是关于模型输出（predict）与标签（ground-truth）的函数，主要用于衡量在训练集（或验证集、测试集）上的效果。 1.均方误差损失函数 (MSE loss function)损失函数定义如下： L = \frac{(y-label)^2}{2}很少用于分类问题（instance level / pixel">
+<meta name="keywords" content="pytorch">
 <meta property="og:type" content="article">
-<meta property="og:title" content="似然（likelihood）和概率（probability）的区别与联系">
-<meta property="og:url" content="https://sdsy888.github.io/随笔-Writing/2018/似然（likelihood）和概率（probability）的区别与联系/index.html">
+<meta property="og:title" content="常用损失函数">
+<meta property="og:url" content="https://sdsy888.github.io/机器学习-Machine-Learning/常用损失函数/index.html">
 <meta property="og:site_name" content="Neo&#39;s Blog">
-<meta property="og:description" content="虽然经常在paper和教程中看到“似然（likelihood）”的概念，但是一直都没有仔细研究似然与概率的区别，今天查了一些资料，有些收获，在此总结一下。 似然与概率的区别简单来讲，似然与概率分别是针对不同内容的估计和近似。概率(密度)表达给定$\theta$下样本随机向量$\textbf{X} = {x}$的可能性，而似然表达了给定样本$\textbf{X} = {x}$下参数$\theta=\">
+<meta property="og:description" content="常用损失函数损失函数（loss function或cost function）是关于模型输出（predict）与标签（ground-truth）的函数，主要用于衡量在训练集（或验证集、测试集）上的效果。 1.均方误差损失函数 (MSE loss function)损失函数定义如下： L = \frac{(y-label)^2}{2}很少用于分类问题（instance level / pixel">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://sdsy888.github.io/image/different_theta_value.jpg">
-<meta property="og:updated_time" content="2018-12-17T21:31:20.600Z">
+<meta property="og:updated_time" content="2019-03-13T17:49:50.564Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="似然（likelihood）和概率（probability）的区别与联系">
-<meta name="twitter:description" content="虽然经常在paper和教程中看到“似然（likelihood）”的概念，但是一直都没有仔细研究似然与概率的区别，今天查了一些资料，有些收获，在此总结一下。 似然与概率的区别简单来讲，似然与概率分别是针对不同内容的估计和近似。概率(密度)表达给定$\theta$下样本随机向量$\textbf{X} = {x}$的可能性，而似然表达了给定样本$\textbf{X} = {x}$下参数$\theta=\">
-<meta name="twitter:image" content="https://sdsy888.github.io/image/different_theta_value.jpg">
+<meta name="twitter:title" content="常用损失函数">
+<meta name="twitter:description" content="常用损失函数损失函数（loss function或cost function）是关于模型输出（predict）与标签（ground-truth）的函数，主要用于衡量在训练集（或验证集、测试集）上的效果。 1.均方误差损失函数 (MSE loss function)损失函数定义如下： L = \frac{(y-label)^2}{2}很少用于分类问题（instance level / pixel">
 
 
 
 
 
 
-  <link rel="canonical" href="https://sdsy888.github.io/随笔-Writing/2018/似然（likelihood）和概率（probability）的区别与联系/">
+  <link rel="canonical" href="https://sdsy888.github.io/机器学习-Machine-Learning/常用损失函数/">
 
 
 
@@ -128,7 +126,7 @@
   };
 </script>
 
-  <title>似然（likelihood）和概率（probability）的区别与联系 | Neo's Blog</title>
+  <title>常用损失函数 | Neo's Blog</title>
   
 
 
@@ -348,7 +346,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/随笔-Writing/2018/似然（likelihood）和概率（probability）的区别与联系/">
+    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/机器学习-Machine-Learning/常用损失函数/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="江前云后">
@@ -365,7 +363,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">似然（likelihood）和概率（probability）的区别与联系
+          <h1 class="post-title" itemprop="name headline">常用损失函数
 
               
             
@@ -391,7 +389,7 @@
                 
               
 
-              <time title="创建时间：2018-12-17 11:09:30 / 修改时间：15:31:20" itemprop="dateCreated datePublished" datetime="2018-12-17T11:09:30-06:00">2018-12-17</time>
+              <time title="创建时间：2019-03-13 12:47:04 / 修改时间：12:49:50" itemprop="dateCreated datePublished" datetime="2019-03-13T12:47:04-05:00">2019-03-13</time>
             
 
             
@@ -413,7 +411,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/随笔-Writing/" itemprop="url" rel="index"><span itemprop="name">随笔 / Writing</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/机器学习-Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">机器学习 / Machine Learning</span></a></span>
 
                 
                 
@@ -449,7 +447,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">2.5k</span>
+                <span title="本文字数">1.5k</span>
               
 
               
@@ -463,7 +461,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">2 分钟</span>
+                <span title="阅读时长">1 分钟</span>
               
             </div>
           
@@ -483,34 +481,31 @@
       
 
       
-        <p>虽然经常在paper和教程中看到“似然（likelihood）”的概念，但是一直都没有仔细研究似然与概率的区别，今天查了一些资料，有些收获，在此总结一下。</p>
-<h2 id="似然与概率的区别"><a href="#似然与概率的区别" class="headerlink" title="似然与概率的区别"></a>似然与概率的区别</h2><p>简单来讲，似然与概率分别是针对不同内容的估计和近似。概率(密度)表达给定$\theta$下样本随机向量$\textbf{X} = {x}$的可能性，而似然表达了给定样本$\textbf{X} = {x}$下参数$\theta=\theta_1$(相对于另外的参数取值$\theta_2$)为真实值的可能性.<br><a id="more"></a><br>换言之, 似然函数的形式是$L(\theta|x)$,其中”|”代表的是条件概率或者条件分布,因此似然函数是在”已知”样本随机变量$\textbf{X}=x$的情况下,估计参数空间中的参数$\theta$的值. 因此似然函数是关于参数$\theta$的函数,即给定样本随机变量$x$后,估计能够使$X$的取值成为$x$的参数$\theta$的可能性; 而概率密度函数的定义形式是$f(x|\theta)$, 即概率密度函数是在”已知”$\theta$的情况下,去估计样本随机变量$x$出现的可能性.</p>
-<p>注意上面有一句中需要理清几个概念:</p>
+        <h1 id="常用损失函数"><a href="#常用损失函数" class="headerlink" title="常用损失函数"></a>常用损失函数</h1><p>损失函数（loss function或cost function）是关于模型输出（predict）与标签（ground-truth）的函数，主要用于衡量在训练集（或验证集、测试集）上的效果。</p>
+<h2 id="1-均方误差损失函数-MSE-loss-function"><a href="#1-均方误差损失函数-MSE-loss-function" class="headerlink" title="1.均方误差损失函数 (MSE loss function)"></a>1.均方误差损失函数 (MSE loss function)</h2><p>损失函数定义如下：</p>
+<script type="math/tex; mode=display">L = \frac{(y-label)^2}{2}</script><p>很少用于分类问题（instance level / pixel level),主要是由于MSE对于错误输出过于关注(即错误标签和正确标签之间的误差会被平方操作放大),在分类问题中较难收敛.</p>
+<a id="more"></a>
+<h2 id="2-交叉熵损失函数-cross-entropy-loss-function"><a href="#2-交叉熵损失函数-cross-entropy-loss-function" class="headerlink" title="2.交叉熵损失函数 (cross entropy loss function)"></a>2.交叉熵损失函数 (cross entropy loss function)</h2><p>假设神经网络的输出$a=\sigma(z)$,其中$z=\omega{x+b}$, $y$为ground-truth label,则交叉熵损失定义为：</p>
+<script type="math/tex; mode=display">L=-\frac{1}{n}\sum_x{y\ln{a}+(1-y)\ln{(1-a)}}</script><ul>
+<li>当$y=1$，输出$a=0$时，$L$会非常大（理论上无限大，但通常会有数学操作使其限定在一个可计算的范围），即表示误差很大；</li>
+<li>当$y=0$，输出$a=1$时，$L$同样会非常大，误差较大；</li>
+<li>当标签$y$和输出$a$一样时，$L=0$，不会产生误差</li>
+</ul>
 <blockquote>
-<p>估计能够使$X$的取值成为$x$的参数$\theta$的可能性</p>
+<p>注意，这里要求标签$y$和输出$a$的范围在[0,1]之间，那么当其不符合要求时，可以使用softmax cross entropy loss或者sigmoid cross entropy loss</p>
 </blockquote>
-<ol>
-<li>统计学中, 样本随机变量的出现是基于某个分布的.例如$f(x|\theta)$代表x服从$f$分布,而$f$的分布是由参数$\theta$决定的.</li>
-<li>通常在概率统计学中$\textbf{X}$代表的是随机变量,而小写形式$x$通常代表其具体取值. 假定$X$服从二项分布(也可以是任何其他分布), 则可以写成$X~B(n,p), 而该二项分布情况下, 6次试验下x的取值可以是”010011”.</li>
-<li>而上面第一条中, 其实包含了一个前提假设,就是我们已知$X$服从二项分布, 这种假设的数学含义是什么呢? 对, 就是决定该分布的参数为$\theta$, 即参数$\theta$刻画了随机变量$\textbf{X}$在概率空间中服从什么分布. 更具体一点,假如$X$服从二项分布，那么其由$\theta$决定的形式为$f(x;n;k|\theta)=P(\textbf{X}=k)={n \choose k}p^k(1-p)^{n-k}$. 其中p可以代表二项分布中”1”出现的概率,即$\theta$的取值, 比如可以取值为”1/2”. 而在似然估计中$\theta$是怎么得到的呢? 还是以上面$x$的取值”010011”为例, 可以发现6次试验中,”1”出现了三次,那么这种情况下p取值为”1/2”是可能性最大的,即最接近$\theta$的真实分布.</li>
-</ol>
-<h2 id="似然与概率的联系"><a href="#似然与概率的联系" class="headerlink" title="似然与概率的联系"></a>似然与概率的联系</h2><p>似然函数可以看做是同一个函数形式下的不同视角.</p>
-<p>以函数$a^b$为例. 该函数包含了两个变量,a和b. 如果b已知为2, 那么函数就是变量a的二次函数,即$f(a)=a^2$; 如果a已知为2,那么该函数就是变量b的幂函数, 即$f(b)$ = 2^b$.</p>
-<p>同理，$\theta$和$x$也是两个不同的变量，如果$x$的分布是由已知的$\theta$刻画的, 要求估计$X$的实际取值, 那么$p(x|\theta)$就是x的概率密度函数; 如果已知随机变量$x$的取值, 而要估计使$X$取到已知$x$的参数分布,就是似然函数的目的.</p>
+<h2 id="3-Softmax-cross-entropy-loss"><a href="#3-Softmax-cross-entropy-loss" class="headerlink" title="3.Softmax cross entropy loss"></a>3.Softmax cross entropy loss</h2><h3 id="定义和说明"><a href="#定义和说明" class="headerlink" title="定义和说明"></a>定义和说明</h3><p>公式定义如下：</p>
+<script type="math/tex; mode=display">softmax(x_j)=\frac{exp(x_j)}{\sum_{i=1}^{n}{exp(x_i)}}</script><p>softmax的作用如其名字所示，是一种“soft”的取最大值的方式。这种soft体现在，与那种将输出中的最大值直接置为1，其他值置为0，的“hard”操作了相比，softmax函数会将输出进行放缩，是输出值都在$[0,1]$之间，且所有输出的和是1，因此输出也表现为一种概率分布的形式; 此外，softmax另一个重要的作用是，使反向传播过程可导，因为如果使用<code>max</code>函数的话，在计算反向传播过程中，max是不可导的。</p>
+<p>可以使用pytorch自带函数查看效果：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line">a = torch.FloatTensor([<span class="number">2</span>,<span class="number">5</span>,<span class="number">1</span>,<span class="number">6</span>,<span class="number">8</span>,<span class="number">3</span>])</span><br><span class="line">f = torch.nn.Softmax()</span><br><span class="line">print(f(a))</span><br></pre></td></tr></table></figure></p>
+<p>输出结果是：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tensor([ 0.0021,  0.0417,  0.0008,  0.1132,  0.8366,  0.0056])</span><br></pre></td></tr></table></figure></p>
+<p>可以看出，softmax操作不会改变数据的相对大小关系，原来最大的8放缩后还是数据中最大的值，只是这种操作保留了原来最小的值1，而不是生硬地将最小值1置为0.</p>
+<h3 id="Softmax-cross-entropy-loss"><a href="#Softmax-cross-entropy-loss" class="headerlink" title="Softmax cross entropy loss"></a>Softmax cross entropy loss</h3><p>在使用神经网络的（多）分类任务中，经常使用Softmax作为输出层。经过softmax操作后的输出在[0,1]之间，而输入的标签通常也是会转换成one-hot向量格式，因此在这种情况下，就可以使用上面提到的交叉熵损失函数计算模型的loss了。</p>
 <blockquote>
-<p>参考<a href="https://www.zhihu.com/question/54082000/answer/470252492" target="_blank" rel="noopener">知乎</a>上一个形象的例子:</p>
+<p>注意，在pytorch中，softmax cross entropy loss通常是指的，前面网络输出某个维度的特征到这个loss函数中，这个函数中已经带有了softmax操作了，无需再进行手动softmax操作。</p>
 </blockquote>
-<p>有一个硬币，它有$\theta$的概率会正面向上，有$1-\theta$的概率反面向上。$\theta$是存在的，但是你不知道它是多少。</p>
-<p>为了获得$\theta$的值，你做了一个实验：将硬币抛10次，得到了一个正反序列：$x=HHTTHTHHHH$。无论$\theta$的值是多少，这个序列的概率值为 $\theta⋅\theta⋅(1-\theta)⋅(1-\theta)⋅\theta⋅(1-\theta)⋅\theta⋅\theta⋅\theta⋅\theta = \theta^7 (1-\theta)^3$. 比如，如果$\theta$值为0，则得到这个序列的概率值为0。如果$\theta$值为1/2，概率值为1/1024。但是，我们应该得到一个更大的概率值，所以我们尝试了所有θ可取的值，画出了下图:</p>
-<p><img src="/image/different_theta_value.jpg" alt="不同theta取值下的概率值"></p>
-<p>这个曲线就是θ的似然函数，通过了解在某一假设下，已知数据发生的可能性，来评价哪一个假设更接近θ的真实值。</p>
-<p>如图所示，最有可能的假设是在θ=0.7的时候取到。但是，你无须得出最终的结论θ=0.7。事实上，根据贝叶斯法则，0.7是一个不太可能的取值（如果你知道几乎所有的硬币都是均质的，那么这个实验并没有提供足够的证据来说服你，它是均质的）。但是，0.7却是最大似然估计的取值。因为这里仅仅试验了一次，得到的样本太少，所以最终求出的最大似然值偏差较大，如果经过多次试验，扩充样本空间，则最终求得的最大似然估计将接近真实值0.5。</p>
-<h2 id="One-more-thing"><a href="#One-more-thing" class="headerlink" title="One more thing"></a>One more thing</h2><p>说到似然，就很自然的会想到机器学习。</p>
-<p>在机器学习中，之所以需要似然函数函数的概念，是因为我们往往是想要机器根据已有的数据(相当于$\textbf{X}$)学到相应的分布(即$\theta$),此概念对应training阶段, 即在训练阶段, 是根据已有的$X$来估计其真实的数据分布服从什么样的分布$\theta$.</p>
-<p>而我们构建模型的目的是, 在实际中应用. 例如根据已有的有限的人脸图像和人脸关键点的标注, 使机器学习到包含人脸的图像和其关键点的对应关系的分布; 然后在实际应用中,能够检测未在数据集中出现过的人脸图像的关键点. 因此在测试阶段, 就是已知参数$\theta$, 来估计该分布下, $\textbf{X}$应该是什么.</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><blockquote>
-<p><a href="https://www.zhihu.com/question/54082000" target="_blank" rel="noopener">https://www.zhihu.com/question/54082000</a></p>
-<p><a href="https://www.quora.com/What-is-the-difference-between-probability-and-likelihood-1/answer/Jason-Eisner?share=cbfeda82&amp;srid=zDgIt" target="_blank" rel="noopener">https://www.quora.com/What-is-the-difference-between-probability-and-likelihood-1/answer/Jason-Eisner?share=cbfeda82&amp;srid=zDgIt</a></p>
+<!-- ## 4.Sigmoid cross entropy loss -->
+<blockquote>
+<p>参考<br><a href="https://zhuanlan.zhihu.com/p/33542937" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/33542937</a></p>
 </blockquote>
 
       
@@ -535,7 +530,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/统计-Statistics/" rel="tag"># 统计 / Statistics</a>
+            <a href="/tags/pytorch/" rel="tag"># pytorch</a>
           
         </div>
       
@@ -548,8 +543,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/随笔-Writing/2018/arXiv和CoRR的区别与关系/" rel="next" title="arXiv和CoRR的区别与关系">
-                <i class="fa fa-chevron-left"></i> arXiv和CoRR的区别与关系
+              <a href="/机器学习-Machine-Learning/框架-Framework/pytorch中的损失函数的logis/" rel="next" title="pytorch中的损失函数中的logits">
+                <i class="fa fa-chevron-left"></i> pytorch中的损失函数中的logits
               </a>
             
           </div>
@@ -557,10 +552,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/随笔-Writing/2019/安装病理图像库openslide-python/" rel="prev" title="Ubuntu安装医学图像处理库openslide-python和pyvips">
-                Ubuntu安装医学图像处理库openslide-python和pyvips <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -788,7 +779,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#似然与概率的区别"><span class="nav-number">1.</span> <span class="nav-text">似然与概率的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#似然与概率的联系"><span class="nav-number">2.</span> <span class="nav-text">似然与概率的联系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#One-more-thing"><span class="nav-number">3.</span> <span class="nav-text">One more thing</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#常用损失函数"><span class="nav-number">1.</span> <span class="nav-text">常用损失函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-均方误差损失函数-MSE-loss-function"><span class="nav-number">1.1.</span> <span class="nav-text">1.均方误差损失函数 (MSE loss function)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-交叉熵损失函数-cross-entropy-loss-function"><span class="nav-number">1.2.</span> <span class="nav-text">2.交叉熵损失函数 (cross entropy loss function)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Softmax-cross-entropy-loss"><span class="nav-number">1.3.</span> <span class="nav-text">3.Softmax cross entropy loss</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义和说明"><span class="nav-number">1.3.1.</span> <span class="nav-text">定义和说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Softmax-cross-entropy-loss"><span class="nav-number">1.3.2.</span> <span class="nav-text">Softmax cross entropy loss</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
