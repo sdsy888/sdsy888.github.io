@@ -106,7 +106,7 @@
 <meta property="og:site_name" content="Neo&#39;s Blog">
 <meta property="og:description" content="问题之前在使用Python2的时候，经常会遇到编码相关的错误，异常头疼。主要是因为Python2字符串设计上有一些固有的缺陷：   使用 ASCII 码作为默认编码方式，对中文处理很不友好。 把字符串的牵强地分为 unicode 和 str 两种类型，误导开发者   与Python2不同，Python3默认使用utf-8编码方式，并且Python3的字符主要由两种：str/byte。因此正常情况下">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-20T02:08:56.834Z">
+<meta property="og:updated_time" content="2019-03-20T02:12:57.944Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python3 错误UnicodeEncodeError: &#39;ascii&#39; codec can&#39;t encode characters in ordinal not in range(128)">
 <meta name="twitter:description" content="问题之前在使用Python2的时候，经常会遇到编码相关的错误，异常头疼。主要是因为Python2字符串设计上有一些固有的缺陷：   使用 ASCII 码作为默认编码方式，对中文处理很不友好。 把字符串的牵强地分为 unicode 和 str 两种类型，误导开发者   与Python2不同，Python3默认使用utf-8编码方式，并且Python3的字符主要由两种：str/byte。因此正常情况下">
@@ -389,7 +389,7 @@
                 
               
 
-              <time title="创建时间：2019-03-19 20:08:40 / 修改时间：21:08:56" itemprop="dateCreated datePublished" datetime="2019-03-19T20:08:40-05:00">2019-03-19</time>
+              <time title="创建时间：2019-03-19 20:08:40 / 修改时间：21:12:57" itemprop="dateCreated datePublished" datetime="2019-03-19T20:08:40-05:00">2019-03-19</time>
             
 
             
@@ -494,6 +494,7 @@
 <li>处理的文件默认编码不是<code>utf-8</code>，而是<code>ascii</code></li>
 </ol>
 <h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><h3 id="问题1"><a href="#问题1" class="headerlink" title="问题1"></a>问题1</h3><p>针对这两个可能的原因，首先判断系统的（或者当前命令行环境的）编码：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>首先进入python环境</span><br><span class="line">import sys</span><br><span class="line">sys.stdout.encoding</span><br><span class="line"><span class="meta">&gt;</span>&gt;&gt; 'US-ASCII'</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
 <p>这种情况下表示，当前的命令行的编码是<code>ascii</code>，所以需要手动改成utf-8：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export LANG="en_US.UTF-8"</span><br></pre></td></tr></table></figure></p>
 <p>如果是在ubuntu环境下，可以将上面这行命令加入<code>~/.bashrc</code>中一劳永逸解决问题，加入后运行下面命令使其生效或者重启生效。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure></p>
 <p>或者另一种方法是，只针对python设定相应编码(同上，命令行运行或者加入bashrc文件)：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PYTHONIOENCODING='utf_8'</span><br><span class="line">export PYTHONIOENCODING</span><br></pre></td></tr></table></figure></p>
