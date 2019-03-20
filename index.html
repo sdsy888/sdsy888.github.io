@@ -345,6 +345,215 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/随笔-Writing/Python3-错误UnicodeEncodeError-ascii-codec-can-t-encode-characters-in-ordinal-not-in-range-128/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="江前云后">
+      <meta itemprop="description" content="Interested in<br>Deep Learning & Computer Vision">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Neo's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/随笔-Writing/Python3-错误UnicodeEncodeError-ascii-codec-can-t-encode-characters-in-ordinal-not-in-range-128/" class="post-title-link" itemprop="url">Python3 错误UnicodeEncodeError: 'ascii' codec can't encode characters in ordinal not in range(128)</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-19 20:08:40 / 修改时间：20:39:44" itemprop="dateCreated datePublished" datetime="2019-03-19T20:08:40-05:00">2019-03-19</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/随笔-Writing/" itemprop="url" rel="index"><span itemprop="name">随笔 / Writing</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">1.2k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">1 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>之前在使用Python2的时候，经常会遇到编码相关的错误，异常头疼。主要是因为Python2字符串设计上有一些固有的缺陷：</p>
+<blockquote>
+<ul>
+<li>使用 ASCII 码作为默认编码方式，对中文处理很不友好。</li>
+<li>把字符串的牵强地分为 unicode 和 str 两种类型，误导开发者</li>
+</ul>
+</blockquote>
+<p>与Python2不同，Python3默认使用<code>utf-8</code>编码方式，并且Python3的字符主要由两种：<code>str</code>/<code>byte</code>。因此正常情况下，Python3很少出现编码问题，但是最近在使用docker的时候，又发生了两次编码错误问题，分别是因为：</p>
+<ol>
+<li>docker环境（或当前命令行环境的默认编码不是<code>utf-8</code>)</li>
+<li>处理的文件默认编码不是<code>utf-8</code>，而是<code>ascii</code></li>
+</ol>
+<h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><h3 id="问题1"><a href="#问题1" class="headerlink" title="问题1"></a>问题1</h3><p>针对这两个可能的原因，首先判断系统的（或者当前命令行环境的）编码：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>首先进入python环境</span><br><span class="line">import sys</span><br><span class="line">sys.stdout.encoding</span><br><span class="line"><span class="meta">&gt;</span>&gt;&gt; 'US-ASCII'</span><br></pre></td></tr></table></figure></p>
+<p>这种情况下表示，当前的命令行的编码是<code>ascii</code>，所以需要手动改成utf-8：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export LANG="en_US.UTF-8"</span><br></pre></td></tr></table></figure></p>
+<p>如果是在ubuntu环境下，可以将上面这行命令加入<code>~/.bashrc</code>中一劳永逸解决问题，加入后运行下面命令使其生效或者重启生效。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure></p>
+<p>或者另一种方法是，只针对python设定相应编码(同上，命令行运行或者加入bashrc文件)：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PYTHONIOENCODING='utf_8'</span><br><span class="line">export PYTHONIOENCODING</span><br></pre></td></tr></table></figure></p>
+<h3 id="问题2"><a href="#问题2" class="headerlink" title="问题2"></a>问题2</h3><p>如果上面系统输出的已经是<code>UTF-8</code>，另一个可能的原因是读写的文件默认编码是<code>ASCII</code>。比如在使用<code>json.dump()</code>命令时，如果使用了其中的<code>ensure_ascii=False</code>关键字，而此时如果写入尝试写入非ascii的字符时就会报上面的错误，解决办法是提前指定操作文件的编码方法：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import json</span><br><span class="line">import codecs # 比较方便处理各种非ascii编码的库</span><br><span class="line">with codecs.open('your_file.txt',mode='w',encoding='utf-8') as fp:</span><br><span class="line">    json.dump(</span><br><span class="line">        json_str,</span><br><span class="line">        fp,</span><br><span class="line">        skipkeys=False,</span><br><span class="line">        indent=4, # 不使用该关键字时，所有字符写在同一行，省空间，但是文件较大时打开慢</span><br><span class="line">        ensure_ascii=False)</span><br></pre></td></tr></table></figure>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><blockquote>
+<p><a href="https://blog.csdn.net/th_num/article/details/80685389" target="_blank" rel="noopener">https://blog.csdn.net/th_num/article/details/80685389</a><br><a href="https://foofish.net/how-python3-handle-charset-encoding.html" target="_blank" rel="noopener">https://foofish.net/how-python3-handle-charset-encoding.html</a></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/机器学习-Machine-Learning/深度学习数据不平衡问题解决方法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -390,7 +599,7 @@
                 
               
 
-              <time title="创建时间：2019-03-14 12:20:46 / 修改时间：12:25:00" itemprop="dateCreated datePublished" datetime="2019-03-14T12:20:46-05:00">2019-03-14</time>
+              <time title="创建时间：2019-03-14 12:20:46 / 修改时间：12:27:15" itemprop="dateCreated datePublished" datetime="2019-03-14T12:20:46-05:00">2019-03-14</time>
             
 
             
@@ -2181,220 +2390,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/框架-Framework/随笔-Writing/2019/docker运行pytorch报错：RuntimeError-DataLoader-worker-pid-493-is-killed-by-signal-Bus-error-Details-are-lost-due-to-multiprocessing-Rerunning-with-num-workers-0-may-give-better-error-trace/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="江前云后">
-      <meta itemprop="description" content="Interested in<br>Deep Learning & Computer Vision">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Neo's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/框架-Framework/随笔-Writing/2019/docker运行pytorch报错：RuntimeError-DataLoader-worker-pid-493-is-killed-by-signal-Bus-error-Details-are-lost-due-to-multiprocessing-Rerunning-with-num-workers-0-may-give-better-error-trace/" class="post-title-link" itemprop="url">docker运行pytorch报错：RuntimeError: DataLoader worker (pid 493) is killed by signal: Bus error. Details are lost due to multiprocessing. Rerunning with num_workers=0 may give better error trace.</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-12-20 15:10:00" itemprop="dateCreated datePublished" datetime="2018-12-20T15:10:00-06:00">2018-12-20</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-03-11 12:36:52" itemprop="dateModified" datetime="2019-03-11T12:36:52-05:00">2019-03-11</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/框架-Framework/" itemprop="url" rel="index"><span itemprop="name">框架 / Framework</span></a></span>
-
-                
-                
-                  ，
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/框架-Framework/随笔-Writing/" itemprop="url" rel="index"><span itemprop="name">随笔 / Writing</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">377</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">1 分钟</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>使用docker运行Pytorch的时候如果报如下错误：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RuntimeError: DataLoader worker (pid 493) is killed by signal: Bus error. Details are lost due to multiprocessing. Rerunning with num_workers=0 may give better error trace.</span><br></pre></td></tr></table></figure></p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/框架-Framework/随笔-Writing/2019/docker运行pytorch报错：RuntimeError-DataLoader-worker-pid-493-is-killed-by-signal-Bus-error-Details-are-lost-due-to-multiprocessing-Rerunning-with-num-workers-0-may-give-better-error-trace/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2443,7 +2438,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">29</span>
+                    <span class="site-state-item-count">30</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2616,7 +2611,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">27k</span>
+    <span title="站点总字数">28k</span>
   
 
   
@@ -2625,7 +2620,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">24 分钟</span>
+    <span title="站点阅读时长">26 分钟</span>
   
 </div>
 

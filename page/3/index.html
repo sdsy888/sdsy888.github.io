@@ -345,6 +345,218 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/框架-Framework/2017/TensorFlow使用中的常见错误/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="江前云后">
+      <meta itemprop="description" content="Interested in<br>Deep Learning & Computer Vision">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Neo's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/框架-Framework/2017/TensorFlow使用中的常见错误/" class="post-title-link" itemprop="url">TensorFlow使用中的常见问题</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2017-09-08 10:42:27" itemprop="dateCreated datePublished" datetime="2017-09-08T10:42:27-05:00">2017-09-08</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2017-11-08 01:31:36" itemprop="dateModified" datetime="2017-11-08T01:31:36-06:00">2017-11-08</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/框架-Framework/" itemprop="url" rel="index"><span itemprop="name">框架 / Framework</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">796</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">1 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h3 id="安装指定版本的TensorFlow"><a href="#安装指定版本的TensorFlow" class="headerlink" title="安装指定版本的TensorFlow"></a>安装指定版本的TensorFlow</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装cpu版本</span></span><br><span class="line">pip install tensorflow==1.2.1</span><br><span class="line"><span class="comment"># 给特定用户安装gpu版本</span></span><br><span class="line">pip install tensorflow-gpu==1.2.1 --user</span><br></pre></td></tr></table></figure>
+<h3 id="找不到模型文件-用于初始化的预训练文件"><a href="#找不到模型文件-用于初始化的预训练文件" class="headerlink" title="找不到模型文件 / 用于初始化的预训练文件"></a>找不到模型文件 / 用于初始化的预训练文件</h3><blockquote>
+<p>perhaps your file is in a different file format and you need to use a different restore operator?</p>
+</blockquote>
+<p>解决方法类似<a href="https://github.com/tensorflow/tensorflow/issues/7696" target="_blank" rel="noopener">这里</a>, 即设置的目录不是checkpoint文件所在目录, 还需要把Checkpoint的前缀(prefix)作为目录名的一部分.</p>
+<p>例如名为<code>myModel.ckpt.data-00000-of-00001</code>和其相关的index等checkpoint文件一起放在<code>~/model/</code>文件夹下, 则传入的TensorFlow的参数需要设置为<strong><code>~/model/myModel.ckpt</code></strong>, 而不是<del><code>/model/</code></del><br>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/框架-Framework/2017/TensorFlow使用中的常见错误/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </p></div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/系统-System/2017/Ubuntu常用命令/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2240,7 +2452,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">29</span>
+                    <span class="site-state-item-count">30</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2413,7 +2625,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">27k</span>
+    <span title="站点总字数">28k</span>
   
 
   
@@ -2422,7 +2634,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">24 分钟</span>
+    <span title="站点阅读时长">26 分钟</span>
   
 </div>
 
@@ -2587,6 +2799,8 @@
 
   
   
+    
+      
     
       
     
