@@ -106,7 +106,7 @@
 <meta property="og:site_name" content="Neo&#39;s Blog">
 <meta property="og:description" content="问题之前在使用Python2的时候，经常会遇到编码相关的错误，异常头疼。主要是因为Python2字符串设计上有一些固有的缺陷：   使用 ASCII 码作为默认编码方式，对中文处理很不友好。 把字符串的牵强地分为 unicode 和 str 两种类型，误导开发者   与Python2不同，Python3默认使用utf-8编码方式，并且Python3的字符主要由两种：str/byte。因此正常情况下">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-20T01:39:44.530Z">
+<meta property="og:updated_time" content="2019-03-20T02:08:56.834Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python3 错误UnicodeEncodeError: &#39;ascii&#39; codec can&#39;t encode characters in ordinal not in range(128)">
 <meta name="twitter:description" content="问题之前在使用Python2的时候，经常会遇到编码相关的错误，异常头疼。主要是因为Python2字符串设计上有一些固有的缺陷：   使用 ASCII 码作为默认编码方式，对中文处理很不友好。 把字符串的牵强地分为 unicode 和 str 两种类型，误导开发者   与Python2不同，Python3默认使用utf-8编码方式，并且Python3的字符主要由两种：str/byte。因此正常情况下">
@@ -389,7 +389,7 @@
                 
               
 
-              <time title="创建时间：2019-03-19 20:08:40 / 修改时间：20:39:44" itemprop="dateCreated datePublished" datetime="2019-03-19T20:08:40-05:00">2019-03-19</time>
+              <time title="创建时间：2019-03-19 20:08:40 / 修改时间：21:08:56" itemprop="dateCreated datePublished" datetime="2019-03-19T20:08:40-05:00">2019-03-19</time>
             
 
             
@@ -447,7 +447,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">1.2k</span>
+                <span title="本文字数">1.3k</span>
               
 
               
@@ -497,6 +497,7 @@
 <p>这种情况下表示，当前的命令行的编码是<code>ascii</code>，所以需要手动改成utf-8：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export LANG="en_US.UTF-8"</span><br></pre></td></tr></table></figure></p>
 <p>如果是在ubuntu环境下，可以将上面这行命令加入<code>~/.bashrc</code>中一劳永逸解决问题，加入后运行下面命令使其生效或者重启生效。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source ~/.bashrc</span><br></pre></td></tr></table></figure></p>
 <p>或者另一种方法是，只针对python设定相应编码(同上，命令行运行或者加入bashrc文件)：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">PYTHONIOENCODING='utf_8'</span><br><span class="line">export PYTHONIOENCODING</span><br></pre></td></tr></table></figure></p>
+<p>最后，还有一种针对docker中使用Python3报编码错误的方法：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -e PYTHONIOENCODING=utf-8 docker-image-name some-command</span><br></pre></td></tr></table></figure></p>
 <h3 id="问题2"><a href="#问题2" class="headerlink" title="问题2"></a>问题2</h3><p>如果上面系统输出的已经是<code>UTF-8</code>，另一个可能的原因是读写的文件默认编码是<code>ASCII</code>。比如在使用<code>json.dump()</code>命令时，如果使用了其中的<code>ensure_ascii=False</code>关键字，而此时如果写入尝试写入非ascii的字符时就会报上面的错误，解决办法是提前指定操作文件的编码方法：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import json</span><br><span class="line">import codecs # 比较方便处理各种非ascii编码的库</span><br><span class="line">with codecs.open('your_file.txt',mode='w',encoding='utf-8') as fp:</span><br><span class="line">    json.dump(</span><br><span class="line">        json_str,</span><br><span class="line">        fp,</span><br><span class="line">        skipkeys=False,</span><br><span class="line">        indent=4, # 不使用该关键字时，所有字符写在同一行，省空间，但是文件较大时打开慢</span><br><span class="line">        ensure_ascii=False)</span><br></pre></td></tr></table></figure>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><blockquote>
