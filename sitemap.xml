@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://sdsy888.github.io/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-Machine-Learning/%E5%B8%B8%E7%94%A8%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0/</loc>
+    
+    <lastmod>2019-03-21T18:01:33.638Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://sdsy888.github.io/%E9%9A%8F%E7%AC%94-Writing/python%E4%B8%AD%E5%A4%84%E7%90%86%E4%B8%AD%E6%96%87%E6%A0%87%E7%82%B9/</loc>
+    
+    <lastmod>2019-03-21T17:17:57.198Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://sdsy888.github.io/%E9%9A%8F%E7%AC%94-Writing/Python3-%E9%94%99%E8%AF%AFUnicodeEncodeError-ascii-codec-can-t-encode-characters-in-ordinal-not-in-range-128/</loc>
     
     <lastmod>2019-03-20T02:12:57.944Z</lastmod>
@@ -12,13 +26,6 @@
     <loc>https://sdsy888.github.io/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-Machine-Learning/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%95%B0%E6%8D%AE%E4%B8%8D%E5%B9%B3%E8%A1%A1%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95/</loc>
     
     <lastmod>2019-03-14T17:27:15.037Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://sdsy888.github.io/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-Machine-Learning/%E5%B8%B8%E7%94%A8%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0/</loc>
-    
-    <lastmod>2019-03-14T17:19:28.082Z</lastmod>
     
   </url>
   
@@ -47,13 +54,6 @@
     <loc>https://sdsy888.github.io/%E6%A1%86%E6%9E%B6-Framework/%E9%9A%8F%E7%AC%94-Writing/2019/docker%E8%BF%90%E8%A1%8Cpytorch%E6%8A%A5%E9%94%99%EF%BC%9ARuntimeError-DataLoader-worker-pid-493-is-killed-by-signal-Bus-error-Details-are-lost-due-to-multiprocessing-Rerunning-with-num-workers-0-may-give-better-error-trace/</loc>
     
     <lastmod>2019-03-11T17:36:52.892Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://sdsy888.github.io/%E9%9A%8F%E7%AC%94-Writing/python%E4%B8%AD%E5%A4%84%E7%90%86%E4%B8%AD%E6%96%87%E6%A0%87%E7%82%B9/</loc>
-    
-    <lastmod>2019-03-11T17:36:48.549Z</lastmod>
     
   </url>
   

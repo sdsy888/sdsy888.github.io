@@ -806,7 +806,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-14 12:19:28" itemprop="dateModified" datetime="2019-03-14T12:19:28-05:00">2019-03-14</time>
+                <time title="修改时间：2019-03-21 13:01:33" itemprop="dateModified" datetime="2019-03-21T13:01:33-05:00">2019-03-21</time>
               
             
           </span>
@@ -889,7 +889,7 @@
         
           <h1 id="常用损失函数"><a href="#常用损失函数" class="headerlink" title="常用损失函数"></a>常用损失函数</h1><p>损失函数（loss function或cost function）是关于模型输出（predict）与标签（ground-truth）的函数，主要用于衡量在训练集（或验证集、测试集）上的效果。</p>
 <h2 id="1-均方误差损失函数-MSE-loss-function"><a href="#1-均方误差损失函数-MSE-loss-function" class="headerlink" title="1.均方误差损失函数 (MSE loss function)"></a>1.均方误差损失函数 (MSE loss function)</h2><p>损失函数定义如下：</p>
-<script type="math/tex; mode=display">L = \frac{(y-label)^2}{2}</script><p>很少用于分类问题（instance level / pixel level),主要是由于MSE对于错误输出过于关注(即错误标签和正确标签之间的误差会被平方操作放大),在分类问题中较难收敛.</p>
+<script type="math/tex; mode=display">L = \frac{(y-label)^2}{2}</script><p>很少用于分类问题（instance level / pixel level),主要是由于MSE对于错误输出过于关注(即错误标签和正确标签之间的误差会被平方操作放大),在分类问题中较难收敛.</p>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -1187,7 +1187,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/随笔-Writing/python中处理中文标点/" class="post-title-link" itemprop="url">使用Python的translate函数处理字符串和中文标点处理方法</a>
+                <a href="/随笔-Writing/python中处理中文标点/" class="post-title-link" itemprop="url">使用Python的translate函数处理（替换）字符和中文标点</a>
               
             
           </h1>
@@ -1229,7 +1229,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-11 12:36:48" itemprop="dateModified" datetime="2019-03-11T12:36:48-05:00">2019-03-11</time>
+                <time title="修改时间：2019-03-21 12:17:57" itemprop="dateModified" datetime="2019-03-21T12:17:57-05:00">2019-03-21</time>
               
             
           </span>
@@ -1275,7 +1275,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">705</span>
+                <span title="本文字数">743</span>
               
 
               
@@ -1311,7 +1311,8 @@
       
         
           <h1 id="使用Translate函数"><a href="#使用Translate函数" class="headerlink" title="使用Translate函数"></a>使用Translate函数</h1><p>Python3中的translate函数与Python2中已经不同了,使用Python3的方法如下.</p>
-<p><code>translate(table,[deletion],[toNone])</code>函数是在处理字符串str的时候,将其中的某些指定的字符串映射成<code>None</code>或指定的其他字符. 例如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> string</span><br><span class="line"><span class="comment"># string.punctuation中包含了常用的英文标点符号</span></span><br><span class="line">translator = str.maketrans(dict.fromkeys(string.punctuation))</span><br><span class="line">s = <span class="string">'string with "punctuation" inside of it! Does this work? I hope so.'</span></span><br><span class="line">print(s.translate(translator))</span><br></pre></td></tr></table></figure></p>
+<p><code>maketrans(table,[deletion],[toNone])</code>函数是在处理字符串str的时候,将其中的<code>table</code>中指定的字符一一对应映射成<code>deletion</code>中指定的字符,将<code>toNone</code>中指定的字符映射成None(即None). </p>
+<p>例如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> string</span><br><span class="line"><span class="comment"># string.punctuation中包含了常用的英文标点符号</span></span><br><span class="line">translator = str.maketrans(dict.fromkeys(string.punctuation))</span><br><span class="line">s = <span class="string">'string with "punctuation" inside of it! Does this work? I hope so.'</span></span><br><span class="line">print(s.translate(translator))</span><br></pre></td></tr></table></figure></p>
           <!--noindex-->
           
             <div class="post-button text-center">
