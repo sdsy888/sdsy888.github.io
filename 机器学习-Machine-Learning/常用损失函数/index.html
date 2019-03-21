@@ -106,7 +106,7 @@
 <meta property="og:site_name" content="Neo&#39;s Blog">
 <meta property="og:description" content="常用损失函数损失函数（loss function或cost function）是关于模型输出（predict）与标签（ground-truth）的函数，主要用于衡量在训练集（或验证集、测试集）上的效果。 1.均方误差损失函数 (MSE loss function)损失函数定义如下： L = \frac{(y-label)^2}{2}很少用于分类问题（instance level / pixel l">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-21T18:01:33.638Z">
+<meta property="og:updated_time" content="2019-03-21T18:03:46.193Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="常用损失函数">
 <meta name="twitter:description" content="常用损失函数损失函数（loss function或cost function）是关于模型输出（predict）与标签（ground-truth）的函数，主要用于衡量在训练集（或验证集、测试集）上的效果。 1.均方误差损失函数 (MSE loss function)损失函数定义如下： L = \frac{(y-label)^2}{2}很少用于分类问题（instance level / pixel l">
@@ -406,7 +406,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-03-21 13:01:33" itemprop="dateModified" datetime="2019-03-21T13:01:33-05:00">2019-03-21</time>
+                <time title="修改时间：2019-03-21 13:03:46" itemprop="dateModified" datetime="2019-03-21T13:03:46-05:00">2019-03-21</time>
               
             
           </span>
@@ -500,14 +500,14 @@
 <h2 id="2-交叉熵损失函数-cross-entropy-loss-function"><a href="#2-交叉熵损失函数-cross-entropy-loss-function" class="headerlink" title="2.交叉熵损失函数 (cross entropy loss function)"></a>2.交叉熵损失函数 (cross entropy loss function)</h2><p>假设神经网络的输出$a=\sigma(z)$,其中$z=\omega{x+b}$, $y$为ground-truth label,则交叉熵损失定义为：</p>
 <script type="math/tex; mode=display">L=-\frac{1}{n}\sum_x{y\ln{a}+(1-y)\ln{(1-a)}}</script><ul>
 <li>当$y=1$，输出$a=0$时，$L$会非常大（理论上无限大，但通常会有数学操作使其限定在一个可计算的范围），即表示误差很大；</li>
-<li>当$y=0$，输出$a=1$时，$L$同样会非常大，误差较大；</li>
+<li>当$y=0$，输出$a=1$时，$L$同样会非常大，误差较大；</li>
 <li>当标签$y$和输出$a$一样时，$L=0$，不会产生误差</li>
 </ul>
 <blockquote>
 <p>注意，这里要求标签$y$和输出$a$的范围在[0,1]之间，那么当其不符合要求时，可以使用softmax cross entropy loss或者sigmoid cross entropy loss</p>
 </blockquote>
 <h2 id="3-Softmax-cross-entropy-loss"><a href="#3-Softmax-cross-entropy-loss" class="headerlink" title="3.Softmax cross entropy loss"></a>3.Softmax cross entropy loss</h2><h3 id="Softmax函数定义"><a href="#Softmax函数定义" class="headerlink" title="Softmax函数定义"></a>Softmax函数定义</h3><script type="math/tex; mode=display">softmax(x_j)=\frac{exp(x_j)}{\sum_{i=1}^{n}{exp(x_i)}}</script><ul>
-<li>softmax的作用如其名字所示，是一种“soft”的取最大值的方式。这种soft体现在，与那种将输出中的最大值直接置为1，其他值置为0，的“hard”操作了相比，softmax函数会将输出进行放缩，是输出值都在$[0,1]$之间，且所有输出的和是1，因此输出也表现为一种概率分布的形式;即输入实数向量，返回一个概率分布。</li>
+<li>softmax的作用如其名字所示，是一种“soft”的取最大值的方式。这种soft体现在，与那种将输出中的最大值直接置为1，其他值置为0，的“hard”操作相比，softmax函数会将输出进行放缩，是输出值都在$[0,1]$之间，且所有输出的和是1，因此输出也表现为一种概率分布的形式;即输入实数向量，返回一个概率分布。</li>
 <li>此外，softmax另一个重要的作用是，使反向传播过程可以进行，因为softmax函数是可导的；如果使用<code>max</code>函数的话，在计算反向传播过程中，max是不可导的。</li>
 </ul>
 <p>可以使用pytorch自带函数查看效果：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line">a = torch.FloatTensor([<span class="number">2</span>,<span class="number">5</span>,<span class="number">1</span>,<span class="number">6</span>,<span class="number">8</span>,<span class="number">3</span>])</span><br><span class="line">f = torch.nn.Softmax()</span><br><span class="line">print(f(a))</span><br></pre></td></tr></table></figure></p>
