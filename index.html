@@ -345,7 +345,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/随笔-Writing/ubuntu无法取消粘滞边缘-sticky-edge-解决办法/">
+    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/机器学习-Machine-Learning/框架-Framework/Docker中PyTorch的dataloader被终止：RuntimeError-DataLoader-worker-pid-25564-is-killed-by-signal-Aborted/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="江前云后">
@@ -365,7 +365,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/随笔-Writing/ubuntu无法取消粘滞边缘-sticky-edge-解决办法/" class="post-title-link" itemprop="url">ubuntu无法取消粘滞边缘(sticky edge)解决办法</a>
+                <a href="/机器学习-Machine-Learning/框架-Framework/Docker中PyTorch的dataloader被终止：RuntimeError-DataLoader-worker-pid-25564-is-killed-by-signal-Aborted/" class="post-title-link" itemprop="url">Docker中PyTorch的dataloader被终止：RuntimeError: DataLoader worker (pid 25564) is killed by signal: Aborted.</a>
               
             
           </h1>
@@ -390,7 +390,289 @@
                 
               
 
-              <time title="创建时间：2019-04-02 16:32:08 / 修改时间：16:41:52" itemprop="dateCreated datePublished" datetime="2019-04-02T16:32:08-05:00">2019-04-02</time>
+              <time title="创建时间：2019-04-08 15:42:03" itemprop="dateCreated datePublished" datetime="2019-04-08T15:42:03-05:00">2019-04-08</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-09 14:30:33" itemprop="dateModified" datetime="2019-04-09T14:30:33-05:00">2019-04-09</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/机器学习-Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">机器学习 / Machine Learning</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/机器学习-Machine-Learning/框架-Framework/" itemprop="url" rel="index"><span itemprop="name">框架 / Framework</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">2.5k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">2 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>在Docker中运行PyTorch程序时，如果报错：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RuntimeError: DataLoader worker (pid 123456) is killed by signal: Aborted.</span><br></pre></td></tr></table></figure></p>
+<p>最可能的原因是，Docker的<strong>共享内存不足</strong>，解决办法是，要么改成更小的batchsize，要么退出docker后，重新运行docker并指定更大的共享内存。这个原因可以从docker的说明文档中可以看出：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--oom-kill-disable=false：Whether to disable OOM Killer for the container or not.</span><br></pre></td></tr></table></figure>
+<p>这个命令表示是否要kill超出内存的程序，因此解决上面的问题需要重新调整docker的运行内存。</p>
+<h1 id="docker的内存"><a href="#docker的内存" class="headerlink" title="docker的内存"></a>docker的内存</h1><h2 id="docker中内存相关的命令"><a href="#docker中内存相关的命令" class="headerlink" title="docker中内存相关的命令"></a>docker中内存相关的命令</h2><p>关于docker内存相关的命令：（docker中有很多与内存相关的命令，如kernel-memory，oom等，这里列出常用的几个）</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>说明</th>
+<th>中文</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> -m, —memory=””</td>
+<td>Memory limit (format: <number>[<unit>]). Number is a positive integer. Unit can be one of b, k, m, or g. Minimum is 4M.</unit></number></td>
+<td>使用内存限制，</td>
+</tr>
+<tr>
+<td>  —memory-swap=””</td>
+<td>Total memory limit (memory + swap, format: <number>[<unit>]). Number is a positive integer. Unit can be one of b, k, m, or g.</unit></number></td>
+<td>总内存设置：内存+交换内存</td>
+</tr>
+<tr>
+<td> —shm-size=””</td>
+<td>Size of /dev/shm. The format is <number><unit>. number must be greater than 0. Unit is optional and can be b (bytes), k (kilobytes), m (megabytes), or g (gigabytes). If you omit the unit, the system uses bytes. If you omit the size entirely, the system uses 64m.</unit></number></td>
+<td>共享内存</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="几种内存命令的说明"><a href="#几种内存命令的说明" class="headerlink" title="几种内存命令的说明"></a>几种内存命令的说明</h2><ol>
+<li><code>-m=&quot;10g&quot;</code>,docker的运行内存，按照官方文档描述，应该是对应于实际机器的物理内存，因此在设置的时候，肯定是要比本机物理内存小的；单位可以是<code>b/k/m/g</code></li>
+<li><code>-memory-swap=&quot;11g&quot;</code>，内存+交换内存，即物理内存+交换内存的总大小，要大于等于上面设置的<code>-m</code>的大小，设置格式同上</li>
+<li><p><code>--shm-size=&quot;10g&quot;</code>,共享内存，关于共享内存<code>shm</code>和<code>swap</code>之间的区别颇让人让人费解的问题，查了一些资料（见最后的参考）后，对于这两个内存的理解是：</p>
+<ul>
+<li>swap：<ul>
+<li><code>是一个文件</code>，是使用硬盘空间的一部分作为物理内存来扩展RAM空间的</li>
+<li>虽然是物理硬盘的一部分，但是仍然属于RAM，并且属于易失性存储，重启机器会使数据丢失；</li>
+<li>空间大小在<strong>一般情况下</strong>，swap的空间大小设置为物理内存的两倍大小；</li>
+<li>docker中的swap对应于物理机器linux系统中的swap</li>
+</ul>
+</li>
+<li><p>shm：</p>
+<ul>
+<li>在机器上挂载名可以是<code>dev/shm</code>，也可以是<code>tmpfs</code>；</li>
+<li>是将虚拟内存的一部分挂载为临时<code>文件系统</code>，用于<strong>应用程序的加速</strong>，原理是允许其中的数据被不同的应用程序访问；</li>
+<li>在<code>tmpfs</code>中创建的文件很自然地也就创建在了虚拟内存中，因此其存储性质同swap，属于易失性存储；</li>
+<li>在docker中使用<code>--shm-size</code>命令挂载的分区是<code>/dev/shm</code>，可以在docker的命令行中使用<code>df -h</code>命令查看；同时也能看到本机的物理机器上的<code>tmpfs</code>分区；</li>
+<li><p>如果在运行docker的物理机器上运行<code>df -h</code>命令,内容是类似下面这样的：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tmpfs           7.8G  115M  7.7G   2% /dev/shm</span><br><span class="line">tmpfs           5.0M  4.0K  5.0M   1% /run/lock</span><br><span class="line">tmpfs           7.8G     0  7.8G   0% /sys/fs/cgroup</span><br></pre></td></tr></table></figure>
+<p>看不到docker的<code>/dev/shm</code>空间；并且物理机器上的<code>/dev/shm</code>也是挂载在<code>tmpfs</code>下面的；同时物理机器上<code>tmpfs</code>也挂载了其他临时分区；</p>
+</li>
+<li>即在docker中可以看到docker的挂载情况和本地物理机器的挂载情况，而在物理机器上看不到docker中的挂载情况</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>下面参考链接中给出了<code>swap</code>和<code>shm (tmpfs)</code>的区别总结：</p>
+<blockquote>
+<ul>
+<li>tmpfs使用内存空间而swap使用物理存储空间</li>
+<li>使用<code>df</code>命令时，tmpfs可以看做是挂载的文件系统，但是看不到swap（就像使用df命令看不到物理内存一样）</li>
+<li>swap有经验意义上推荐的大小，而tmpfs没有；tmpfs的大小与所运行系统的目的有关</li>
+<li>tmpfs可以使当前运行系统中的<strong>应用程序</strong>运行的更快，而swap是缓解系统物理内存压力的</li>
+<li>swap空间满了表明系统正在高负荷运转，会造成性能下降甚至死机；而tmpfs满了以后并不一定有上面的情况</li>
+<li>tmpfs是作为“增强型”功能出现的，而swap是必须有的功能</li>
+</ul>
+</blockquote>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><blockquote>
+<p><a href="https://gerardnico.com/os/linux/shared_memory" target="_blank" rel="noopener">https://gerardnico.com/os/linux/shared_memory</a><br><a href="https://kerneltalks.com/linux/difference-between-tmpfs-and-swap/" target="_blank" rel="noopener">https://kerneltalks.com/linux/difference-between-tmpfs-and-swap/</a><br><a href="https://www.garron.me/en/bits/create-add-swap-file-ubuntu.html" target="_blank" rel="noopener">https://www.garron.me/en/bits/create-add-swap-file-ubuntu.html</a><br><a href="https://www.experts-exchange.com/questions/27463115/Diffrence-between-swap-and-dev-shm.html" target="_blank" rel="noopener">https://www.experts-exchange.com/questions/27463115/Diffrence-between-swap-and-dev-shm.html</a></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/随笔-Writing/MacOS上使用conda-init-zsh后，每次启动提示-eval-61-not-found/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="江前云后">
+      <meta itemprop="description" content="Interested in<br>Deep Learning & Computer Vision">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Neo's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/随笔-Writing/MacOS上使用conda-init-zsh后，每次启动提示-eval-61-not-found/" class="post-title-link" itemprop="url">MacOS上使用conda init zsh后，每次启动提示(eval):61: = not found</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-08 13:20:38 / 修改时间：15:18:14" itemprop="dateCreated datePublished" datetime="2019-04-08T13:20:38-05:00">2019-04-08</time>
             
 
             
@@ -441,7 +723,207 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">420</span>
+                <span title="本文字数">1.2k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">1 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>conda 4.6.9这个版本是问题很多啊…</p>
+<h1 id="问题1"><a href="#问题1" class="headerlink" title="问题1"></a>问题1</h1><p>首先最麻烦的一个问题是，运行完<code>conda init zsh</code>后，每次启动命令行的时候，会在开头报错：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(eval):61: = not found</span><br></pre></td></tr></table></figure></p>
+<p>起因是为了使用<code>conda activate</code>来切换环境，需要在命令行中对使用的shell执行<code>conda init zsh (或者bash)</code>。执行后，conda会在<code>~/.zshrc</code>(如果使用bash，则会是<code>~/.bashrc</code>)中将原来的<code>export &quot;/anaconda3/bin:$PATH&quot;</code>注释掉，而改成conda init相关的命令。</p>
+<p>从说明上来看，是在conda init过程中，执行某个sh文件时执行eval命令时，出现了问题。查遍了网络，最后在GitHub issue中发现了问题的解决办法（可能是因为带有“=”的缘故，google一直搜索不到相关问题）。</p>
+<p>问题根源在于，这个版本的conda的<code>conda.sh</code>文件第61行中，<code>[]</code>中判断语句使用了两个等号导致的。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if [ "$&#123;_CE_CONDA+x&#125;" == "condax" ]; then</span><br></pre></td></tr></table></figure></p>
+<p><strong>解决办法：</strong> 直接再MacOS的anaconda目录下搜索<code>conda.sh</code>修改其中的第61行，把两个等号改成一个即可。如果有多个conda.sh就都改掉也没有问题。</p>
+<p>另一个简单粗暴的解决办法就是直接对conda进行降级：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install conda=4.6.8</span><br></pre></td></tr></table></figure></p>
+<h1 id="问题2"><a href="#问题2" class="headerlink" title="问题2"></a>问题2</h1><p>问题2是在尝试解决问题1的过程中遇到的，也是conda特定版本的问题。对conda进行降级的时候发现， 会报一个关于<code>qt</code>包的错误：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ERROR conda.core.link:_execute(568): An error occurred while uninstalling package 'defaults::qt-5.9.7-h468cd18_1'.</span><br><span class="line">PermissionError(1, 'Operation not permitted')</span><br><span class="line">Attempting to roll back.</span><br><span class="line"></span><br><span class="line">Rolling back transaction: done</span><br><span class="line"></span><br><span class="line">[Errno 1] Operation not permitted: '/anaconda3/bin/Assistant.app/Contents/PkgInfo' -&gt; '/anaconda3/bin/Assistant.app/Contents/PkgInfo.c~'</span><br></pre></td></tr></table></figure></p>
+<p><strong>解决办法：</strong>直接去<code>/anaconda3/pkgs</code>中删除<code>qt-5.9.7-h468cd18_1</code>这个包即可。</p>
+<blockquote>
+<p>参考：<a href="https://github.com/conda/conda/issues/8474" target="_blank" rel="noopener">https://github.com/conda/conda/issues/8474</a><br><a href="https://github.com/conda/conda/issues/8440" target="_blank" rel="noopener">https://github.com/conda/conda/issues/8440</a></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/随笔-Writing/ubuntu无法取消粘滞边缘-sticky-edge-解决办法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="江前云后">
+      <meta itemprop="description" content="Interested in<br>Deep Learning & Computer Vision">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Neo's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/随笔-Writing/ubuntu无法取消粘滞边缘-sticky-edge-解决办法/" class="post-title-link" itemprop="url">ubuntu无法取消粘滞边缘(sticky edge)解决办法</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-02 16:32:08 / 修改时间：16:42:59" itemprop="dateCreated datePublished" datetime="2019-04-02T16:32:08-05:00">2019-04-02</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/随笔-Writing/" itemprop="url" rel="index"><span itemprop="name">随笔 / Writing</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">416</span>
               
 
               
@@ -481,11 +963,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install compizconfig-settings-manager</span><br></pre></td></tr></table></figure>
 <p>安装完成后，命令行中输入<code>ccms</code>启动刚刚安装的插件，在左侧边栏找到“deskto”，然后选择“Ubuntu Unity Plugin”；然后使用左侧“Filter”搜索<code>edge stop vlocity</code>,将其设置成<code>1</code>即可。</p>
 <blockquote>
-<blockquote>
-<blockquote>
 <p>参考：<a href="https://askubuntu.com/questions/462629/how-to-disable-sticky-edges-in-ubuntu-14-04-ubuntu-13-10-and-earlier-had-a-opti" target="_blank" rel="noopener">https://askubuntu.com/questions/462629/how-to-disable-sticky-edges-in-ubuntu-14-04-ubuntu-13-10-and-earlier-had-a-opti</a></p>
-</blockquote>
-</blockquote>
 </blockquote>
 
           
@@ -1957,426 +2435,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/随笔-Writing/2019/docker中安装java运行环境JRE/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="江前云后">
-      <meta itemprop="description" content="Interested in<br>Deep Learning & Computer Vision">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Neo's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/随笔-Writing/2019/docker中安装java运行环境JRE/" class="post-title-link" itemprop="url">docker中安装java运行环境JRE</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-02-06 17:52:33" itemprop="dateCreated datePublished" datetime="2019-02-06T17:52:33-06:00">2019-02-06</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-03-11 12:37:16" itemprop="dateModified" datetime="2019-03-11T12:37:16-05:00">2019-03-11</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/随笔-Writing/" itemprop="url" rel="index"><span itemprop="name">随笔 / Writing</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">354</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">1 分钟</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>在docker中或者在Ubuntu命令行中安装java运行环境类似，一般有两种方法：</p>
-<ol>
-<li>通过在java官网下载jdk安装包安装；</li>
-<li>通过apt安装jre；</li>
-</ol>
-<p>如果只需要java运行环境的话，方法2已经足够：<br>（在运行docker后，直接再命令行中运行命令即可）<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install default-jre</span><br></pre></td></tr></table></figure></p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/随笔-Writing/2019/docker中安装java运行环境JRE/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/工具-Tools/2019/git本地新建分支及同步本地分支到远程/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="江前云后">
-      <meta itemprop="description" content="Interested in<br>Deep Learning & Computer Vision">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Neo's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/工具-Tools/2019/git本地新建分支及同步本地分支到远程/" class="post-title-link" itemprop="url">git本地新建分支及同步本地分支到远程</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2018-12-20 21:30:01" itemprop="dateCreated datePublished" datetime="2018-12-20T21:30:01-06:00">2018-12-20</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-03-11 12:36:20" itemprop="dateModified" datetime="2019-03-11T12:36:20-05:00">2019-03-11</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/工具-Tools/" itemprop="url" rel="index"><span itemprop="name">工具 / Tools</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">本文字数：</span>
-                
-                <span title="本文字数">330</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">1 分钟</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="本地新建分支"><a href="#本地新建分支" class="headerlink" title="本地新建分支"></a>本地新建分支</h1><p>git新建本地分支命令：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b new_branch</span><br></pre></td></tr></table></figure></p>
-<p>执行后会新建名为<code>new_branch</code>的分支并直接切换到该分支，相当于执行了以下语句：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git branch new_branch</span><br><span class="line">git checkout new_branch</span><br></pre></td></tr></table></figure></p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/工具-Tools/2019/git本地新建分支及同步本地分支到远程/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2425,7 +2483,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">31</span>
+                    <span class="site-state-item-count">33</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2509,7 +2567,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">17</span>
+                      
+                    
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -2598,7 +2658,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">29k</span>
+    <span title="站点总字数">33k</span>
   
 
   
@@ -2607,7 +2667,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">26 分钟</span>
+    <span title="站点阅读时长">30 分钟</span>
   
 </div>
 
