@@ -106,7 +106,7 @@
 <meta property="og:site_name" content="Neo&#39;s Blog">
 <meta property="og:description" content="问题在Docker中运行PyTorch程序时，如果报错：1RuntimeError: DataLoader worker (pid 123456) is killed by signal: Aborted. 最可能的原因是，Docker的共享内存不足，解决办法是，要么改成更小的batchsize，要么退出docker后，重新运行docker并指定更大的共享内存。这个原因可以从docker的说明文档">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-09T19:30:33.498Z">
+<meta property="og:updated_time" content="2019-04-09T20:41:12.885Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker中PyTorch的dataloader被终止：RuntimeError: DataLoader worker (pid 25564) is killed by signal: Aborted.">
 <meta name="twitter:description" content="问题在Docker中运行PyTorch程序时，如果报错：1RuntimeError: DataLoader worker (pid 123456) is killed by signal: Aborted. 最可能的原因是，Docker的共享内存不足，解决办法是，要么改成更小的batchsize，要么退出docker后，重新运行docker并指定更大的共享内存。这个原因可以从docker的说明文档">
@@ -406,7 +406,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-09 14:30:33" itemprop="dateModified" datetime="2019-04-09T14:30:33-05:00">2019-04-09</time>
+                <time title="修改时间：2019-04-09 15:41:12" itemprop="dateModified" datetime="2019-04-09T15:41:12-05:00">2019-04-09</time>
               
             
           </span>
@@ -466,7 +466,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">2.5k</span>
+                <span title="本文字数">1.3k</span>
               
 
               
@@ -480,7 +480,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">2 分钟</span>
+                <span title="阅读时长">1 分钟</span>
               
             </div>
           
@@ -536,45 +536,8 @@
 <h2 id="几种内存命令的说明"><a href="#几种内存命令的说明" class="headerlink" title="几种内存命令的说明"></a>几种内存命令的说明</h2><ol>
 <li><code>-m=&quot;10g&quot;</code>,docker的运行内存，按照官方文档描述，应该是对应于实际机器的物理内存，因此在设置的时候，肯定是要比本机物理内存小的；单位可以是<code>b/k/m/g</code></li>
 <li><code>-memory-swap=&quot;11g&quot;</code>，内存+交换内存，即物理内存+交换内存的总大小，要大于等于上面设置的<code>-m</code>的大小，设置格式同上</li>
-<li><p><code>--shm-size=&quot;10g&quot;</code>,共享内存，关于共享内存<code>shm</code>和<code>swap</code>之间的区别颇让人让人费解的问题，查了一些资料（见最后的参考）后，对于这两个内存的理解是：</p>
-<ul>
-<li>swap：<ul>
-<li><code>是一个文件</code>，是使用硬盘空间的一部分作为物理内存来扩展RAM空间的</li>
-<li>虽然是物理硬盘的一部分，但是仍然属于RAM，并且属于易失性存储，重启机器会使数据丢失；</li>
-<li>空间大小在<strong>一般情况下</strong>，swap的空间大小设置为物理内存的两倍大小；</li>
-<li>docker中的swap对应于物理机器linux系统中的swap</li>
-</ul>
-</li>
-<li><p>shm：</p>
-<ul>
-<li>在机器上挂载名可以是<code>dev/shm</code>，也可以是<code>tmpfs</code>；</li>
-<li>是将虚拟内存的一部分挂载为临时<code>文件系统</code>，用于<strong>应用程序的加速</strong>，原理是允许其中的数据被不同的应用程序访问；</li>
-<li>在<code>tmpfs</code>中创建的文件很自然地也就创建在了虚拟内存中，因此其存储性质同swap，属于易失性存储；</li>
-<li>在docker中使用<code>--shm-size</code>命令挂载的分区是<code>/dev/shm</code>，可以在docker的命令行中使用<code>df -h</code>命令查看；同时也能看到本机的物理机器上的<code>tmpfs</code>分区；</li>
-<li><p>如果在运行docker的物理机器上运行<code>df -h</code>命令,内容是类似下面这样的：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tmpfs           7.8G  115M  7.7G   2% /dev/shm</span><br><span class="line">tmpfs           5.0M  4.0K  5.0M   1% /run/lock</span><br><span class="line">tmpfs           7.8G     0  7.8G   0% /sys/fs/cgroup</span><br></pre></td></tr></table></figure>
-<p>看不到docker的<code>/dev/shm</code>空间；并且物理机器上的<code>/dev/shm</code>也是挂载在<code>tmpfs</code>下面的；同时物理机器上<code>tmpfs</code>也挂载了其他临时分区；</p>
-</li>
-<li>即在docker中可以看到docker的挂载情况和本地物理机器的挂载情况，而在物理机器上看不到docker中的挂载情况</li>
-</ul>
-</li>
-</ul>
-</li>
+<li><code>--shm-size=&quot;10g&quot;</code>,共享内存，关于共享内存<code>shm</code>和<code>swap</code>之间的区别颇让人让人费解的问题，查了一些资料（见最后的参考）后，对于这两个内存的理解可以查看这篇文章：<a href="./swap和shm的区别.md">swap和shm的区别</a></li>
 </ol>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>下面参考链接中给出了<code>swap</code>和<code>shm (tmpfs)</code>的区别总结：</p>
-<blockquote>
-<ul>
-<li>tmpfs使用内存空间而swap使用物理存储空间</li>
-<li>使用<code>df</code>命令时，tmpfs可以看做是挂载的文件系统，但是看不到swap（就像使用df命令看不到物理内存一样）</li>
-<li>swap有经验意义上推荐的大小，而tmpfs没有；tmpfs的大小与所运行系统的目的有关</li>
-<li>tmpfs可以使当前运行系统中的<strong>应用程序</strong>运行的更快，而swap是缓解系统物理内存压力的</li>
-<li>swap空间满了表明系统正在高负荷运转，会造成性能下降甚至死机；而tmpfs满了以后并不一定有上面的情况</li>
-<li>tmpfs是作为“增强型”功能出现的，而swap是必须有的功能</li>
-</ul>
-</blockquote>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><blockquote>
-<p><a href="https://gerardnico.com/os/linux/shared_memory" target="_blank" rel="noopener">https://gerardnico.com/os/linux/shared_memory</a><br><a href="https://kerneltalks.com/linux/difference-between-tmpfs-and-swap/" target="_blank" rel="noopener">https://kerneltalks.com/linux/difference-between-tmpfs-and-swap/</a><br><a href="https://www.garron.me/en/bits/create-add-swap-file-ubuntu.html" target="_blank" rel="noopener">https://www.garron.me/en/bits/create-add-swap-file-ubuntu.html</a><br><a href="https://www.experts-exchange.com/questions/27463115/Diffrence-between-swap-and-dev-shm.html" target="_blank" rel="noopener">https://www.experts-exchange.com/questions/27463115/Diffrence-between-swap-and-dev-shm.html</a></p>
-</blockquote>
 
       
     </div>
@@ -624,6 +587,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/随笔-Writing/swap和shm的区别/" rel="prev" title="swap和shm的区别">
+                swap和shm的区别 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -694,7 +661,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">33</span>
+                    <span class="site-state-item-count">34</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -780,7 +747,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">18</span>
+                      
+                    
+                    <span class="site-state-item-count">19</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -853,7 +822,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#问题"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#docker的内存"><span class="nav-number">2.</span> <span class="nav-text">docker的内存</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#docker中内存相关的命令"><span class="nav-number">2.1.</span> <span class="nav-text">docker中内存相关的命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#几种内存命令的说明"><span class="nav-number">2.2.</span> <span class="nav-text">几种内存命令的说明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">2.3.</span> <span class="nav-text">总结</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">3.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#问题"><span class="nav-number">1.</span> <span class="nav-text">问题</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#docker的内存"><span class="nav-number">2.</span> <span class="nav-text">docker的内存</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#docker中内存相关的命令"><span class="nav-number">2.1.</span> <span class="nav-text">docker中内存相关的命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#几种内存命令的说明"><span class="nav-number">2.2.</span> <span class="nav-text">几种内存命令的说明</span></a></li></ol></li></ol></div>
             
 
           </div>
