@@ -98,23 +98,25 @@
 
 
 
-  <meta name="description" content="Interested inDeep Learning &amp; Computer Vision">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Neo&#39;s Blog">
-<meta property="og:url" content="https://sdsy888.github.io/categories/机器学习-Machine-Learning/框架-Framework/index.html">
+  <meta name="description" content="PyTorch（tensorflow类似）的损失函数中，有一个（类）损失函数名字中带了with_logits. 而这里的logits指的是,该损失函数已经内部自带了计算logit的操作，无需在传入给这个loss函数之前手动使用sigmoid/softmax将之前网络的输入映射到[0,1]之间.">
+<meta name="keywords" content="pytorch">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pytorch中的损失函数中的logits">
+<meta property="og:url" content="https://sdsy888.github.io/机器学习-Machine-Learning/框架-Framework/2019/pytorch中的损失函数的logis/index.html">
 <meta property="og:site_name" content="Neo&#39;s Blog">
-<meta property="og:description" content="Interested inDeep Learning &amp; Computer Vision">
+<meta property="og:description" content="PyTorch（tensorflow类似）的损失函数中，有一个（类）损失函数名字中带了with_logits. 而这里的logits指的是,该损失函数已经内部自带了计算logit的操作，无需在传入给这个loss函数之前手动使用sigmoid/softmax将之前网络的输入映射到[0,1]之间.">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-03-11T17:38:55.581Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Neo&#39;s Blog">
-<meta name="twitter:description" content="Interested inDeep Learning &amp; Computer Vision">
+<meta name="twitter:title" content="pytorch中的损失函数中的logits">
+<meta name="twitter:description" content="PyTorch（tensorflow类似）的损失函数中，有一个（类）损失函数名字中带了with_logits. 而这里的logits指的是,该损失函数已经内部自带了计算logit的操作，无需在传入给这个loss函数之前手动使用sigmoid/softmax将之前网络的输入映射到[0,1]之间.">
 
 
 
 
 
 
-  <link rel="canonical" href="https://sdsy888.github.io/categories/机器学习-Machine-Learning/框架-Framework/">
+  <link rel="canonical" href="https://sdsy888.github.io/机器学习-Machine-Learning/框架-Framework/2019/pytorch中的损失函数的logis/">
 
 
 
@@ -124,7 +126,7 @@
   };
 </script>
 
-  <title>分类: 框架 / Framework | Neo's Blog</title>
+  <title>pytorch中的损失函数中的logits | Neo's Blog</title>
   
 
 
@@ -172,7 +174,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -265,7 +267,7 @@
         
         
           
-          <li class="menu-item menu-item-categories menu-item-active">
+          <li class="menu-item menu-item-categories">
 
     
     
@@ -324,109 +326,270 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block category">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>框架 / Framework<small>分类</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/机器学习-Machine-Learning/框架-Framework/2019/pytorch中的损失函数的logis/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="江前云后">
+      <meta itemprop="description" content="Interested in<br>Deep Learning & Computer Vision">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Neo's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/机器学习-Machine-Learning/框架-Framework/2019/Docker中PyTorch的dataloader被终止：RuntimeError-DataLoader-worker-pid-25564-is-killed-by-signal-Aborted/" itemprop="url">
-            
-              <span itemprop="name">Docker中PyTorch的dataloader被终止：RuntimeError: DataLoader worker (pid 25564) is killed by signal: Aborted.</span>
-            
-          </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">pytorch中的损失函数中的logits
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-08T15:42:03-05:00" content="2019-04-08">
-          04-08
-        </time>
-      </div>
+              
+            
+          </h1>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
+          <span class="post-time">
 
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-03-10 20:09:17" itemprop="dateCreated datePublished" datetime="2019-03-10T20:09:17-05:00">2019-03-10</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-03-11 12:38:55" itemprop="dateModified" datetime="2019-03-11T12:38:55-05:00">2019-03-11</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/机器学习-Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">机器学习 / Machine Learning</span></a></span>
+
+                
+                
+                  ，
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/机器学习-Machine-Learning/框架-Framework/" itemprop="url" rel="index"><span itemprop="name">框架 / Framework</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">1.1k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">1 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
+      
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/机器学习-Machine-Learning/框架-Framework/2019/pytorch中的损失函数的logis/" itemprop="url">
-            
-              <span itemprop="name">pytorch中的损失函数中的logits</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-10T20:09:17-05:00" content="2019-03-10">
-          03-10
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
+        <p>PyTorch（tensorflow类似）的损失函数中，有一个（类）损失函数名字中带了<code>with_logits</code>. 而这里的logits指的是,该损失函数已经内部自带了计算logit的操作，<strong>无需</strong>在传入给这个loss函数之前手动使用<code>sigmoid/softmax</code>将之前网络的输入映射到[0,1]之间.<br><a id="more"></a></p>
+<h2 id="logit函数"><a href="#logit函数" class="headerlink" title="logit函数"></a>logit函数</h2><p>其形式如下：</p>
+<script type="math/tex; mode=display">L(p)=\frac{p}{1-p}</script><p>该函数可以将输入范围在[0,1]之间的数值p映射到$[-\infty,\infty]$.如果p=0.5,则函数值为0,p<0.5,则函数值为负值；如果p>0.5,则函数值为正值.</0.5,则函数值为负值；如果p></p>
+<h2 id="损失函数中的logits"><a href="#损失函数中的logits" class="headerlink" title="损失函数中的logits"></a>损失函数中的logits</h2><p>而在损失函数中,如果其名称中带了<code>with_logits</code>则可以直接将之前网络的输出接到该损失函数中,不需要手动调用<code>sigmoid(input)</code>函数. 因为该损失函数中包含了诸如<code>softmaxt</code>或<code>sigmoid</code>方法,会将输入其中的数值从$[-\infty,\infty]$映射到[0,1]之间.</p>
+<h2 id="官方示例"><a href="#官方示例" class="headerlink" title="官方示例"></a><a href="https://pytorch.org/docs/stable/_modules/torch/nn/functional.html" target="_blank" rel="noopener">官方示例</a></h2><ul>
+<li>名称中不带<code>logits</code>的损失函数：</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>input = torch.randn((<span class="number">3</span>, <span class="number">2</span>), requires_grad=<span class="keyword">True</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>target = torch.rand((<span class="number">3</span>, <span class="number">2</span>), requires_grad=<span class="keyword">False</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>loss = F.binary_cross_entropy(F.sigmoid(input), target)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>loss.backward()</span><br></pre></td></tr></table></figure>
+<p>可以看到，用于二分类的<code>binary_cross_entropy</code>函数需要将输入先经过<code>sigmoid处理</code>,将其变换到[0,1]之间再计算loss,因为这里的target一般是[0,1]之间的数值.</p>
+<ul>
+<li>名字中带<code>with_logits</code>的损失函数:</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>input = torch.randn(<span class="number">3</span>, requires_grad=<span class="keyword">True</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>target = torch.empty(<span class="number">3</span>).random_(<span class="number">2</span>)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>loss = F.binary_cross_entropy_with_logits(input, target)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>loss.backward()</span><br></pre></td></tr></table></figure>
+<p>可以看到这里可以将前面网络的输出(即此处的input)之间送入loss函数中计算,无需手动调用<code>sigmoid</code>进行变换.</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><blockquote>
+<p><a href="https://zhuanlan.zhihu.com/p/33560183" target="_blank" rel="noopener">TF里几种loss和注意事项</a><br><a href="https://pytorch.org/docs/stable/_modules/torch/nn/functional.html" target="_blank" rel="noopener">官方示例</a></p>
+</blockquote>
 
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/pytorch/" rel="tag"># pytorch</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/随笔-Writing/2019/python中处理中文标点/" rel="next" title="使用Python的translate函数处理（替换）字符和中文标点">
+                <i class="fa fa-chevron-left"></i> 使用Python的translate函数处理（替换）字符和中文标点
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/机器学习-Machine-Learning/2019/常用损失函数/" rel="prev" title="常用损失函数">
+                常用损失函数 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -446,8 +609,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -616,6 +788,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#logit函数"><span class="nav-number">1.</span> <span class="nav-text">logit函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#损失函数中的logits"><span class="nav-number">2.</span> <span class="nav-text">损失函数中的logits</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#官方示例"><span class="nav-number">3.</span> <span class="nav-text">官方示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -786,6 +975,10 @@
 
 
   
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
 
   
 
@@ -801,6 +994,8 @@
 
   
 
+
+  
 
 
   
