@@ -588,12 +588,24 @@
                 
               
 
-              <time title="创建时间：2019-04-09 15:51:02 / 修改时间：16:06:25" itemprop="dateCreated datePublished" datetime="2019-04-09T15:51:02-05:00">2019-04-09</time>
+              <time title="创建时间：2019-04-09 15:51:02" itemprop="dateCreated datePublished" datetime="2019-04-09T15:51:02-05:00">2019-04-09</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-10 16:38:12" itemprop="dateModified" datetime="2019-04-10T16:38:12-05:00">2019-04-10</time>
               
             
           </span>
@@ -646,7 +658,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">672</span>
+                <span title="本文字数">673</span>
               
 
               
@@ -681,28 +693,17 @@
 
       
         
+          <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>运行docker时如果使用命令``出现如下警告：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WARNING: Your kernel does not support swap limit capabilities. Limitation discarded.</span><br></pre></td></tr></table></figure></p>
+<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1>
+          <!--noindex-->
           
-            <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>运行docker时如果使用命令``出现如下警告：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WARNING: Your kernel does not support swap limit capabilities. Limitation discarded.</span><br></pre></td></tr></table></figure></p>
-<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><p>这是在ubuntu或其他基于Debian的系统上才会出现的问题，原因是系统默认未开启swap限制。(开启后会使系统内存占用多1%,性能下降约10%,即使没有运行docker)</p>
-<blockquote>
-<p>Memory and swap accounting incur an overhead of about 1% of the total available memory and a 10% overall performance degradation, even if Docker is not running.</p>
-</blockquote>
-<p>开启方法:</p>
-<ul>
-<li>首先使用<code>sudo -i</code>获取系统sudo权限</li>
-<li><p>修改系统的<code>/etc/default/grub file</code>文件。使用vim在这个文件中添加一行：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GRUB_CMDLINE_LINUX="cgroup_enable=memory swapaccount=1"</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>更新系统的GRUB：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo update-grub</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>改动在系统下次重启后生效。</p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><blockquote>
-<p>官方链接：<a href="https://docs.docker.com/install/linux/linux-postinstall/#your-kernel-does-not-support-cgroup-swap-limit-capabilities" target="_blank" rel="noopener">https://docs.docker.com/install/linux/linux-postinstall/#your-kernel-does-not-support-cgroup-swap-limit-capabilities</a></p>
-</blockquote>
-
+            <div class="post-button text-center">
+              <a class="btn" href="/工具-Tools/随笔-Writing/2019/docker警告：Your kernel does not support cgroup swap limit capabilities/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
           
+          <!--/noindex-->
         
       
     </div>
@@ -802,12 +803,24 @@
                 
               
 
-              <time title="创建时间：2019-04-09 14:33:16 / 修改时间：15:39:48" itemprop="dateCreated datePublished" datetime="2019-04-09T14:33:16-05:00">2019-04-09</time>
+              <time title="创建时间：2019-04-09 14:33:16" itemprop="dateCreated datePublished" datetime="2019-04-09T14:33:16-05:00">2019-04-09</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-04-10 16:38:25" itemprop="dateModified" datetime="2019-04-10T16:38:25-05:00">2019-04-10</time>
               
             
           </span>
@@ -888,42 +901,23 @@
 
       
         
-          
-            <p>在使用docker的过程中，发现其有很多内存相关的命令，对其中的swap（交换内存）和shm（共享内存）尤其费解。于是查阅了一些资料，弄明白了二者的基本区别。</p>
+          <p>在使用docker的过程中，发现其有很多内存相关的命令，对其中的swap（交换内存）和shm（共享内存）尤其费解。于是查阅了一些资料，弄明白了二者的基本区别。</p>
 <h2 id="swap"><a href="#swap" class="headerlink" title="swap"></a>swap</h2><ul>
 <li><code>是一个文件</code>，是使用硬盘空间的一部分作为物理内存来扩展RAM空间的</li>
 <li>虽然是物理硬盘的一部分，但是仍然属于RAM，并且属于易失性存储，重启机器会使数据丢失；</li>
 <li>空间大小在<strong>一般情况下</strong>，swap的空间大小设置为物理内存的两倍大小；</li>
 <li>docker中的swap对应于物理机器linux系统中的swap</li>
 </ul>
-<h2 id="shm"><a href="#shm" class="headerlink" title="shm"></a>shm</h2><ul>
-<li>在机器上挂载名可以是<code>dev/shm</code>，也可以是<code>tmpfs</code>；</li>
-<li>是将虚拟内存的一部分挂载为临时<code>文件系统</code>，用于<strong>应用程序的加速</strong>，原理是允许其中的数据被不同的应用程序访问；</li>
-<li>在<code>tmpfs</code>中创建的文件很自然地也就创建在了虚拟内存中，因此其存储性质同swap，属于易失性存储；</li>
-<li>在docker中使用<code>--shm-size</code>命令挂载的分区是<code>/dev/shm</code>，可以在docker的命令行中使用<code>df -h</code>命令查看；同时也能看到本机的物理机器上的<code>tmpfs</code>分区；</li>
-<li>如果在运行docker的物理机器上运行<code>df -h</code>命令,内容是类似下面这样的：<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tmpfs           7.8G  115M  7.7G   2% /dev/shm</span><br><span class="line">tmpfs           5.0M  4.0K  5.0M   1% /run/lock</span><br><span class="line">tmpfs           7.8G     0  7.8G   0% /sys/fs/cgroup</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>看不到docker的<code>/dev/shm</code>空间；并且物理机器上的<code>/dev/shm</code>也是挂载在<code>tmpfs</code>下面的；同时物理机器上<code>tmpfs</code>也挂载了其他临时分区；</p>
-<ul>
-<li>即在docker中可以看到docker的挂载情况和本地物理机器的挂载情况，而在物理机器上看不到docker中的挂载情况</li>
-</ul>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>下面参考链接中给出了<code>swap</code>和<code>shm (tmpfs)</code>的区别总结：</p>
-<blockquote>
-<ul>
-<li>tmpfs使用内存空间而swap使用物理存储空间</li>
-<li>使用<code>df</code>命令时，tmpfs可以看做是挂载的文件系统，但是看不到swap（就像使用df命令看不到物理内存一样）</li>
-<li>swap有经验意义上推荐的大小，而tmpfs没有；tmpfs的大小与所运行系统的目的有关</li>
-<li>tmpfs可以使当前运行系统中的<strong>应用程序</strong>运行的更快，而swap是缓解系统物理内存压力的</li>
-<li>swap空间满了表明系统正在高负荷运转，会造成性能下降甚至死机；而tmpfs满了以后并不一定有上面的情况</li>
-<li>tmpfs是作为“增强型”功能出现的，而swap是必须有的功能</li>
-</ul>
-</blockquote>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><blockquote>
-<p><a href="https://gerardnico.com/os/linux/shared_memory" target="_blank" rel="noopener">https://gerardnico.com/os/linux/shared_memory</a><br><a href="https://kerneltalks.com/linux/difference-between-tmpfs-and-swap/" target="_blank" rel="noopener">https://kerneltalks.com/linux/difference-between-tmpfs-and-swap/</a><br><a href="https://www.garron.me/en/bits/create-add-swap-file-ubuntu.html" target="_blank" rel="noopener">https://www.garron.me/en/bits/create-add-swap-file-ubuntu.html</a><br><a href="https://www.experts-exchange.com/questions/27463115/Diffrence-between-swap-and-dev-shm.html" target="_blank" rel="noopener">https://www.experts-exchange.com/questions/27463115/Diffrence-between-swap-and-dev-shm.html</a></p>
-</blockquote>
-
+<h2 id="shm"><a href="#shm" class="headerlink" title="shm"></a>shm</h2>
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/随笔-Writing/2019/swap和shm的区别/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
@@ -1040,7 +1034,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-09 15:46:39" itemprop="dateModified" datetime="2019-04-09T15:46:39-05:00">2019-04-09</time>
+                <time title="修改时间：2019-04-10 16:37:56" itemprop="dateModified" datetime="2019-04-10T16:37:56-05:00">2019-04-10</time>
               
             
           </span>
@@ -1128,47 +1122,20 @@
 
       
         
-          
-            <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>在Docker中运行PyTorch程序时，如果报错：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RuntimeError: DataLoader worker (pid 123456) is killed by signal: Aborted.</span><br></pre></td></tr></table></figure></p>
+          <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>在Docker中运行PyTorch程序时，如果报错：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RuntimeError: DataLoader worker (pid 123456) is killed by signal: Aborted.</span><br></pre></td></tr></table></figure></p>
 <p>最可能的原因是，Docker的<strong>共享内存不足</strong>，解决办法是，要么改成更小的batchsize，要么退出docker后，重新运行docker并指定更大的共享内存。这个原因可以从docker的说明文档中可以看出：</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">--oom-kill-disable=false：Whether to disable OOM Killer for the container or not.</span><br></pre></td></tr></table></figure>
 <p>这个命令表示是否要kill超出内存的程序，因此解决上面的问题需要重新调整docker的运行内存。</p>
 <h1 id="docker的内存"><a href="#docker的内存" class="headerlink" title="docker的内存"></a>docker的内存</h1><h2 id="docker中内存相关的命令"><a href="#docker中内存相关的命令" class="headerlink" title="docker中内存相关的命令"></a>docker中内存相关的命令</h2><p>关于docker内存相关的命令：（docker中有很多与内存相关的命令，如kernel-memory，oom等，这里列出常用的几个）</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>命令</th>
-<th>说明</th>
-<th>中文</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td> -m, —memory=””</td>
-<td>Memory limit (format: <number>[<unit>]). Number is a positive integer. Unit can be one of b, k, m, or g. Minimum is 4M.</unit></number></td>
-<td>使用内存限制，</td>
-</tr>
-<tr>
-<td>  —memory-swap=””</td>
-<td>Total memory limit (memory + swap, format: <number>[<unit>]). Number is a positive integer. Unit can be one of b, k, m, or g.</unit></number></td>
-<td>总内存设置：内存+交换内存</td>
-</tr>
-<tr>
-<td> —shm-size=””</td>
-<td>Size of /dev/shm. The format is <number><unit>. number must be greater than 0. Unit is optional and can be b (bytes), k (kilobytes), m (megabytes), or g (gigabytes). If you omit the unit, the system uses bytes. If you omit the size entirely, the system uses 64m.</unit></number></td>
-<td>共享内存</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h2 id="几种内存命令的说明"><a href="#几种内存命令的说明" class="headerlink" title="几种内存命令的说明"></a>几种内存命令的说明</h2><ol>
-<li><code>-m=&quot;10g&quot;</code>,docker的运行内存，按照官方文档描述，应该是对应于实际机器的物理内存，因此在设置的时候，肯定是要比本机物理内存小的；单位可以是<code>b/k/m/g</code></li>
-<li><code>-memory-swap=&quot;11g&quot;</code>，内存+交换内存，即物理内存+交换内存的总大小，要大于等于上面设置的<code>-m</code>的大小，设置格式同上</li>
-<li><code>--shm-size=&quot;10g&quot;</code>,共享内存，关于共享内存<code>shm</code>和<code>swap</code>之间的区别颇让人让人费解的问题，查了一些资料（见最后的参考）后，对于这两个内存的理解可以查看这篇文章：</li>
-</ol>
-
+          <!--noindex-->
           
+            <div class="post-button text-center">
+              <a class="btn" href="/机器学习-Machine-Learning/框架-Framework/2019/Docker中PyTorch的dataloader被终止：RuntimeError-DataLoader-worker-pid-25564-is-killed-by-signal-Aborted/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
         
       
     </div>
