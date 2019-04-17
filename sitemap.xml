@@ -2,16 +2,44 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://sdsy888.github.io/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-Machine-Learning/%E6%A1%86%E6%9E%B6-Framework/%E5%B7%A5%E5%85%B7-Tools/%E9%9A%8F%E7%AC%94-Writing/Python%E4%B8%AD%E8%8B%B1%E6%96%87%E5%88%86%E8%AF%8D%E6%96%B9%E6%B3%95%E7%AE%80%E4%BB%8B/</loc>
+    
+    <lastmod>2019-04-12T03:31:04.889Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://sdsy888.github.io/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-Machine-Learning/%E6%A1%86%E6%9E%B6-Framework/%E5%B7%A5%E5%85%B7-Tools/%E9%9A%8F%E7%AC%94-Writing/Python%E5%8D%95%E5%9E%8B%E5%8F%B7-%E5%92%8C%E5%8F%8C%E6%98%9F%E5%8F%B7-%E7%94%A8%E6%B3%95%E6%80%BB%E7%BB%93/</loc>
+    
+    <lastmod>2019-04-12T02:11:52.508Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://sdsy888.github.io/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-Machine-Learning/%E6%A1%86%E6%9E%B6-Framework/%E5%B7%A5%E5%85%B7-Tools/%E9%9A%8F%E7%AC%94-Writing/Python%E4%B8%ADlambda%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/</loc>
+    
+    <lastmod>2019-04-12T02:07:12.886Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://sdsy888.github.io/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-Machine-Learning/%E6%A1%86%E6%9E%B6-Framework/%E5%B7%A5%E5%85%B7-Tools/%E9%9A%8F%E7%AC%94-Writing/Atom%E4%B8%AD%E4%BD%BF%E7%94%A8Autocomplete-Python%E6%9F%A5%E6%89%BE%E5%AE%9A%E4%B9%89/</loc>
+    
+    <lastmod>2019-04-12T00:20:21.001Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://sdsy888.github.io/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-Machine-Learning/%E6%A1%86%E6%9E%B6-Framework/2019/Docker%E4%B8%ADPyTorch%E7%9A%84dataloader%E8%A2%AB%E7%BB%88%E6%AD%A2%EF%BC%9ARuntimeError-DataLoader-worker-pid-25564-is-killed-by-signal-Aborted/</loc>
     
-    <lastmod>2019-04-10T22:00:50.708Z</lastmod>
+    <lastmod>2019-04-10T22:00:50.709Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://sdsy888.github.io/%E9%9A%8F%E7%AC%94-Writing/2019/swap%E5%92%8Cshm%E7%9A%84%E5%8C%BA%E5%88%AB/</loc>
     
-    <lastmod>2019-04-10T21:38:25.965Z</lastmod>
+    <lastmod>2019-04-10T21:38:25.966Z</lastmod>
     
   </url>
   
@@ -39,7 +67,7 @@
   <url>
     <loc>https://sdsy888.github.io/%E9%9A%8F%E7%AC%94-Writing/2019/MacOS%E4%B8%8A%E4%BD%BF%E7%94%A8conda-init-zsh%E5%90%8E%EF%BC%8C%E6%AF%8F%E6%AC%A1%E5%90%AF%E5%8A%A8%E6%8F%90%E7%A4%BA-eval-61-not-found/</loc>
     
-    <lastmod>2019-04-08T20:18:14.149Z</lastmod>
+    <lastmod>2019-04-08T20:18:14.150Z</lastmod>
     
   </url>
   
@@ -53,7 +81,7 @@
   <url>
     <loc>https://sdsy888.github.io/%E9%9A%8F%E7%AC%94-Writing/2019/python%E4%B8%AD%E5%A4%84%E7%90%86%E4%B8%AD%E6%96%87%E6%A0%87%E7%82%B9/</loc>
     
-    <lastmod>2019-03-21T17:17:57.198Z</lastmod>
+    <lastmod>2019-03-21T17:17:57.199Z</lastmod>
     
   </url>
   
@@ -74,7 +102,7 @@
   <url>
     <loc>https://sdsy888.github.io/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-Machine-Learning/%E6%A1%86%E6%9E%B6-Framework/2019/pytorch%E4%B8%AD%E7%9A%84%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0%E7%9A%84logis/</loc>
     
-    <lastmod>2019-03-11T17:38:55.581Z</lastmod>
+    <lastmod>2019-03-11T17:38:55.582Z</lastmod>
     
   </url>
   
@@ -88,14 +116,14 @@
   <url>
     <loc>https://sdsy888.github.io/%E9%9A%8F%E7%AC%94-Writing/2019/%E4%BD%BF%E7%94%A8PIL-crop%E5%9B%BE%E5%83%8F%E7%9A%84%E9%94%99%E8%AF%AF%EF%BC%9AAttributeError-idat-object-has-no-attribute-fileno/</loc>
     
-    <lastmod>2019-03-11T17:36:59.170Z</lastmod>
+    <lastmod>2019-03-11T17:36:59.171Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://sdsy888.github.io/%E6%A1%86%E6%9E%B6-Framework/%E9%9A%8F%E7%AC%94-Writing/2019/docker%E8%BF%90%E8%A1%8Cpytorch%E6%8A%A5%E9%94%99%EF%BC%9ARuntimeError-DataLoader-worker-pid-493-is-killed-by-signal-Bus-error-Details-are-lost-due-to-multiprocessing-Rerunning-with-num-workers-0-may-give-better-error-trace/</loc>
     
-    <lastmod>2019-03-11T17:36:52.892Z</lastmod>
+    <lastmod>2019-03-11T17:36:52.893Z</lastmod>
     
   </url>
   
@@ -109,7 +137,7 @@
   <url>
     <loc>https://sdsy888.github.io/%E9%9A%8F%E7%AC%94-Writing/2019/%E4%BB%8EPython2%E5%88%87%E6%8D%A2%E5%88%B0Python3%E4%B9%8B%E5%90%8E%E7%9A%84UnicodeDecodeError/</loc>
     
-    <lastmod>2019-02-15T17:21:50.134Z</lastmod>
+    <lastmod>2019-02-15T17:21:50.135Z</lastmod>
     
   </url>
   
@@ -123,7 +151,7 @@
   <url>
     <loc>https://sdsy888.github.io/%E9%9A%8F%E7%AC%94-Writing/2019/%E5%AE%89%E8%A3%85%E7%97%85%E7%90%86%E5%9B%BE%E5%83%8F%E5%BA%93openslide-python/</loc>
     
-    <lastmod>2018-12-23T18:02:42.267Z</lastmod>
+    <lastmod>2018-12-23T18:02:42.268Z</lastmod>
     
   </url>
   
@@ -144,14 +172,14 @@
   <url>
     <loc>https://sdsy888.github.io/%E9%9A%8F%E7%AC%94-Writing/2018/arXiv%E5%92%8CCoRR%E7%9A%84%E5%8C%BA%E5%88%AB%E4%B8%8E%E5%85%B3%E7%B3%BB/</loc>
     
-    <lastmod>2018-12-03T05:41:01.187Z</lastmod>
+    <lastmod>2018-12-03T05:41:01.188Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://sdsy888.github.io/%E5%B7%A5%E5%85%B7-Tools/2017/%E4%BD%BF%E7%94%A8alias%E5%92%8Cscp%E7%AE%80%E5%8C%96%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93/</loc>
     
-    <lastmod>2018-12-03T05:40:52.112Z</lastmod>
+    <lastmod>2018-12-03T05:40:52.113Z</lastmod>
     
   </url>
   
