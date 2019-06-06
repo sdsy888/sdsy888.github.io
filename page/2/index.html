@@ -345,6 +345,206 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/随笔-Writing/2019/MacOS上使用conda-init-zsh后，每次启动提示-eval-61-not-found/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="江前云后">
+      <meta itemprop="description" content="Interested in<br>Deep Learning & Computer Vision">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Neo's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/随笔-Writing/2019/MacOS上使用conda-init-zsh后，每次启动提示-eval-61-not-found/" class="post-title-link" itemprop="url">MacOS上使用conda init zsh后，每次启动提示(eval):61: = not found</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-04-08 13:20:38 / Modified: 13:18:14" itemprop="dateCreated datePublished" datetime="2019-04-08T13:20:38-07:00">2019-04-08</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/随笔-Writing/" itemprop="url" rel="index"><span itemprop="name">随笔 / Writing</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">1.2k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">1 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>conda 4.6.9这个版本是问题很多啊…</p>
+<h1 id="问题1"><a href="#问题1" class="headerlink" title="问题1"></a>问题1</h1><p>首先最麻烦的一个问题是，运行完<code>conda init zsh</code>后，每次启动命令行的时候，会在开头报错：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(eval):61: = not found</span><br></pre></td></tr></table></figure></p>
+<p>起因是为了使用<code>conda activate</code>来切换环境，需要在命令行中对使用的shell执行<code>conda init zsh (或者bash)</code>。执行后，conda会在<code>~/.zshrc</code>(如果使用bash，则会是<code>~/.bashrc</code>)中将原来的<code>export &quot;/anaconda3/bin:$PATH&quot;</code>注释掉，而改成conda init相关的命令。</p>
+<p>从说明上来看，是在conda init过程中，执行某个sh文件时执行eval命令时，出现了问题。查遍了网络，最后在GitHub issue中发现了问题的解决办法（可能是因为带有“=”的缘故，google一直搜索不到相关问题）。</p>
+<p>问题根源在于，这个版本的conda的<code>conda.sh</code>文件第61行中，<code>[]</code>中判断语句使用了两个等号导致的。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if [ "$&#123;_CE_CONDA+x&#125;" == "condax" ]; then</span><br></pre></td></tr></table></figure></p>
+<p><strong>解决办法：</strong> 直接再MacOS的anaconda目录下搜索<code>conda.sh</code>修改其中的第61行，把两个等号改成一个即可。如果有多个conda.sh就都改掉也没有问题。</p>
+<p>另一个简单粗暴的解决办法就是直接对conda进行降级：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install conda=4.6.8</span><br></pre></td></tr></table></figure></p>
+<h1 id="问题2"><a href="#问题2" class="headerlink" title="问题2"></a>问题2</h1><p>问题2是在尝试解决问题1的过程中遇到的，也是conda特定版本的问题。对conda进行降级的时候发现， 会报一个关于<code>qt</code>包的错误：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ERROR conda.core.link:_execute(568): An error occurred while uninstalling package 'defaults::qt-5.9.7-h468cd18_1'.</span><br><span class="line">PermissionError(1, 'Operation not permitted')</span><br><span class="line">Attempting to roll back.</span><br><span class="line"></span><br><span class="line">Rolling back transaction: done</span><br><span class="line"></span><br><span class="line">[Errno 1] Operation not permitted: '/anaconda3/bin/Assistant.app/Contents/PkgInfo' -&gt; '/anaconda3/bin/Assistant.app/Contents/PkgInfo.c~'</span><br></pre></td></tr></table></figure></p>
+<p><strong>解决办法：</strong>直接去<code>/anaconda3/pkgs</code>中删除<code>qt-5.9.7-h468cd18_1</code>这个包即可。</p>
+<blockquote>
+<p>参考：<a href="https://github.com/conda/conda/issues/8474" target="_blank" rel="noopener">https://github.com/conda/conda/issues/8474</a><br><a href="https://github.com/conda/conda/issues/8440" target="_blank" rel="noopener">https://github.com/conda/conda/issues/8440</a></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/随笔-Writing/2019/ubuntu无法取消粘滞边缘-sticky-edge-解决办法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -390,7 +590,7 @@
                 
               
 
-              <time title="Created: 2019-04-02 16:32:08" itemprop="dateCreated datePublished" datetime="2019-04-02T16:32:08-05:00">2019-04-02</time>
+              <time title="Created: 2019-04-02 16:32:08" itemprop="dateCreated datePublished" datetime="2019-04-02T16:32:08-07:00">2019-04-02</time>
             
 
             
@@ -407,7 +607,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-04-09 22:34:49" itemprop="dateModified" datetime="2019-04-09T22:34:49-05:00">2019-04-09</time>
+                <time title="Modified: 2019-04-09 20:34:49" itemprop="dateModified" datetime="2019-04-09T20:34:49-07:00">2019-04-09</time>
               
             
           </span>
@@ -596,7 +796,7 @@
                 
               
 
-              <time title="Created: 2019-03-19 20:08:40 / Modified: 21:12:57" itemprop="dateCreated datePublished" datetime="2019-03-19T20:08:40-05:00">2019-03-19</time>
+              <time title="Created: 2019-03-19 20:08:40 / Modified: 19:12:57" itemprop="dateCreated datePublished" datetime="2019-03-19T20:08:40-07:00">2019-03-19</time>
             
 
             
@@ -803,7 +1003,7 @@
                 
               
 
-              <time title="Created: 2019-03-14 12:20:46 / Modified: 12:27:15" itemprop="dateCreated datePublished" datetime="2019-03-14T12:20:46-05:00">2019-03-14</time>
+              <time title="Created: 2019-03-14 12:20:46 / Modified: 10:27:15" itemprop="dateCreated datePublished" datetime="2019-03-14T12:20:46-07:00">2019-03-14</time>
             
 
             
@@ -995,7 +1195,7 @@
                 
               
 
-              <time title="Created: 2019-03-13 12:47:04" itemprop="dateCreated datePublished" datetime="2019-03-13T12:47:04-05:00">2019-03-13</time>
+              <time title="Created: 2019-03-13 12:47:04" itemprop="dateCreated datePublished" datetime="2019-03-13T12:47:04-07:00">2019-03-13</time>
             
 
             
@@ -1012,7 +1212,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-03-21 13:13:34" itemprop="dateModified" datetime="2019-03-21T13:13:34-05:00">2019-03-21</time>
+                <time title="Modified: 2019-03-21 11:13:34" itemprop="dateModified" datetime="2019-03-21T11:13:34-07:00">2019-03-21</time>
               
             
           </span>
@@ -1204,7 +1404,7 @@
                 
               
 
-              <time title="Created: 2019-03-10 20:09:17" itemprop="dateCreated datePublished" datetime="2019-03-10T20:09:17-05:00">2019-03-10</time>
+              <time title="Created: 2019-03-10 20:09:17" itemprop="dateCreated datePublished" datetime="2019-03-10T20:09:17-07:00">2019-03-10</time>
             
 
             
@@ -1221,7 +1421,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-03-11 12:38:55" itemprop="dateModified" datetime="2019-03-11T12:38:55-05:00">2019-03-11</time>
+                <time title="Modified: 2019-03-11 10:38:55" itemprop="dateModified" datetime="2019-03-11T10:38:55-07:00">2019-03-11</time>
               
             
           </span>
@@ -1418,7 +1618,7 @@
                 
               
 
-              <time title="Created: 2019-03-04 14:52:22" itemprop="dateCreated datePublished" datetime="2019-03-04T14:52:22-06:00">2019-03-04</time>
+              <time title="Created: 2019-03-04 14:52:22" itemprop="dateCreated datePublished" datetime="2019-03-04T14:52:22-08:00">2019-03-04</time>
             
 
             
@@ -1435,7 +1635,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-03-21 12:17:57" itemprop="dateModified" datetime="2019-03-21T12:17:57-05:00">2019-03-21</time>
+                <time title="Modified: 2019-03-21 10:17:57" itemprop="dateModified" datetime="2019-03-21T10:17:57-07:00">2019-03-21</time>
               
             
           </span>
@@ -1627,7 +1827,7 @@
                 
               
 
-              <time title="Created: 2019-02-25 11:51:22" itemprop="dateCreated datePublished" datetime="2019-02-25T11:51:22-06:00">2019-02-25</time>
+              <time title="Created: 2019-02-25 11:51:22" itemprop="dateCreated datePublished" datetime="2019-02-25T11:51:22-08:00">2019-02-25</time>
             
 
             
@@ -1644,7 +1844,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-03-11 12:36:59" itemprop="dateModified" datetime="2019-03-11T12:36:59-05:00">2019-03-11</time>
+                <time title="Modified: 2019-03-11 10:36:59" itemprop="dateModified" datetime="2019-03-11T10:36:59-07:00">2019-03-11</time>
               
             
           </span>
@@ -1835,7 +2035,7 @@
                 
               
 
-              <time title="Created: 2019-02-15 11:17:24 / Modified: 11:21:50" itemprop="dateCreated datePublished" datetime="2019-02-15T11:17:24-06:00">2019-02-15</time>
+              <time title="Created: 2019-02-15 11:17:24 / Modified: 09:21:50" itemprop="dateCreated datePublished" datetime="2019-02-15T11:17:24-08:00">2019-02-15</time>
             
 
             
@@ -2025,7 +2225,7 @@
                 
               
 
-              <time title="Created: 2019-02-06 17:52:33" itemprop="dateCreated datePublished" datetime="2019-02-06T17:52:33-06:00">2019-02-06</time>
+              <time title="Created: 2019-02-06 17:52:33" itemprop="dateCreated datePublished" datetime="2019-02-06T17:52:33-08:00">2019-02-06</time>
             
 
             
@@ -2042,7 +2242,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-03-11 12:37:16" itemprop="dateModified" datetime="2019-03-11T12:37:16-05:00">2019-03-11</time>
+                <time title="Modified: 2019-03-11 10:37:16" itemprop="dateModified" datetime="2019-03-11T10:37:16-07:00">2019-03-11</time>
               
             
           </span>
@@ -2177,214 +2377,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/工具-Tools/2019/git本地新建分支及同步本地分支到远程/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="江前云后">
-      <meta itemprop="description" content="Interested in<br>Deep Learning & Computer Vision">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Neo's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/工具-Tools/2019/git本地新建分支及同步本地分支到远程/" class="post-title-link" itemprop="url">git本地新建分支及同步本地分支到远程</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-12-20 21:30:01" itemprop="dateCreated datePublished" datetime="2018-12-20T21:30:01-06:00">2018-12-20</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-03-11 12:36:20" itemprop="dateModified" datetime="2019-03-11T12:36:20-05:00">2019-03-11</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/工具-Tools/" itemprop="url" rel="index"><span itemprop="name">工具 / Tools</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">330</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">1 mins.</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="本地新建分支"><a href="#本地新建分支" class="headerlink" title="本地新建分支"></a>本地新建分支</h1><p>git新建本地分支命令：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b new_branch</span><br></pre></td></tr></table></figure></p>
-<p>执行后会新建名为<code>new_branch</code>的分支并直接切换到该分支，相当于执行了以下语句：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git branch new_branch</span><br><span class="line">git checkout new_branch</span><br></pre></td></tr></table></figure></p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/工具-Tools/2019/git本地新建分支及同步本地分支到远程/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2433,7 +2425,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">41</span>
+                    <span class="site-state-item-count">42</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>

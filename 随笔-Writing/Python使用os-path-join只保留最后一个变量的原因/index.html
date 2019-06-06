@@ -98,25 +98,25 @@
 
 
 
-  <meta name="description" content="Interested inDeep Learning &amp; Computer Vision">
-<meta name="keywords" content="存档 &#x2F; Archive,小事 &#x2F; Just recording,TensorFlow,vim,Linux,Mac,Paper Reading,pytorch,git">
+  <meta name="description" content="在使用Python的os.path.join(&amp;#39;a_path&amp;#39;,&amp;#39;bbb&amp;#39;,&amp;#39;/ccc&amp;#39;)来合并路径时，合并的结果如果只保留了最后的’/ccc’，是因为最后的一个变量名包含了斜杠，函数会将其识别成绝对路径，因此就会忽略前面所以的其他路径。">
+<meta name="keywords" content="存档 &#x2F; Archive">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python单型号*和双星号**用法总结">
-<meta property="og:url" content="https://sdsy888.github.io/机器学习-Machine-Learning/框架-Framework/工具-Tools/随笔-Writing/Python单型号-和双星号-用法总结/index.html">
+<meta property="og:title" content="Python使用os.path.join只保留最后一个变量的原因">
+<meta property="og:url" content="https://sdsy888.github.io/随笔-Writing/Python使用os-path-join只保留最后一个变量的原因/index.html">
 <meta property="og:site_name" content="Neo&#39;s Blog">
-<meta property="og:description" content="Interested inDeep Learning &amp; Computer Vision">
+<meta property="og:description" content="在使用Python的os.path.join(&amp;#39;a_path&amp;#39;,&amp;#39;bbb&amp;#39;,&amp;#39;/ccc&amp;#39;)来合并路径时，合并的结果如果只保留了最后的’/ccc’，是因为最后的一个变量名包含了斜杠，函数会将其识别成绝对路径，因此就会忽略前面所以的其他路径。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-04-12T02:11:52.508Z">
+<meta property="og:updated_time" content="2019-06-06T21:42:03.995Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python单型号*和双星号**用法总结">
-<meta name="twitter:description" content="Interested inDeep Learning &amp; Computer Vision">
+<meta name="twitter:title" content="Python使用os.path.join只保留最后一个变量的原因">
+<meta name="twitter:description" content="在使用Python的os.path.join(&amp;#39;a_path&amp;#39;,&amp;#39;bbb&amp;#39;,&amp;#39;/ccc&amp;#39;)来合并路径时，合并的结果如果只保留了最后的’/ccc’，是因为最后的一个变量名包含了斜杠，函数会将其识别成绝对路径，因此就会忽略前面所以的其他路径。">
 
 
 
 
 
 
-  <link rel="canonical" href="https://sdsy888.github.io/机器学习-Machine-Learning/框架-Framework/工具-Tools/随笔-Writing/Python单型号-和双星号-用法总结/">
+  <link rel="canonical" href="https://sdsy888.github.io/随笔-Writing/Python使用os-path-join只保留最后一个变量的原因/">
 
 
 
@@ -126,7 +126,7 @@
   };
 </script>
 
-  <title>Python单型号*和双星号**用法总结 | Neo's Blog</title>
+  <title>Python使用os.path.join只保留最后一个变量的原因 | Neo's Blog</title>
   
 
 
@@ -346,7 +346,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/机器学习-Machine-Learning/框架-Framework/工具-Tools/随笔-Writing/Python单型号-和双星号-用法总结/">
+    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/随笔-Writing/Python使用os-path-join只保留最后一个变量的原因/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="江前云后">
@@ -363,7 +363,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Python单型号*和双星号**用法总结
+          <h1 class="post-title" itemprop="name headline">Python使用os.path.join只保留最后一个变量的原因
 
               
             
@@ -389,7 +389,7 @@
                 
               
 
-              <time title="Created: 2019-04-11 21:11:52 / Modified: 19:11:52" itemprop="dateCreated datePublished" datetime="2019-04-11T21:11:52-07:00">2019-04-11</time>
+              <time title="Created: 2019-06-06 14:35:07 / Modified: 14:42:03" itemprop="dateCreated datePublished" datetime="2019-06-06T14:35:07-07:00">2019-06-06</time>
             
 
             
@@ -411,28 +411,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/机器学习-Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">机器学习 / Machine Learning</span></a></span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/机器学习-Machine-Learning/框架-Framework/" itemprop="url" rel="index"><span itemprop="name">框架 / Framework</span></a></span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/机器学习-Machine-Learning/框架-Framework/工具-Tools/" itemprop="url" rel="index"><span itemprop="name">工具 / Tools</span></a></span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/机器学习-Machine-Learning/框架-Framework/工具-Tools/随笔-Writing/" itemprop="url" rel="index"><span itemprop="name">随笔 / Writing</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/随笔-Writing/" itemprop="url" rel="index"><span itemprop="name">随笔 / Writing</span></a></span>
 
                 
                 
@@ -468,7 +447,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">0</span>
+                <span title="Symbols count in article">144</span>
               
 
               
@@ -502,7 +481,8 @@
       
 
       
-        
+        <p>在使用Python的<code>os.path.join(&#39;a_path&#39;,&#39;bbb&#39;,&#39;/ccc&#39;)</code>来合并路径时，合并的结果如果只保留了最后的’/ccc’，是因为最后的一个变量名包含了斜杠，函数会将其识别成绝对路径，因此就会忽略前面所以的其他路径。</p>
+
       
     </div>
 
@@ -527,22 +507,6 @@
           
             <a href="/tags/存档-Archive/" rel="tag"># 存档 / Archive</a>
           
-            <a href="/tags/小事-Just-recording/" rel="tag"># 小事 / Just recording</a>
-          
-            <a href="/tags/TensorFlow/" rel="tag"># TensorFlow</a>
-          
-            <a href="/tags/vim/" rel="tag"># vim</a>
-          
-            <a href="/tags/Linux/" rel="tag"># Linux</a>
-          
-            <a href="/tags/Mac/" rel="tag"># Mac</a>
-          
-            <a href="/tags/Paper-Reading/" rel="tag"># Paper Reading</a>
-          
-            <a href="/tags/pytorch/" rel="tag"># pytorch</a>
-          
-            <a href="/tags/git/" rel="tag"># git</a>
-          
         </div>
       
 
@@ -554,8 +518,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/机器学习-Machine-Learning/框架-Framework/工具-Tools/随笔-Writing/Python中lambda使用总结/" rel="next" title="Python中lambda使用总结">
-                <i class="fa fa-chevron-left"></i> Python中lambda使用总结
+              <a href="/随笔-Writing/解决npm-install权限问题/" rel="next" title="解决npm install权限问题">
+                <i class="fa fa-chevron-left"></i> 解决npm install权限问题
               </a>
             
           </div>
@@ -563,10 +527,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/机器学习-Machine-Learning/框架-Framework/工具-Tools/随笔-Writing/Python中英文分词方法简介/" rel="prev" title="Python中英文分词方法简介">
-                Python中英文分词方法简介 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
