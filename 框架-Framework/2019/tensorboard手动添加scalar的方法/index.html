@@ -101,14 +101,14 @@
   <meta name="description" content="说明本文将介绍如何向tensorboard中添加sclar的方法，但会先尽量简要介绍一下tensorflow的静态图机制，查看添加方法可以直接去这一部分 TensorFlow的静态计算图机制关于并非众所周知的静态计算图，唯一能说的是，这肯定是TensorFlow不太容易上手的原因之一。与PyTorch的动态计算图的简洁直观不同，TensorFlow的静态图将计算图的定义与运行分开进行，导致读和写T">
 <meta name="keywords" content="TensorFlow">
 <meta property="og:type" content="article">
-<meta property="og:title" content="tensorboard手动添加scalar的方法">
+<meta property="og:title" content="TensorFlow静态图机制和Tensorboard中手动添加监控数据(scalar&#x2F;simple_value...)的方法">
 <meta property="og:url" content="https://sdsy888.github.io/框架-Framework/2019/tensorboard手动添加scalar的方法/index.html">
 <meta property="og:site_name" content="Neo&#39;s Blog">
 <meta property="og:description" content="说明本文将介绍如何向tensorboard中添加sclar的方法，但会先尽量简要介绍一下tensorflow的静态图机制，查看添加方法可以直接去这一部分 TensorFlow的静态计算图机制关于并非众所周知的静态计算图，唯一能说的是，这肯定是TensorFlow不太容易上手的原因之一。与PyTorch的动态计算图的简洁直观不同，TensorFlow的静态图将计算图的定义与运行分开进行，导致读和写T">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-14T22:01:04.395Z">
+<meta property="og:updated_time" content="2019-11-14T22:03:27.330Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tensorboard手动添加scalar的方法">
+<meta name="twitter:title" content="TensorFlow静态图机制和Tensorboard中手动添加监控数据(scalar&#x2F;simple_value...)的方法">
 <meta name="twitter:description" content="说明本文将介绍如何向tensorboard中添加sclar的方法，但会先尽量简要介绍一下tensorflow的静态图机制，查看添加方法可以直接去这一部分 TensorFlow的静态计算图机制关于并非众所周知的静态计算图，唯一能说的是，这肯定是TensorFlow不太容易上手的原因之一。与PyTorch的动态计算图的简洁直观不同，TensorFlow的静态图将计算图的定义与运行分开进行，导致读和写T">
 
 
@@ -126,7 +126,7 @@
   };
 </script>
 
-  <title>tensorboard手动添加scalar的方法 | Neo's Blog</title>
+  <title>TensorFlow静态图机制和Tensorboard中手动添加监控数据(scalar/simple_value...)的方法 | Neo's Blog</title>
   
 
 
@@ -363,7 +363,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">tensorboard手动添加scalar的方法
+          <h1 class="post-title" itemprop="name headline">TensorFlow静态图机制和Tensorboard中手动添加监控数据(scalar/simple_value...)的方法
 
               
             
@@ -389,7 +389,7 @@
                 
               
 
-              <time title="Created: 2019-11-14 14:42:30 / Modified: 16:01:04" itemprop="dateCreated datePublished" datetime="2019-11-14T14:42:30-06:00">2019-11-14</time>
+              <time title="Created: 2019-11-14 14:42:30 / Modified: 16:03:27" itemprop="dateCreated datePublished" datetime="2019-11-14T14:42:30-06:00">2019-11-14</time>
             
 
             
