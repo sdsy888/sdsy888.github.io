@@ -345,7 +345,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/随笔-Writing/Python使用os-path-join只保留最后一个变量的原因/">
+    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/框架-Framework/2019/tensorboard手动添加scalar的方法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="江前云后">
@@ -365,7 +365,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/随笔-Writing/Python使用os-path-join只保留最后一个变量的原因/" class="post-title-link" itemprop="url">Python使用os.path.join只保留最后一个变量的原因</a>
+                <a href="/框架-Framework/2019/tensorboard手动添加scalar的方法/" class="post-title-link" itemprop="url">tensorboard手动添加scalar的方法</a>
               
             
           </h1>
@@ -390,7 +390,216 @@
                 
               
 
-              <time title="Created: 2019-06-06 14:35:07 / Modified: 14:42:03" itemprop="dateCreated datePublished" datetime="2019-06-06T14:35:07-07:00">2019-06-06</time>
+              <time title="Created: 2019-11-14 14:42:30 / Modified: 16:01:04" itemprop="dateCreated datePublished" datetime="2019-11-14T14:42:30-06:00">2019-11-14</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/框架-Framework/" itemprop="url" rel="index"><span itemprop="name">框架 / Framework</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">3.1k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">3 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>本文将介绍如何向tensorboard中添加sclar的方法，但会先尽量简要介绍一下tensorflow的静态图机制，查看添加方法可以直接去<a href="#Tensorboard中添加任意scalar">这一部分</a></p>
+<h1 id="TensorFlow的静态计算图机制"><a href="#TensorFlow的静态计算图机制" class="headerlink" title="TensorFlow的静态计算图机制"></a>TensorFlow的静态计算图机制</h1><p>关于并非众所周知的静态计算图，唯一能说的是，这肯定是TensorFlow不太容易上手的原因之一。与PyTorch的动态计算图的简洁直观不同，TensorFlow的静态图将计算图的定义与运行分开进行，导致读和写TF程序都很不直观。</p>
+<p>整体流程为，先定义好网络结构，再分别定义好Loss函数和数据生成器（dataloader），然后再通过运行session的方法，向网络中送入数据并得到返回值；最后根据返回值计算Loss，并通过定义好的optimizer反传梯度（gradient），优化网络参数（weight）。</p>
+<p>下面通过预测“超级英雄使用各自武器能完成到底多少任务”来简单讲一下静态计算图。</p>
+<ul>
+<li><p>首先我们按照需求定义好我们想要的网络结构，如各种Conv层，激活层，dense层等等；下面伪代码，定义了三位超级英雄，通过使用各自的武器完成了各自的任务，返回的是任务的完成度：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Avengers</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,a1,a2,a3)</span>:</span></span><br><span class="line">        self.ironman = a1</span><br><span class="line">        self.captain = a2</span><br><span class="line">        self.thor = a3</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__call__</span><span class="params">(self, suit, sheild, hammer)</span>:</span></span><br><span class="line">        <span class="string">"""similar to forward() function in PyTorch"""</span></span><br><span class="line">        task1 = assign_weapon_and_perform_task(self.ironman, suit)</span><br><span class="line">        task2 = assign_weapon_and_perform_task(self.captain, sheild)</span><br><span class="line">        task3 = assign_weapon_and_perform_task(self.thor, hammer)</span><br><span class="line">        <span class="keyword">return</span> task1, task2, task3</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">assign_weapon_and_perform_task</span><span class="params">(self, hero, weapon)</span>:</span></span><br><span class="line">        <span class="string">"""This layer defines how the hero use weapon to perform a task"""</span></span><br><span class="line">        <span class="comment"># do some task, return percentage of the completion of the task</span></span><br><span class="line">        <span class="keyword">return</span> percent</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>然后我们再组建一个复联队伍(将模型实例化)：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">build_avengers_team</span><span class="params">(name1,name2, name3, w1, w2, w3)</span>:</span></span><br><span class="line">    founder_avengers = Avengers(name1, name2,name3)</span><br><span class="line">    task1, task2, task3 = founder_avengers(w1, w2, w3)</span><br><span class="line">    <span class="keyword">return</span> task1, task2, task3</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>然后就可以在主函数中定义训练过程和Loss的计算。这里是静态图不直观的地方了，定义好的模型不是直接使用，而是通过运行session来送入数据和返回结果：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">Loss</span><span class="params">(task_pred, task_gt)</span>:</span></span><br><span class="line">    loss_value = some_method_to_compute_loss(task_pred, task_gt)</span><br><span class="line">    <span class="keyword">return</span> loss_value</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">train_avengers</span><span class="params">()</span>:</span></span><br><span class="line">    num_epochs = <span class="number">10</span></span><br><span class="line">    w1, w2, w3, gt1, gt2, gt3 = predefined_data_iterator.get_next()</span><br><span class="line">    t1, t2, t3 = build_avengers_team(tony, steve, thor, w1, w2, w3)</span><br><span class="line">    loss1, loss2, loss3 = Loss(t1, gt1), Loss(task2, gt2), Loss(task3, gt3)</span><br><span class="line">    optimizer   =</span><br><span class="line">    loss_backprobgate_and_optimizer(loss1+loss2+loss3)</span><br><span class="line">    <span class="keyword">with</span> tf.Session() <span class="keyword">as</span> sess:</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(num_epochs):</span><br><span class="line">            t1, t2, t3 = sess.run(optimizer, t1, t2, t3, w1, w2, w3 )</span><br><span class="line">            ...</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>可以发现， 所有的通过网络生成的数据就通过session的run取回了，后面可以再进行任何想要的操作。这里的session就是不直观的地方，原因就是建模型、数据生成和模型运行生成结果是分开的。</p>
+<p><strong>相当于，我们先在A地生产了汽车的外壳，在B地生产了轮胎，然后一起运送到C地组装并测试驾驶情况</strong></p>
+<h1 id="Tensorboard中添加任意scalar"><a href="#Tensorboard中添加任意scalar" class="headerlink" title="Tensorboard中添加任意scalar"></a>Tensorboard中添加任意scalar</h1><p>在TensorFlow <code>1.9</code>以前的版本不能很方便地直接添加自己想要的scalar，也是要像上面定义模型和模型的返回值一样，先定义好summary的数据，然后传入session并取回；</p>
+<p>通过阅读相当不完整的官方文档，可以发现也有办法手动添加scalar（或者其他数据结构，如simple_value, image，histogram等）, 方法为自己手动将想要添加到tensorboard中监控的数据转换为tf.Summary格式的数据：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># official method</span></span><br><span class="line">tf.summary.scalar(<span class="string">"loss1"</span>, loss1)</span><br><span class="line">tf.summary.scalar(<span class="string">"loss2"</span>, loss2)</span><br><span class="line"><span class="comment"># 将merged_summary送入session.run中可以返回需要的数据</span></span><br><span class="line">merged_summary = tf.summary.merge_all()</span><br><span class="line">train_writer = tf.summary.FileWriter(<span class="string">"/log_dir"</span>,sess.graph)</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">merged_summary, other_data =sess.run([merged_summary, other_data], feed_dict = &#123;...&#125;)</span><br><span class="line"><span class="comment"># 官方添加监控信息方法</span></span><br><span class="line">train_writer.add_summary(merged_summary, global_step)</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="comment"># 手动添加数据: 将数据转换为tf.Summary格式</span></span><br><span class="line">train_writer.add_summary(tf.Summary(value=[tf.Summary.Value(tag=<span class="string">'name_you_want'</span>,simple_value=data_you_want)]),global_step)</span><br><span class="line">train_writer.flush() <span class="comment"># 写入文件</span></span><br></pre></td></tr></table></figure>
+<p>其中数据格式(simple_value这里可供替换的数据格式)可以参考<a href="https://github.com/tensorflow/tensorflow/blob/r1.10/tensorflow/core/framework/summary.proto#L112" target="_blank" rel="noopener">源代码定义</a>，是的，要参考源代码定义…</p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/随笔-Writing/2019/Python使用os-path-join只保留最后一个变量的原因/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="江前云后">
+      <meta itemprop="description" content="Interested in<br>Deep Learning & Computer Vision">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Neo's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/随笔-Writing/2019/Python使用os-path-join只保留最后一个变量的原因/" class="post-title-link" itemprop="url">Python使用os.path.join只保留最后一个变量的原因</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-06-06 14:35:07 / Modified: 16:42:03" itemprop="dateCreated datePublished" datetime="2019-06-06T14:35:07-05:00">2019-06-06</time>
             
 
             
@@ -534,7 +743,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/随笔-Writing/解决npm-install权限问题/">
+    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/随笔-Writing/2019/解决npm-install权限问题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="江前云后">
@@ -554,7 +763,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/随笔-Writing/解决npm-install权限问题/" class="post-title-link" itemprop="url">解决npm install权限问题</a>
+                <a href="/随笔-Writing/2019/解决npm-install权限问题/" class="post-title-link" itemprop="url">解决npm install权限问题</a>
               
             
           </h1>
@@ -579,7 +788,7 @@
                 
               
 
-              <time title="Created: 2019-04-18 12:52:32 / Modified: 10:56:44" itemprop="dateCreated datePublished" datetime="2019-04-18T12:52:32-07:00">2019-04-18</time>
+              <time title="Created: 2019-04-18 12:52:32 / Modified: 12:56:44" itemprop="dateCreated datePublished" datetime="2019-04-18T12:52:32-05:00">2019-04-18</time>
             
 
             
@@ -725,7 +934,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/机器学习-Machine-Learning/框架-Framework/工具-Tools/随笔-Writing/Python中英文分词方法简介/">
+    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/机器学习-Machine-Learning/框架-Framework/工具-Tools/随笔-Writing/2019/Python中英文分词方法简介/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="江前云后">
@@ -745,7 +954,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/机器学习-Machine-Learning/框架-Framework/工具-Tools/随笔-Writing/Python中英文分词方法简介/" class="post-title-link" itemprop="url">Python中英文分词方法简介</a>
+                <a href="/机器学习-Machine-Learning/框架-Framework/工具-Tools/随笔-Writing/2019/Python中英文分词方法简介/" class="post-title-link" itemprop="url">Python中英文分词方法简介</a>
               
             
           </h1>
@@ -770,13 +979,9 @@
                 
               
 
-              <time title="Created: 2019-04-11 22:31:04 / Modified: 20:31:04" itemprop="dateCreated datePublished" datetime="2019-04-11T22:31:04-07:00">2019-04-11</time>
+              <time title="Created: 2019-04-11 22:31:04" itemprop="dateCreated datePublished" datetime="2019-04-11T22:31:04-05:00">2019-04-11</time>
             
 
-            
-              
-
-              
             
           </span>
 
@@ -934,7 +1139,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/机器学习-Machine-Learning/框架-Framework/工具-Tools/随笔-Writing/Python单型号-和双星号-用法总结/">
+    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/机器学习-Machine-Learning/框架-Framework/工具-Tools/随笔-Writing/2019/Python单型号-和双星号-用法总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="江前云后">
@@ -954,7 +1159,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/机器学习-Machine-Learning/框架-Framework/工具-Tools/随笔-Writing/Python单型号-和双星号-用法总结/" class="post-title-link" itemprop="url">Python单型号*和双星号**用法总结</a>
+                <a href="/机器学习-Machine-Learning/框架-Framework/工具-Tools/随笔-Writing/2019/Python单型号-和双星号-用法总结/" class="post-title-link" itemprop="url">Python单型号*和双星号**用法总结</a>
               
             
           </h1>
@@ -979,13 +1184,9 @@
                 
               
 
-              <time title="Created: 2019-04-11 21:11:52 / Modified: 19:11:52" itemprop="dateCreated datePublished" datetime="2019-04-11T21:11:52-07:00">2019-04-11</time>
+              <time title="Created: 2019-04-11 21:11:52" itemprop="dateCreated datePublished" datetime="2019-04-11T21:11:52-05:00">2019-04-11</time>
             
 
-            
-              
-
-              
             
           </span>
 
@@ -1143,7 +1344,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/机器学习-Machine-Learning/框架-Framework/工具-Tools/随笔-Writing/Python中lambda使用总结/">
+    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/机器学习-Machine-Learning/框架-Framework/工具-Tools/随笔-Writing/2019/Python中lambda使用总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="江前云后">
@@ -1163,7 +1364,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/机器学习-Machine-Learning/框架-Framework/工具-Tools/随笔-Writing/Python中lambda使用总结/" class="post-title-link" itemprop="url">Python中lambda使用总结</a>
+                <a href="/机器学习-Machine-Learning/框架-Framework/工具-Tools/随笔-Writing/2019/Python中lambda使用总结/" class="post-title-link" itemprop="url">Python中lambda使用总结</a>
               
             
           </h1>
@@ -1188,13 +1389,9 @@
                 
               
 
-              <time title="Created: 2019-04-11 21:07:12 / Modified: 19:07:12" itemprop="dateCreated datePublished" datetime="2019-04-11T21:07:12-07:00">2019-04-11</time>
+              <time title="Created: 2019-04-11 21:07:12" itemprop="dateCreated datePublished" datetime="2019-04-11T21:07:12-05:00">2019-04-11</time>
             
 
-            
-              
-
-              
             
           </span>
 
@@ -1352,7 +1549,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/机器学习-Machine-Learning/框架-Framework/工具-Tools/随笔-Writing/Atom中使用Autocomplete-Python查找定义/">
+    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/随笔-Writing/2019/Nvidia-GPU风扇和电源显示ERR!/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="江前云后">
@@ -1372,7 +1569,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/机器学习-Machine-Learning/框架-Framework/工具-Tools/随笔-Writing/Atom中使用Autocomplete-Python查找定义/" class="post-title-link" itemprop="url">Atom中使用Autocomplete Python查找定义</a>
+                <a href="/随笔-Writing/2019/Nvidia-GPU风扇和电源显示ERR!/" class="post-title-link" itemprop="url">Nvidia GPU风扇和电源显示ERR</a>
               
             
           </h1>
@@ -1397,216 +1594,7 @@
                 
               
 
-              <time title="Created: 2019-04-11 19:20:20 / Modified: 17:20:21" itemprop="dateCreated datePublished" datetime="2019-04-11T19:20:20-07:00">2019-04-11</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/机器学习-Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">机器学习 / Machine Learning</span></a></span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/机器学习-Machine-Learning/框架-Framework/" itemprop="url" rel="index"><span itemprop="name">框架 / Framework</span></a></span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/机器学习-Machine-Learning/框架-Framework/工具-Tools/" itemprop="url" rel="index"><span itemprop="name">工具 / Tools</span></a></span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/机器学习-Machine-Learning/框架-Framework/工具-Tools/随笔-Writing/" itemprop="url" rel="index"><span itemprop="name">随笔 / Writing</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">0</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">1 mins.</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/随笔-Writing/Nvidia-GPU风扇和电源显示ERR!/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="江前云后">
-      <meta itemprop="description" content="Interested in<br>Deep Learning & Computer Vision">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Neo's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/随笔-Writing/Nvidia-GPU风扇和电源显示ERR!/" class="post-title-link" itemprop="url">Nvidia GPU风扇和电源显示ERR</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-04-10 13:33:21 / Modified: 14:37:23" itemprop="dateCreated datePublished" datetime="2019-04-10T13:33:21-07:00">2019-04-10</time>
+              <time title="Created: 2019-04-10 13:33:21 / Modified: 16:37:23" itemprop="dateCreated datePublished" datetime="2019-04-10T13:33:21-05:00">2019-04-10</time>
             
 
             
@@ -1699,7 +1687,7 @@
           <!--noindex-->
           
             <div class="post-button text-center">
-              <a class="btn" href="/随笔-Writing/Nvidia-GPU风扇和电源显示ERR!/#more" rel="contents">
+              <a class="btn" href="/随笔-Writing/2019/Nvidia-GPU风扇和电源显示ERR!/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
@@ -1804,7 +1792,7 @@
                 
               
 
-              <time title="Created: 2019-04-09 15:51:02" itemprop="dateCreated datePublished" datetime="2019-04-09T15:51:02-07:00">2019-04-09</time>
+              <time title="Created: 2019-04-09 15:51:02" itemprop="dateCreated datePublished" datetime="2019-04-09T15:51:02-05:00">2019-04-09</time>
             
 
             
@@ -1821,7 +1809,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-04-10 14:38:12" itemprop="dateModified" datetime="2019-04-10T14:38:12-07:00">2019-04-10</time>
+                <time title="Modified: 2019-04-10 16:38:12" itemprop="dateModified" datetime="2019-04-10T16:38:12-05:00">2019-04-10</time>
               
             
           </span>
@@ -2019,7 +2007,7 @@
                 
               
 
-              <time title="Created: 2019-04-09 14:33:16" itemprop="dateCreated datePublished" datetime="2019-04-09T14:33:16-07:00">2019-04-09</time>
+              <time title="Created: 2019-04-09 14:33:16" itemprop="dateCreated datePublished" datetime="2019-04-09T14:33:16-05:00">2019-04-09</time>
             
 
             
@@ -2036,7 +2024,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-04-10 14:38:25" itemprop="dateModified" datetime="2019-04-10T14:38:25-07:00">2019-04-10</time>
+                <time title="Modified: 2019-04-10 16:38:25" itemprop="dateModified" datetime="2019-04-10T16:38:25-05:00">2019-04-10</time>
               
             
           </span>
@@ -2233,7 +2221,7 @@
                 
               
 
-              <time title="Created: 2019-04-08 15:42:03" itemprop="dateCreated datePublished" datetime="2019-04-08T15:42:03-07:00">2019-04-08</time>
+              <time title="Created: 2019-04-08 15:42:03" itemprop="dateCreated datePublished" datetime="2019-04-08T15:42:03-05:00">2019-04-08</time>
             
 
             
@@ -2250,7 +2238,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-04-10 15:00:50" itemprop="dateModified" datetime="2019-04-10T15:00:50-07:00">2019-04-10</time>
+                <time title="Modified: 2019-04-10 17:00:50" itemprop="dateModified" datetime="2019-04-10T17:00:50-05:00">2019-04-10</time>
               
             
           </span>
@@ -2626,7 +2614,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">35k</span>
+    <span title="Symbols count total">38k</span>
   
 
   
@@ -2635,7 +2623,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">32 mins.</span>
+    <span title="Reading time total">35 mins.</span>
   
 </div>
 
