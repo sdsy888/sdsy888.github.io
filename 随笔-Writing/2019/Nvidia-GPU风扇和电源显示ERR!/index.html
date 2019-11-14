@@ -98,20 +98,20 @@
 
 
 
-  <meta name="description" content="问题最近在Ubuntu上使用Nvidia GPU训练模型的时候，如果机器锁屏一段时间再打开的时候鼠标非常卡顿，或者说显示界面非常卡顿，使用nvidia-smi查看发现，训练模型的GPU没有问题，但是连接显示屏的GPU的风扇和电源报错： 解决方案自动风扇控制在nvidia论坛有人给出了解决方案，即问题的根源可能是风扇转速不足使GPU过热导致的。 首先开启GPU的persistent mode,再设置">
+  <meta name="description" content="问题最近在Ubuntu上使用Nvidia GPU训练模型的时候，如果机器锁屏一段时间再打开的时候鼠标非常卡顿，或者说显示界面非常卡顿，使用nvidia-smi查看发现，训练模型的GPU没有问题，但是连接显示屏的GPU的风扇和电源报错： 解决方案自动风扇控制在nvidia论坛有人给出了解决方案，即问题的根源可能是风扇转速不足使GPU过热导致的。">
 <meta name="keywords" content="Linux,GPU,NVIDIA">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Nvidia GPU风扇和电源显示ERR">
 <meta property="og:url" content="https://sdsy888.github.io/随笔-Writing/2019/Nvidia-GPU风扇和电源显示ERR!/index.html">
 <meta property="og:site_name" content="Neo&#39;s Blog">
-<meta property="og:description" content="问题最近在Ubuntu上使用Nvidia GPU训练模型的时候，如果机器锁屏一段时间再打开的时候鼠标非常卡顿，或者说显示界面非常卡顿，使用nvidia-smi查看发现，训练模型的GPU没有问题，但是连接显示屏的GPU的风扇和电源报错： 解决方案自动风扇控制在nvidia论坛有人给出了解决方案，即问题的根源可能是风扇转速不足使GPU过热导致的。 首先开启GPU的persistent mode,再设置">
+<meta property="og:description" content="问题最近在Ubuntu上使用Nvidia GPU训练模型的时候，如果机器锁屏一段时间再打开的时候鼠标非常卡顿，或者说显示界面非常卡顿，使用nvidia-smi查看发现，训练模型的GPU没有问题，但是连接显示屏的GPU的风扇和电源报错： 解决方案自动风扇控制在nvidia论坛有人给出了解决方案，即问题的根源可能是风扇转速不足使GPU过热导致的。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://sdsy888.github.io/随笔-Writing/2019/image/gpu-fan.png">
 <meta property="og:image" content="https://sdsy888.github.io/随笔-Writing/2019/image/gpu_fan_control.png">
-<meta property="og:updated_time" content="2019-04-10T21:37:23.004Z">
+<meta property="og:updated_time" content="2019-11-14T22:04:44.064Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Nvidia GPU风扇和电源显示ERR">
-<meta name="twitter:description" content="问题最近在Ubuntu上使用Nvidia GPU训练模型的时候，如果机器锁屏一段时间再打开的时候鼠标非常卡顿，或者说显示界面非常卡顿，使用nvidia-smi查看发现，训练模型的GPU没有问题，但是连接显示屏的GPU的风扇和电源报错： 解决方案自动风扇控制在nvidia论坛有人给出了解决方案，即问题的根源可能是风扇转速不足使GPU过热导致的。 首先开启GPU的persistent mode,再设置">
+<meta name="twitter:description" content="问题最近在Ubuntu上使用Nvidia GPU训练模型的时候，如果机器锁屏一段时间再打开的时候鼠标非常卡顿，或者说显示界面非常卡顿，使用nvidia-smi查看发现，训练模型的GPU没有问题，但是连接显示屏的GPU的风扇和电源报错： 解决方案自动风扇控制在nvidia论坛有人给出了解决方案，即问题的根源可能是风扇转速不足使GPU过热导致的。">
 <meta name="twitter:image" content="https://sdsy888.github.io/随笔-Writing/2019/image/gpu-fan.png">
 
 
@@ -392,12 +392,24 @@
                 
               
 
-              <time title="Created: 2019-04-10 13:33:21 / Modified: 16:37:23" itemprop="dateCreated datePublished" datetime="2019-04-10T13:33:21-05:00">2019-04-10</time>
+              <time title="Created: 2019-04-10 13:33:21" itemprop="dateCreated datePublished" datetime="2019-04-10T13:33:21-05:00">2019-04-10</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-11-14 16:04:44" itemprop="dateModified" datetime="2019-11-14T16:04:44-06:00">2019-11-14</time>
               
             
           </span>
@@ -485,9 +497,8 @@
 
       
         <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>最近在Ubuntu上使用Nvidia GPU训练模型的时候，如果机器锁屏一段时间再打开的时候鼠标非常卡顿，或者说显示界面非常卡顿，使用<code>nvidia-smi</code>查看发现，训练模型的GPU没有问题，但是连接显示屏的GPU的风扇和电源报错：<br><img src="../image/gpu-fan.png" alt="电源和风扇报错"></p>
-<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><h2 id="自动风扇控制"><a href="#自动风扇控制" class="headerlink" title="自动风扇控制"></a>自动风扇控制</h2><p>在<a href="https://devtalk.nvidia.com/default/topic/1045062/nvidia-smi-shows-err-on-both-fan-and-power-usage/" target="_blank" rel="noopener">nvidia论坛</a>有人给出了解决方案，即问题的根源可能是风扇转速不足使GPU过热导致的。</p>
-<p>首先开启GPU的<code>persistent mode</code>,再设置风扇的功率，重启即可生效。其中<code>150</code>代表的是风扇的最大功率限制，可以将其设置为最大，这样过热的时候风扇就会自动加大功率。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo nvidia-smi -pm 1</span><br><span class="line">sudo nvidia-smi -pl 150</span><br></pre></td></tr></table></figure></p>
-<h2 id="手动控制风扇转速"><a href="#手动控制风扇转速" class="headerlink" title="手动控制风扇转速"></a>手动控制风扇转速</h2><h3 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h3><a id="more"></a>
+<h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><h2 id="自动风扇控制"><a href="#自动风扇控制" class="headerlink" title="自动风扇控制"></a>自动风扇控制</h2><p>在<a href="https://devtalk.nvidia.com/default/topic/1045062/nvidia-smi-shows-err-on-both-fan-and-power-usage/" target="_blank" rel="noopener">nvidia论坛</a>有人给出了解决方案，即问题的根源可能是风扇转速不足使GPU过热导致的。<br><a id="more"></a><br>首先开启GPU的<code>persistent mode</code>,再设置风扇的功率，重启即可生效。其中<code>150</code>代表的是风扇的最大功率限制，可以将其设置为最大，这样过热的时候风扇就会自动加大功率。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo nvidia-smi -pm 1</span><br><span class="line">sudo nvidia-smi -pl 150</span><br></pre></td></tr></table></figure></p>
+<h2 id="手动控制风扇转速"><a href="#手动控制风扇转速" class="headerlink" title="手动控制风扇转速"></a>手动控制风扇转速</h2><h3 id="方法1"><a href="#方法1" class="headerlink" title="方法1"></a>方法1</h3><!-- more -->
 <p>此外，还可以将GPU风扇的手动风速控制打开。方法为：</p>
 <ul>
 <li>首先，使用<code>sudo nvidia-xconfig --enable-all-gpus</code>命令打开所有gpu在xserver中的设置（不使用sudo可能无权限写入新配置）</li>

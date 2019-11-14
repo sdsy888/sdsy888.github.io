@@ -98,18 +98,18 @@
 
 
 
-  <meta name="description" content="说明本文将介绍如何向tensorboard中添加sclar的方法，但会先尽量简要介绍一下tensorflow的静态图机制，查看添加方法可以直接去这一部分 TensorFlow的静态计算图机制关于并非众所周知的静态计算图，唯一能说的是，这肯定是TensorFlow不太容易上手的原因之一。与PyTorch的动态计算图的简洁直观不同，TensorFlow的静态图将计算图的定义与运行分开进行，导致读和写T">
+  <meta name="description" content="说明本文将介绍如何向tensorboard中添加sclar的方法，但会先尽量简要介绍一下tensorflow的静态图机制，查看添加方法可以直接去这一部分">
 <meta name="keywords" content="TensorFlow">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TensorFlow静态图机制和Tensorboard中手动添加监控数据(scalar&#x2F;simple_value...)的方法">
 <meta property="og:url" content="https://sdsy888.github.io/框架-Framework/2019/tensorboard手动添加scalar的方法/index.html">
 <meta property="og:site_name" content="Neo&#39;s Blog">
-<meta property="og:description" content="说明本文将介绍如何向tensorboard中添加sclar的方法，但会先尽量简要介绍一下tensorflow的静态图机制，查看添加方法可以直接去这一部分 TensorFlow的静态计算图机制关于并非众所周知的静态计算图，唯一能说的是，这肯定是TensorFlow不太容易上手的原因之一。与PyTorch的动态计算图的简洁直观不同，TensorFlow的静态图将计算图的定义与运行分开进行，导致读和写T">
+<meta property="og:description" content="说明本文将介绍如何向tensorboard中添加sclar的方法，但会先尽量简要介绍一下tensorflow的静态图机制，查看添加方法可以直接去这一部分">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-14T22:03:27.330Z">
+<meta property="og:updated_time" content="2019-11-14T22:04:55.312Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TensorFlow静态图机制和Tensorboard中手动添加监控数据(scalar&#x2F;simple_value...)的方法">
-<meta name="twitter:description" content="说明本文将介绍如何向tensorboard中添加sclar的方法，但会先尽量简要介绍一下tensorflow的静态图机制，查看添加方法可以直接去这一部分 TensorFlow的静态计算图机制关于并非众所周知的静态计算图，唯一能说的是，这肯定是TensorFlow不太容易上手的原因之一。与PyTorch的动态计算图的简洁直观不同，TensorFlow的静态图将计算图的定义与运行分开进行，导致读和写T">
+<meta name="twitter:description" content="说明本文将介绍如何向tensorboard中添加sclar的方法，但会先尽量简要介绍一下tensorflow的静态图机制，查看添加方法可以直接去这一部分">
 
 
 
@@ -389,7 +389,7 @@
                 
               
 
-              <time title="Created: 2019-11-14 14:42:30 / Modified: 16:03:27" itemprop="dateCreated datePublished" datetime="2019-11-14T14:42:30-06:00">2019-11-14</time>
+              <time title="Created: 2019-11-14 14:42:30 / Modified: 16:04:55" itemprop="dateCreated datePublished" datetime="2019-11-14T14:42:30-06:00">2019-11-14</time>
             
 
             
@@ -481,7 +481,7 @@
       
 
       
-        <h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>本文将介绍如何向tensorboard中添加sclar的方法，但会先尽量简要介绍一下tensorflow的静态图机制，查看添加方法可以直接去<a href="#Tensorboard中添加任意scalar">这一部分</a></p>
+        <h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>本文将介绍如何向tensorboard中添加sclar的方法，但会先尽量简要介绍一下tensorflow的静态图机制，查看添加方法可以直接去<a href="#Tensorboard中添加任意scalar">这一部分</a><br><a id="more"></a></p>
 <h1 id="TensorFlow的静态计算图机制"><a href="#TensorFlow的静态计算图机制" class="headerlink" title="TensorFlow的静态计算图机制"></a>TensorFlow的静态计算图机制</h1><p>关于并非众所周知的静态计算图，唯一能说的是，这肯定是TensorFlow不太容易上手的原因之一。与PyTorch的动态计算图的简洁直观不同，TensorFlow的静态图将计算图的定义与运行分开进行，导致读和写TF程序都很不直观。</p>
 <p>整体流程为，先定义好网络结构，再分别定义好Loss函数和数据生成器（dataloader），然后再通过运行session的方法，向网络中送入数据并得到返回值；最后根据返回值计算Loss，并通过定义好的optimizer反传梯度（gradient），优化网络参数（weight）。</p>
 <p>下面通过预测“超级英雄使用各自武器能完成到底多少任务”来简单讲一下静态计算图。</p>
