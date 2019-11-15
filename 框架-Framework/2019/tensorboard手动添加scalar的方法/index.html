@@ -106,7 +106,7 @@
 <meta property="og:site_name" content="Neo&#39;s Blog">
 <meta property="og:description" content="说明本文将介绍如何向tensorboard中添加sclar的方法，但会先尽量简要介绍一下tensorflow的静态图机制，查看添加方法可以直接去这一部分">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-15T00:05:41.698Z">
+<meta property="og:updated_time" content="2019-11-15T00:15:19.436Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TensorFlow静态图机制和Tensorboard中手动添加监控数据(scalar&#x2F;simple_value...)的方法">
 <meta name="twitter:description" content="说明本文将介绍如何向tensorboard中添加sclar的方法，但会先尽量简要介绍一下tensorflow的静态图机制，查看添加方法可以直接去这一部分">
@@ -389,7 +389,7 @@
                 
               
 
-              <time title="Created: 2019-11-14 14:42:30 / Modified: 18:05:41" itemprop="dateCreated datePublished" datetime="2019-11-14T14:42:30-06:00">2019-11-14</time>
+              <time title="Created: 2019-11-14 14:42:30 / Modified: 18:15:19" itemprop="dateCreated datePublished" datetime="2019-11-14T14:42:30-06:00">2019-11-14</time>
             
 
             
@@ -447,7 +447,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">3.2k</span>
+                <span title="Symbols count in article">3.6k</span>
               
 
               
@@ -502,6 +502,9 @@
 <p>通过阅读相当不完整的官方文档，可以发现也有办法手动添加scalar（或者其他数据结构，如simple_value, image，histogram等）, 方法为自己手动将想要添加到tensorboard中监控的数据转换为tf.Summary格式的数据：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># official method</span></span><br><span class="line">tf.summary.scalar(<span class="string">"loss1"</span>, loss1)</span><br><span class="line">tf.summary.scalar(<span class="string">"loss2"</span>, loss2)</span><br><span class="line"><span class="comment"># 将merged_summary送入session.run中可以返回需要的数据</span></span><br><span class="line">merged_summary = tf.summary.merge_all()</span><br><span class="line">train_writer = tf.summary.FileWriter(<span class="string">"/log_dir"</span>,sess.graph)</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">merged_summary, other_data =sess.run([merged_summary, other_data], feed_dict = &#123;...&#125;)</span><br><span class="line"><span class="comment"># 官方添加监控信息方法</span></span><br><span class="line">train_writer.add_summary(merged_summary, global_step)</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="comment"># 手动添加数据: 将数据转换为tf.Summary格式</span></span><br><span class="line">train_writer.add_summary(tf.Summary(value=[tf.Summary.Value(tag=<span class="string">'name_you_want'</span>,simple_value=data_you_want)]),global_step)</span><br><span class="line">train_writer.flush() <span class="comment"># 写入文件</span></span><br></pre></td></tr></table></figure>
 <p>其中数据格式(simple_value这里可供替换的数据格式)可以参考<a href="https://github.com/tensorflow/tensorflow/blob/r1.10/tensorflow/core/framework/summary.proto#L112" target="_blank" rel="noopener">源代码定义</a>，是的，要参考源代码定义…</p>
+<h1 id="在tensorboard中同时显示多组数据-如train和validation同时显示"><a href="#在tensorboard中同时显示多组数据-如train和validation同时显示" class="headerlink" title="在tensorboard中同时显示多组数据(如train和validation同时显示)"></a>在tensorboard中同时显示多组数据(如train和validation同时显示)</h1><p>需要建立多个writer，并放在不同文件夹中，<strong>尤其需要注意，在val_writer中不要再加<code>sess.graph</code></strong>:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">train_writer = tf.summary.FileWriter(<span class="string">"/log_dir/tarin"</span>,sess.graph)</span><br><span class="line">val_writer = tf.summary.FileWriter(<span class="string">"/log_dir/val"</span>)</span><br></pre></td></tr></table></figure></p>
+<p>不同阶段产生的数据分开记录，比如training阶段产生的监控数据就用train_writer写入，validation同理；在查看监控数据的时候就在<code>/log_dir</code>根目录下执行：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tensorboard --log_dir=<span class="string">'/log_dir'</span></span><br></pre></td></tr></table></figure></p>
+<p>这样就会在最终tensorboard中出现两组分别为<code>train</code>和<code>val</code>的数据了，并且可以通过勾选，将相同名字的数据显示在同一个表格上。</p>
 <h1 id="其他参考"><a href="#其他参考" class="headerlink" title="其他参考"></a>其他参考</h1><ul>
 <li><a href="https://cloud.tencent.com/developer/article/1015066" target="_blank" rel="noopener">【TensorFlow | TensorBoard】理解 TensorBoard</a></li>
 <li><a href="https://gist.github.com/gyglim/1f8dfb1b5c82627ae3efcfbbadb9f514" target="_blank" rel="noopener">tensorboard_logging.py</a></li>
@@ -792,7 +795,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#说明"><span class="nav-number">1.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TensorFlow的静态计算图机制"><span class="nav-number">2.</span> <span class="nav-text">TensorFlow的静态计算图机制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Tensorboard中添加任意scalar"><span class="nav-number">3.</span> <span class="nav-text">Tensorboard中添加任意scalar</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他参考"><span class="nav-number">4.</span> <span class="nav-text">其他参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#说明"><span class="nav-number">1.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TensorFlow的静态计算图机制"><span class="nav-number">2.</span> <span class="nav-text">TensorFlow的静态计算图机制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Tensorboard中添加任意scalar"><span class="nav-number">3.</span> <span class="nav-text">Tensorboard中添加任意scalar</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在tensorboard中同时显示多组数据-如train和validation同时显示"><span class="nav-number">4.</span> <span class="nav-text">在tensorboard中同时显示多组数据(如train和validation同时显示)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他参考"><span class="nav-number">5.</span> <span class="nav-text">其他参考</span></a></li></ol></div>
             
 
           </div>
@@ -825,7 +828,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">38k</span>
+    <span title="Symbols count total">39k</span>
   
 
   

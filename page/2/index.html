@@ -894,7 +894,7 @@
 <li>docker环境（或当前命令行环境的默认编码不是<code>utf-8</code>)</li>
 <li>处理的文件默认编码不是<code>utf-8</code>，而是<code>ascii</code></li>
 </ol>
-<h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><h3 id="问题1"><a href="#问题1" class="headerlink" title="问题1"></a>问题1</h3><p>针对这两个可能的原因，首先判断系统的（或者当前命令行环境的）编码：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>首先进入python环境</span><br><span class="line">import sys</span><br><span class="line">sys.stdout.encoding</span><br><span class="line"><span class="meta">&gt;</span>&gt;&gt; 'US-ASCII'</span><br></pre></td></tr></table></figure></p>
+<h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><h3 id="问题1"><a href="#问题1" class="headerlink" title="问题1"></a>问题1</h3><p>针对这两个可能的原因，首先判断系统的（或者当前命令行环境的）编码：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">首先进入python环境</span></span><br><span class="line">import sys</span><br><span class="line">sys.stdout.encoding</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="string">'US-ASCII'</span></span></span><br></pre></td></tr></table></figure></p>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -2612,7 +2612,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">38k</span>
+    <span title="Symbols count total">39k</span>
   
 
   
