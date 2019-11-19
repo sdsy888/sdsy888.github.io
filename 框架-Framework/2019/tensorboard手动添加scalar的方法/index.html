@@ -106,7 +106,7 @@
 <meta property="og:site_name" content="Neo&#39;s Blog">
 <meta property="og:description" content="说明本文将介绍如何向tensorboard中添加sclar的方法，但会先尽量简要介绍一下tensorflow的静态图机制，查看添加方法可以直接去这一部分">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-11-15T00:15:19.436Z">
+<meta property="og:updated_time" content="2019-11-19T01:55:24.932Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="TensorFlow静态图机制和Tensorboard中手动添加监控数据(scalar&#x2F;simple_value...)的方法">
 <meta name="twitter:description" content="说明本文将介绍如何向tensorboard中添加sclar的方法，但会先尽量简要介绍一下tensorflow的静态图机制，查看添加方法可以直接去这一部分">
@@ -389,12 +389,24 @@
                 
               
 
-              <time title="Created: 2019-11-14 14:42:30 / Modified: 18:15:19" itemprop="dateCreated datePublished" datetime="2019-11-14T14:42:30-06:00">2019-11-14</time>
+              <time title="Created: 2019-11-14 14:42:30" itemprop="dateCreated datePublished" datetime="2019-11-14T14:42:30-06:00">2019-11-14</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-11-18 19:55:24" itemprop="dateModified" datetime="2019-11-18T19:55:24-06:00">2019-11-18</time>
               
             
           </span>
@@ -447,7 +459,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">3.6k</span>
+                <span title="Symbols count in article">3.7k</span>
               
 
               
@@ -505,6 +517,7 @@
 <h1 id="在tensorboard中同时显示多组数据-如train和validation同时显示"><a href="#在tensorboard中同时显示多组数据-如train和validation同时显示" class="headerlink" title="在tensorboard中同时显示多组数据(如train和validation同时显示)"></a>在tensorboard中同时显示多组数据(如train和validation同时显示)</h1><p>需要建立多个writer，并放在不同文件夹中，<strong>尤其需要注意，在val_writer中不要再加<code>sess.graph</code></strong>:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">train_writer = tf.summary.FileWriter(<span class="string">"/log_dir/tarin"</span>,sess.graph)</span><br><span class="line">val_writer = tf.summary.FileWriter(<span class="string">"/log_dir/val"</span>)</span><br></pre></td></tr></table></figure></p>
 <p>不同阶段产生的数据分开记录，比如training阶段产生的监控数据就用train_writer写入，validation同理；在查看监控数据的时候就在<code>/log_dir</code>根目录下执行：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tensorboard --log_dir=<span class="string">'/log_dir'</span></span><br></pre></td></tr></table></figure></p>
 <p>这样就会在最终tensorboard中出现两组分别为<code>train</code>和<code>val</code>的数据了，并且可以通过勾选，将相同名字的数据显示在同一个表格上。</p>
+<h1 id="One-more-thing"><a href="#One-more-thing" class="headerlink" title="One more thing"></a>One more thing</h1><p>TensorFlow1.9以下的版本中，使用<code>tf.data.Dataset.from_generator</code>时，传入的迭代器函数，不能接收参数，因此定义迭代器函数的时候不能有参数，否则会报错。</p>
 <h1 id="其他参考"><a href="#其他参考" class="headerlink" title="其他参考"></a>其他参考</h1><ul>
 <li><a href="https://cloud.tencent.com/developer/article/1015066" target="_blank" rel="noopener">【TensorFlow | TensorBoard】理解 TensorBoard</a></li>
 <li><a href="https://gist.github.com/gyglim/1f8dfb1b5c82627ae3efcfbbadb9f514" target="_blank" rel="noopener">tensorboard_logging.py</a></li>
@@ -795,7 +808,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#说明"><span class="nav-number">1.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TensorFlow的静态计算图机制"><span class="nav-number">2.</span> <span class="nav-text">TensorFlow的静态计算图机制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Tensorboard中添加任意scalar"><span class="nav-number">3.</span> <span class="nav-text">Tensorboard中添加任意scalar</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在tensorboard中同时显示多组数据-如train和validation同时显示"><span class="nav-number">4.</span> <span class="nav-text">在tensorboard中同时显示多组数据(如train和validation同时显示)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他参考"><span class="nav-number">5.</span> <span class="nav-text">其他参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#说明"><span class="nav-number">1.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#TensorFlow的静态计算图机制"><span class="nav-number">2.</span> <span class="nav-text">TensorFlow的静态计算图机制</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Tensorboard中添加任意scalar"><span class="nav-number">3.</span> <span class="nav-text">Tensorboard中添加任意scalar</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#在tensorboard中同时显示多组数据-如train和validation同时显示"><span class="nav-number">4.</span> <span class="nav-text">在tensorboard中同时显示多组数据(如train和validation同时显示)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#One-more-thing"><span class="nav-number">5.</span> <span class="nav-text">One more thing</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他参考"><span class="nav-number">6.</span> <span class="nav-text">其他参考</span></a></li></ol></div>
             
 
           </div>
