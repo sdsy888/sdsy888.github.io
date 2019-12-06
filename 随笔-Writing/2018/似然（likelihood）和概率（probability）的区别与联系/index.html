@@ -107,7 +107,7 @@
 <meta property="og:description" content="虽然经常在paper和教程中看到“似然（likelihood）”的概念，但是一直都没有仔细研究似然与概率的区别，今天查了一些资料，有些收获，在此总结一下。 似然与概率的区别简单来讲，似然与概率分别是针对不同内容的估计和近似。概率(密度)表达给定$\theta$下样本随机向量$\textbf{X} = {x}$的可能性，而似然表达了给定样本$\textbf{X} = {x}$下参数$\theta=\">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="https://sdsy888.github.io/image/different_theta_value.jpg">
-<meta property="og:updated_time" content="2018-12-17T21:31:20.600Z">
+<meta property="og:updated_time" content="2019-12-06T22:06:57.982Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="似然（likelihood）和概率（probability）的区别与联系">
 <meta name="twitter:description" content="虽然经常在paper和教程中看到“似然（likelihood）”的概念，但是一直都没有仔细研究似然与概率的区别，今天查了一些资料，有些收获，在此总结一下。 似然与概率的区别简单来讲，似然与概率分别是针对不同内容的估计和近似。概率(密度)表达给定$\theta$下样本随机向量$\textbf{X} = {x}$的可能性，而似然表达了给定样本$\textbf{X} = {x}$下参数$\theta=\">
@@ -391,12 +391,24 @@
                 
               
 
-              <time title="Created: 2018-12-17 11:09:30 / Modified: 15:31:20" itemprop="dateCreated datePublished" datetime="2018-12-17T11:09:30-06:00">2018-12-17</time>
+              <time title="Created: 2018-12-17 11:09:30" itemprop="dateCreated datePublished" datetime="2018-12-17T11:09:30-06:00">2018-12-17</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-12-06 16:06:57" itemprop="dateModified" datetime="2019-12-06T16:06:57-06:00">2019-12-06</time>
               
             
           </span>
@@ -484,18 +496,18 @@
 
       
         <p>虽然经常在paper和教程中看到“似然（likelihood）”的概念，但是一直都没有仔细研究似然与概率的区别，今天查了一些资料，有些收获，在此总结一下。</p>
-<h2 id="似然与概率的区别"><a href="#似然与概率的区别" class="headerlink" title="似然与概率的区别"></a>似然与概率的区别</h2><p>简单来讲，似然与概率分别是针对不同内容的估计和近似。概率(密度)表达给定$\theta$下样本随机向量$\textbf{X} = {x}$的可能性，而似然表达了给定样本$\textbf{X} = {x}$下参数$\theta=\theta_1$(相对于另外的参数取值$\theta_2$)为真实值的可能性.<br><a id="more"></a><br>换言之, 似然函数的形式是$L(\theta|x)$,其中”|”代表的是条件概率或者条件分布,因此似然函数是在”已知”样本随机变量$\textbf{X}=x$的情况下,估计参数空间中的参数$\theta$的值. 因此似然函数是关于参数$\theta$的函数,即给定样本随机变量$x$后,估计能够使$X$的取值成为$x$的参数$\theta$的可能性; 而概率密度函数的定义形式是$f(x|\theta)$, 即概率密度函数是在”已知”$\theta$的情况下,去估计样本随机变量$x$出现的可能性.</p>
+<h2 id="似然与概率的区别"><a href="#似然与概率的区别" class="headerlink" title="似然与概率的区别"></a>似然与概率的区别</h2><p>简单来讲，似然与概率分别是针对不同内容的估计和近似。概率(密度)表达给定$\theta$下样本随机向量$\textbf{X} = {x}$的可能性，而似然表达了给定样本$\textbf{X} = {x}$下参数$\theta=\theta_1$(相对于另外的参数取值$\theta_2$)为真实值的可能性.<br><a id="more"></a><br>换言之, 似然函数的形式是$L(\theta|x)$,其中”|”代表的是条件概率或者条件分布,因此似然函数是在”已知”样本随机变量$\textbf{X}=x$的情况下,估计参数空间中的参数$\theta$的值. 因此似然函数是关于参数 $\theta$ 的函数,即给定样本随机变量$x$后,估计能够使$X$的取值成为$x$的参数$\theta$的可能性; 而概率密度函数的定义形式是$f(x|\theta)$, 即概率密度函数是在”已知”$\theta$的情况下,去估计样本随机变量$x$出现的可能性.</p>
 <p>注意上面有一句中需要理清几个概念:</p>
 <blockquote>
 <p>估计能够使$X$的取值成为$x$的参数$\theta$的可能性</p>
 </blockquote>
 <ol>
 <li>统计学中, 样本随机变量的出现是基于某个分布的.例如$f(x|\theta)$代表x服从$f$分布,而$f$的分布是由参数$\theta$决定的.</li>
-<li>通常在概率统计学中$\textbf{X}$代表的是随机变量,而小写形式$x$通常代表其具体取值. 假定$X$服从二项分布(也可以是任何其他分布), 则可以写成$X~B(n,p), 而该二项分布情况下, 6次试验下x的取值可以是”010011”.</li>
+<li>通常在概率统计学中$\textbf{X}$代表的是随机变量,而小写形式$x$通常代表其具体取值. 假定$X$服从二项分布(也可以是任何其他分布), 则可以写成$X~B(n,p)$, 而该二项分布情况下, 6次试验下x的取值可以是”010011”.</li>
 <li>而上面第一条中, 其实包含了一个前提假设,就是我们已知$X$服从二项分布, 这种假设的数学含义是什么呢? 对, 就是决定该分布的参数为$\theta$, 即参数$\theta$刻画了随机变量$\textbf{X}$在概率空间中服从什么分布. 更具体一点,假如$X$服从二项分布，那么其由$\theta$决定的形式为$f(x;n;k|\theta)=P(\textbf{X}=k)={n \choose k}p^k(1-p)^{n-k}$. 其中p可以代表二项分布中”1”出现的概率,即$\theta$的取值, 比如可以取值为”1/2”. 而在似然估计中$\theta$是怎么得到的呢? 还是以上面$x$的取值”010011”为例, 可以发现6次试验中,”1”出现了三次,那么这种情况下p取值为”1/2”是可能性最大的,即最接近$\theta$的真实分布.</li>
 </ol>
 <h2 id="似然与概率的联系"><a href="#似然与概率的联系" class="headerlink" title="似然与概率的联系"></a>似然与概率的联系</h2><p>似然函数可以看做是同一个函数形式下的不同视角.</p>
-<p>以函数$a^b$为例. 该函数包含了两个变量,a和b. 如果b已知为2, 那么函数就是变量a的二次函数,即$f(a)=a^2$; 如果a已知为2,那么该函数就是变量b的幂函数, 即$f(b)$ = 2^b$.</p>
+<p>以函数$a^b$为例. 该函数包含了两个变量,a和b. 如果b已知为2, 那么函数就是变量a的二次函数,即$f(a)=a^2$; 如果a已知为2,那么该函数就是变量b的幂函数, 即$f(b) = 2^b$.</p>
 <p>同理，$\theta$和$x$也是两个不同的变量，如果$x$的分布是由已知的$\theta$刻画的, 要求估计$X$的实际取值, 那么$p(x|\theta)$就是x的概率密度函数; 如果已知随机变量$x$的取值, 而要估计使$X$取到已知$x$的参数分布,就是似然函数的目的.</p>
 <blockquote>
 <p>参考<a href="https://www.zhihu.com/question/54082000/answer/470252492" target="_blank" rel="noopener">知乎</a>上一个形象的例子:</p>
