@@ -98,23 +98,25 @@
 
 
 
-  <meta name="description" content="Interested inDeep Learning &amp; Computer Vision">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Neo&#39;s Blog">
-<meta property="og:url" content="https://sdsy888.github.io/archives/index.html">
+  <meta name="description" content="错误信息 dimension specified as 0 but tensor has no dimensions  问题原因CrossEntropyLoss的输入必须为tensor，不能为scalar（标量），即输入的数据维度不能为None. 解决办法使用view方法改变维度为1，如target = target.view(-1),这样假如原来target是1,使用后变为[1],维度从None">
+<meta name="keywords" content="pytorch">
+<meta property="og:type" content="article">
+<meta property="og:title" content="多GPU运行PyTorch报错dimension specified as 0 but tensor has no dimensions">
+<meta property="og:url" content="https://sdsy888.github.io/机器学习-Machine-Learning/框架-Framework/2020/多GPU运行PyTorch报错dimension-specified-as-0-but-tensor-has-no-dimensions/index.html">
 <meta property="og:site_name" content="Neo&#39;s Blog">
-<meta property="og:description" content="Interested inDeep Learning &amp; Computer Vision">
+<meta property="og:description" content="错误信息 dimension specified as 0 but tensor has no dimensions  问题原因CrossEntropyLoss的输入必须为tensor，不能为scalar（标量），即输入的数据维度不能为None. 解决办法使用view方法改变维度为1，如target = target.view(-1),这样假如原来target是1,使用后变为[1],维度从None">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2020-02-24T19:22:18.230Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Neo&#39;s Blog">
-<meta name="twitter:description" content="Interested inDeep Learning &amp; Computer Vision">
+<meta name="twitter:title" content="多GPU运行PyTorch报错dimension specified as 0 but tensor has no dimensions">
+<meta name="twitter:description" content="错误信息 dimension specified as 0 but tensor has no dimensions  问题原因CrossEntropyLoss的输入必须为tensor，不能为scalar（标量），即输入的数据维度不能为None. 解决办法使用view方法改变维度为1，如target = target.view(-1),这样假如原来target是1,使用后变为[1],维度从None">
 
 
 
 
 
 
-  <link rel="canonical" href="https://sdsy888.github.io/archives/">
+  <link rel="canonical" href="https://sdsy888.github.io/机器学习-Machine-Learning/框架-Framework/2020/多GPU运行PyTorch报错dimension-specified-as-0-but-tensor-has-no-dimensions/">
 
 
 
@@ -124,7 +126,7 @@
   };
 </script>
 
-  <title>Archive | Neo's Blog</title>
+  <title>多GPU运行PyTorch报错dimension specified as 0 but tensor has no dimensions | Neo's Blog</title>
   
 
 
@@ -172,7 +174,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-archive">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -248,7 +250,7 @@
         
         
           
-          <li class="menu-item menu-item-archives menu-item-active">
+          <li class="menu-item menu-item-archives">
 
     
     
@@ -324,427 +326,246 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
 
-      
-      <span class="archive-page-counter">
-        
-        
-         
-        
-        OK! 46 posts in total. Keep on posting.
-      </span>
-      
+  
 
-      
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/机器学习-Machine-Learning/框架-Framework/2020/多GPU运行PyTorch报错dimension-specified-as-0-but-tensor-has-no-dimensions/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="江前云后">
+      <meta itemprop="description" content="Interested in<br>Deep Learning & Computer Vision">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Neo's Blog">
+    </span>
+
+    
+      <header class="post-header">
 
         
         
+          <h1 class="post-title" itemprop="name headline">多GPU运行PyTorch报错dimension specified as 0 but tensor has no dimensions
+
+              
+            
+          </h1>
         
 
-        
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2020-02-24 13:17:53 / Modified: 13:22:18" itemprop="dateCreated datePublished" datetime="2020-02-24T13:17:53-06:00">2020-02-24</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2020">2020</h1>
-          </div>
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/机器学习-Machine-Learning/框架-Framework/2020/多GPU运行PyTorch报错dimension-specified-as-0-but-tensor-has-no-dimensions/" itemprop="url">
+            <span class="post-category">
             
-              <span itemprop="name">多GPU运行PyTorch报错dimension specified as 0 but tensor has no dimensions</span>
+              <span class="post-meta-divider">|</span>
             
-          </a>
-        
-      </h2>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/机器学习-Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">机器学习 / Machine Learning</span></a></span>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2020-02-24T13:17:53-06:00" content="2020-02-24">
-          02-24
-        </time>
-      </div>
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/机器学习-Machine-Learning/框架-Framework/" itemprop="url" rel="index"><span itemprop="name">框架 / Framework</span></a></span>
 
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/随笔-Writing/2020/【小记】解决问题还是原装API好用/" itemprop="url">
-            
-              <span itemprop="name">【小记】解决问题还是原装API好用</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2020-02-07T14:10:48-06:00" content="2020-02-07">
-          02-07
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/随笔-Writing/2020/Unable-to-determine-the-device-handle-GPU-is-lost-Reboot-the-system-to-recover-this-GPU/" itemprop="url">
-            
-              <span itemprop="name">Unable to determine the device handle... GPU is lost. Reboot the system to recover this GPU</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2020-01-07T12:03:58-06:00" content="2020-01-07">
-          01-07
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/框架-Framework/随笔-Writing/2020/pytorch中model-eval-和“with-torch-no-grad-区别/" itemprop="url">
-            
-              <span itemprop="name">pytorch中model.eval()和“with torch.no_grad()区别</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2020-01-06T22:31:44-06:00" content="2020-01-06">
-          01-06
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
+                
+                
+              
+            </span>
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
 
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/框架-Framework/2019/tensorboard手动添加scalar的方法/" itemprop="url">
+          
             
-              <span itemprop="name">TensorFlow静态图机制和Tensorboard中手动添加监控数据(scalar/simple_value...)的方法</span>
             
-          </a>
-        
-      </h2>
+          
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-11-14T14:42:30-06:00" content="2019-11-14">
-          11-14
-        </time>
-      </div>
+          
+          
 
-    </header>
-  </article>
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             Views:  
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
 
+          
+            <div class="post-symbolscount">
+              
 
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">288</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">1 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/随笔-Writing/2019/Python使用os-path-join只保留最后一个变量的原因/" itemprop="url">
-            
-              <span itemprop="name">Python使用os.path.join只保留最后一个变量的原因</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-06-06T14:35:07-05:00" content="2019-06-06">
-          06-06
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/随笔-Writing/2019/解决npm-install权限问题/" itemprop="url">
-            
-              <span itemprop="name">解决npm install权限问题</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-18T12:52:32-05:00" content="2019-04-18">
-          04-18
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <h1 id="错误信息"><a href="#错误信息" class="headerlink" title="错误信息"></a>错误信息</h1><blockquote>
+<p>dimension specified as 0 but tensor has no dimensions</p>
+</blockquote>
+<h1 id="问题原因"><a href="#问题原因" class="headerlink" title="问题原因"></a>问题原因</h1><p>CrossEntropyLoss的输入必须为tensor，不能为scalar（标量），即输入的数据维度不能为<code>None</code>.</p>
+<h1 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h1><p>使用<code>view</code>方法改变维度为1，如<code>target = target.view(-1)</code>,这样假如原来target是<code>1</code>,使用后变为<code>[1]</code>,维度从None变为1.</p>
+<p>Problem Sovled.</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li><a href="https://blog.csdn.net/weixin_43380510/article/details/89173892" target="_blank" rel="noopener">https://blog.csdn.net/weixin_43380510/article/details/89173892</a></li>
+</ul>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/机器学习-Machine-Learning/框架-Framework/工具-Tools/随笔-Writing/2019/Python中英文分词方法简介/" itemprop="url">
-            
-              <span itemprop="name">Python中英文分词方法简介</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-11T22:31:04-05:00" content="2019-04-11">
-          04-11
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/机器学习-Machine-Learning/框架-Framework/工具-Tools/随笔-Writing/2019/Python单型号-和双星号-用法总结/" itemprop="url">
-            
-              <span itemprop="name">Python单型号*和双星号**用法总结</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-11T21:11:52-05:00" content="2019-04-11">
-          04-11
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-          <a class="post-title-link" href="/机器学习-Machine-Learning/框架-Framework/工具-Tools/随笔-Writing/2019/Python中lambda使用总结/" itemprop="url">
-            
-              <span itemprop="name">Python中lambda使用总结</span>
-            
-          </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-04-11T21:07:12-05:00" content="2019-04-11">
-          04-11
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/pytorch/" rel="tag"># pytorch</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/随笔-Writing/2020/【小记】解决问题还是原装API好用/" rel="next" title="【小记】解决问题还是原装API好用">
+                <i class="fa fa-chevron-left"></i> 【小记】解决问题还是原装API好用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/5/">5</a><a class="extend next" rel="next" href="/archives/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
-  </nav>
+  </article>
 
 
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -764,8 +585,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -943,6 +773,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#错误信息"><span class="nav-number">1.</span> <span class="nav-text">错误信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问题原因"><span class="nav-number">2.</span> <span class="nav-text">问题原因</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解决办法"><span class="nav-number">3.</span> <span class="nav-text">解决办法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">4.</span> <span class="nav-text">参考</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
 
@@ -1112,6 +959,10 @@
 
 
   
+  <script src="/js/src/scrollspy.js?v=7.0.1"></script>
+<script src="/js/src/post-details.js?v=7.0.1"></script>
+
+
 
   
 
@@ -1127,6 +978,8 @@
 
   
 
+
+  
 
 
   
