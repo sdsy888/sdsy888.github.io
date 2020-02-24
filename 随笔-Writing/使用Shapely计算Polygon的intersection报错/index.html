@@ -98,25 +98,28 @@
 
 
 
-  <meta name="description" content="使用Translate函数Python3中的translate函数与Python2中已经不同了,使用Python3的方法如下. maketrans(table,[deletion],[toNone])函数是在处理字符串str的时候,将其中的table中指定的字符一一对应映射成deletion中指定的字符,将toNone中指定的字符映射成None(即None).  例如：12345import st">
+  <meta name="description" content="报错信息使用shapely中的Polygon类构建的多边形计算intersection的时候遇到如下报错：1TopologyException: Input geom 1 is invalid: Ring Self-intersection at or near point... 错误原因给出的Polygon中包含了一个所谓的self intersection，根据报错和网上信息怀疑是因为多边形本">
 <meta name="keywords" content="存档 &#x2F; Archive">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用Python的translate函数处理（替换）字符和中文标点">
-<meta property="og:url" content="https://sdsy888.github.io/随笔-Writing/2019/python中处理中文标点/index.html">
+<meta property="og:title" content="使用Shapely计算Polygon的intersection报错">
+<meta property="og:url" content="https://sdsy888.github.io/随笔-Writing/使用Shapely计算Polygon的intersection报错/index.html">
 <meta property="og:site_name" content="Neo&#39;s Blog">
-<meta property="og:description" content="使用Translate函数Python3中的translate函数与Python2中已经不同了,使用Python3的方法如下. maketrans(table,[deletion],[toNone])函数是在处理字符串str的时候,将其中的table中指定的字符一一对应映射成deletion中指定的字符,将toNone中指定的字符映射成None(即None).  例如：12345import st">
+<meta property="og:description" content="报错信息使用shapely中的Polygon类构建的多边形计算intersection的时候遇到如下报错：1TopologyException: Input geom 1 is invalid: Ring Self-intersection at or near point... 错误原因给出的Polygon中包含了一个所谓的self intersection，根据报错和网上信息怀疑是因为多边形本">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-03-21T17:17:57.199Z">
+<meta property="og:image" content="https://sdsy888.github.io/随笔-Writing/image/self-intesect-polygon.jpg">
+<meta property="og:image" content="https://shapely.readthedocs.io/en/latest/_images/difference.png">
+<meta property="og:updated_time" content="2020-02-24T19:22:44.054Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用Python的translate函数处理（替换）字符和中文标点">
-<meta name="twitter:description" content="使用Translate函数Python3中的translate函数与Python2中已经不同了,使用Python3的方法如下. maketrans(table,[deletion],[toNone])函数是在处理字符串str的时候,将其中的table中指定的字符一一对应映射成deletion中指定的字符,将toNone中指定的字符映射成None(即None).  例如：12345import st">
+<meta name="twitter:title" content="使用Shapely计算Polygon的intersection报错">
+<meta name="twitter:description" content="报错信息使用shapely中的Polygon类构建的多边形计算intersection的时候遇到如下报错：1TopologyException: Input geom 1 is invalid: Ring Self-intersection at or near point... 错误原因给出的Polygon中包含了一个所谓的self intersection，根据报错和网上信息怀疑是因为多边形本">
+<meta name="twitter:image" content="https://sdsy888.github.io/随笔-Writing/image/self-intesect-polygon.jpg">
 
 
 
 
 
 
-  <link rel="canonical" href="https://sdsy888.github.io/随笔-Writing/2019/python中处理中文标点/">
+  <link rel="canonical" href="https://sdsy888.github.io/随笔-Writing/使用Shapely计算Polygon的intersection报错/">
 
 
 
@@ -126,7 +129,7 @@
   };
 </script>
 
-  <title>使用Python的translate函数处理（替换）字符和中文标点 | Neo's Blog</title>
+  <title>使用Shapely计算Polygon的intersection报错 | Neo's Blog</title>
   
 
 
@@ -346,7 +349,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/随笔-Writing/2019/python中处理中文标点/">
+    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/随笔-Writing/使用Shapely计算Polygon的intersection报错/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="江前云后">
@@ -363,7 +366,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">使用Python的translate函数处理（替换）字符和中文标点
+          <h1 class="post-title" itemprop="name headline">使用Shapely计算Polygon的intersection报错
 
               
             
@@ -389,7 +392,7 @@
                 
               
 
-              <time title="Created: 2019-03-04 14:52:22" itemprop="dateCreated datePublished" datetime="2019-03-04T14:52:22-06:00">2019-03-04</time>
+              <time title="Created: 2020-02-21 01:12:03" itemprop="dateCreated datePublished" datetime="2020-02-21T01:12:03-06:00">2020-02-21</time>
             
 
             
@@ -406,7 +409,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-03-21 12:17:57" itemprop="dateModified" datetime="2019-03-21T12:17:57-05:00">2019-03-21</time>
+                <time title="Modified: 2020-02-24 13:22:44" itemprop="dateModified" datetime="2020-02-24T13:22:44-06:00">2020-02-24</time>
               
             
           </span>
@@ -459,7 +462,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">743</span>
+                <span title="Symbols count in article">1.7k</span>
               
 
               
@@ -473,7 +476,7 @@
                 
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
-                <span title="Reading time">1 mins.</span>
+                <span title="Reading time">2 mins.</span>
               
             </div>
           
@@ -493,16 +496,37 @@
       
 
       
-        <h1 id="使用Translate函数"><a href="#使用Translate函数" class="headerlink" title="使用Translate函数"></a>使用Translate函数</h1><p>Python3中的translate函数与Python2中已经不同了,使用Python3的方法如下.</p>
-<p><code>maketrans(table,[deletion],[toNone])</code>函数是在处理字符串str的时候,将其中的<code>table</code>中指定的字符一一对应映射成<code>deletion</code>中指定的字符,将<code>toNone</code>中指定的字符映射成None(即None). </p>
-<p>例如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> string</span><br><span class="line"><span class="comment"># string.punctuation中包含了常用的英文标点符号</span></span><br><span class="line">translator = str.maketrans(dict.fromkeys(string.punctuation))</span><br><span class="line">s = <span class="string">'string with "punctuation" inside of it! Does this work? I hope so.'</span></span><br><span class="line">print(s.translate(translator))</span><br></pre></td></tr></table></figure></p>
-<a id="more"></a>
-<p>输出结果应该为：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sdring widh puncduadion inside of id Does dhis work I hope so</span><br></pre></td></tr></table></figure></p>
-<p>以上输出结果表明,translate函数是将给定的table对应的字符替换为<code>deletion</code>中的字符;将toNone中的字符替换为<code>None</code>.</p>
-<p>而如果字符串中包含中文的时候，则需要对中文做一些特殊处理。</p>
-<h2 id="使用中文标点"><a href="#使用中文标点" class="headerlink" title="使用中文标点"></a>使用中文标点</h2><p>可以使用名为<code>zhon</code>的包来获取常用中文字符, 安装:<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install zhon</span><br></pre></td></tr></table></figure></p>
-<h2 id="使用zhon包"><a href="#使用zhon包" class="headerlink" title="使用zhon包"></a>使用<code>zhon</code>包</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> zhon.hanzi <span class="keyword">import</span> punctuation <span class="keyword">as</span> ch_punctuation</span><br></pre></td></tr></table></figure>
-<p>只需将英文的<code>string.punctuation</code>替换为<code>ch_punctuation</code>即可，其他处理方法与英文相同。</p>
+        <h1 id="报错信息"><a href="#报错信息" class="headerlink" title="报错信息"></a>报错信息</h1><p>使用shapely中的Polygon类构建的多边形计算intersection的时候遇到如下报错：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">TopologyException: Input geom 1 is invalid: Ring Self-intersection at or near point...</span><br></pre></td></tr></table></figure></p>
+<h1 id="错误原因"><a href="#错误原因" class="headerlink" title="错误原因"></a>错误原因</h1><p>给出的Polygon中包含了一个所谓的<code>self intersection</code>，根据报错和网上信息怀疑是因为多边形本身有重叠的部分（同一个多边形自己内部有个小多边形），示意图如下这种，大的多边形中间因为给定的坐标顺序的缘故，导致内部产生了包含其中的一个多边形。</p>
+<p><img src="../image/self-intesect-polygon.jpg" alt="self-intersection多边形示意"></p>
+<h1 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h1><p>给构建的Polygon加一个较小的buffer：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">poly = Polygon([(x0,y0),(x1,y1),(x2,y2),(x3,y3),...]) <span class="comment">#原始的polygon</span></span><br><span class="line">poly = poly.buffer(<span class="number">0.01</span>) <span class="comment"># 加一个较小的buffer</span></span><br></pre></td></tr></table></figure>
+<p>Problem Solved.</p>
+<h1 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h1><p>这里的buffer在回答里没有说清楚，在官方api document中给出了一些例子来解释buffer的作用：</p>
+<p>先看buffer的函数定义：</p>
+<blockquote>
+<p>object.buffer(distance, resolution=16, cap_style=1, join_style=1, mitre_limit=5.0)</p>
+<p>Returns an approximate representation of all points within a given distance of the this geometric object.</p>
+</blockquote>
+<p>字面意义理解就是在给定的object上按照给定的范围（distance)形成一个近似表示。从下面的例子可以更好的理解这个定义。</p>
+<hr>
+<blockquote>
+<p>a = Point(1, 1).buffer(1.5)<br>b = Point(2, 1).buffer(1.5)<br>a.difference(b)</p>
+<shapely.geometry.polygon.polygon object at 0x...>
+
+<p>The buffer() method is used to produce approximately circular polygons in the examples of this section; it will be explained in detail later in this manual.<br><img src="https://shapely.readthedocs.io/en/latest/_images/difference.png" alt="[结果图示][24406cc0]"></p>
+</shapely.geometry.polygon.polygon></blockquote>
+<p>从该例子中可以推测出，buffer的作用是在给定点周围按给定的值增加了范围：给出（1，1）点，给出buffer size是1.5，那么结果就是在（1，1）点周围形成了一个半径为1.5的圆。</p>
+<hr>
+<p>这样就不难看出为何对本来有内部交叉（self-intersection/self-ring)的Ploygon对象使用buffer会解决这个内部交叉问题了：</p>
+<p>首先我们给出的多边形object，产生的内部交叉往往是一个很小的ring，由给出的坐标点的顺序造成；使用buffer后，内部的ring被生成个的新的object的范围所覆盖（原始object面积增大），而覆盖了内部ring。</p>
+<p>参考上面例子就是原本是一个点，使用buffer后其面积增大，其边界也变成了新的圆的边界，这样即使原来中心点周围有小的ring，都会被覆盖在新的圆中；</p>
+<p>而此时如果计算新的圆与其他object的intersection的话，肯定是按照新的圆的边界来界定的，所以与原来的内部ring已经无关了。</p>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li><a href="https://gis.stackexchange.com/questions/287064/dissolve-causes-no-shapely-geometry-can-be-created-from-null-value-in-geopanda" target="_blank" rel="noopener">https://gis.stackexchange.com/questions/287064/dissolve-causes-no-shapely-geometry-can-be-created-from-null-value-in-geopanda</a></li>
+<li><a href="https://gis.stackexchange.com/questions/311209/how-to-fix-invalid-polygon-with-self-intersection-python" target="_blank" rel="noopener">https://gis.stackexchange.com/questions/311209/how-to-fix-invalid-polygon-with-self-intersection-python</a></li>
+<li><a href="https://shapely.readthedocs.io/en/latest/manual.html" target="_blank" rel="noopener">https://shapely.readthedocs.io/en/latest/manual.html</a></li>
+</ul>
 
       
     </div>
@@ -539,8 +563,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/随笔-Writing/2019/使用PIL-crop图像的错误：AttributeError-idat-object-has-no-attribute-fileno/" rel="next" title="使用PIL crop图像的错误：AttributeError: '_idat' object has no attribute 'fileno' ">
-                <i class="fa fa-chevron-left"></i> 使用PIL crop图像的错误：AttributeError: '_idat' object has no attribute 'fileno' 
+              <a href="/随笔-Writing/2020/【小记】解决问题还是原装API好用/" rel="next" title="【小记】解决问题还是原装API好用">
+                <i class="fa fa-chevron-left"></i> 【小记】解决问题还是原装API好用
               </a>
             
           </div>
@@ -549,8 +573,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/机器学习-Machine-Learning/框架-Framework/2019/pytorch中的损失函数的logis/" rel="prev" title="pytorch中的损失函数中的logits">
-                pytorch中的损失函数中的logits <i class="fa fa-chevron-right"></i>
+              <a href="/机器学习-Machine-Learning/框架-Framework/多GPU运行PyTorch报错dimension-specified-as-0-but-tensor-has-no-dimensions/" rel="prev" title="多GPU运行PyTorch报错dimension specified as 0 but tensor has no dimensions">
+                多GPU运行PyTorch报错dimension specified as 0 but tensor has no dimensions <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -793,7 +817,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#使用Translate函数"><span class="nav-number">1.</span> <span class="nav-text">使用Translate函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用中文标点"><span class="nav-number">1.1.</span> <span class="nav-text">使用中文标点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用zhon包"><span class="nav-number">1.2.</span> <span class="nav-text">使用zhon包</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#报错信息"><span class="nav-number">1.</span> <span class="nav-text">报错信息</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#错误原因"><span class="nav-number">2.</span> <span class="nav-text">错误原因</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解决办法"><span class="nav-number">3.</span> <span class="nav-text">解决办法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#思考"><span class="nav-number">4.</span> <span class="nav-text">思考</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
             
 
           </div>
