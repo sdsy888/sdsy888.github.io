@@ -345,6 +345,811 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/随笔-Writing/2019/MacOS上使用conda-init-zsh后，每次启动提示-eval-61-not-found/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="江前云后">
+      <meta itemprop="description" content="Interested in<br>Deep Learning & Computer Vision">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Neo's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/随笔-Writing/2019/MacOS上使用conda-init-zsh后，每次启动提示-eval-61-not-found/" class="post-title-link" itemprop="url">MacOS上使用conda init zsh后，每次启动提示(eval):61: = not found</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-04-08 13:20:38 / Modified: 15:18:14" itemprop="dateCreated datePublished" datetime="2019-04-08T13:20:38-05:00">2019-04-08</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/随笔-Writing/" itemprop="url" rel="index"><span itemprop="name">随笔 / Writing</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">1.2k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">1 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>conda 4.6.9这个版本是问题很多啊…</p>
+<h1 id="问题1"><a href="#问题1" class="headerlink" title="问题1"></a>问题1</h1><p>首先最麻烦的一个问题是，运行完<code>conda init zsh</code>后，每次启动命令行的时候，会在开头报错：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(eval):61: = not found</span><br></pre></td></tr></table></figure></p>
+<p>起因是为了使用<code>conda activate</code>来切换环境，需要在命令行中对使用的shell执行<code>conda init zsh (或者bash)</code>。执行后，conda会在<code>~/.zshrc</code>(如果使用bash，则会是<code>~/.bashrc</code>)中将原来的<code>export &quot;/anaconda3/bin:$PATH&quot;</code>注释掉，而改成conda init相关的命令。</p>
+<p>从说明上来看，是在conda init过程中，执行某个sh文件时执行eval命令时，出现了问题。查遍了网络，最后在GitHub issue中发现了问题的解决办法（可能是因为带有“=”的缘故，google一直搜索不到相关问题）。</p>
+<p>问题根源在于，这个版本的conda的<code>conda.sh</code>文件第61行中，<code>[]</code>中判断语句使用了两个等号导致的。<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if [ "$&#123;_CE_CONDA+x&#125;" == "condax" ]; then</span><br></pre></td></tr></table></figure></p>
+<p><strong>解决办法：</strong> 直接再MacOS的anaconda目录下搜索<code>conda.sh</code>修改其中的第61行，把两个等号改成一个即可。如果有多个conda.sh就都改掉也没有问题。</p>
+<p>另一个简单粗暴的解决办法就是直接对conda进行降级：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda install conda=4.6.8</span><br></pre></td></tr></table></figure></p>
+<h1 id="问题2"><a href="#问题2" class="headerlink" title="问题2"></a>问题2</h1><p>问题2是在尝试解决问题1的过程中遇到的，也是conda特定版本的问题。对conda进行降级的时候发现， 会报一个关于<code>qt</code>包的错误：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ERROR conda.core.link:_execute(568): An error occurred while uninstalling package 'defaults::qt-5.9.7-h468cd18_1'.</span><br><span class="line">PermissionError(1, 'Operation not permitted')</span><br><span class="line">Attempting to roll back.</span><br><span class="line"></span><br><span class="line">Rolling back transaction: done</span><br><span class="line"></span><br><span class="line">[Errno 1] Operation not permitted: '/anaconda3/bin/Assistant.app/Contents/PkgInfo' -&gt; '/anaconda3/bin/Assistant.app/Contents/PkgInfo.c~'</span><br></pre></td></tr></table></figure></p>
+<p><strong>解决办法：</strong>直接去<code>/anaconda3/pkgs</code>中删除<code>qt-5.9.7-h468cd18_1</code>这个包即可。</p>
+<blockquote>
+<p>参考：<a href="https://github.com/conda/conda/issues/8474" target="_blank" rel="noopener">https://github.com/conda/conda/issues/8474</a><br><a href="https://github.com/conda/conda/issues/8440" target="_blank" rel="noopener">https://github.com/conda/conda/issues/8440</a></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/随笔-Writing/2019/ubuntu无法取消粘滞边缘-sticky-edge-解决办法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="江前云后">
+      <meta itemprop="description" content="Interested in<br>Deep Learning & Computer Vision">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Neo's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/随笔-Writing/2019/ubuntu无法取消粘滞边缘-sticky-edge-解决办法/" class="post-title-link" itemprop="url">ubuntu无法取消粘滞边缘(sticky edge)解决办法</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-04-02 16:32:08" itemprop="dateCreated datePublished" datetime="2019-04-02T16:32:08-05:00">2019-04-02</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-04-09 22:34:49" itemprop="dateModified" datetime="2019-04-09T22:34:49-05:00">2019-04-09</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/随笔-Writing/" itemprop="url" rel="index"><span itemprop="name">随笔 / Writing</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">417</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">1 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Ubuntu中使用双屏显示时，两屏之间的边缘默认是开启“粘滞边缘”的，即鼠标滑动慢的情况下，会卡在屏幕中间无法“穿越到”另一个屏幕。如果关闭“setting-display-sticky edge”仍然无法取消“粘滞边缘”功能的话，需要通过安装插件实现：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install compizconfig-settings-manager</span><br></pre></td></tr></table></figure>
+<p>安装完成后，命令行中输入<code>ccsm</code>启动刚刚安装的插件，在左侧边栏找到“desktop”，然后选择“Ubuntu Unity Plugin”；然后使用左侧“Filter”搜索<code>edge stop vlocity</code>,将其设置成<code>1</code>即可。</p>
+<blockquote>
+<p>参考：<a href="https://askubuntu.com/questions/462629/how-to-disable-sticky-edges-in-ubuntu-14-04-ubuntu-13-10-and-earlier-had-a-opti" target="_blank" rel="noopener">https://askubuntu.com/questions/462629/how-to-disable-sticky-edges-in-ubuntu-14-04-ubuntu-13-10-and-earlier-had-a-opti</a></p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/随笔-Writing/2019/Python3-错误UnicodeEncodeError-ascii-codec-can-t-encode-characters-in-ordinal-not-in-range-128/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="江前云后">
+      <meta itemprop="description" content="Interested in<br>Deep Learning & Computer Vision">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Neo's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/随笔-Writing/2019/Python3-错误UnicodeEncodeError-ascii-codec-can-t-encode-characters-in-ordinal-not-in-range-128/" class="post-title-link" itemprop="url">Python3 错误UnicodeEncodeError: 'ascii' codec can't encode characters in ordinal not in range(128)</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-03-19 20:08:40 / Modified: 21:12:57" itemprop="dateCreated datePublished" datetime="2019-03-19T20:08:40-05:00">2019-03-19</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/随笔-Writing/" itemprop="url" rel="index"><span itemprop="name">随笔 / Writing</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">1.3k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">1 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>之前在使用Python2的时候，经常会遇到编码相关的错误，异常头疼。主要是因为Python2字符串设计上有一些固有的缺陷：</p>
+<blockquote>
+<ul>
+<li>使用 ASCII 码作为默认编码方式，对中文处理很不友好。</li>
+<li>把字符串的牵强地分为 unicode 和 str 两种类型，误导开发者</li>
+</ul>
+</blockquote>
+<p>与Python2不同，Python3默认使用<code>utf-8</code>编码方式，并且Python3的字符主要由两种：<code>str</code>/<code>byte</code>。因此正常情况下，Python3很少出现编码问题，但是最近在使用docker的时候，又发生了两次编码错误问题，分别是因为：</p>
+<ol>
+<li>docker环境（或当前命令行环境的默认编码不是<code>utf-8</code>)</li>
+<li>处理的文件默认编码不是<code>utf-8</code>，而是<code>ascii</code></li>
+</ol>
+<h1 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h1><h3 id="问题1"><a href="#问题1" class="headerlink" title="问题1"></a>问题1</h3><p>针对这两个可能的原因，首先判断系统的（或者当前命令行环境的）编码：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">首先进入python环境</span></span><br><span class="line">import sys</span><br><span class="line">sys.stdout.encoding</span><br><span class="line"><span class="meta">&gt;</span><span class="bash">&gt;&gt; <span class="string">'US-ASCII'</span></span></span><br></pre></td></tr></table></figure></p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/随笔-Writing/2019/Python3-错误UnicodeEncodeError-ascii-codec-can-t-encode-characters-in-ordinal-not-in-range-128/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/机器学习-Machine-Learning/2019/深度学习数据不平衡问题解决方法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="江前云后">
+      <meta itemprop="description" content="Interested in<br>Deep Learning & Computer Vision">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Neo's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/机器学习-Machine-Learning/2019/深度学习数据不平衡问题解决方法/" class="post-title-link" itemprop="url">深度学习数据不平衡问题解决方法</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-03-14 12:20:46 / Modified: 12:27:15" itemprop="dateCreated datePublished" datetime="2019-03-14T12:20:46-05:00">2019-03-14</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/机器学习-Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">机器学习 / Machine Learning</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">121</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">1 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li>计算loss的时候，对不平衡的类别赋予相应的weight倾斜，例如让类别少的数据产生的loss在总的loss中所占的权重更大一点</li>
+<li>dataloader时，对不平衡的数据（数据量少的数据）进行over sampling（饱和式采样？😂）</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/机器学习-Machine-Learning/2019/常用损失函数/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1572,850 +2377,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/工具-Tools/2019/git本地新建分支及同步本地分支到远程/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="江前云后">
-      <meta itemprop="description" content="Interested in<br>Deep Learning & Computer Vision">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Neo's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/工具-Tools/2019/git本地新建分支及同步本地分支到远程/" class="post-title-link" itemprop="url">git本地新建分支及同步本地分支到远程</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-12-20 21:30:01" itemprop="dateCreated datePublished" datetime="2018-12-20T21:30:01-06:00">2018-12-20</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-03-11 12:36:20" itemprop="dateModified" datetime="2019-03-11T12:36:20-05:00">2019-03-11</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/工具-Tools/" itemprop="url" rel="index"><span itemprop="name">工具 / Tools</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">330</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">1 mins.</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="本地新建分支"><a href="#本地新建分支" class="headerlink" title="本地新建分支"></a>本地新建分支</h1><p>git新建本地分支命令：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout -b new_branch</span><br></pre></td></tr></table></figure></p>
-<p>执行后会新建名为<code>new_branch</code>的分支并直接切换到该分支，相当于执行了以下语句：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git branch new_branch</span><br><span class="line">git checkout new_branch</span><br></pre></td></tr></table></figure></p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/工具-Tools/2019/git本地新建分支及同步本地分支到远程/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/工具-Tools/2019/push-pull每次要求输入密码的问题/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="江前云后">
-      <meta itemprop="description" content="Interested in<br>Deep Learning & Computer Vision">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Neo's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/工具-Tools/2019/push-pull每次要求输入密码的问题/" class="post-title-link" itemprop="url">push/pull每次要求输入密码的问题</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-12-20 15:30:41" itemprop="dateCreated datePublished" datetime="2018-12-20T15:30:41-06:00">2018-12-20</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-12-23 12:05:42" itemprop="dateModified" datetime="2018-12-23T12:05:42-06:00">2018-12-23</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/工具-Tools/" itemprop="url" rel="index"><span itemprop="name">工具 / Tools</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">356</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">1 mins.</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>新创建的git项目，每次pull/push的时候都会要求输入用户名和密码，有两个解决方案：</p>
-<h2 id="方案一"><a href="#方案一" class="headerlink" title="方案一"></a>方案一</h2><p>进入项目根目录，打开terminal：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global credential.helper store</span><br></pre></td></tr></table></figure></p>
-<p>可以在命令行中看到，这个<code>helper</code>的说明是：<code>-- external helper to be called when a username or password credential is needed</code>。 最后的“store”是本地存储的文件名，即在需要用户名和密码的时候会自动保存，下次就不需要了。</p>
-<p>因此完成之后，重新任意执行一个<code>push/pull</code>命令，会要求再次输入用户名和密码，此次输入会自动存储，以后再执行相关命令就无须输入了</p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/工具-Tools/2019/push-pull每次要求输入密码的问题/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/框架-Framework/随笔-Writing/2019/docker运行pytorch报错：RuntimeError-DataLoader-worker-pid-493-is-killed-by-signal-Bus-error-Details-are-lost-due-to-multiprocessing-Rerunning-with-num-workers-0-may-give-better-error-trace/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="江前云后">
-      <meta itemprop="description" content="Interested in<br>Deep Learning & Computer Vision">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Neo's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/框架-Framework/随笔-Writing/2019/docker运行pytorch报错：RuntimeError-DataLoader-worker-pid-493-is-killed-by-signal-Bus-error-Details-are-lost-due-to-multiprocessing-Rerunning-with-num-workers-0-may-give-better-error-trace/" class="post-title-link" itemprop="url">docker运行pytorch报错：RuntimeError: DataLoader worker (pid 493) is killed by signal: Bus error. Details are lost due to multiprocessing. Rerunning with num_workers=0 may give better error trace.</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-12-20 15:10:00" itemprop="dateCreated datePublished" datetime="2018-12-20T15:10:00-06:00">2018-12-20</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-03-11 12:36:52" itemprop="dateModified" datetime="2019-03-11T12:36:52-05:00">2019-03-11</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/框架-Framework/" itemprop="url" rel="index"><span itemprop="name">框架 / Framework</span></a></span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/框架-Framework/随笔-Writing/" itemprop="url" rel="index"><span itemprop="name">随笔 / Writing</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">377</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">1 mins.</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>使用docker运行Pytorch的时候如果报如下错误：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RuntimeError: DataLoader worker (pid 493) is killed by signal: Bus error. Details are lost due to multiprocessing. Rerunning with num_workers=0 may give better error trace.</span><br></pre></td></tr></table></figure></p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/框架-Framework/随笔-Writing/2019/docker运行pytorch报错：RuntimeError-DataLoader-worker-pid-493-is-killed-by-signal-Bus-error-Details-are-lost-due-to-multiprocessing-Rerunning-with-num-workers-0-may-give-better-error-trace/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/随笔-Writing/2019/安装病理图像库openslide-python/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="江前云后">
-      <meta itemprop="description" content="Interested in<br>Deep Learning & Computer Vision">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Neo's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/随笔-Writing/2019/安装病理图像库openslide-python/" class="post-title-link" itemprop="url">Ubuntu安装医学图像处理库openslide-python和pyvips</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-12-18 16:03:00" itemprop="dateCreated datePublished" datetime="2018-12-18T16:03:00-06:00">2018-12-18</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-12-23 12:02:42" itemprop="dateModified" datetime="2018-12-23T12:02:42-06:00">2018-12-23</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/随笔-Writing/" itemprop="url" rel="index"><span itemprop="name">随笔 / Writing</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">435</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">1 mins.</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>使用python处理<code>svs</code>格式的医学图像需要特定库的支持,常见的选择有<code>openslide</code>和<code>pyvips</code>.</p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/随笔-Writing/2019/安装病理图像库openslide-python/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -2459,7 +2425,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">48</span>
+                    <span class="site-state-item-count">52</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -2559,7 +2525,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">21</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -2648,7 +2618,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">43k</span>
+    <span title="Symbols count total">47k</span>
   
 
   
@@ -2657,7 +2627,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">39 mins.</span>
+    <span title="Reading time total">42 mins.</span>
   
 </div>
 

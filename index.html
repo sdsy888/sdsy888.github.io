@@ -345,6 +345,833 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/工具-Tools/2020/Nvidia-GPU风扇转速自动调节/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="江前云后">
+      <meta itemprop="description" content="Interested in<br>Deep Learning & Computer Vision">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Neo's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/工具-Tools/2020/Nvidia-GPU风扇转速自动调节/" class="post-title-link" itemprop="url">Nvidia GPU风扇转速自动调节</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2020-05-03 15:05:39 / Modified: 15:17:54" itemprop="dateCreated datePublished" datetime="2020-05-03T15:05:39-05:00">2020-05-03</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/工具-Tools/" itemprop="url" rel="index"><span itemprop="name">工具 / Tools</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">615</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">1 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Nvidia风扇速度自动调节工具推荐"><a href="#Nvidia风扇速度自动调节工具推荐" class="headerlink" title="Nvidia风扇速度自动调节工具推荐"></a>Nvidia风扇速度自动调节工具推荐</h1><p>众所周知，nvidia自家的GPU设定工具<code>nvidia-settings</code>的风扇转速调节功能实在难用。</p>
+<ul>
+<li>如果使用转速自动调节模式，GPU风扇的转速跟不上散热需求变化。往往GPU温度已经70~80度了，风扇转速还是停留在40%左右的速度，温度降不下来。</li>
+<li>如果使用手动转速调节模式，首先要通过改变一堆<code>coolbits</code>打开手动调节功能（可搜索调节nvidia gpu风扇转速文章），然后在<code>nvidia-settings</code>中打开手动调节开关，再通过拖动风扇转速百分比进度条实现任意调速。这种方法也是过去我一直在使用的解决办法，但是这个方法的最大问题就是不够灵活，通常都是等模型训练起来了然后手动拉高转速降温，等训练完成再手动拉低转速减少耗电和超大的风扇噪音。</li>
+</ul>
+<h1 id="灵活而又省力的解决办法"><a href="#灵活而又省力的解决办法" class="headerlink" title="灵活而又省力的解决办法"></a>灵活而又省力的解决办法</h1><p>首推一个开源的且支持pip安装的风扇调节工具：<a href="https://github.com/andyljones/coolgpus" target="_blank" rel="noopener">https://github.com/andyljones/coolgpus</a>. 两行命令搞定自动设定GPU转速按需调节：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 安装工具包</span><br><span class="line">pip install coolgpus</span><br></pre></td></tr></table></figure></p>
+<p>设定与温度对应的转速调节策略：下面的命令的意思是，当GPU温度从15度变化到85度时，风扇转速从20%线性增加到90%，即随着温度升高，转速随之增加，并且增加到什么程度完全自己手动控制，完美。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo $(which coolgpus) --temp 15 85 --speed 20 90</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/随笔-Writing/2020/Graph相关基础概念的理解/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="江前云后">
+      <meta itemprop="description" content="Interested in<br>Deep Learning & Computer Vision">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Neo's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/随笔-Writing/2020/Graph相关基础概念的理解/" class="post-title-link" itemprop="url">Graph相关基础概念的理解</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2020-04-04 19:55:36" itemprop="dateCreated datePublished" datetime="2020-04-04T19:55:36-05:00">2020-04-04</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-04-07 23:17:33" itemprop="dateModified" datetime="2020-04-07T23:17:33-05:00">2020-04-07</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/随笔-Writing/" itemprop="url" rel="index"><span itemprop="name">随笔 / Writing</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">1.5k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">1 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="度-自由度的理解"><a href="#度-自由度的理解" class="headerlink" title="度 / 自由度的理解"></a>度 / 自由度的理解</h1><ul>
+<li>度（degree）/ 自由度，也叫valency（直译化合价），是指Graph(图)中一个节点，有多少条边连接其上。</li>
+<li>图的度是其所有节点的度中最大值。对于“度”的理解，结合自由度，和化合价这个英文原词来理解，本意应该是衡量一个节点与外界连通性的度量。</li>
+<li><p>例如在计算二阶导数时</p>
+<ul>
+<li>一元函数（一维函数）其公式如下，直观上可以理解为：其二阶导数等于其在所有自由度上微扰之后获得的增益。一维函数其自由度可以理解为2，分别是+1方向和-1方向.</li>
+</ul>
+<script type="math/tex; mode=display">\begin{aligned} f^{\prime \prime}(x) = \frac{\partial^2 f(x)}{\partial x^2} &= f^{\prime}(x)-f^{\prime}(x-1) \\ &= f(x+1) - f(x) - (f(x) - f(x-1)) \\ &= f(x+1) + f(x-1) - 2f(x) \\ &= [f(x+1) - f(x)] + [f(x-1) - f(x)] \end{aligned}</script><ul>
+<li>二元函数（二维函数）其二阶导数如下，直观理解时可以类比二维图像（二维图像可以看做特殊形式的二维函数），类似一维函数的二阶导数，只是二维函数的自由度更多（用于计算函数二阶导数的方向），下面公式包含了4个自由度，$(1, 0), (-1,0), (0, 1), (0, -1)$.</li>
+</ul>
+<script type="math/tex; mode=display">\begin{aligned} (\Delta f)_{x,y} &= \frac{\partial f(x,y)}{\partial x^2} + \frac{\partial f(x,y)}{\partial y^2} \\ &\approx f(x+1,y) + f(x-1,y) - 2f(x,y) + f(x, y+1)+f(x,y-1)-2f(x,y)  \\ & = f(x+1,y) + f(x-1,y) + f(x, y+1)+f(x,y-1)-4f(x,y) \\ &= [f(x+1,y) - f(x,y)]+[f(x-1,y) - f(x,y)]+[f(x,y+1) - f(x,y)]+[f(x,y-1) - f(x,y)] \end{aligned}</script><ul>
+<li>参考链接1，其实《数字图像处理》书中对于二阶导数的定义也是考虑到了8个自由度。<blockquote>
+<p>(对于图像的二阶导数)还可以任意的定义自由度，比如对角线也算的话，就是8个自由度。在卷积时，使用的拉普拉斯模板就对应着1种方式的自由度定义</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<p>综上，度的概念，虽然对于不同对象有不同的具体定义，但是直觉上理解，我认为是函数上的某点，或者Graph上某点与其周边环境（邻接的点）的连通程度。一维函数上一点只能向左或者向右移动，因此度是2；二维函数可以向左右上下，甚至左上右下移动，因此度可以是4，8，甚至自定义更多；对于Graph上的节点node而言，其度就是连接到该节点的边的数量，同样是代表了这个节点连接到了多少个其他节点。</p>
+<p>最后补充，这种直观上的理解对于进一步理解拉普拉斯算子（尤其是Graph上的拉普拉斯算子）有很大帮助，如链接1中提到的：</p>
+<blockquote>
+<p>这给我们一种形象的结论：拉普拉斯算子就是在所有自由度上进行微小变化后获得的增益 (另一种说明，Informally, the Laplacian measures how different the value of f at p is from the average value of the neighbors)。</p>
+</blockquote>
+<h1 id="参考："><a href="#参考：" class="headerlink" title="参考："></a>参考：</h1><ol>
+<li><a href="http://xtf615.com/2019/02/24/gcn/" target="_blank" rel="noopener">http://xtf615.com/2019/02/24/gcn/</a></li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/框架-Framework/2020/PyTorch中的loss-step和optimizer-backward区别/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="江前云后">
+      <meta itemprop="description" content="Interested in<br>Deep Learning & Computer Vision">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Neo's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/框架-Framework/2020/PyTorch中的loss-step和optimizer-backward区别/" class="post-title-link" itemprop="url">PyTorch中的loss.step和optimizer.backward区别</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2020-03-10 14:22:04 / Modified: 14:40:05" itemprop="dateCreated datePublished" datetime="2020-03-10T14:22:04-05:00">2020-03-10</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/框架-Framework/" itemprop="url" rel="index"><span itemprop="name">框架 / Framework</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">541</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">1 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="一句话解释"><a href="#一句话解释" class="headerlink" title="一句话解释"></a>一句话解释</h1><h1 id="关于累加loss"><a href="#关于累加loss" class="headerlink" title="关于累加loss"></a>关于累加loss</h1><h3 id="一句话解释，n个backward使用一个step"><a href="#一句话解释，n个backward使用一个step" class="headerlink" title="一句话解释，n个backward使用一个step"></a>一句话解释，n个backward使用一个step</h3><h3 id="详解"><a href="#详解" class="headerlink" title="详解"></a>详解</h3><p>假如想要使用batch size（bs）为100训练模型，但是老黄卖的大memeory的卡太贵了，只能fit进batch size为10的数据，那怎么办呢？</p>
+<p>在PyTorch中可以这样搞：使用10的bs对网络进行f<code>orward</code>10次，每次都调用<code>loss.backward()</code>,但是每10次<code>forward</code>才调用一次<code>optimizer.step()</code>,这样就实现了batch size为100的效果。其原理就是step和bachward的区别。</p>
+<h1 id="Ref"><a href="#Ref" class="headerlink" title="Ref"></a>Ref</h1><ul>
+<li><a href="https://discuss.pytorch.org/t/why-do-we-need-to-set-the-gradients-manually-to-zero-in-pytorch/4903/22" target="_blank" rel="noopener">半官方解释</a></li>
+<li><a href="https://discuss.pytorch.org/t/how-are-optimizer-step-and-loss-backward-related/7350" target="_blank" rel="noopener">https://discuss.pytorch.org/t/how-are-optimizer-step-and-loss-backward-related/7350</a></li>
+<li><a href="https://discuss.pytorch.org/t/pytorch-gradient-accumulation/55955" target="_blank" rel="noopener">https://discuss.pytorch.org/t/pytorch-gradient-accumulation/55955</a></li>
+<li><a href="https://medium.com/huggingface/training-larger-batches-practical-tips-on-1-gpu-multi-gpu-distributed-setups-ec88c3e51255" target="_blank" rel="noopener">https://medium.com/huggingface/training-larger-batches-practical-tips-on-1-gpu-multi-gpu-distributed-setups-ec88c3e51255</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/随笔-Writing/2020/一些PyTorch与numpy的小细节/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="江前云后">
+      <meta itemprop="description" content="Interested in<br>Deep Learning & Computer Vision">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Neo's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/随笔-Writing/2020/一些PyTorch与numpy的小细节/" class="post-title-link" itemprop="url">一些PyTorch小细节</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2020-03-09 15:50:03" itemprop="dateCreated datePublished" datetime="2020-03-09T15:50:03-05:00">2020-03-09</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-04-24 01:50:50" itemprop="dateModified" datetime="2020-04-24T01:50:50-05:00">2020-04-24</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/随笔-Writing/" itemprop="url" rel="index"><span itemprop="name">随笔 / Writing</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">521</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">1 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="dataset的数据长度问题"><a href="#dataset的数据长度问题" class="headerlink" title="dataset的数据长度问题"></a>dataset的数据长度问题</h3><ul>
+<li>调用构建的<code>my_dataset.__len__()</code>获取的是数据的原始长度，比如一共有1000张图像，返回的就是1000</li>
+<li>使用<code>len(my_dataloader)</code>返回的是batch的数量，比如1000张图像，使用batchsize为8，那么返回的就是250.</li>
+</ul>
+<h2 id="numpy-squeeze返回值类型"><a href="#numpy-squeeze返回值类型" class="headerlink" title="numpy.squeeze返回值类型"></a>numpy.squeeze返回值类型</h2><p>对<code>ndarray</code>使用squeeze之后，其返回值是tuple类型，如果将这个类型的数据返回给pytorch的<code>__getitem__</code>方法，则最后dataset返回的数据类型为list，而不是一个<code>torch.Tensor</code>数据类型。</p>
+<p>只有将<code>ndarray</code>数据类型返回给<code>__getitem__</code>，最后dataloader返回的数据类型才能自动转为<code>torch.Tensor</code>;</p>
+<p>此外，函数返回值是一个ndarray和一个[]类型时，如果只用一个参数接收，那么会两个参数总体变成一个tuple。道理也非常简单，就是函数的多个返回值是个tuple中的多个元素。</p>
+<h1 id="Ref"><a href="#Ref" class="headerlink" title="Ref"></a>Ref</h1><ul>
+<li>数据长度：， data<a href="https://discuss.pytorch.org/t/what-is-len-dataloader-equal-to/52472/2" target="_blank" rel="noopener">https://discuss.pytorch.org/t/what-is-len-dataloader-equal-to/52472/2</a></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/机器学习-Machine-Learning/框架-Framework/2020/多GPU运行PyTorch报错dimension-specified-as-0-but-tensor-has-no-dimensions/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1591,803 +2418,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/框架-Framework/2019/tensorboard手动添加scalar的方法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="江前云后">
-      <meta itemprop="description" content="Interested in<br>Deep Learning & Computer Vision">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Neo's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/框架-Framework/2019/tensorboard手动添加scalar的方法/" class="post-title-link" itemprop="url">TensorFlow静态图机制和Tensorboard中手动添加监控数据(scalar/simple_value...)的方法</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-11-14 14:42:30" itemprop="dateCreated datePublished" datetime="2019-11-14T14:42:30-06:00">2019-11-14</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-12-05 23:02:58" itemprop="dateModified" datetime="2019-12-05T23:02:58-06:00">2019-12-05</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/框架-Framework/" itemprop="url" rel="index"><span itemprop="name">框架 / Framework</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">3.7k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">3 mins.</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>本文将介绍如何向tensorboard中添加sclar的方法，但会先尽量简要介绍一下tensorflow的静态图机制，查看添加方法可以直接去<a href="#Tensorboard中添加任意scalar">这一部分</a><br>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/框架-Framework/2019/tensorboard手动添加scalar的方法/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </p></div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/随笔-Writing/2019/Python使用os-path-join只保留最后一个变量的原因/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="江前云后">
-      <meta itemprop="description" content="Interested in<br>Deep Learning & Computer Vision">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Neo's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/随笔-Writing/2019/Python使用os-path-join只保留最后一个变量的原因/" class="post-title-link" itemprop="url">Python使用os.path.join只保留最后一个变量的原因</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-06-06 14:35:07 / Modified: 16:42:03" itemprop="dateCreated datePublished" datetime="2019-06-06T14:35:07-05:00">2019-06-06</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/随笔-Writing/" itemprop="url" rel="index"><span itemprop="name">随笔 / Writing</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">144</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">1 mins.</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>在使用Python的<code>os.path.join(&#39;a_path&#39;,&#39;bbb&#39;,&#39;/ccc&#39;)</code>来合并路径时，合并的结果如果只保留了最后的’/ccc’，是因为最后的一个变量名包含了斜杠，函数会将其识别成绝对路径，因此就会忽略前面所以的其他路径。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/随笔-Writing/2019/解决npm-install权限问题/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="江前云后">
-      <meta itemprop="description" content="Interested in<br>Deep Learning & Computer Vision">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Neo's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/随笔-Writing/2019/解决npm-install权限问题/" class="post-title-link" itemprop="url">解决npm install权限问题</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-04-18 12:52:32 / Modified: 12:56:44" itemprop="dateCreated datePublished" datetime="2019-04-18T12:52:32-05:00">2019-04-18</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/随笔-Writing/" itemprop="url" rel="index"><span itemprop="name">随笔 / Writing</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">272</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">1 mins.</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>当使用npm的<code>install --save</code>安装包时，可能会出现类似下面这样的权限问题：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">npm ERR! path /Users/neo/Documents/sdsy888.github.io/node_modules/hexo-pdf</span><br><span class="line">npm ERR! code EACCES</span><br><span class="line">npm ERR! errno -13</span><br><span class="line">npm ERR! syscall access</span><br></pre></td></tr></table></figure></p>
-<p>并且这个问题即使使用<code>sudo</code>命令也无法解决。</p>
-<h1 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h1><p>针对报错的文件，修改权限：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo chown -R `whoami` /Users/neo/Documents</span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/机器学习-Machine-Learning/框架-Framework/工具-Tools/随笔-Writing/2019/Python中英文分词方法简介/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="江前云后">
-      <meta itemprop="description" content="Interested in<br>Deep Learning & Computer Vision">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Neo's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/机器学习-Machine-Learning/框架-Framework/工具-Tools/随笔-Writing/2019/Python中英文分词方法简介/" class="post-title-link" itemprop="url">Python中英文分词方法简介</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-04-11 22:31:04" itemprop="dateCreated datePublished" datetime="2019-04-11T22:31:04-05:00">2019-04-11</time>
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/机器学习-Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">机器学习 / Machine Learning</span></a></span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/机器学习-Machine-Learning/框架-Framework/" itemprop="url" rel="index"><span itemprop="name">框架 / Framework</span></a></span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/机器学习-Machine-Learning/框架-Framework/工具-Tools/" itemprop="url" rel="index"><span itemprop="name">工具 / Tools</span></a></span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/机器学习-Machine-Learning/框架-Framework/工具-Tools/随笔-Writing/" itemprop="url" rel="index"><span itemprop="name">随笔 / Writing</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">0</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">1 mins.</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -2431,7 +2466,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">48</span>
+                    <span class="site-state-item-count">52</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -2531,7 +2566,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">21</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">23</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -2620,7 +2659,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">43k</span>
+    <span title="Symbols count total">47k</span>
   
 
   
@@ -2629,7 +2668,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">39 mins.</span>
+    <span title="Reading time total">42 mins.</span>
   
 </div>
 
