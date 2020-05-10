@@ -345,6 +345,451 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/review/Brief-Review-on-Data-Race-Analysis/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="江前云后">
+      <meta itemprop="description" content="Interested in<br>Deep Learning & Computer Vision">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Neo's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/review/Brief-Review-on-Data-Race-Analysis/" class="post-title-link" itemprop="url">Brief Review on Data Race Analysis</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2020-05-05 18:24:53" itemprop="dateCreated datePublished" datetime="2020-05-05T18:24:53-05:00">2020-05-05</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-05-09 19:13:59" itemprop="dateModified" datetime="2020-05-09T19:13:59-05:00">2020-05-09</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/review/" itemprop="url" rel="index"><span itemprop="name">review</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">3.1k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">3 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h1><h3 id="What-is-data-race"><a href="#What-is-data-race" class="headerlink" title="What is data race?"></a>What is data race?</h3><ul>
+<li>One of the factors that cause non-deterministic behavior of concurrent programs<ul>
+<li>Unpredictable process scheduling &amp; variations in message latencies</li>
+</ul>
+</li>
+<li>2 types of races that capture different bugs<ul>
+<li>special operations that are provided for safe simultaneous access  are called atomic/synchronization operations</li>
+<li>ordinary operations which are unsafe for simultaneous access are called data operations</li>
+</ul>
+</li>
+</ul>
+<p>The picture below  shows the detailed comparison of two races.<br><img src="../image/tmp/Races.png" alt="data races"></p>
+<h3 id="In-short"><a href="#In-short" class="headerlink" title="In short"></a>In short</h3><p>As the saying goes, a picture is worth a thousand words. The picture below shows the concept of data race.<br><img src="../image/tmp/concept.png" alt="concept"></p>
+<h1 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h1><p>The problem ofthe data race containes 4 parts which are shown in the picture below. [1]<br><img src="../image/tmp/Problems.png" alt="concept"></p>
+<h1 id="Data-Race-Detection-Methods"><a href="#Data-Race-Detection-Methods" class="headerlink" title="Data Race Detection Methods"></a>Data Race Detection Methods</h1><p>There are two general approaches to detecting data races: static and dynamic （or on-the-fly）.<br>In the static approach the source code is being analyzed to detect unserialized accesses to shared data. It may seem like a great idea, but existing techniques are essentially heuristics with very large numbers of false positives due to the fact that static analysis cannot distinguish data dynamically allocated on the heap, etc. Most widely-used data race detection tools use the dynamic approach - at the run time.<br><img src="../image/tmp/Data-Race-Detection.png" alt="Data Race Detection"></p>
+<h3 id="Method1-Eraser-2"><a href="#Method1-Eraser-2" class="headerlink" title="Method1: Eraser [2]"></a>Method1: Eraser [2]</h3><p>The picture below shows the core idea of the “eraser” method.<br>The core idea of eraser is the “Lockset algorithm”. For each shared variable, eraser maintains a set of candidate locks that protected it for all reads and writes as the program executes. Before any access to shared memory by a thread, eraser checks if it has obtained the required lockset. If the lockset becomes empty, it indicates that there is no lock to protect the variable and a warning will be given. To handle the situation when the above general discipline is violated but the situation is free from data races, such as variable initialization, shared read on data, single-writer, multiple-reader locks, the lockset algorithm is modified and extended.<br><img src="../image/tmp/eraser.png" alt="eraser"></p>
+<h3 id="Method2-Object-Race-Detection-3"><a href="#Method2-Object-Race-Detection-3" class="headerlink" title="Method2: Object Race Detection [3]"></a>Method2: Object Race Detection [3]</h3><p>The picture below shows the core idea of the “Object Race Detection” method.<br><img src="../image/tmp/object-det.png" alt="Object-det"></p>
+<h1 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h1><p>In this review, 4 parts are discused in details:</p>
+<ul>
+<li>What is data race</li>
+<li>Problem of data race</li>
+<li>Data race detection scheme</li>
+<li>Well-known methods</li>
+</ul>
+<h3 id="Method3-Dependence-Aware-Unbounded-Sound-Predictive-Race-Detection-4"><a href="#Method3-Dependence-Aware-Unbounded-Sound-Predictive-Race-Detection-4" class="headerlink" title="Method3: Dependence-Aware, Unbounded Sound Predictive Race Detection [4]"></a>Method3: Dependence-Aware, Unbounded Sound Predictive Race Detection [4]</h3><ul>
+<li>Incorporates data and control dependence<ul>
+<li>Strong-dependently-precedes</li>
+<li>Weak-dependently-precedes</li>
+</ul>
+</li>
+<li>Handles full program executions</li>
+<li>Detects more data races than closest related approaches</li>
+<li>Improves the state-of-the-art performance</li>
+</ul>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ol>
+<li>Raza, Aoun. “A review of race detection mechanisms.” International Computer Science Symposium in Russia. Springer, Berlin, Heidelberg, 2006.</li>
+<li>S. Savage, M. Burrows, G. Nelson, P. Sobalvarro, and T. Anderson. Eraser: A Dynamic Data Race Detector for Multi-Threaded Programs. ACM Transactions on Computer Systems, 1997.</li>
+<li>Von Praun, Christoph, and Thomas R. Gross. “Object race detection.” Acm Sigplan Notices 36.11 (2001): 70-82.</li>
+<li>Genç, Kaan, et al. “Dependence-aware, unbounded sound predictive race detection.” Proceedings of the ACM on Programming Languages 3.OOPSLA (2019): 1-30.</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/机器学习-Machine-Learning/框架-Framework/工具-Tools/随笔-Writing/pytorch只load部分网络参数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="江前云后">
+      <meta itemprop="description" content="Interested in<br>Deep Learning & Computer Vision">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Neo's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/机器学习-Machine-Learning/框架-Framework/工具-Tools/随笔-Writing/pytorch只load部分网络参数/" class="post-title-link" itemprop="url">pytorch只load部分网络参数</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2020-05-04 18:52:36" itemprop="dateCreated datePublished" datetime="2020-05-04T18:52:36-05:00">2020-05-04</time>
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/机器学习-Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">机器学习 / Machine Learning</span></a></span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/机器学习-Machine-Learning/框架-Framework/" itemprop="url" rel="index"><span itemprop="name">框架 / Framework</span></a></span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/机器学习-Machine-Learning/框架-Framework/工具-Tools/" itemprop="url" rel="index"><span itemprop="name">工具 / Tools</span></a></span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/机器学习-Machine-Learning/框架-Framework/工具-Tools/随笔-Writing/" itemprop="url" rel="index"><span itemprop="name">随笔 / Writing</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">0</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">1 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/工具-Tools/2020/Nvidia-GPU风扇转速自动调节/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -390,12 +835,24 @@
                 
               
 
-              <time title="Created: 2020-05-03 15:05:39 / Modified: 15:17:54" itemprop="dateCreated datePublished" datetime="2020-05-03T15:05:39-05:00">2020-05-03</time>
+              <time title="Created: 2020-05-03 15:05:39" itemprop="dateCreated datePublished" datetime="2020-05-03T15:05:39-05:00">2020-05-03</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-05-04 04:11:28" itemprop="dateModified" datetime="2020-05-04T04:11:28-05:00">2020-05-04</time>
               
             
           </span>
@@ -483,7 +940,7 @@
 <li>如果使用手动转速调节模式，首先要通过改变一堆<code>coolbits</code>打开手动调节功能（可搜索调节nvidia gpu风扇转速文章），然后在<code>nvidia-settings</code>中打开手动调节开关，再通过拖动风扇转速百分比进度条实现任意调速。这种方法也是过去我一直在使用的解决办法，但是这个方法的最大问题就是不够灵活，通常都是等模型训练起来了然后手动拉高转速降温，等训练完成再手动拉低转速减少耗电和超大的风扇噪音。</li>
 </ul>
 <h1 id="灵活而又省力的解决办法"><a href="#灵活而又省力的解决办法" class="headerlink" title="灵活而又省力的解决办法"></a>灵活而又省力的解决办法</h1><p>首推一个开源的且支持pip安装的风扇调节工具：<a href="https://github.com/andyljones/coolgpus" target="_blank" rel="noopener">https://github.com/andyljones/coolgpus</a>. 两行命令搞定自动设定GPU转速按需调节：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 安装工具包</span><br><span class="line">pip install coolgpus</span><br></pre></td></tr></table></figure></p>
-<p>设定与温度对应的转速调节策略：下面的命令的意思是，当GPU温度从15度变化到85度时，风扇转速从20%线性增加到90%，即随着温度升高，转速随之增加，并且增加到什么程度完全自己手动控制，完美。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo $(which coolgpus) --temp 15 85 --speed 20 90</span><br></pre></td></tr></table></figure></p>
+<p>设定与温度对应的转速调节策略：下面的命令的意思是，当GPU温度从15度变化到85度时，风扇转速从20%线性增加到90%，即随着温度升高，转速随之增加，并且增加到什么程度完全自己手动控制，完美。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo $(which coolgpus) --temp 15 80 --speed 20 95</span><br></pre></td></tr></table></figure></p>
 
           
         
@@ -1992,432 +2449,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/随笔-Writing/2020/Unable-to-determine-the-device-handle-GPU-is-lost-Reboot-the-system-to-recover-this-GPU/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="江前云后">
-      <meta itemprop="description" content="Interested in<br>Deep Learning & Computer Vision">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Neo's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/随笔-Writing/2020/Unable-to-determine-the-device-handle-GPU-is-lost-Reboot-the-system-to-recover-this-GPU/" class="post-title-link" itemprop="url">Unable to determine the device handle... GPU is lost. Reboot the system to recover this GPU</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2020-01-07 12:03:58 / Modified: 12:12:37" itemprop="dateCreated datePublished" datetime="2020-01-07T12:03:58-06:00">2020-01-07</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/随笔-Writing/" itemprop="url" rel="index"><span itemprop="name">随笔 / Writing</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">263</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">1 mins.</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>服务器上服务器上GPU频繁lost的情况，报错信息如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Unable to determine the device handle for GPU. GPU is lost. Reboot the system to recover this GPU.</span><br></pre></td></tr></table></figure></p>
-<p>主要原因可能有：</p>
-<ol>
-<li>驱动问题<ul>
-<li>解决办法：更新驱动；</li>
-</ul>
-</li>
-<li>gpu过热导致，这种情况解决方法有这几种：<ul>
-<li>将gpu风扇转速改为手动控制，调高转速（因为n卡gpu默认转速貌似永远不会超过70%）</li>
-<li>主板、gpu风扇清灰</li>
-</ul>
-</li>
-<li>电源供电不足导致，这种情况只能更换功率更大的电源解决</li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/框架-Framework/随笔-Writing/2020/pytorch中model-eval-和“with-torch-no-grad-区别/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="江前云后">
-      <meta itemprop="description" content="Interested in<br>Deep Learning & Computer Vision">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Neo's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/框架-Framework/随笔-Writing/2020/pytorch中model-eval-和“with-torch-no-grad-区别/" class="post-title-link" itemprop="url">pytorch中model.eval()和“with torch.no_grad()区别</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2020-01-06 22:31:44" itemprop="dateCreated datePublished" datetime="2020-01-06T22:31:44-06:00">2020-01-06</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2020-01-07 11:55:16" itemprop="dateModified" datetime="2020-01-07T11:55:16-06:00">2020-01-07</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/框架-Framework/" itemprop="url" rel="index"><span itemprop="name">框架 / Framework</span></a></span>
-
-                
-                
-                  , 
-                
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/框架-Framework/随笔-Writing/" itemprop="url" rel="index"><span itemprop="name">随笔 / Writing</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">750</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">1 mins.</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="两者区别"><a href="#两者区别" class="headerlink" title="两者区别"></a>两者区别</h1><p>在PyTorch中进行validation时，会使用<code>model.eval()</code>切换到测试模式，在该模式下，</p>
-<ul>
-<li>主要用于通知<code>dropout</code>层和<code>batchnorm</code>层在train和val模式间切换<ul>
-<li>在<code>train</code>模式下，<code>dropout</code>网络层会按照设定的参数<code>p</code>设置保留激活单元的概率（保留概率=p); <code>batchnorm</code>层会继续计算数据的mean和var等参数并更新。</li>
-<li>在<code>val</code>模式下，<code>dropout</code>层会让所有的激活单元都通过，而<code>batchnorm</code>层会停止计算和更新mean和var，直接使用在训练阶段已经学出的mean和var值。</li>
-</ul>
-</li>
-<li><p>该模式不会影响各层的gradient计算行为，即gradient计算和存储与training模式一样，只是不进行反传（backprobagation）</p>
-</li>
-<li><p>而<code>with torch.zero_grad()</code>则主要是用于停止autograd模块的工作，以起到加速和节省显存的作用，具体行为就是停止gradient计算，从而节省了GPU算力和显存，但是并不会影响dropout和batchnorm层的行为。</p>
-</li>
-</ul>
-<h1 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h1><p>如果不在意显存大小和计算时间的话，仅仅使用<code>model.eval()</code>已足够得到正确的validation的结果；而<code>with torch.zero_grad()</code>则是更进一步加速和节省gpu空间（因为不用计算和存储gradient），从而可以更快计算，也可以跑更大的batch来测试。</p>
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
-<li><a href="https://discuss.pytorch.org/t/model-eval-vs-with-torch-no-grad/19615/38" target="_blank" rel="noopener">https://discuss.pytorch.org/t/model-eval-vs-with-torch-no-grad/19615/38</a></li>
-<li><a href="https://ryankresse.com/batchnorm-dropout-and-eval-in-pytorch/" target="_blank" rel="noopener">https://ryankresse.com/batchnorm-dropout-and-eval-in-pytorch/</a></li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2466,7 +2497,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">52</span>
+                    <span class="site-state-item-count">54</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -2507,7 +2538,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">12</span>
+                      
+                    
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -2659,7 +2692,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">47k</span>
+    <span title="Symbols count total">50k</span>
   
 
   
@@ -2668,7 +2701,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">42 mins.</span>
+    <span title="Reading time total">45 mins.</span>
   
 </div>
 

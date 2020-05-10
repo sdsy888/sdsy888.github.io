@@ -106,7 +106,7 @@
 <meta property="og:site_name" content="Neo&#39;s Blog">
 <meta property="og:description" content="Nvidia风扇速度自动调节工具推荐众所周知，nvidia自家的GPU设定工具nvidia-settings的风扇转速调节功能实在难用。  如果使用转速自动调节模式，GPU风扇的转速跟不上散热需求变化。往往GPU温度已经70~80度了，风扇转速还是停留在40%左右的速度，温度降不下来。 如果使用手动转速调节模式，首先要通过改变一堆coolbits打开手动调节功能（可搜索调节nvidia gpu风扇">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2020-05-03T20:17:54.867Z">
+<meta property="og:updated_time" content="2020-05-04T09:11:28.634Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Nvidia GPU风扇转速自动调节">
 <meta name="twitter:description" content="Nvidia风扇速度自动调节工具推荐众所周知，nvidia自家的GPU设定工具nvidia-settings的风扇转速调节功能实在难用。  如果使用转速自动调节模式，GPU风扇的转速跟不上散热需求变化。往往GPU温度已经70~80度了，风扇转速还是停留在40%左右的速度，温度降不下来。 如果使用手动转速调节模式，首先要通过改变一堆coolbits打开手动调节功能（可搜索调节nvidia gpu风扇">
@@ -389,12 +389,24 @@
                 
               
 
-              <time title="Created: 2020-05-03 15:05:39 / Modified: 15:17:54" itemprop="dateCreated datePublished" datetime="2020-05-03T15:05:39-05:00">2020-05-03</time>
+              <time title="Created: 2020-05-03 15:05:39" itemprop="dateCreated datePublished" datetime="2020-05-03T15:05:39-05:00">2020-05-03</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-05-04 04:11:28" itemprop="dateModified" datetime="2020-05-04T04:11:28-05:00">2020-05-04</time>
               
             
           </span>
@@ -487,7 +499,7 @@
 <li>如果使用手动转速调节模式，首先要通过改变一堆<code>coolbits</code>打开手动调节功能（可搜索调节nvidia gpu风扇转速文章），然后在<code>nvidia-settings</code>中打开手动调节开关，再通过拖动风扇转速百分比进度条实现任意调速。这种方法也是过去我一直在使用的解决办法，但是这个方法的最大问题就是不够灵活，通常都是等模型训练起来了然后手动拉高转速降温，等训练完成再手动拉低转速减少耗电和超大的风扇噪音。</li>
 </ul>
 <h1 id="灵活而又省力的解决办法"><a href="#灵活而又省力的解决办法" class="headerlink" title="灵活而又省力的解决办法"></a>灵活而又省力的解决办法</h1><p>首推一个开源的且支持pip安装的风扇调节工具：<a href="https://github.com/andyljones/coolgpus" target="_blank" rel="noopener">https://github.com/andyljones/coolgpus</a>. 两行命令搞定自动设定GPU转速按需调节：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 安装工具包</span><br><span class="line">pip install coolgpus</span><br></pre></td></tr></table></figure></p>
-<p>设定与温度对应的转速调节策略：下面的命令的意思是，当GPU温度从15度变化到85度时，风扇转速从20%线性增加到90%，即随着温度升高，转速随之增加，并且增加到什么程度完全自己手动控制，完美。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo $(which coolgpus) --temp 15 85 --speed 20 90</span><br></pre></td></tr></table></figure></p>
+<p>设定与温度对应的转速调节策略：下面的命令的意思是，当GPU温度从15度变化到85度时，风扇转速从20%线性增加到90%，即随着温度升高，转速随之增加，并且增加到什么程度完全自己手动控制，完美。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo $(which coolgpus) --temp 15 80 --speed 20 95</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -533,6 +545,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/机器学习-Machine-Learning/框架-Framework/工具-Tools/随笔-Writing/pytorch只load部分网络参数/" rel="prev" title="pytorch只load部分网络参数">
+                pytorch只load部分网络参数 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -603,7 +619,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">52</span>
+                    <span class="site-state-item-count">54</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -644,7 +660,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">12</span>
+                      
+                    
+                    <span class="site-state-item-count">13</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -813,7 +831,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">47k</span>
+    <span title="Symbols count total">50k</span>
   
 
   
@@ -822,7 +840,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">42 mins.</span>
+    <span title="Reading time total">45 mins.</span>
   
 </div>
 
