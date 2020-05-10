@@ -390,24 +390,12 @@
                 
               
 
-              <time title="Created: 2020-05-05 18:24:53" itemprop="dateCreated datePublished" datetime="2020-05-05T18:24:53-05:00">2020-05-05</time>
+              <time title="Created: 2020-05-09 18:24:53 / Modified: 19:21:56" itemprop="dateCreated datePublished" datetime="2020-05-09T18:24:53-05:00">2020-05-09</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2020-05-09 19:13:59" itemprop="dateModified" datetime="2020-05-09T19:13:59-05:00">2020-05-09</time>
               
             
           </span>
@@ -504,8 +492,8 @@
 <h3 id="In-short"><a href="#In-short" class="headerlink" title="In short"></a>In short</h3><p>As the saying goes, a picture is worth a thousand words. The picture below shows the concept of data race.<br><img src="../image/tmp/concept.png" alt="concept"></p>
 <h1 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h1><p>The problem ofthe data race containes 4 parts which are shown in the picture below. [1]<br><img src="../image/tmp/Problems.png" alt="concept"></p>
 <h1 id="Data-Race-Detection-Methods"><a href="#Data-Race-Detection-Methods" class="headerlink" title="Data Race Detection Methods"></a>Data Race Detection Methods</h1><p>There are two general approaches to detecting data races: static and dynamic （or on-the-fly）.<br>In the static approach the source code is being analyzed to detect unserialized accesses to shared data. It may seem like a great idea, but existing techniques are essentially heuristics with very large numbers of false positives due to the fact that static analysis cannot distinguish data dynamically allocated on the heap, etc. Most widely-used data race detection tools use the dynamic approach - at the run time.<br><img src="../image/tmp/Data-Race-Detection.png" alt="Data Race Detection"></p>
-<h3 id="Method1-Eraser-2"><a href="#Method1-Eraser-2" class="headerlink" title="Method1: Eraser [2]"></a>Method1: Eraser [2]</h3><p>The picture below shows the core idea of the “eraser” method.<br>The core idea of eraser is the “Lockset algorithm”. For each shared variable, eraser maintains a set of candidate locks that protected it for all reads and writes as the program executes. Before any access to shared memory by a thread, eraser checks if it has obtained the required lockset. If the lockset becomes empty, it indicates that there is no lock to protect the variable and a warning will be given. To handle the situation when the above general discipline is violated but the situation is free from data races, such as variable initialization, shared read on data, single-writer, multiple-reader locks, the lockset algorithm is modified and extended.<br><img src="../image/tmp/eraser.png" alt="eraser"></p>
-<h3 id="Method2-Object-Race-Detection-3"><a href="#Method2-Object-Race-Detection-3" class="headerlink" title="Method2: Object Race Detection [3]"></a>Method2: Object Race Detection [3]</h3><p>The picture below shows the core idea of the “Object Race Detection” method.<br><img src="../image/tmp/object-det.png" alt="Object-det"></p>
+<h3 id="Method1-Eraser"><a href="#Method1-Eraser" class="headerlink" title="Method1: Eraser"></a>Method1: Eraser</h3><p>The picture below shows the core idea of the “eraser” method.<br>The core idea of eraser is the “Lockset algorithm”. For each shared variable, eraser maintains a set of candidate locks that protected it for all reads and writes as the program executes. Before any access to shared memory by a thread, eraser checks if it has obtained the required lockset. If the lockset becomes empty, it indicates that there is no lock to protect the variable and a warning will be given. To handle the situation when the above general discipline is violated but the situation is free from data races, such as variable initialization, shared read on data, single-writer, multiple-reader locks, the lockset algorithm is modified and extended.<br><img src="../image/tmp/eraser.png" alt="eraser"></p>
+<h3 id="Method2-Object-Race-Detection"><a href="#Method2-Object-Race-Detection" class="headerlink" title="Method2: Object Race Detection"></a>Method2: Object Race Detection</h3><p>The picture below shows the core idea of the “Object Race Detection” method.<br><img src="../image/tmp/object-det.png" alt="Object-det"></p>
 <h1 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h1><p>In this review, 4 parts are discused in details:</p>
 <ul>
 <li>What is data race</li>
@@ -513,7 +501,7 @@
 <li>Data race detection scheme</li>
 <li>Well-known methods</li>
 </ul>
-<h3 id="Method3-Dependence-Aware-Unbounded-Sound-Predictive-Race-Detection-4"><a href="#Method3-Dependence-Aware-Unbounded-Sound-Predictive-Race-Detection-4" class="headerlink" title="Method3: Dependence-Aware, Unbounded Sound Predictive Race Detection [4]"></a>Method3: Dependence-Aware, Unbounded Sound Predictive Race Detection [4]</h3><ul>
+<h3 id="Method3-Dependence-Aware-Unbounded-Sound-Predictive-Race-Detection"><a href="#Method3-Dependence-Aware-Unbounded-Sound-Predictive-Race-Detection" class="headerlink" title="Method3: Dependence-Aware, Unbounded Sound Predictive Race Detection"></a>Method3: Dependence-Aware, Unbounded Sound Predictive Race Detection</h3><ul>
 <li>Incorporates data and control dependence<ul>
 <li>Strong-dependently-precedes</li>
 <li>Weak-dependently-precedes</li>
