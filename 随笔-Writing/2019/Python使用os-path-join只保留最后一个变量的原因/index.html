@@ -15,11 +15,11 @@
 
 
 <html class="theme-next pisces use-motion" lang="en">
-<head><meta name="generator" content="Hexo 3.8.0">
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222"/>
 
 
 
@@ -46,9 +46,9 @@
 
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2"/>
 
-<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+<link rel="stylesheet" href="/css/main.css?v=7.0.1"/>
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
@@ -98,25 +98,25 @@
 
 
 
-  <meta name="description" content="在使用Python的os.path.join(&amp;#39;a_path&amp;#39;,&amp;#39;bbb&amp;#39;,&amp;#39;/ccc&amp;#39;)来合并路径时，合并的结果如果只保留了最后的’/ccc’，是因为最后的一个变量名包含了斜杠，函数会将其识别成绝对路径，因此就会忽略前面所以的其他路径。">
-<meta name="keywords" content="存档 &#x2F; Archive">
+  <meta name="description" content="在使用Python的os.path.join(&#39;a_path&#39;,&#39;bbb&#39;,&#39;&#x2F;ccc&#39;)来合并路径时，合并的结果如果只保留了最后的’&#x2F;ccc’，是因为最后的一个变量名包含了斜杠，函数会将其识别成绝对路径，因此就会忽略前面所以的其他路径。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python使用os.path.join只保留最后一个变量的原因">
-<meta property="og:url" content="https://sdsy888.github.io/随笔-Writing/2019/Python使用os-path-join只保留最后一个变量的原因/index.html">
+<meta property="og:url" content="https://sdsy888.github.io/%E9%9A%8F%E7%AC%94-Writing/2019/Python%E4%BD%BF%E7%94%A8os-path-join%E5%8F%AA%E4%BF%9D%E7%95%99%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E5%8F%98%E9%87%8F%E7%9A%84%E5%8E%9F%E5%9B%A0/index.html">
 <meta property="og:site_name" content="Neo&#39;s Blog">
-<meta property="og:description" content="在使用Python的os.path.join(&amp;#39;a_path&amp;#39;,&amp;#39;bbb&amp;#39;,&amp;#39;/ccc&amp;#39;)来合并路径时，合并的结果如果只保留了最后的’/ccc’，是因为最后的一个变量名包含了斜杠，函数会将其识别成绝对路径，因此就会忽略前面所以的其他路径。">
-<meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-06-06T21:42:03.995Z">
+<meta property="og:description" content="在使用Python的os.path.join(&#39;a_path&#39;,&#39;bbb&#39;,&#39;&#x2F;ccc&#39;)来合并路径时，合并的结果如果只保留了最后的’&#x2F;ccc’，是因为最后的一个变量名包含了斜杠，函数会将其识别成绝对路径，因此就会忽略前面所以的其他路径。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-06-06T19:35:07.000Z">
+<meta property="article:modified_time" content="2019-06-06T21:42:03.995Z">
+<meta property="article:author" content="江前云后">
+<meta property="article:tag" content="存档 &#x2F; Archive">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python使用os.path.join只保留最后一个变量的原因">
-<meta name="twitter:description" content="在使用Python的os.path.join(&amp;#39;a_path&amp;#39;,&amp;#39;bbb&amp;#39;,&amp;#39;/ccc&amp;#39;)来合并路径时，合并的结果如果只保留了最后的’/ccc’，是因为最后的一个变量名包含了斜杠，函数会将其识别成绝对路径，因此就会忽略前面所以的其他路径。">
 
 
 
 
 
 
-  <link rel="canonical" href="https://sdsy888.github.io/随笔-Writing/2019/Python使用os-path-join只保留最后一个变量的原因/">
+  <link rel="canonical" href="https://sdsy888.github.io/随笔-Writing/2019/Python使用os-path-join只保留最后一个变量的原因/"/>
 
 
 
@@ -163,9 +163,9 @@
   .use-motion .logo-line-before i { left: initial; }
   .use-motion .logo-line-after i { right: initial; }
   </style>
-</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</noscript>
 
-</head>
+<meta name="generator" content="Hexo 4.2.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
 
@@ -226,7 +226,7 @@
 
     
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>Home</a>
 
   </li>
         
@@ -243,7 +243,7 @@
 
     
 
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>About</a>
 
   </li>
         
@@ -260,7 +260,7 @@
 
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>Archives</a>
 
   </li>
         
@@ -277,7 +277,7 @@
 
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>Categories</a>
 
   </li>
         
@@ -294,7 +294,7 @@
 
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>Tags</a>
 
   </li>
 
@@ -346,16 +346,16 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/随笔-Writing/2019/Python使用os-path-join只保留最后一个变量的原因/">
+    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/%E9%9A%8F%E7%AC%94-Writing/2019/Python%E4%BD%BF%E7%94%A8os-path-join%E5%8F%AA%E4%BF%9D%E7%95%99%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E5%8F%98%E9%87%8F%E7%9A%84%E5%8E%9F%E5%9B%A0/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="江前云后">
-      <meta itemprop="description" content="Interested in<br>Deep Learning & Computer Vision">
-      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="江前云后"/>
+      <meta itemprop="description" content="Interested in<br>Deep Learning & Computer Vision"/>
+      <meta itemprop="image" content="/images/avatar.jpeg"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Neo's Blog">
+      <meta itemprop="name" content="Neo's Blog"/>
     </span>
 
     
@@ -411,7 +411,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/随笔-Writing/" itemprop="url" rel="index"><span itemprop="name">随笔 / Writing</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E9%9A%8F%E7%AC%94-Writing/" itemprop="url" rel="index"><span itemprop="name">随笔 / Writing</span></a></span>
 
                 
                 
@@ -429,7 +429,8 @@
 
           
             <span class="post-meta-divider">|</span>
-            <span class="post-meta-item-icon">
+            <span class="post-meta-item-icon"
+            >
             <i class="fa fa-eye"></i>
              Views:  
             <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
@@ -505,7 +506,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/存档-Archive/" rel="tag"># 存档 / Archive</a>
+            <a href="/tags/%E5%AD%98%E6%A1%A3-Archive/" rel="tag"># 存档 / Archive</a>
           
         </div>
       
@@ -518,7 +519,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/随笔-Writing/2019/解决npm-install权限问题/" rel="next" title="解决npm install权限问题">
+              <a href="/%E9%9A%8F%E7%AC%94-Writing/2019/%E8%A7%A3%E5%86%B3npm-install%E6%9D%83%E9%99%90%E9%97%AE%E9%A2%98/" rel="next" title="解决npm install权限问题">
                 <i class="fa fa-chevron-left"></i> 解决npm install权限问题
               </a>
             
@@ -528,7 +529,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/框架-Framework/2019/tensorboard手动添加scalar的方法/" rel="prev" title="TensorFlow静态图机制和Tensorboard中手动添加监控数据(scalar/simple_value...)的方法">
+              <a href="/%E6%A1%86%E6%9E%B6-Framework/2019/tensorboard%E6%89%8B%E5%8A%A8%E6%B7%BB%E5%8A%A0scalar%E7%9A%84%E6%96%B9%E6%B3%95/" rel="prev" title="TensorFlow静态图机制和Tensorboard中手动添加监控数据(scalar/simple_value...)的方法">
                 TensorFlow静态图机制和Tensorboard中手动添加监控数据(scalar/simple_value...)的方法 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -579,7 +580,9 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/avatar.jpeg" alt="江前云后">
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpeg"
+                alt="江前云后"/>
             
               <p class="site-author-name" itemprop="name">江前云后</p>
               <div class="site-description motion-element" itemprop="description">Interested in<br>Deep Learning & Computer Vision</div>
@@ -590,7 +593,7 @@
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/archives/">
+                  <a href="/archives/%20%7C%7C%20archive">
                 
                     <span class="site-state-item-count">54</span>
                     <span class="site-state-item-name">posts</span>
@@ -604,7 +607,7 @@
                 <div class="site-state-item site-state-categories">
                   
                     
-                      <a href="/categories/">
+                      <a href="/categories/%20%7C%7C%20th">
                     
                   
                     
@@ -647,7 +650,7 @@
                 <div class="site-state-item site-state-tags">
                   
                     
-                      <a href="/tags/">
+                      <a href="/tags/%20%7C%7C%20tags">
                     
                   
                     
@@ -801,7 +804,7 @@
 </div>
 
 
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0</div>
 
 
 

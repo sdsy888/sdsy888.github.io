@@ -15,11 +15,11 @@
 
 
 <html class="theme-next pisces use-motion" lang="en">
-<head><meta name="generator" content="Hexo 3.8.0">
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222"/>
 
 
 
@@ -46,9 +46,9 @@
 
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2"/>
 
-<link rel="stylesheet" href="/css/main.css?v=7.0.1">
+<link rel="stylesheet" href="/css/main.css?v=7.0.1"/>
 
 
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.1">
@@ -99,24 +99,24 @@
 
 
   <meta name="description" content="说明本文将介绍如何向tensorboard中添加sclar的方法，但会先尽量简要介绍一下tensorflow的静态图机制，查看添加方法可以直接去这一部分">
-<meta name="keywords" content="TensorFlow">
 <meta property="og:type" content="article">
 <meta property="og:title" content="TensorFlow静态图机制和Tensorboard中手动添加监控数据(scalar&#x2F;simple_value...)的方法">
-<meta property="og:url" content="https://sdsy888.github.io/框架-Framework/2019/tensorboard手动添加scalar的方法/index.html">
+<meta property="og:url" content="https://sdsy888.github.io/%E6%A1%86%E6%9E%B6-Framework/2019/tensorboard%E6%89%8B%E5%8A%A8%E6%B7%BB%E5%8A%A0scalar%E7%9A%84%E6%96%B9%E6%B3%95/index.html">
 <meta property="og:site_name" content="Neo&#39;s Blog">
 <meta property="og:description" content="说明本文将介绍如何向tensorboard中添加sclar的方法，但会先尽量简要介绍一下tensorflow的静态图机制，查看添加方法可以直接去这一部分">
-<meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-12-06T05:02:58.273Z">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-11-14T20:42:30.000Z">
+<meta property="article:modified_time" content="2019-12-06T05:02:58.273Z">
+<meta property="article:author" content="江前云后">
+<meta property="article:tag" content="TensorFlow">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="TensorFlow静态图机制和Tensorboard中手动添加监控数据(scalar&#x2F;simple_value...)的方法">
-<meta name="twitter:description" content="说明本文将介绍如何向tensorboard中添加sclar的方法，但会先尽量简要介绍一下tensorflow的静态图机制，查看添加方法可以直接去这一部分">
 
 
 
 
 
 
-  <link rel="canonical" href="https://sdsy888.github.io/框架-Framework/2019/tensorboard手动添加scalar的方法/">
+  <link rel="canonical" href="https://sdsy888.github.io/框架-Framework/2019/tensorboard手动添加scalar的方法/"/>
 
 
 
@@ -163,9 +163,9 @@
   .use-motion .logo-line-before i { left: initial; }
   .use-motion .logo-line-after i { right: initial; }
   </style>
-</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</noscript>
 
-</head>
+<meta name="generator" content="Hexo 4.2.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
 
@@ -226,7 +226,7 @@
 
     
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>Home</a>
 
   </li>
         
@@ -243,7 +243,7 @@
 
     
 
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>About</a>
 
   </li>
         
@@ -260,7 +260,7 @@
 
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>Archives</a>
 
   </li>
         
@@ -277,7 +277,7 @@
 
     
 
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>Categories</a>
 
   </li>
         
@@ -294,7 +294,7 @@
 
     
 
-    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>Tags</a>
 
   </li>
 
@@ -346,16 +346,16 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/框架-Framework/2019/tensorboard手动添加scalar的方法/">
+    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/%E6%A1%86%E6%9E%B6-Framework/2019/tensorboard%E6%89%8B%E5%8A%A8%E6%B7%BB%E5%8A%A0scalar%E7%9A%84%E6%96%B9%E6%B3%95/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="江前云后">
-      <meta itemprop="description" content="Interested in<br>Deep Learning & Computer Vision">
-      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="江前云后"/>
+      <meta itemprop="description" content="Interested in<br>Deep Learning & Computer Vision"/>
+      <meta itemprop="image" content="/images/avatar.jpeg"/>
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Neo's Blog">
+      <meta itemprop="name" content="Neo's Blog"/>
     </span>
 
     
@@ -423,7 +423,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/框架-Framework/" itemprop="url" rel="index"><span itemprop="name">框架 / Framework</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E6%A1%86%E6%9E%B6-Framework/" itemprop="url" rel="index"><span itemprop="name">框架 / Framework</span></a></span>
 
                 
                 
@@ -441,7 +441,8 @@
 
           
             <span class="post-meta-divider">|</span>
-            <span class="post-meta-item-icon">
+            <span class="post-meta-item-icon"
+            >
             <i class="fa fa-eye"></i>
              Views:  
             <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
@@ -515,8 +516,7 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># official method</span></span><br><span class="line">tf.summary.scalar(<span class="string">"loss1"</span>, loss1)</span><br><span class="line">tf.summary.scalar(<span class="string">"loss2"</span>, loss2)</span><br><span class="line"><span class="comment"># 将merged_summary送入session.run中可以返回需要的数据</span></span><br><span class="line">merged_summary = tf.summary.merge_all()</span><br><span class="line">train_writer = tf.summary.FileWriter(<span class="string">"/log_dir"</span>,sess.graph)</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">merged_summary, other_data =sess.run([merged_summary, other_data], feed_dict = &#123;...&#125;)</span><br><span class="line"><span class="comment"># 官方添加监控信息方法</span></span><br><span class="line">train_writer.add_summary(merged_summary, global_step)</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="comment"># 手动添加数据: 将数据转换为tf.Summary格式</span></span><br><span class="line">train_writer.add_summary(tf.Summary(value=[tf.Summary.Value(tag=<span class="string">'name_you_want'</span>,simple_value=data_you_want)]),global_step)</span><br><span class="line">train_writer.flush() <span class="comment"># 写入文件</span></span><br></pre></td></tr></table></figure>
 <p><strong>其中数据格式(simple_value这里可供替换的数据格式)可以参考<a href="https://github.com/tensorflow/tensorflow/blob/r1.11/tensorflow/core/framework/summary.proto#L112-L120" target="_blank" rel="noopener">源代码定义</a>，或者下面参考链接中的定义</strong>，是的，要参考源代码定义…</p>
 <h1 id="在tensorboard中同时显示多组数据-如train和validation同时显示"><a href="#在tensorboard中同时显示多组数据-如train和validation同时显示" class="headerlink" title="在tensorboard中同时显示多组数据(如train和validation同时显示)"></a>在tensorboard中同时显示多组数据(如train和validation同时显示)</h1><p>需要建立多个writer，并放在不同文件夹中，<strong>尤其需要注意，在val_writer中不要再加<code>sess.graph</code></strong>:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">train_writer = tf.summary.FileWriter(<span class="string">"/log_dir/tarin"</span>,sess.graph)</span><br><span class="line">val_writer = tf.summary.FileWriter(<span class="string">"/log_dir/val"</span>)</span><br></pre></td></tr></table></figure></p>
-<p>不同阶段产生的数据分开记录，比如training阶段产生的监控数据就用train_writer写入，validation同理；在查看监控数据的时候就在<code>/log_dir</code>根目录下执行：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tensorboard --log_dir=<span class="string">'/log_dir'</span></span><br></pre></td></tr></table></figure></p>
-<p>这样就会在最终tensorboard中出现两组分别为<code>train</code>和<code>val</code>的数据了，并且可以通过勾选，将相同名字的数据显示在同一个表格上。</p>
+<p>不同阶段产生的数据分开记录，比如training阶段产生的监控数据就用train_writer写入，validation同理；在查看监控数据的时候就在<code>/log_dir</code>根目录下执行：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tensorboard --log_dir=<span class="string">'/log_dir'</span></span><br></pre></td></tr></table></figure><br>这样就会在最终tensorboard中出现两组分别为<code>train</code>和<code>val</code>的数据了，并且可以通过勾选，将相同名字的数据显示在同一个表格上。</p>
 <h1 id="One-more-thing"><a href="#One-more-thing" class="headerlink" title="One more thing"></a>One more thing</h1><p>TensorFlow1.9以下的版本中，使用<code>tf.data.Dataset.from_generator</code>时，传入的迭代器函数，不能接收参数，因此定义迭代器函数的时候不能有参数，否则会报错。</p>
 <h1 id="其他参考"><a href="#其他参考" class="headerlink" title="其他参考"></a>其他参考</h1><ul>
 <li><a href="https://cloud.tencent.com/developer/article/1015066" target="_blank" rel="noopener">【TensorFlow | TensorBoard】理解 TensorBoard</a></li>
@@ -558,7 +558,7 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/随笔-Writing/2019/Python使用os-path-join只保留最后一个变量的原因/" rel="next" title="Python使用os.path.join只保留最后一个变量的原因">
+              <a href="/%E9%9A%8F%E7%AC%94-Writing/2019/Python%E4%BD%BF%E7%94%A8os-path-join%E5%8F%AA%E4%BF%9D%E7%95%99%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E5%8F%98%E9%87%8F%E7%9A%84%E5%8E%9F%E5%9B%A0/" rel="next" title="Python使用os.path.join只保留最后一个变量的原因">
                 <i class="fa fa-chevron-left"></i> Python使用os.path.join只保留最后一个变量的原因
               </a>
             
@@ -568,7 +568,7 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/框架-Framework/随笔-Writing/2020/pytorch中model-eval-和“with-torch-no-grad-区别/" rel="prev" title="pytorch中model.eval()和“with torch.no_grad()区别">
+              <a href="/%E6%A1%86%E6%9E%B6-Framework/%E9%9A%8F%E7%AC%94-Writing/2020/pytorch%E4%B8%ADmodel-eval-%E5%92%8C%E2%80%9Cwith-torch-no-grad-%E5%8C%BA%E5%88%AB/" rel="prev" title="pytorch中model.eval()和“with torch.no_grad()区别">
                 pytorch中model.eval()和“with torch.no_grad()区别 <i class="fa fa-chevron-right"></i>
               </a>
             
@@ -628,7 +628,9 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image" src="/images/avatar.jpeg" alt="江前云后">
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.jpeg"
+                alt="江前云后"/>
             
               <p class="site-author-name" itemprop="name">江前云后</p>
               <div class="site-description motion-element" itemprop="description">Interested in<br>Deep Learning & Computer Vision</div>
@@ -639,7 +641,7 @@
               
                 <div class="site-state-item site-state-posts">
                 
-                  <a href="/archives/">
+                  <a href="/archives/%20%7C%7C%20archive">
                 
                     <span class="site-state-item-count">54</span>
                     <span class="site-state-item-name">posts</span>
@@ -653,7 +655,7 @@
                 <div class="site-state-item site-state-categories">
                   
                     
-                      <a href="/categories/">
+                      <a href="/categories/%20%7C%7C%20th">
                     
                   
                     
@@ -696,7 +698,7 @@
                 <div class="site-state-item site-state-tags">
                   
                     
-                      <a href="/tags/">
+                      <a href="/tags/%20%7C%7C%20tags">
                     
                   
                     
@@ -867,7 +869,7 @@
 </div>
 
 
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.8.0</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.2.0</div>
 
 
 
