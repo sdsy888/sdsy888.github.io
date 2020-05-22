@@ -344,234 +344,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/review/Brief-Review-on-Data-Race-Analysis/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="江前云后"/>
-      <meta itemprop="description" content="Interested in<br>Deep Learning & Computer Vision"/>
-      <meta itemprop="image" content="/images/avatar.jpeg"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Neo's Blog"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/review/Brief-Review-on-Data-Race-Analysis/" class="post-title-link" itemprop="url">Brief Review on Data Race Analysis</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2020-05-09 18:24:53 / Modified: 19:24:36" itemprop="dateCreated datePublished" datetime="2020-05-09T18:24:53-05:00">2020-05-09</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/review/" itemprop="url" rel="index"><span itemprop="name">review</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">3.1k</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">3 mins.</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="Background"><a href="#Background" class="headerlink" title="Background"></a>Background</h1><h3 id="What-is-data-race"><a href="#What-is-data-race" class="headerlink" title="What is data race?"></a>What is data race?</h3><ul>
-<li>One of the factors that cause non-deterministic behavior of concurrent programs<ul>
-<li>Unpredictable process scheduling &amp; variations in message latencies</li>
-</ul>
-</li>
-<li>2 types of races that capture different bugs<ul>
-<li>special operations that are provided for safe simultaneous access  are called atomic/synchronization operations</li>
-<li>ordinary operations which are unsafe for simultaneous access are called data operations</li>
-</ul>
-</li>
-</ul>
-<p>The picture below  shows the detailed comparison of two races.<br><img src="../image/Races.png" alt="data races"></p>
-<h3 id="In-short"><a href="#In-short" class="headerlink" title="In short"></a>In short</h3><p>As the saying goes, a picture is worth a thousand words. The picture below shows the concept of data race.<br><img src="../image/concept.png" alt="concept"></p>
-<h1 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h1><p>The problem ofthe data race containes 4 parts which are shown in the picture below. [1]<br><img src="../image/Problems.png" alt="concept"></p>
-<h1 id="Data-Race-Detection-Methods"><a href="#Data-Race-Detection-Methods" class="headerlink" title="Data Race Detection Methods"></a>Data Race Detection Methods</h1><p>There are two general approaches to detecting data races: static and dynamic （or on-the-fly）.<br>In the static approach the source code is being analyzed to detect unserialized accesses to shared data. It may seem like a great idea, but existing techniques are essentially heuristics with very large numbers of false positives due to the fact that static analysis cannot distinguish data dynamically allocated on the heap, etc. Most widely-used data race detection tools use the dynamic approach - at the run time.<br><img src="../image/Data-Race-Detection.png" alt="Data Race Detection"></p>
-<h3 id="Method1-Eraser"><a href="#Method1-Eraser" class="headerlink" title="Method1: Eraser"></a>Method1: Eraser</h3><p>The picture below shows the core idea of the “eraser” method.<br>The core idea of eraser is the “Lockset algorithm”. For each shared variable, eraser maintains a set of candidate locks that protected it for all reads and writes as the program executes. Before any access to shared memory by a thread, eraser checks if it has obtained the required lockset. If the lockset becomes empty, it indicates that there is no lock to protect the variable and a warning will be given. To handle the situation when the above general discipline is violated but the situation is free from data races, such as variable initialization, shared read on data, single-writer, multiple-reader locks, the lockset algorithm is modified and extended.<br><img src="../image/eraser.png" alt="eraser"></p>
-<h3 id="Method2-Object-Race-Detection"><a href="#Method2-Object-Race-Detection" class="headerlink" title="Method2: Object Race Detection"></a>Method2: Object Race Detection</h3><p>The picture below shows the core idea of the “Object Race Detection” method.<br><img src="../image/object-det.png" alt="Object-det"></p>
-<h1 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h1><p>In this review, 4 parts are discused in details:</p>
-<ul>
-<li>What is data race</li>
-<li>Problem of data race</li>
-<li>Data race detection scheme</li>
-<li>Well-known methods</li>
-</ul>
-<h3 id="Method3-Dependence-Aware-Unbounded-Sound-Predictive-Race-Detection"><a href="#Method3-Dependence-Aware-Unbounded-Sound-Predictive-Race-Detection" class="headerlink" title="Method3: Dependence-Aware, Unbounded Sound Predictive Race Detection"></a>Method3: Dependence-Aware, Unbounded Sound Predictive Race Detection</h3><ul>
-<li>Incorporates data and control dependence<ul>
-<li>Strong-dependently-precedes</li>
-<li>Weak-dependently-precedes</li>
-</ul>
-</li>
-<li>Handles full program executions</li>
-<li>Detects more data races than closest related approaches</li>
-<li>Improves the state-of-the-art performance</li>
-</ul>
-<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ol>
-<li>Raza, Aoun. “A review of race detection mechanisms.” International Computer Science Symposium in Russia. Springer, Berlin, Heidelberg, 2006.</li>
-<li>S. Savage, M. Burrows, G. Nelson, P. Sobalvarro, and T. Anderson. Eraser: A Dynamic Data Race Detector for Multi-Threaded Programs. ACM Transactions on Computer Systems, 1997.</li>
-<li>Von Praun, Christoph, and Thomas R. Gross. “Object race detection.” Acm Sigplan Notices 36.11 (2001): 70-82.</li>
-<li>Genç, Kaan, et al. “Dependence-aware, unbounded sound predictive race detection.” Proceedings of the ACM on Programming Languages 3.OOPSLA (2019): 1-30.</li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-Machine-Learning/%E6%A1%86%E6%9E%B6-Framework/%E5%B7%A5%E5%85%B7-Tools/%E9%9A%8F%E7%AC%94-Writing/pytorch%E5%8F%AAload%E9%83%A8%E5%88%86%E7%BD%91%E7%BB%9C%E5%8F%82%E6%95%B0/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2435,6 +2207,207 @@
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/%E9%9A%8F%E7%AC%94-Writing/2020/Unable-to-determine-the-device-handle-GPU-is-lost-Reboot-the-system-to-recover-this-GPU/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="江前云后"/>
+      <meta itemprop="description" content="Interested in<br>Deep Learning & Computer Vision"/>
+      <meta itemprop="image" content="/images/avatar.jpeg"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Neo's Blog"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/%E9%9A%8F%E7%AC%94-Writing/2020/Unable-to-determine-the-device-handle-GPU-is-lost-Reboot-the-system-to-recover-this-GPU/" class="post-title-link" itemprop="url">Unable to determine the device handle... GPU is lost. Reboot the system to recover this GPU</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2020-01-07 12:03:58 / Modified: 12:12:37" itemprop="dateCreated datePublished" datetime="2020-01-07T12:03:58-06:00">2020-01-07</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E9%9A%8F%E7%AC%94-Writing/" itemprop="url" rel="index"><span itemprop="name">随笔 / Writing</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">262</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">1 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>服务器上服务器上GPU频繁lost的情况，报错信息如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Unable to determine the device handle for GPU. GPU is lost. Reboot the system to recover this GPU.</span><br></pre></td></tr></table></figure><br>主要原因可能有：</p>
+<ol>
+<li>驱动问题<ul>
+<li>解决办法：更新驱动；</li>
+</ul>
+</li>
+<li>gpu过热导致，这种情况解决方法有这几种：<ul>
+<li>将gpu风扇转速改为手动控制，调高转速（因为n卡gpu默认转速貌似永远不会超过70%）</li>
+<li>主板、gpu风扇清灰</li>
+</ul>
+</li>
+<li>电源供电不足导致，这种情况只能更换功率更大的电源解决</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
   </section>
 
   
@@ -2485,7 +2458,7 @@
                 
                   <a href="/archives/%20%7C%7C%20archive">
                 
-                    <span class="site-state-item-count">54</span>
+                    <span class="site-state-item-count">53</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -2526,9 +2499,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-count">12</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -2680,7 +2651,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">50k</span>
+    <span title="Symbols count total">47k</span>
   
 
   
@@ -2689,7 +2660,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">45 mins.</span>
+    <span title="Reading time total">42 mins.</span>
   
 </div>
 
