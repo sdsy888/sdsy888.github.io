@@ -344,6 +344,215 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/%E9%9A%8F%E7%AC%94-Writing/2019/python%E4%B8%AD%E5%A4%84%E7%90%86%E4%B8%AD%E6%96%87%E6%A0%87%E7%82%B9/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="江前云后"/>
+      <meta itemprop="description" content="Interested in<br>Deep Learning & Computer Vision"/>
+      <meta itemprop="image" content="/images/avatar.jpeg"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Neo's Blog"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/%E9%9A%8F%E7%AC%94-Writing/2019/python%E4%B8%AD%E5%A4%84%E7%90%86%E4%B8%AD%E6%96%87%E6%A0%87%E7%82%B9/" class="post-title-link" itemprop="url">使用Python的translate函数处理（替换）字符和中文标点</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-03-05 04:52:22" itemprop="dateCreated datePublished" datetime="2019-03-05T04:52:22+08:00">2019-03-05</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-03-22 01:17:57" itemprop="dateModified" datetime="2019-03-22T01:17:57+08:00">2019-03-22</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E9%9A%8F%E7%AC%94-Writing/" itemprop="url" rel="index"><span itemprop="name">随笔 / Writing</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">740</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">1 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="使用Translate函数"><a href="#使用Translate函数" class="headerlink" title="使用Translate函数"></a>使用Translate函数</h1><p>Python3中的translate函数与Python2中已经不同了,使用Python3的方法如下.</p>
+<p><code>maketrans(table,[deletion],[toNone])</code>函数是在处理字符串str的时候,将其中的<code>table</code>中指定的字符一一对应映射成<code>deletion</code>中指定的字符,将<code>toNone</code>中指定的字符映射成None(即None). </p>
+<p>例如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> string</span><br><span class="line"><span class="comment"># string.punctuation中包含了常用的英文标点符号</span></span><br><span class="line">translator = str.maketrans(dict.fromkeys(string.punctuation))</span><br><span class="line">s = <span class="string">'string with "punctuation" inside of it! Does this work? I hope so.'</span></span><br><span class="line">print(s.translate(translator))</span><br></pre></td></tr></table></figure><br>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/%E9%9A%8F%E7%AC%94-Writing/2019/python%E4%B8%AD%E5%A4%84%E7%90%86%E4%B8%AD%E6%96%87%E6%A0%87%E7%82%B9/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/%E9%9A%8F%E7%AC%94-Writing/2019/%E4%BD%BF%E7%94%A8PIL-crop%E5%9B%BE%E5%83%8F%E7%9A%84%E9%94%99%E8%AF%AF%EF%BC%9AAttributeError-idat-object-has-no-attribute-fileno/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -389,7 +598,7 @@
                 
               
 
-              <time title="Created: 2019-02-25 11:51:22" itemprop="dateCreated datePublished" datetime="2019-02-25T11:51:22-06:00">2019-02-25</time>
+              <time title="Created: 2019-02-26 01:51:22" itemprop="dateCreated datePublished" datetime="2019-02-26T01:51:22+08:00">2019-02-26</time>
             
 
             
@@ -406,7 +615,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-03-11 12:36:59" itemprop="dateModified" datetime="2019-03-11T12:36:59-05:00">2019-03-11</time>
+                <time title="Modified: 2019-03-12 01:36:59" itemprop="dateModified" datetime="2019-03-12T01:36:59+08:00">2019-03-12</time>
               
             
           </span>
@@ -597,7 +806,7 @@
                 
               
 
-              <time title="Created: 2019-02-15 11:17:24 / Modified: 11:21:50" itemprop="dateCreated datePublished" datetime="2019-02-15T11:17:24-06:00">2019-02-15</time>
+              <time title="Created: 2019-02-16 01:17:24 / Modified: 01:21:50" itemprop="dateCreated datePublished" datetime="2019-02-16T01:17:24+08:00">2019-02-16</time>
             
 
             
@@ -787,7 +996,7 @@
                 
               
 
-              <time title="Created: 2019-02-06 17:52:33" itemprop="dateCreated datePublished" datetime="2019-02-06T17:52:33-06:00">2019-02-06</time>
+              <time title="Created: 2019-02-07 07:52:33" itemprop="dateCreated datePublished" datetime="2019-02-07T07:52:33+08:00">2019-02-07</time>
             
 
             
@@ -804,7 +1013,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-03-11 12:37:16" itemprop="dateModified" datetime="2019-03-11T12:37:16-05:00">2019-03-11</time>
+                <time title="Modified: 2019-03-12 01:37:16" itemprop="dateModified" datetime="2019-03-12T01:37:16+08:00">2019-03-12</time>
               
             
           </span>
@@ -999,7 +1208,7 @@
                 
               
 
-              <time title="Created: 2018-12-20 21:30:01" itemprop="dateCreated datePublished" datetime="2018-12-20T21:30:01-06:00">2018-12-20</time>
+              <time title="Created: 2018-12-21 11:30:01" itemprop="dateCreated datePublished" datetime="2018-12-21T11:30:01+08:00">2018-12-21</time>
             
 
             
@@ -1016,7 +1225,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-03-11 12:36:20" itemprop="dateModified" datetime="2019-03-11T12:36:20-05:00">2019-03-11</time>
+                <time title="Modified: 2019-03-12 01:36:20" itemprop="dateModified" datetime="2019-03-12T01:36:20+08:00">2019-03-12</time>
               
             
           </span>
@@ -1207,7 +1416,7 @@
                 
               
 
-              <time title="Created: 2018-12-20 15:30:41" itemprop="dateCreated datePublished" datetime="2018-12-20T15:30:41-06:00">2018-12-20</time>
+              <time title="Created: 2018-12-21 05:30:41" itemprop="dateCreated datePublished" datetime="2018-12-21T05:30:41+08:00">2018-12-21</time>
             
 
             
@@ -1224,7 +1433,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-12-23 12:05:42" itemprop="dateModified" datetime="2018-12-23T12:05:42-06:00">2018-12-23</time>
+                <time title="Modified: 2018-12-24 02:05:42" itemprop="dateModified" datetime="2018-12-24T02:05:42+08:00">2018-12-24</time>
               
             
           </span>
@@ -1416,7 +1625,7 @@
                 
               
 
-              <time title="Created: 2018-12-20 15:10:00" itemprop="dateCreated datePublished" datetime="2018-12-20T15:10:00-06:00">2018-12-20</time>
+              <time title="Created: 2018-12-21 05:10:00" itemprop="dateCreated datePublished" datetime="2018-12-21T05:10:00+08:00">2018-12-21</time>
             
 
             
@@ -1433,7 +1642,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-03-11 12:36:52" itemprop="dateModified" datetime="2019-03-11T12:36:52-05:00">2019-03-11</time>
+                <time title="Modified: 2019-03-12 01:36:52" itemprop="dateModified" datetime="2019-03-12T01:36:52+08:00">2019-03-12</time>
               
             
           </span>
@@ -1630,7 +1839,7 @@
                 
               
 
-              <time title="Created: 2018-12-18 16:03:00" itemprop="dateCreated datePublished" datetime="2018-12-18T16:03:00-06:00">2018-12-18</time>
+              <time title="Created: 2018-12-19 06:03:00" itemprop="dateCreated datePublished" datetime="2018-12-19T06:03:00+08:00">2018-12-19</time>
             
 
             
@@ -1647,7 +1856,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-12-23 12:02:42" itemprop="dateModified" datetime="2018-12-23T12:02:42-06:00">2018-12-23</time>
+                <time title="Modified: 2018-12-24 02:02:42" itemprop="dateModified" datetime="2018-12-24T02:02:42+08:00">2018-12-24</time>
               
             
           </span>
@@ -1837,7 +2046,7 @@
                 
               
 
-              <time title="Created: 2018-12-17 11:09:30" itemprop="dateCreated datePublished" datetime="2018-12-17T11:09:30-06:00">2018-12-17</time>
+              <time title="Created: 2018-12-18 01:09:30" itemprop="dateCreated datePublished" datetime="2018-12-18T01:09:30+08:00">2018-12-18</time>
             
 
             
@@ -1854,7 +2063,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-12-08 21:54:16" itemprop="dateModified" datetime="2019-12-08T21:54:16-06:00">2019-12-08</time>
+                <time title="Modified: 2019-12-09 11:54:16" itemprop="dateModified" datetime="2019-12-09T11:54:16+08:00">2019-12-09</time>
               
             
           </span>
@@ -2045,7 +2254,7 @@
                 
               
 
-              <time title="Created: 2018-12-02 23:03:37 / Modified: 23:41:01" itemprop="dateCreated datePublished" datetime="2018-12-02T23:03:37-06:00">2018-12-02</time>
+              <time title="Created: 2018-12-03 13:03:37 / Modified: 13:41:01" itemprop="dateCreated datePublished" datetime="2018-12-03T13:03:37+08:00">2018-12-03</time>
             
 
             
@@ -2186,216 +2395,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://sdsy888.github.io/%E5%B7%A5%E5%85%B7-Tools/2017/%E4%BD%BF%E7%94%A8alias%E5%92%8Cscp%E7%AE%80%E5%8C%96%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="江前云后"/>
-      <meta itemprop="description" content="Interested in<br>Deep Learning & Computer Vision"/>
-      <meta itemprop="image" content="/images/avatar.jpeg"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Neo's Blog"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/%E5%B7%A5%E5%85%B7-Tools/2017/%E4%BD%BF%E7%94%A8alias%E5%92%8Cscp%E7%AE%80%E5%8C%96%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93/" class="post-title-link" itemprop="url">使用alias和scp简化文件传输</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2017-11-21 15:55:07" itemprop="dateCreated datePublished" datetime="2017-11-21T15:55:07-06:00">2017-11-21</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-12-02 23:40:52" itemprop="dateModified" datetime="2018-12-02T23:40:52-06:00">2018-12-02</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/%E5%B7%A5%E5%85%B7-Tools/" itemprop="url" rel="index"><span itemprop="name">工具 / Tools</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-symbolscount">
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Symbols count in article: </span>
-                
-                <span title="Symbols count in article">587</span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Reading time &asymp;</span>
-                
-                <span title="Reading time">1 mins.</span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>近期经常需要使用 <code>scp</code> 命令在本地和服务器之间传输数据，每次总免不了打上一长串远程服务器路径，很是枯燥。所以就想到是否能通过bash的 <code>alias</code>新建一个自己的命令来特定的 scp 需求写入到 <code>bashrc</code>中，这样就可以每次之间敲入自己的命令，然后再将需要传到服务器的文件拖到terminal中轻松完成了。</p>
-<p>本来是想通过如下形式实现，可是发现scp不能在 <code>alias</code> 命令中再从命令行直接接受参数</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> 2server=<span class="string">'scp -r $1 neo@10.88.88.88:~/me'</span></span><br></pre></td></tr></table></figure>
-<p>于是曲线救国：在根目录下新建一个sh脚本文件，实现scp从命令行接收参数的功能，再将这个脚本设置为可执行文件，最后将这个脚本通过alias来添加到系统命令中。</p>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/%E5%B7%A5%E5%85%B7-Tools/2017/%E4%BD%BF%E7%94%A8alias%E5%92%8Cscp%E7%AE%80%E5%8C%96%E6%96%87%E4%BB%B6%E4%BC%A0%E8%BE%93/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2446,7 +2445,7 @@
                 
                   <a href="/archives/%20%7C%7C%20archive">
                 
-                    <span class="site-state-item-count">55</span>
+                    <span class="site-state-item-count">56</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -2629,7 +2628,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
@@ -2641,7 +2640,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">47k</span>
+    <span title="Symbols count total">48k</span>
   
 
   
